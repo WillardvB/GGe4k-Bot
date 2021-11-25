@@ -1,0 +1,18 @@
+{
+  "name": "gge4k-dcbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "WillardvB",
+  "engines": {
+    "node": "16.x"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
