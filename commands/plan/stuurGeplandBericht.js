@@ -44,7 +44,7 @@ function stuurGeplandBericht(client, i, nu) {
             geplandeBerichten.berichten.splice(i, 1);
             try {
                 fs.writeFileSync(
-                    __dirname + '/data/geplandeBerichten.json',
+                    './../../data/geplandeBerichten.json',
                     JSON.stringify(geplandeBerichten, null, 2),
                     'utf8'
                 );

@@ -57,7 +57,7 @@ function planBericht(client, message, args) {
 	geplandeBerichten.berichten.push(bericht);
 	try {
 		fs.writeFileSync(
-			__dirname + '/data/geplandeBerichten.json',
+			'./../../data/geplandeBerichten.json',
 			JSON.stringify(geplandeBerichten, null, 2),
 			'utf8'
 		);
