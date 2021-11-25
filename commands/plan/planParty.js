@@ -34,7 +34,7 @@ function planBericht(client, message, args) {
 	geplandePartys.partys.push(party);
 	try {
 		fs.writeFileSync(
-			'./../../data/geplandePartys.json',
+			'/app/data/geplandePartys.json',
 			JSON.stringify(geplandePartys, null, 2),
 			'utf8'
 		);
