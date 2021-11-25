@@ -4,7 +4,7 @@ const fs = require('fs');
 const kanalen = require('./data/kanalen.json');
 
 const commands = [];
-const commandFiles = fs.readdirSync('E4K_NL_bot/commands/_slash/commandBuild').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync(__dirname+'/commands/_slash/commandBuild').filter(file => file.endsWith('.js'));
 
 module.exports = {
 	execute(client) {
