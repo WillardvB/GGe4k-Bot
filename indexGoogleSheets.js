@@ -11,7 +11,7 @@ const SCOPES = [
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
-const TOKEN_PATH = 'E4K_NL_bot/data/token.json';
+const TOKEN_PATH = __dirname +'/data/token.json';
 var auth = new google.auth.OAuth2();
 
 module.exports = {
@@ -22,7 +22,7 @@ module.exports = {
 };
 
 // Load client secrets from a local file.
-fs.readFile('E4K_NL_bot/data/client_secret.json', (err, content) => {
+fs.readFile(__dirname +'/data/client_secret.json', (err, content) => {
 	if (err) return console.log('Error loading client secret file:', err);
 	// Authorize a client with credentials, then call the Google Sheets API.
 	authorize(JSON.parse(content));
