@@ -118,7 +118,7 @@ function regelPartyKanalen(client, i, nu) {
       geplandePartys.partys.splice(i, 1);
       try {
         fs.writeFileSync(
-          'E4K_NL_bot/data/geplandePartys.json',
+          __dirname + '/data/geplandePartys.json',
           JSON.stringify(geplandePartys, null, 2),
           'utf8'
         );

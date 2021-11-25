@@ -40,17 +40,17 @@ function stuurGeplandBericht(client, i, nu) {
             .send(teSturenBericht);
         }
 			})
-      .then(() => {
-        geplandeBerichten.berichten.splice(i, 1);
-        try {
-          fs.writeFileSync(
-            'E4K_NL_bot/data/geplandeBerichten.json',
-            JSON.stringify(geplandeBerichten, null, 2),
-            'utf8'
-          );
-        } catch (err) {
-          console.log('An error has ocurred when saving the file.');
-        }
-      });
+        .then(() => {
+            geplandeBerichten.berichten.splice(i, 1);
+            try {
+                fs.writeFileSync(
+                    __dirname + '/data/geplandeBerichten.json',
+                    JSON.stringify(geplandeBerichten, null, 2),
+                    'utf8'
+                );
+            } catch (err) {
+              console.log('An error has ocurred when saving the file.');
+            }
+        });
 	}
 }
