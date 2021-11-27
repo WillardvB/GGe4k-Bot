@@ -13,7 +13,6 @@ const client = new Client({
 client.login(process.env.dcToken);
 
 require('./setClientCommands.js').execute(client);
-//require('./website/site.js').execute();
 
 client.once('ready', () => {
 	client.events.get('ready').execute(client);

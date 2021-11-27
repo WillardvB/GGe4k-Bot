@@ -1,7 +1,7 @@
 module.exports = {
-  getUser: function(client, mention){
-    return getUserFromMention(client, mention);
-  }
+	getUser: function (client, mention) {
+		return getUserFromMention(client, mention);
+	}
 };
 
 function getUserFromMention(client, mention) {

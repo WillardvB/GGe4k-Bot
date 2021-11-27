@@ -11,138 +11,134 @@ const productieKol = [54, 55, 56, 131, 133, 134, 135, 140, 141];
 const productieSoort = ["Houtproductie", "Steenproductie", "Voedselproductie", "Houtskoolproductie", "Olijfolieproductie", "Glasproductie", "IJzerertsproductie", "Honingproductie", "Honingwijnproductie"];
 
 module.exports = {
-	name: 'gebouw algemeen',
-	async execute(client, interaction) {
-    let level;
-    let gebouwnaam;
-    if(interaction.options){
-      level = interaction.options.getInteger('level');
-      gebouwnaam = interaction.options.getString('naam');
-    }
-    else if(interaction.customId){
-      var string = interaction.customId.split(' ');
-      level = string[2];
-      gebouwnaam = string[3];
-      for(i = 4; i < string.length; i++){
-        gebouwnaam += " " + string[i];
-      }
-    }
-    gebouwnaam = gebouwnaam.trim().toLowerCase();
-    const rows = await googleSheetsData.gebouwData(client);
-    if (rows.length) {
-      let gebouwGevonden = false;
-      let levelGevonden = false;
-      let hoogsteLevel = 1;
-      let laagsteLevel = 550;
-      let rij;
-      rows.map(row=>{
-        if(row[1].toLowerCase() == gebouwnaam){
-          gebouwGevonden = true;
-          gebouwGeweest = true;
-          laagsteLevel = Math.max(1, Math.min(laagsteLevel, row[12]));
-          hoogsteLevel = Math.max(hoogsteLevel, row[12]);
-          if(row[12] == level){
-            levelGevonden = true;
-            rij = [...row];
-          }
+    name: 'gebouw algemeen',
+    async execute(client, interaction) {
+        let level;
+        let gebouwnaam;
+        if (interaction.options) {
+            level = interaction.options.getInteger('level');
+            gebouwnaam = interaction.options.getString('naam');
         }
-        else if(levelGevonden && gebouwGeweest)
-        {
-          gebouwGeweest = false;
-          return naarOutput(interaction, rij, level, laagsteLevel, hoogsteLevel);
+        else if (interaction.customId) {
+            var string = interaction.customId.split(' ');
+            level = string[2];
+            gebouwnaam = string[3];
+            for (i = 4; i < string.length; i++) {
+                gebouwnaam += " " + string[i];
+            }
         }
-      })
-      if(levelGevonden){
-        return;
-      }
-      if(gebouwGevonden){
-        interaction.followUp({content: "geef een level tussen `"+laagsteLevel+"` en `"+hoogsteLevel+"`", ephemeral: true})
-      }else{
-        interaction.followUp({content: "geef een geldige nederlandse gebouwnaam", ephemeral: true})
-      }
-    }
-	},
+        gebouwnaam = gebouwnaam.trim().toLowerCase();
+        const rows = await googleSheetsData.gebouwData(client);
+        if (rows.length) {
+            let gebouwGevonden = false;
+            let levelGevonden = false;
+            let hoogsteLevel = 1;
+            let laagsteLevel = 550;
+            let rij;
+            rows.map(row => {
+                if (row[1].toLowerCase() == gebouwnaam) {
+                    gebouwGevonden = true;
+                    gebouwGeweest = true;
+                    laagsteLevel = Math.max(1, Math.min(laagsteLevel, row[12]));
+                    hoogsteLevel = Math.max(hoogsteLevel, row[12]);
+                    if (row[12] == level) {
+                        levelGevonden = true;
+                        rij = [...row];
+                    }
+                }
+                else if (levelGevonden && gebouwGeweest) {
+                    gebouwGeweest = false;
+                    return naarOutput(interaction, rij, level, laagsteLevel, hoogsteLevel);
+                }
+            })
+            if (levelGevonden) {
+                return;
+            }
+            if (gebouwGevonden) {
+                interaction.followUp({ content: "geef een level tussen `" + laagsteLevel + "` en `" + hoogsteLevel + "`", ephemeral: true })
+            } else {
+                interaction.followUp({ content: "geef een geldige nederlandse gebouwnaam", ephemeral: true })
+            }
+        }
+    },
 };
 
-function naarOutput(interaction, row, level, min, max){
-  let levelString = " (level " + level + ")";
-  var embed = new MessageEmbed()
-    .setColor('#996515')
-    .setTimestamp()
-    .setFooter(footerTekst, footerAfbeelding)
-    .setTitle ("**" + row[1] + "**" + levelString)
-    .setDescription (row[156])
-    .setThumbnail (row[0])
-  for(var i = 0; i < kostenKol.length; i++){
-    let waarde = row[kostenKol[i]];
-    let soort = kostenSoort[i];
-    if(soort == "Sloopbaar" || soort == "Brandbaar"){
-      waarde = waarde == "0" ? "nee" : "ja";
-    }
-    if(soort == "Oppervlakte"){
-      waarde = waarde + "x" + row[kostenKol[i] + 1];
-    }
-    if(soort == "Productie"){
-      waarde = "";
-      for(var a = 0; a < productieKol.length; a++){
-        productie = row[productieKol[a]];
-        productie = formatNumber.formatNum(productie);
-        if(productie != "")
-        {
-          waarde += productieSoort[a] + ": " + productie + "\n";
+function naarOutput(interaction, row, level, min, max) {
+    let levelString = " (level " + level + ")";
+    var embed = new MessageEmbed()
+        .setColor('#996515')
+        .setTimestamp()
+        .setFooter(footerTekst, footerAfbeelding)
+        .setTitle("**" + row[1] + "**" + levelString)
+        .setDescription(row[156])
+        .setThumbnail(row[0])
+    for (var i = 0; i < kostenKol.length; i++) {
+        let waarde = row[kostenKol[i]];
+        let soort = kostenSoort[i];
+        if (soort == "Sloopbaar" || soort == "Brandbaar") {
+            waarde = waarde == "0" ? "nee" : "ja";
         }
-      }
-    }
-    if(soort == "Opslag"){
-      waarde = "";
-      for(var a = 0; a < opslagKol.length; a++){
-        opslag = row[opslagKol[a]];
-        opslag = formatNumber.formatNum(opslag);
-        if(opslag != "")
-        {
-          waarde += opslagSoort[a] + ": " + opslag + "\n";
+        if (soort == "Oppervlakte") {
+            waarde = waarde + "x" + row[kostenKol[i] + 1];
         }
-      }
+        if (soort == "Productie") {
+            waarde = "";
+            for (var a = 0; a < productieKol.length; a++) {
+                productie = row[productieKol[a]];
+                productie = formatNumber.formatNum(productie);
+                if (productie != "") {
+                    waarde += productieSoort[a] + ": " + productie + "\n";
+                }
+            }
+        }
+        if (soort == "Opslag") {
+            waarde = "";
+            for (var a = 0; a < opslagKol.length; a++) {
+                opslag = row[opslagKol[a]];
+                opslag = formatNumber.formatNum(opslag);
+                if (opslag != "") {
+                    waarde += opslagSoort[a] + ": " + opslag + "\n";
+                }
+            }
+        }
+        if (soort == "Ratio" && waarde != "" && waarde != null && waarde != 0) {
+            waarde = `${waarde / 100} bs geeft 1 brood`;
+        }
+        if (soort == "Honingwijnratio" && waarde != "" && waarde != null && waarde != 0) {
+            waarde = `${waarde} honing en ${row[kostenKol[i] + 1]} brood geven samen 1 honingwijn`;
+        }
+        if (waarde != null && waarde != "" && soort != null && soort != "") {
+            embed.addField("**" + soort + "**", waarde, true);
+        }
     }
-    if(soort == "Ratio" && waarde != "" && waarde != null && waarde != 0){
-      waarde = `${waarde / 100} bs geeft 1 brood`;
+    const messRow = new MessageActionRow();
+    if (max == min) {
+        messRow.addComponents(
+            new MessageButton()
+                .setLabel('lvl ' + level)
+                .setStyle('PRIMARY')
+                .setCustomId('gebouw algemeen ' + level + " " + row[1])
+        )
     }
-    if(soort == "Honingwijnratio" && waarde != "" && waarde != null && waarde != 0){
-      waarde = `${waarde} honing en ${row[kostenKol[i]+1]} brood geven samen 1 honingwijn`;
+    if (level > min) {
+        messRow.addComponents(
+            new MessageButton()
+                .setLabel('lvl ' + (level * 1 - 1))
+                .setStyle('PRIMARY')
+                .setCustomId('gebouw algemeen ' + (level * 1 - 1) + " " + row[1])
+        )
     }
-    if(waarde != null && waarde != "" && soort != null && soort != "")
-    {
-      embed.addField("**"+ soort +"**", waarde, true);
+    if (level < max) {
+        messRow.addComponents(
+            new MessageButton()
+                .setLabel('lvl ' + (level * 1 + 1))
+                .setStyle('PRIMARY')
+                .setCustomId('gebouw algemeen ' + (level * 1 + 1) + " " + row[1])
+        )
     }
-  }
-  const messRow = new MessageActionRow();
-  if(max == min){
-    messRow.addComponents(
-      new MessageButton()
-        .setLabel('lvl ' + level)
-        .setStyle('PRIMARY')
-        .setCustomId('gebouw algemeen ' + level + " " + row[1])
-    )
-  }
-  if(level > min){
-    messRow.addComponents(
-      new MessageButton()
-        .setLabel('lvl ' + (level*1 - 1))
-        .setStyle('PRIMARY')
-        .setCustomId('gebouw algemeen ' + (level*1 - 1) + " " + row[1])
-    )
-  }
-  if(level < max){
-    messRow.addComponents(
-      new MessageButton()
-        .setLabel('lvl ' + (level*1 + 1))
-        .setStyle('PRIMARY')
-        .setCustomId('gebouw algemeen ' + (level*1 + 1) + " " + row[1])
-    )
-  }
-  if(interaction.options){
-    interaction.followUp({embeds: [embed], components: [messRow], ephemeral: true});
-  }else{
-    interaction.editReply({embeds: [embed], components: [messRow], ephemeral: true});
-  }
+    if (interaction.options) {
+        interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
+    } else {
+        interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
+    }
 }
