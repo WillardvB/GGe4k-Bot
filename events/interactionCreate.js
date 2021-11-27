@@ -7,11 +7,13 @@ module.exports = {
             const command = interaction.commandName;
             const subCommand = interaction.options.getSubcommand();
             client.slashCommands.get(command + " " + subCommand).execute(client, interaction);
+            console.log(command + " " + subCommand);
         }
         else if (interaction.isButton() || interaction.isSelectMenu()) {
             await interaction.deferUpdate();
             const bCommand = interaction.customId.split(' ');
             client.slashCommands.get(bCommand[0] + ' ' + bCommand[1]).execute(client, interaction);
+            console.log(command + " " + subCommand + "(knop)");
         }
     }
 }
