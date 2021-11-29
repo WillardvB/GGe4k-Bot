@@ -19,7 +19,7 @@ function krijgNieuweUpdateNotesPagina(client) {
                 var doc = new jsdom.JSDOM(html).window.document;
                 var listItems = doc.getElementsByTagName('li');
                 var tot5 = 0;
-                loopDoorDeForumNotes(12, listItems, tot5);
+                loopDoorDeForumNotes(client, 12, listItems, tot5);
                 /*for (var i = 12; i < listItems.length; i++) {
                     if (listItems[i].querySelector('a') != null) {
                         var aObject = listItems[i].querySelector('a');
@@ -35,7 +35,7 @@ function krijgNieuweUpdateNotesPagina(client) {
         })
 }
 
-function loopDoorDeForumNotes(i, listItems, tot5) {
+function loopDoorDeForumNotes(client, i, listItems, tot5) {
     if (listItems[i].querySelector('a') != null) {
         var aObject = listItems[i].querySelector('a');
         bronHref = aObject.href;
