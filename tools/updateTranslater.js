@@ -83,6 +83,7 @@ function filterUpdateInfo(client, url) {
                     });
                     if (veldData.length == 0)
                     {
+                        kanaal = client.channels.cache.find(channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates);
                         kanaal.send({ embeds: [embed] });
                     }
                     else
@@ -93,10 +94,7 @@ function filterUpdateInfo(client, url) {
                             vertaaldeVelden,
                             function (vertaaldeEmbedVelden) {
                                 embed.fields = vertaaldeEmbedVelden;
-                                kanaal = client.channels.cache
-                                    .find(
-                                        channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates
-                                    );
+                                kanaal = client.channels.cache.find(channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates);
                                 kanaal.send({ embeds: [embed] });
                             }
                         )
