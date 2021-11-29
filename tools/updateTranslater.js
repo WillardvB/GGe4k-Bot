@@ -11,9 +11,7 @@ module.exports = {
 };
 
 function krijgNieuweUpdateNotesPagina(client) {
-    fetch(
-        'https://community.goodgamestudios.com/fourkingdoms/en/categories/official-announcements-en'
-    )
+    fetch("https://community.goodgamestudios.com/fourkingdoms/en/categories/official-announcements-en")
         .then(res => {
             res.text().then(html => {
                 var doc = new jsdom.JSDOM(html).window.document;
