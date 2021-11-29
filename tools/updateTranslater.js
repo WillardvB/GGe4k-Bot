@@ -50,6 +50,9 @@ function filterUpdateInfo(client, url) {
                 }
                 omschrijvingEnVelddata = getDescription(doc2, onvertaaldeTitel);
                 var berichtOmschrijving = omschrijvingEnVelddata[0].textContent;
+                if (berichtOmschrijving == null) {
+                    berichtOmschrijving = omschrijvingEnVelddata[0];
+                }
                 var veldData = [...omschrijvingEnVelddata];
                 veldData.shift();
                 vertaalUpdate(berichtOmschrijving, function (
@@ -129,6 +132,7 @@ function getDescription(doc, title) {
             tmpBerichtOmschrijving = tmpBerichtOmschrijving.trim();
         }
     }
+    console.log(tmpBerichtOmschrijving.length);
     if (tmpBerichtOmschrijving.length < 500) {
         return [tmpBerichtOmschrijving];
     }
