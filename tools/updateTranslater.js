@@ -52,6 +52,7 @@ function filterUpdateInfo(client, url) {
                 var berichtOmschrijving = omschrijvingEnVelddata[0].textContent;
                 var veldData = [...omschrijvingEnVelddata];
                 veldData.shift();
+                console.log(berichtOmschrijving);
                 vertaalUpdate(berichtOmschrijving, function (
                     nieuweOmschrijving
                 ) {
@@ -78,19 +79,26 @@ function filterUpdateInfo(client, url) {
                     veldData = veldData.filter(function (el) {
                         return el.textContent != "";
                     });
-                    vertaalUpdateVelden(
-                        veldData,
-                        embed,
-                        vertaaldeVelden,
-                        function (vertaaldeEmbedVelden) {
-                            embed.fields = vertaaldeEmbedVelden;
-                            kanaal = client.channels.cache
-                                .find(
-                                    channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates
-                                );
-                            kanaal.send({ embeds: [embed] });
-                        }
-                    )
+                    if (veldData.length == 0)
+                    {
+                        kanaal.send({ embeds: [embed] });
+                    }
+                    else
+                    {
+                        vertaalUpdateVelden(
+                            veldData,
+                            embed,
+                            vertaaldeVelden,
+                            function (vertaaldeEmbedVelden) {
+                                embed.fields = vertaaldeEmbedVelden;
+                                kanaal = client.channels.cache
+                                    .find(
+                                        channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates
+                                    );
+                                kanaal.send({ embeds: [embed] });
+                            }
+                        )
+                    }
                 })
             })
         })
