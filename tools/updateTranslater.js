@@ -3,6 +3,7 @@ const translate = require('@vitalets/google-translate-api');
 const jsdom = require('jsdom');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const { MessageEmbed } = require('discord.js');
+let kanaal;
 
 module.exports = {
     vertaalUpdate: function (client) {
@@ -11,26 +12,15 @@ module.exports = {
 };
 
 function krijgNieuweUpdateNotesPagina(client) {
+    kanaal = client.channels.cache.find(channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates);
+    kanaal.send({ content: "Ik ga kijken wat er allemaal is te zien op het forum!" });
     fetch("https://community.goodgamestudios.com/fourkingdoms/en/categories/official-announcements-en")
         .then(res => {
             res.text().then(html => {
-                kanaal = client.channels.cache.find(channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates);
-                kanaal.send({ content: "Ik ga kijken wat er allemaal is te zien op het forum!" });
                 var doc = new jsdom.JSDOM(html).window.document;
                 var listItems = doc.getElementsByTagName('li');
                 var tot5 = 0;
                 loopDoorDeForumNotes(client, 12, listItems, tot5);
-                /*for (var i = 12; i < listItems.length; i++) {
-                    if (listItems[i].querySelector('a') != null) {
-                        var aObject = listItems[i].querySelector('a');
-                        tot4 += 1;
-                        bronHref = aObject.href;
-                        filterUpdateInfo(client, bronHref);
-                        if (tot4 >= 4) {
-                            i = 1000000;
-                        }
-                    }
-                }*/
             })
         })
 }
@@ -98,7 +88,6 @@ function filterUpdateInfo(client, url) {
                     });
                     if (veldData.length == 0)
                     {
-                        kanaal = client.channels.cache.find(channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates);
                         kanaal.send({ embeds: [embed] });
                     }
                     else
@@ -109,7 +98,6 @@ function filterUpdateInfo(client, url) {
                             vertaaldeVelden,
                             function (vertaaldeEmbedVelden) {
                                 embed.fields = vertaaldeEmbedVelden;
-                                kanaal = client.channels.cache.find(channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates);
                                 kanaal.send({ embeds: [embed] });
                             }
                         )
