@@ -40,6 +40,7 @@ function filterUpdateInfo(client, url) {
             var footerTekst = '© E4K NL server';
             var footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
             var titel = getTitle(doc2);
+            console.log(titel);
             vertaalUpdate(titel, function (nieuweTitel) {
                 titel = nieuweTitel;
                 var onvertaaldeTitel = doc2.querySelector('.Item-Body h1');
@@ -48,6 +49,7 @@ function filterUpdateInfo(client, url) {
                 } else {
                     onvertaaldeTitel = onvertaaldeTitel.textContent;
                 }
+                console.log(onvertaaldeTitel);
                 omschrijvingEnVelddata = getDescription(doc2, onvertaaldeTitel);
                 var berichtOmschrijving = omschrijvingEnVelddata[0].textContent;
                 var veldData = [...omschrijvingEnVelddata];
@@ -118,7 +120,9 @@ function getTitle(doc) {
 
 function getDescription(doc, title) {
     var tmpBerichtOmschrijving = doc.querySelector('.Item-Body div').textContent.trim();
+    console.log(tmpBerichtOmschrijving);
     title = title.trim();
+    console.log(title);
     if (title != "") {
         if (tmpBerichtOmschrijving.startsWith(title)) {
             omschrijvingDelen = tmpBerichtOmschrijving.split(title);
@@ -129,6 +133,7 @@ function getDescription(doc, title) {
             tmpBerichtOmschrijving = tmpBerichtOmschrijving.trim();
         }
     }
+    console.log(tmpBerichtOmschrijving);
     var tmpVeldData = doc.querySelectorAll('.Item-Body div p');
     tmpVeldData = [].slice.call(tmpVeldData);
     var preVeld = doc.querySelector('.Item-Body div div b');
