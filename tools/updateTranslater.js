@@ -1,7 +1,7 @@
 const kanalen = require('./../data/kanalen.json');
 const translate = require('@vitalets/google-translate-api');
 const jsdom = require('jsdom');
-const fetch = import('node-fetch');
+import fetch from 'node-fetch';
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
