@@ -42,7 +42,7 @@ function loopDoorDeForumNotes(client, i, listItems, tot5) {
         filterUpdateInfo(client, bronHref);
         if (tot5 < 5) {
             setTimeout(function () {
-                loopDoorDeForumNotes(i + 1, listItems, tot5 + 1);
+                loopDoorDeForumNotes(client, i + 1, listItems, tot5 + 1);
             }, 30 * 1000);
         }
     }
