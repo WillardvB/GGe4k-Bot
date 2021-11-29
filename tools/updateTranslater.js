@@ -14,22 +14,38 @@ function krijgNieuweUpdateNotesPagina(client) {
     fetch("https://community.goodgamestudios.com/fourkingdoms/en/categories/official-announcements-en")
         .then(res => {
             res.text().then(html => {
+                kanaal = client.channels.cache.find(channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates);
+                kanaal.send({ content: "Ik ga kijken wat er allemaal is te zien op het forum!" });
                 var doc = new jsdom.JSDOM(html).window.document;
                 var listItems = doc.getElementsByTagName('li');
-                for (var i = 12; i < listItems.length; i++) {
+                var tot5 = 0;
+                loopDoorDeForumNotes(12, listItems, tot5);
+                /*for (var i = 12; i < listItems.length; i++) {
                     if (listItems[i].querySelector('a') != null) {
                         var aObject = listItems[i].querySelector('a');
-                        if (
-                            aObject.textContent.toLowerCase().includes('black')// || true
-                        ) {
-                            bronHref = aObject.href;
-                            filterUpdateInfo(client, bronHref);
+                        tot4 += 1;
+                        bronHref = aObject.href;
+                        filterUpdateInfo(client, bronHref);
+                        if (tot4 >= 4) {
                             i = 1000000;
                         }
                     }
-                }
+                }*/
             })
         })
+}
+
+function loopDoorDeForumNotes(i, listItems, tot5) {
+    if (listItems[i].querySelector('a') != null) {
+        var aObject = listItems[i].querySelector('a');
+        bronHref = aObject.href;
+        filterUpdateInfo(client, bronHref);
+        if (tot5 < 5) {
+            setTimeout(function () {
+                loopDoorDeForumNotes(i + 1, listItems, tot5 + 1);
+            }, 30 * 1000);
+        }
+    }
 }
 
 function filterUpdateInfo(client, url) {
@@ -129,7 +145,6 @@ function getDescription(doc, title) {
             tmpBerichtOmschrijving = tmpBerichtOmschrijving.trim();
         }
     }
-    console.log(tmpBerichtOmschrijving.length);
     if (tmpBerichtOmschrijving.length < 500) {
         return [tmpBerichtOmschrijving];
     }
