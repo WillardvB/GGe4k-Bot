@@ -43,7 +43,7 @@ function loopDoorDeForumNotes(client, i, listItems, tot5) {
         if (tot5 < 5) {
             setTimeout(function () {
                 loopDoorDeForumNotes(client, i + 1, listItems, tot5 + 1);
-            }, 30 * 1000);
+            }, 5 * 1000);
         }
     }
 }
