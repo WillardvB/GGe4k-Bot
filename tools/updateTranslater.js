@@ -40,7 +40,7 @@ function filterUpdateInfo(client, url) {
             var footerTekst = '© E4K NL server';
             var footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
             var titel = getTitle(doc2);
-            console.log(titel);
+            console.log("returned title"+titel);
             vertaalUpdate(titel, function (nieuweTitel) {
                 titel = nieuweTitel;
                 var onvertaaldeTitel = doc2.querySelector('.Item-Body h1');
@@ -49,12 +49,12 @@ function filterUpdateInfo(client, url) {
                 } else {
                     onvertaaldeTitel = onvertaaldeTitel.textContent;
                 }
-                console.log(onvertaaldeTitel);
+                console.log("onvertaalde titel: "+onvertaaldeTitel);
                 omschrijvingEnVelddata = getDescription(doc2, onvertaaldeTitel);
                 var berichtOmschrijving = omschrijvingEnVelddata[0].textContent;
                 var veldData = [...omschrijvingEnVelddata];
                 veldData.shift();
-                console.log(berichtOmschrijving);
+                console.log("returned omschrijving: " + berichtOmschrijving);
                 vertaalUpdate(berichtOmschrijving, function (
                     nieuweOmschrijving
                 ) {
@@ -115,14 +115,16 @@ function getTitle(doc) {
     else {
         tweedeTitel = ': ' + tweedeTitel.textContent;
     }
-    return doc.querySelector('h1').textContent + tweedeTitel;
+    var hoofdTitel = doc.querySelector('h1').textContent;
+    console.log("titel"+hoofdTitel);
+    return hoofdTitel + tweedeTitel;
 }
 
 function getDescription(doc, title) {
     var tmpBerichtOmschrijving = doc.querySelector('.Item-Body div').textContent.trim();
-    console.log(tmpBerichtOmschrijving);
+    console.log("alle tekst: " + tmpBerichtOmschrijving);
     title = title.trim();
-    console.log(title);
+    console.log("titel in getDescription: "+title);
     if (title != "") {
         if (tmpBerichtOmschrijving.startsWith(title)) {
             omschrijvingDelen = tmpBerichtOmschrijving.split(title);
@@ -133,7 +135,7 @@ function getDescription(doc, title) {
             tmpBerichtOmschrijving = tmpBerichtOmschrijving.trim();
         }
     }
-    console.log(tmpBerichtOmschrijving);
+    console.log("eerste omschrijving: "+tmpBerichtOmschrijving);
     var tmpVeldData = doc.querySelectorAll('.Item-Body div p');
     tmpVeldData = [].slice.call(tmpVeldData);
     var preVeld = doc.querySelector('.Item-Body div div b');
