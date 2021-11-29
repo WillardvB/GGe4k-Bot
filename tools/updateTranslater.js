@@ -129,15 +129,13 @@ function getDescription(doc, title) {
     }
     if (tmpVeldData.length == 0) {
         var tmpVeldData = doc.querySelector('.Item-Body div div');
-        console.log(tmpVeldData);
-        console.log(tmpVeldData.length);
-        if (tmpVeldData.length == 0) {
+        if (tmpVeldData.length == 0 || tmpVeldData[0] == null) {
             tmpVeldData = ['ha'];
             tmpVeldData.pop();
         }
         else
         {
-            if (tmpVeldData[0] != null && tmpBerichtOmschrijving.startsWith(tmpVeldData[0].textContent)) {
+            if (tmpBerichtOmschrijving.trim().startsWith(tmpVeldData[0].textContent.trim())) {
                 tmpBerichtOmschrijving = tmpVeldData.shift();
             }
             else {
@@ -146,11 +144,17 @@ function getDescription(doc, title) {
         }
     }
     else {
-        if (tmpBerichtOmschrijving.trim().startsWith(tmpVeldData[0].textContent)) {
-            tmpBerichtOmschrijving = tmpVeldData.shift();
+        if (tmpVeldData.length == 0 || tmpVeldData[0] == null) {
+            tmpVeldData = ['ha'];
+            tmpVeldData.pop();
         }
         else {
-            tmpBerichtOmschrijving = tmpBerichtOmschrijving.split(tmpVeldData[0].textContent)[0];
+            if (tmpBerichtOmschrijving.trim().startsWith(tmpVeldData[0].textContent.trim())) {
+                tmpBerichtOmschrijving = tmpVeldData.shift();
+            }
+            else {
+                tmpBerichtOmschrijving = tmpBerichtOmschrijving.split(tmpVeldData[0].textContent)[0];
+            }
         }
     }
     return [tmpBerichtOmschrijving, ...tmpVeldData];
