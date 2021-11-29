@@ -20,8 +20,7 @@ function krijgNieuweUpdateNotesPagina(client) {
                     if (listItems[i].querySelector('a') != null) {
                         var aObject = listItems[i].querySelector('a');
                         if (
-                            aObject.textContent.toLowerCase().includes('update') ||
-                            true
+                            aObject.textContent.toLowerCase().includes('black')// || true
                         ) {
                             bronHref = aObject.href;
                             filterUpdateInfo(client, bronHref);
