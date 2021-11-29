@@ -13,7 +13,7 @@ module.exports = {
             await interaction.deferUpdate();
             const bCommand = interaction.customId.split(' ');
             client.slashCommands.get(bCommand[0] + ' ' + bCommand[1]).execute(client, interaction);
-            console.log(command + " " + subCommand + "(knop)");
+            console.log(bCommand[0] + " " + bCommand[1] + " (knop)");
         }
     }
 }
