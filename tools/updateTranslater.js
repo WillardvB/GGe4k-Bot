@@ -137,8 +137,7 @@ function getDescription(doc, title) {
         }
         else
         {
-            console.log(tmpVeldData[0]);
-            if (tmpBerichtOmschrijving.startsWith(tmpVeldData[0].textContent)) {
+            if (tmpVeldData[0] != null && tmpBerichtOmschrijving.startsWith(tmpVeldData[0].textContent)) {
                 tmpBerichtOmschrijving = tmpVeldData.shift();
             }
             else {
