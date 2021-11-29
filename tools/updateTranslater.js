@@ -129,11 +129,15 @@ function getDescription(doc, title) {
     }
     if (tmpVeldData.length == 0) {
         var tmpVeldData = doc.querySelector('.Item-Body div div');
+        console.log(tmpVeldData);
+        console.log(tmpVeldData.length);
         if (tmpVeldData.length == 0) {
             tmpVeldData = ['ha'];
             tmpVeldData.pop();
         }
-        else {
+        else
+        {
+            console.log(tmpVeldData[0]);
             if (tmpBerichtOmschrijving.startsWith(tmpVeldData[0].textContent)) {
                 tmpBerichtOmschrijving = tmpVeldData.shift();
             }
