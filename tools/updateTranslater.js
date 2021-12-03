@@ -167,7 +167,7 @@ function getDescription(doc, title) {
         }
     }
     else {
-        if (tmpVeldData[0] == null) {
+        if (tmpVeldData.length == 0 || tmpVeldData[0] == null) {
             tmpVeldData = ['ha'];
             tmpVeldData.pop();
         }
