@@ -208,7 +208,7 @@ function vertaalUpdateVelden(
     callback,
     outputFormat
 ) {
-    vertaalTekst = veldData[vertaaldeVelden.length].textContent;
+    vertaalTekst = veldData[vertaaldeVelden.length];
     if (vertaalTekst == "" || vertaalTekst == null) {
         console.log("Geen velden!");
         callback({});
