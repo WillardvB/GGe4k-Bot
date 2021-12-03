@@ -71,7 +71,7 @@ function stuurWelkomstBerichtMetRegels(client) {
 			'**7. Overig**',
 			'7.1 De server regels zullen regelmatig veranderd worden. Wanneer dat gebeurt zal dat van te voren medegedeeld worden middels een mededeling in het <#' + kanalen.nlserver.tekst.mededelingen + '> kanaal met een @everyone tag.\n' +
 			'7.2 Op de server gelden ook Discords Terms of Service and Community Guidelines die je hier kunt vinden: https://discordapp.com/terms https://discordapp.com/guidelines\n' +
-			'7.3 Adverteren in welke vorm dan ook is niet toegestaan zonder permissie van een stafflid. Wil je dit wel, vraag dat van te voren.\n' +
+			'7.3 Adverteren in welke vorm dan ook is niet toegestaan zonder permissie van een stafflid. Wil je dit wel, vraag dat van te voren.\n'
 		);
 
 	client.channels.cache
