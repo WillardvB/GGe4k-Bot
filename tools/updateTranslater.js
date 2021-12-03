@@ -180,7 +180,6 @@ function getDescription(doc, title) {
             if (tmpBerichtOmschrijving.trim().startsWith(tmpVeldData[0].trim())) {
                 tmpBerichtOmschrijving = tmpVeldData.shift();
                 tmpBerichtOmschrijving = tmpBerichtOmschrijving.trim();
-                console.log(tmpBerichtOmschrijving);
             }
             else {
                 tmpBerichtOmschrijving = tmpBerichtOmschrijving.split(tmpVeldData[0])[0];
