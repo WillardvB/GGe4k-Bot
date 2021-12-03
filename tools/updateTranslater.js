@@ -56,12 +56,14 @@ function filterUpdateInfo(client, url) {
                 omschrijvingEnVelddata = getDescription(doc2, onvertaaldeTitel);
                 console.log(omschrijvingEnVelddata);
                 var berichtOmschrijving = omschrijvingEnVelddata[0].textContent;
+                console.log("  .  " + berichtOmschrijving);
                 if (berichtOmschrijving == null) {
                     berichtOmschrijving = omschrijvingEnVelddata[0];
                 }
+                console.log("  .  " + berichtOmschrijving);
                 var veldData = [...omschrijvingEnVelddata];
                 veldData.shift();
-                console.log(berichtOmschrijving);
+                console.log("  .  " + berichtOmschrijving);
                 vertaalUpdate(berichtOmschrijving, function (
                     nieuweOmschrijving
                 ) {
