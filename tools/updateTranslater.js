@@ -158,11 +158,11 @@ function getDescription(doc, title) {
         }
         else
         {
-            if (tmpBerichtOmschrijving.trim().startsWith(tmpVeldData[0].textContent.trim())) {
+            if (tmpBerichtOmschrijving.trim().startsWith(tmpVeldData[0].trim())) {
                 tmpBerichtOmschrijving = tmpVeldData.shift();
             }
             else {
-                tmpBerichtOmschrijving = tmpBerichtOmschrijving.split(tmpVeldData[0].textContent)[0];
+                tmpBerichtOmschrijving = tmpBerichtOmschrijving.split(tmpVeldData[0])[0];
             }
         }
     }
@@ -172,13 +172,13 @@ function getDescription(doc, title) {
             tmpVeldData.pop();
         }
         else {
-            if (tmpBerichtOmschrijving.trim().startsWith(tmpVeldData[0].textContent.trim())) {
+            if (tmpBerichtOmschrijving.trim().startsWith(tmpVeldData[0].trim())) {
                 tmpBerichtOmschrijving = tmpVeldData.shift();
-                tmpBerichtOmschrijving = tmpBerichtOmschrijving.textContent.trim();
+                tmpBerichtOmschrijving = tmpBerichtOmschrijving.trim();
                 console.log(tmpBerichtOmschrijving);
             }
             else {
-                tmpBerichtOmschrijving = tmpBerichtOmschrijving.split(tmpVeldData[0].textContent)[0];
+                tmpBerichtOmschrijving = tmpBerichtOmschrijving.split(tmpVeldData[0])[0];
             }
         }
     }
