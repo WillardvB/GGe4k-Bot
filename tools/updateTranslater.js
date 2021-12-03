@@ -54,7 +54,6 @@ function filterUpdateInfo(client, url) {
                     onvertaaldeTitel = onvertaaldeTitel.textContent;
                 }
                 omschrijvingEnVelddata = getDescription(doc2, onvertaaldeTitel);
-                console.log(omschrijvingEnVelddata);
                 var berichtOmschrijving = omschrijvingEnVelddata[0].textContent;
                 if (berichtOmschrijving == null) {
                     berichtOmschrijving = omschrijvingEnVelddata[0];
@@ -64,7 +63,6 @@ function filterUpdateInfo(client, url) {
                 vertaalUpdate(berichtOmschrijving, function (
                     nieuweOmschrijving
                 ) {
-                    console.log("het ligt niet aan omschrijving");
                     berichtOmschrijving = nieuweOmschrijving;
                     var imagesInUpdateNode = doc2
                         .querySelector('.Item-Body')
@@ -124,10 +122,8 @@ function getTitle(doc) {
 
 function getDescription(doc, title) {
     var tmpBerichtOmschrijving = doc.querySelector('.Item-Body div').textContent.trim();
-    console.log(tmpBerichtOmschrijving);
     title = title.trim();
     if (title != "") {
-        console.log(title);
         if (tmpBerichtOmschrijving.startsWith(title)) {
             omschrijvingDelen = tmpBerichtOmschrijving.split(title);
             tmpBerichtOmschrijving = "";
@@ -135,7 +131,6 @@ function getDescription(doc, title) {
                 tmpBerichtOmschrijving += omschrijvingDelen[o];
             }
             tmpBerichtOmschrijving = tmpBerichtOmschrijving.trim();
-            console.log(tmpBerichtOmschrijving);
         }
     }
     if (tmpBerichtOmschrijving.length < 500) {
@@ -170,15 +165,12 @@ function getDescription(doc, title) {
         }
         else {
             if (tmpBerichtOmschrijving.trim().startsWith(tmpVeldData[0].textContent.trim())) {
-                console.log(tmpVeldData);
                 tmpBerichtOmschrijving = tmpVeldData.shift();
+                tmpBerichtOmschrijving = tmpBerichtOmschrijving.textContent.trim();
                 console.log(tmpBerichtOmschrijving);
             }
             else {
-                console.log(tmpBerichtOmschrijving);
-                console.log(tmpVeldData[0].textContent);
                 tmpBerichtOmschrijving = tmpBerichtOmschrijving.split(tmpVeldData[0].textContent)[0];
-                console.log(tmpBerichtOmschrijving);
             }
         }
     }
