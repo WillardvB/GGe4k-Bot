@@ -56,14 +56,11 @@ function filterUpdateInfo(client, url) {
                 omschrijvingEnVelddata = getDescription(doc2, onvertaaldeTitel);
                 console.log(omschrijvingEnVelddata);
                 var berichtOmschrijving = omschrijvingEnVelddata[0].textContent;
-                console.log("  .  " + berichtOmschrijving);
                 if (berichtOmschrijving == null) {
                     berichtOmschrijving = omschrijvingEnVelddata[0];
                 }
-                console.log("  .  " + berichtOmschrijving);
                 var veldData = [...omschrijvingEnVelddata];
                 veldData.shift();
-                console.log("  .  " + berichtOmschrijving);
                 vertaalUpdate(berichtOmschrijving, function (
                     nieuweOmschrijving
                 ) {
@@ -127,8 +124,10 @@ function getTitle(doc) {
 
 function getDescription(doc, title) {
     var tmpBerichtOmschrijving = doc.querySelector('.Item-Body div').textContent.trim();
+    console.log(tmpBerichtOmschrijving);
     title = title.trim();
     if (title != "") {
+        console.log(title);
         if (tmpBerichtOmschrijving.startsWith(title)) {
             omschrijvingDelen = tmpBerichtOmschrijving.split(title);
             tmpBerichtOmschrijving = "";
@@ -136,6 +135,7 @@ function getDescription(doc, title) {
                 tmpBerichtOmschrijving += omschrijvingDelen[o];
             }
             tmpBerichtOmschrijving = tmpBerichtOmschrijving.trim();
+            console.log(tmpBerichtOmschrijving);
         }
     }
     if (tmpBerichtOmschrijving.length < 500) {
@@ -164,16 +164,21 @@ function getDescription(doc, title) {
         }
     }
     else {
-        if (tmpVeldData.length == 0 || tmpVeldData[0] == null) {
+        if (tmpVeldData[0] == null) {
             tmpVeldData = ['ha'];
             tmpVeldData.pop();
         }
         else {
             if (tmpBerichtOmschrijving.trim().startsWith(tmpVeldData[0].textContent.trim())) {
+                console.log(tmpVeldData);
                 tmpBerichtOmschrijving = tmpVeldData.shift();
+                console.log(tmpBerichtOmschrijving);
             }
             else {
+                console.log(tmpBerichtOmschrijving);
+                console.log(tmpVeldData[0].textContent);
                 tmpBerichtOmschrijving = tmpBerichtOmschrijving.split(tmpVeldData[0].textContent)[0];
+                console.log(tmpBerichtOmschrijving);
             }
         }
     }
