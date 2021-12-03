@@ -54,15 +54,18 @@ function filterUpdateInfo(client, url) {
                     onvertaaldeTitel = onvertaaldeTitel.textContent;
                 }
                 omschrijvingEnVelddata = getDescription(doc2, onvertaaldeTitel);
+                Debug.Log(omschrijvingEnVelddata);
                 var berichtOmschrijving = omschrijvingEnVelddata[0].textContent;
                 if (berichtOmschrijving == null) {
                     berichtOmschrijving = omschrijvingEnVelddata[0];
                 }
                 var veldData = [...omschrijvingEnVelddata];
                 veldData.shift();
+                Debug.Log(berichtOmschrijving);
                 vertaalUpdate(berichtOmschrijving, function (
                     nieuweOmschrijving
                 ) {
+                    Debug.Log("het ligt niet aan omschrijving");
                     berichtOmschrijving = nieuweOmschrijving;
                     var imagesInUpdateNode = doc2
                         .querySelector('.Item-Body')
