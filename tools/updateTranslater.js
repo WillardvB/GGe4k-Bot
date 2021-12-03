@@ -140,18 +140,23 @@ function getDescription(doc, title) {
     tmpVeldData = [].slice.call(tmpVeldData);
     var tmpTmpVeldData = ['ha'];
     tmpTmpVeldData.pop();
+    var preVeld = doc.querySelector('.Item-Body div div b');
+    if (preVeld) {
+        tmpVeldData = [preVeld, ...tmpVeldData];
+    }
     for (var i = 0; i < tmpVeldData.length; i++) {
         if (tmpVeldData[i].textContent != null && tmpVeldData[i].textContent.trim() != "") {
             tmpTmpVeldData.push(tmpVeldData[i].textContent);
         }
     }
     tmpVeldData = [...tmpTmpVeldData];
-    var preVeld = doc.querySelector('.Item-Body div div b');
-    if (preVeld) {
-        tmpVeldData = [preVeld, ...tmpVeldData];
-    }
     if (tmpVeldData.length == 0) {
         var tmpVeldData = doc.querySelector('.Item-Body div div');
+        for (var i = 0; i < tmpVeldData.length; i++) {
+            if (tmpVeldData[i].textContent != null && tmpVeldData[i].textContent.trim() != "") {
+                tmpTmpVeldData.push(tmpVeldData[i].textContent);
+            }
+        }
         if (tmpVeldData.length == 0 || tmpVeldData[0] == null) {
             tmpVeldData = ['ha'];
             tmpVeldData.pop();
