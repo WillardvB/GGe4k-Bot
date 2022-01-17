@@ -91,13 +91,7 @@ function dateToTimeStamp(datum, tijd) {
         d.setMonth(parseInt(datumDelen[1]) - 1);
         d.setDate(datumDelen[0]);
     }
-    let wintertijdUur = 1;
-    if (moment(d).isDST()) {
-        wintertijdUur = 0;
-        console.log(moment(d).isDST());
-        console.log(moment(new Date(2021, 6, 15, 1, 1, 1, 1)).isDST())
-    }
-    d.setHours(tijdDelen[0].trim() + wintertijdUur);
+    d.setHours(tijdDelen[0].trim());
     d.setMinutes(tijdDelen[1].trim());
     d.setSeconds(tijdDelen[2].trim());
     return d.getTime();
