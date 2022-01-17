@@ -1,5 +1,3 @@
-const moment = require("moment");
-
 module.exports = {
     secToDuration: function (num) {
         return secToTime(num);

@@ -1,5 +1,6 @@
 const fs = require('fs');
 let geplandeBerichten;
+const moment = require("moment");
 
 module.exports = {
     async execute(client) {
@@ -13,7 +14,14 @@ module.exports = {
 
 function stuurGeplandBericht(client, i, nu) {
     const bericht = geplandeBerichten.berichten[i];
-    if (bericht.timestamp - (nu + 7200000) < 0) {
+    let wintertijdAftrek = 3600000;
+    console.log(moment([2021, 9, 30]).isDST);
+    console.log(moment([2021, 9, 31]).isDST);
+    console.log(moment([2021, 10, 1]).isDST);
+    if (moment().isDST()) {
+        wintertijdAftrek = 0;
+    }
+    if (bericht.timestamp - (nu + 7200000 - wintertijdAftrek) < 0) {
         if (bericht.guildID == '') {
             return;
         }
