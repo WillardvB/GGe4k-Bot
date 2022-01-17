@@ -16,10 +16,11 @@ function stuurGeplandBericht(client, i, nu) {
     const bericht = geplandeBerichten.berichten[i];
     let wintertijdAftrek = 3600000;
     moment.locale("nl");
-    console.log(moment([2021, 9, 30]).isDST());
-    console.log(moment([2021, 9, 31]).isDST());
-    console.log(moment([2021, 10, 1]).isDST());
-    if (moment().isDST()) {
+    console.log(moment.locale());
+    console.log(moment([2021, 9, 30]).local(true).isDST());
+    console.log(moment([2021, 9, 31]).local(true).isDST());
+    console.log(moment([2021, 10, 1]).local(true).isDST());
+    if (moment().local(true).isDST()) {
         wintertijdAftrek = 0;
     }
     if (bericht.timestamp - (nu + 7200000 - wintertijdAftrek) < 0) {
