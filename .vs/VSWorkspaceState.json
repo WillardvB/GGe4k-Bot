@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\commands",
-    "\\commands\\roofridder"
+    "\\commands\\plan",
+    "\\events",
+    "\\tools"
   ],
-  "SelectedNode": "\\commands\\roofridder\\roofridderInfo.js",
+  "SelectedNode": "\\commands\\plan\\regelPartyKanalen.js",
   "PreviewInSolutionExplorer": false
 }

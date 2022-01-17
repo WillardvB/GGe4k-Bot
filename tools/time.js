@@ -100,9 +100,14 @@ function dateToTimeStamp(datum, tijd) {
 
 function isDst() {
     console.log(timeStampToDate(Date.now()));
-    console.log(new Date(Date.now()).getDate() + "-" + new Date(Date.now()).getMonth() + "-" + new Date(Date.now()).getFullYear);
-    if (1 > 2 /*is zomertijd dit jaar begonnen?*/) {
-        if (0 < 1 /*is zomertijd dit jaar NIET geeindigd?*/) {
+    console.log(new Date(Date.now()).getDate() + "-" + new Date(Date.now()).getMonth() + "-" + new Date(Date.now()).getFullYear());
+    const zomertijdBeginData = { "2022": [27, 3], "2023": [26, 3], "2024": [31, 3], "2025": [30, 3], "2026": [29, 3] }
+    const zomertijdEindData = { "2022": [30, 10], "2023": [29, 10], "2024": [27, 10], "2025": [26, 10], "2026": [25, 10] }
+    const nu = new Date(Date.now());
+    if (zomertijdBeginData[nu.getFullYear()][0] < nu.getDate() &&
+        zomertijdBeginData[nu.getFullYear()][1] < nu.getMonth() + 1) {
+        if (zomertijdEindData[nu.getFullYear()][0] > nu.getDate() &&
+            zomertijdEindData[nu.getFullYear()][1] > nu.getMonth() + 1) {
             return true;
         }
     }

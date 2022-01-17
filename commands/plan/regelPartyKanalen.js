@@ -1,6 +1,7 @@
 const fs = require('fs');
 const rollen = require('./../../data/rollen.json');
 let geplandePartys;
+const time = require('./../../tools/time.js');
 
 module.exports = {
     async execute(client) {
@@ -14,7 +15,11 @@ module.exports = {
 
 function regelPartyKanalen(client, i, nu) {
     const party = geplandePartys.partys[i];
-    if (party.timestamp - (nu + 7200000) < 0) {
+    let wintertijdAftrek = 3600000;
+    if (time.isDST()) {
+        wintertijdAftrek = 0;
+    }
+    if (party.timestamp - (nu + 7200000 - wintertijdAftrek) < 0) {
         if (party.guildID == '') {
             return;
         }
