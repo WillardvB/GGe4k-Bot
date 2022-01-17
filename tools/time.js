@@ -7,6 +7,9 @@ module.exports = {
     },
     dateToTimestamp: function (datum, tijd) {
         return dateToTimeStamp(datum, tijd);
+    },
+    isDST: function () {
+        return isDst();
     }
 };
 
@@ -93,4 +96,12 @@ function dateToTimeStamp(datum, tijd) {
     d.setMinutes(tijdDelen[1].trim());
     d.setSeconds(tijdDelen[2].trim());
     return d.getTime();
+}
+
+function isDst() {
+    console.log(timeStampToDate(Date.now()));
+    if (0 < 1 && 1 > 2) {
+        return true;
+    }
+    return false;
 }

@@ -1,6 +1,6 @@
 const fs = require('fs');
 let geplandeBerichten;
-const moment = require("moment");
+const time = require('time');
 
 module.exports = {
     async execute(client) {
@@ -15,17 +15,7 @@ module.exports = {
 function stuurGeplandBericht(client, i, nu) {
     const bericht = geplandeBerichten.berichten[i];
     let wintertijdAftrek = 3600000;
-    moment.locale("nl");
-    console.log(moment.locale());
-    /*console.log(moment([2021, 4, 1]).local(true).isDST());
-    console.log(moment([2021, 5, 1]).local(true).isDST());
-    console.log(moment([2021, 6, 1]).local(true).isDST());
-    console.log(moment([2021, 7, 1]).local(true).isDST());
-    console.log(moment([2021, 8, 1]).local(true).isDST());
-    console.log(moment([2021, 9, 1]).local(true).isDST());
-    console.log(moment.utc("2021-10-01").local(true).isDST());*/
-    console.log(moment().format());
-    if (moment().local(true).isDST()) {
+    if (time.isDST()) {
         wintertijdAftrek = 0;
     }
     if (bericht.timestamp - (nu + 7200000 - wintertijdAftrek) < 0) {
