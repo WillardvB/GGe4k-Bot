@@ -95,5 +95,7 @@ function wijzigReactierollenBericht(client) {
 		.addField(":bell:", "Klik op deze emoji voor de Mededeling rol", false);
 	var channel = client.channels.cache
 		.find(channel => channel.id == kanalen.nlserver.tekst.reactierollen);
-	channel.messages.cache.get("904438373089947730").edit({ embeds: [embed] });
+	channel.messages.fetch("904438373089947730").then(msg => {
+		msg.edit({ embeds: [embed] });
+	});
 }
