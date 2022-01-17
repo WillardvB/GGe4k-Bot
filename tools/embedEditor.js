@@ -92,7 +92,7 @@ function wijzigReactierollenBericht(client) {
 		.setThumbnail("https://images-ext-1.discordapp.net/external/XrVNg9Jx8v3MbIORgpOkMfL1-5Vw-Y2mb6hsXN9AOqw/https/cdn-longterm.mee6.xyz/plugins/embeds/images/882701023846739979/9e93203a362b32e0d8e116e4a278d2328c06a36e483398c3a90356f98f5fe68c.gif")
 		.addField(":mobile_phone: (E4K)", "Klik op deze emoji voor de E4K rol.", false)
 		.addField(":desktop: (Empire)", "Klik op deze emoji voor de Empire rol.", false)
-		.addField(":bell:", "Klik op deze emoji voor de Mededeling rol", false);
+		.addField(".:bell:.", "Klik op deze emoji voor de Mededeling rol", false);
 	var channel = client.channels.cache
 		.find(channel => channel.id == kanalen.nlserver.tekst.reactierollen);
 	channel.messages.fetch("904438373089947730").then(msg => {
