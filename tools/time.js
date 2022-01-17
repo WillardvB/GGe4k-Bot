@@ -1,3 +1,5 @@
+const moment = require("moment.js");
+
 module.exports = {
     secToDuration: function (num) {
         return secToTime(num);
@@ -34,7 +36,13 @@ function timeStampToDate(timestamp, dateOrTime) {
         dateOrTime = "d&t";
     }
     const date = new Date(timestamp);
-    date.setHours(date.getHours() + 2);
+    let wintertijdUur = 0;
+    if (moment(date).isDST()) {
+        wintertijdUur += 1;
+        console.log(moment(date).isDST());
+        console.log(moment(new Date(2021, 6, 15, 1, 1, 1, 1)).isDST())
+    }
+    date.setHours(date.getHours() + 1 + wintertijdUur);
     let maand = date.getMonth() + 1;
     if (maand < 10) {
         maand = "0" + maand;

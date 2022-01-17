@@ -10,6 +10,7 @@ module.exports = {
     execute(client, oud, nieuw) {
         //oud, nieuw = oldMessage, newMessage
         if (
+            oud.guild == null ||
             oud.author.bot ||
             oud.guild.id != kanalen.nlserver.id ||
             oud.channel.id == kanalen.nlserver.tekst.admins ||

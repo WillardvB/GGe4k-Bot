@@ -9,6 +9,7 @@ module.exports = {
     description: 'Regelt messageDelete event',
     execute(client, message) {
         if (
+            oud.guild == null ||
             message.author.bot ||
             message.guild.id != kanalen.nlserver.id ||
             message.channel.id == kanalen.nlserver.tekst.admins ||

@@ -6,15 +6,32 @@ const { MessageEmbed } = require('discord.js');
 let kanaal;
 
 module.exports = {
-    vertaalUpdate: function (client) {
-        return krijgNieuweUpdateNotesPagina(client);
+    vertaalUpdateE4K: function (client) {
+        return krijgNieuweUpdateNotesPaginaE4K(client);
+    },
+    vertaalUpdateEmpire: function (client) {
+        return krijgNieuweUpdateNotesPaginaEmpire(client);
     }
 };
 
-function krijgNieuweUpdateNotesPagina(client) {
+function krijgNieuweUpdateNotesPaginaE4K(client) {
     kanaal = client.channels.cache.find(channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates);
     kanaal.send({ content: "Ik ga kijken wat er allemaal is te zien op het forum!" });
     fetch("https://community.goodgamestudios.com/fourkingdoms/en/categories/official-announcements-en")
+        .then(res => {
+            res.text().then(html => {
+                var doc = new jsdom.JSDOM(html).window.document;
+                var listItems = doc.getElementsByTagName('li');
+                var tot5 = 0;
+                loopDoorDeForumNotes(client, 12, listItems, tot5);
+            })
+        })
+}
+
+function krijgNieuweUpdateNotesPaginaEmpire(client) {
+    kanaal = client.channels.cache.find(channel => channel.id == kanalen.nlserver.tekst.onvertaalde_updates);
+    kanaal.send({ content: "Ik ga kijken wat er allemaal is te zien op het forum!" });
+    fetch("https://community.goodgamestudios.com/empire/en/categories/news-from-the-world-of-empire-en")
         .then(res => {
             res.text().then(html => {
                 var doc = new jsdom.JSDOM(html).window.document;

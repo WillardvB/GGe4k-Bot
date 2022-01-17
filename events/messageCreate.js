@@ -8,7 +8,11 @@ module.exports = {
     execute(client, message) {
         if (message.channel.id == kanalen.nlserver.tekst.onvertaalde_updates) {
             if (message.content.includes('<#817014369971994645>')) {
-                updateTranslator.vertaalUpdate(client, message);
+                updateTranslator.vertaalUpdateE4K(client, message);
+                return;
+            }
+            else if (message.content.includes('<#602841603945660417>')) {
+                updateTranslator.vertaalUpdateEmpire(client, message);
                 return;
             }
         }
