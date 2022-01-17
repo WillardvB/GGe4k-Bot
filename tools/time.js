@@ -92,9 +92,9 @@ function dateToTimeStamp(datum, tijd) {
         d.setDate(datumDelen[0]);
     }
     let wintertijdUur = 1;
-    if (moment(date).isDST()) {
-        wintertijdUur += 0;
-        console.log(moment(date).isDST());
+    if (moment(d).isDST()) {
+        wintertijdUur = 0;
+        console.log(moment(d).isDST());
         console.log(moment(new Date(2021, 6, 15, 1, 1, 1, 1)).isDST())
     }
     d.setHours(tijdDelen[0].trim() + wintertijdUur);
