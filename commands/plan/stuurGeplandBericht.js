@@ -17,13 +17,14 @@ function stuurGeplandBericht(client, i, nu) {
     let wintertijdAftrek = 3600000;
     moment.locale("nl");
     console.log(moment.locale());
-    console.log(moment([2021, 4, 1]).local(true).isDST());
+    /*console.log(moment([2021, 4, 1]).local(true).isDST());
     console.log(moment([2021, 5, 1]).local(true).isDST());
     console.log(moment([2021, 6, 1]).local(true).isDST());
     console.log(moment([2021, 7, 1]).local(true).isDST());
     console.log(moment([2021, 8, 1]).local(true).isDST());
     console.log(moment([2021, 9, 1]).local(true).isDST());
-    console.log(moment([2021, 10, 1]).local(true).isDST());
+    console.log(moment.utc("2021-10-01").local(true).isDST());*/
+    console.log(moment().format());
     if (moment().local(true).isDST()) {
         wintertijdAftrek = 0;
     }
