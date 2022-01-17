@@ -36,13 +36,7 @@ function timeStampToDate(timestamp, dateOrTime) {
         dateOrTime = "d&t";
     }
     const date = new Date(timestamp);
-    let wintertijdUur = 0;
-    if (moment(date).isDST()) {
-        wintertijdUur += 1;
-        console.log(moment(date).isDST());
-        console.log(moment(new Date(2021, 6, 15, 1, 1, 1, 1)).isDST())
-    }
-    date.setHours(date.getHours() + 1 + wintertijdUur);
+    date.setHours(date.getHours() + 2);
     let maand = date.getMonth() + 1;
     if (maand < 10) {
         maand = "0" + maand;
@@ -97,7 +91,13 @@ function dateToTimeStamp(datum, tijd) {
         d.setMonth(parseInt(datumDelen[1]) - 1);
         d.setDate(datumDelen[0]);
     }
-    d.setHours(tijdDelen[0].trim());
+    let wintertijdUur = 1;
+    if (moment(date).isDST()) {
+        wintertijdUur += 0;
+        console.log(moment(date).isDST());
+        console.log(moment(new Date(2021, 6, 15, 1, 1, 1, 1)).isDST())
+    }
+    d.setHours(tijdDelen[0].trim() + wintertijdUur);
     d.setMinutes(tijdDelen[1].trim());
     d.setSeconds(tijdDelen[2].trim());
     return d.getTime();
