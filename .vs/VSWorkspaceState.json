@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\events",
+    "\\tools"
   ],
+  "SelectedNode": "\\tools\\updateTranslater.js",
   "PreviewInSolutionExplorer": false
 }

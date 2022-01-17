@@ -5,7 +5,10 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	stuurRegelsBericht: function (client) {
 		return stuurWelkomstBerichtMetRegels(client);
-	}
+	},
+	stuurReactieRollenBericht: function (client) {
+		return wijzigReactierollenBericht(client);
+    }
 };
 
 function stuurWelkomstBerichtMetRegels(client) {
@@ -77,4 +80,20 @@ function stuurWelkomstBerichtMetRegels(client) {
 	client.channels.cache
 		.find(channel => channel.id == kanalen.nlserver.tekst.modCommandsSuperbot)
 		.send({ embeds: [embed] });
+}
+
+function wijzigReactierollenBericht(client) {
+	var embed = new MessageEmbed()
+		.setTitle("Spelrollen")
+		.setDescription("Klik een van de onderstaande emojis om de bijbehorende E4K, Empire of mededelingen rol te krijgen!")
+		.setColor("#8888FF")
+		.setImage("https://images-ext-1.discordapp.net/external/XrVNg9Jx8v3MbIORgpOkMfL1-5Vw-Y2mb6hsXN9AOqw/https/cdn-longterm.mee6.xyz/plugins/embeds/images/882701023846739979/9e93203a362b32e0d8e116e4a278d2328c06a36e483398c3a90356f98f5fe68c.gif")
+		.setAuthor("WillardvB", "https://icon-library.com/images/blue-discord-icon/blue-discord-icon-17.jpg")
+		.setThumbnail("https://images-ext-1.discordapp.net/external/XrVNg9Jx8v3MbIORgpOkMfL1-5Vw-Y2mb6hsXN9AOqw/https/cdn-longterm.mee6.xyz/plugins/embeds/images/882701023846739979/9e93203a362b32e0d8e116e4a278d2328c06a36e483398c3a90356f98f5fe68c.gif")
+		.addField(":mobile_phone: (E4K)", "Klik op deze emoji voor de E4K rol.", false)
+		.addField(":desktop: (Empire)", "Klik op deze emoji voor de Empire rol.", false)
+		.addField(":bell:", "Klik op deze emoji voor de Mededeling rol", false);
+	var channel = client.channels.cache
+		.find(channel => channel.id == kanalen.nlserver.tekst.reactierollen);
+	channel.get("904438373089947730").edit({ embeds: [embed] });
 }

@@ -1,6 +1,6 @@
 const kanalen = require('./../data/kanalen.json');
 const googleSheet = require('./../data/googleSpreadSheetData.js');
-const regels = require('./../tools/regels.js');
+const embedEditor = require('./../tools/embedEditor.js');
 let client1;
 
 module.exports = {
@@ -32,7 +32,8 @@ async function weerOnline(client) {
         client.user.setActivity({ type: "PLAYING", name: `Goodgame Empire (Four Kingdoms)` })
         console.log('Ready!');
     })
-    //regels.stuurRegelsBericht(client); //Alleen wanneer aanpassingen nodig zijn deze doen.
+    //embedEditor.stuurRegelsBericht(client); //Alleen wanneer aanpassingen nodig zijn deze doen.
+    embedEditor.stuurReactieRollenBericht(client);
 }
 
 async function fetchMessagesFrom(client, kanaalID, aantalMsgX100) {
