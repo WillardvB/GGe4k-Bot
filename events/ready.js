@@ -32,8 +32,8 @@ async function weerOnline(client) {
         client.user.setActivity({ type: "PLAYING", name: `Goodgame Empire (Four Kingdoms)` })
         console.log('Ready!');
     })
-    //embedEditor.stuurRegelsBericht(client); //Alleen wanneer aanpassingen nodig zijn deze doen.
-    embedEditor.stuurReactieRollenBericht(client);
+    //embedEditor.stuurRegelsBericht(client);
+    //embedEditor.stuurReactieRollenBericht(client);
 }
 
 async function fetchMessagesFrom(client, kanaalID, aantalMsgX100) {

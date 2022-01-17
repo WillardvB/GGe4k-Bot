@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\events",
-    "\\tools"
+    "\\commands",
+    "\\commands\\roofridder"
   ],
-  "SelectedNode": "\\tools\\updateTranslater.js",
+  "SelectedNode": "\\commands\\roofridder\\roofridderInfo.js",
   "PreviewInSolutionExplorer": false
 }

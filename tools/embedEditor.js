@@ -78,8 +78,10 @@ function stuurWelkomstBerichtMetRegels(client) {
 		);
 
 	client.channels.cache
-		.find(channel => channel.id == kanalen.nlserver.tekst.modCommandsSuperbot)
-		.send({ embeds: [embed] });
+	.find(channel => channel.id == kanalen.nlserver.tekst.modCommandsSuperbot)
+	.messages.fetch("916394001639288833").then(msg => {
+		msg.edit({ embeds: [embed] });
+	});
 }
 
 function wijzigReactierollenBericht(client) {
@@ -93,9 +95,9 @@ function wijzigReactierollenBericht(client) {
 		.addField(":mobile_phone: (E4K)", "Klik op deze emoji voor de E4K rol.", false)
 		.addField(":desktop: (Empire)", "Klik op deze emoji voor de Empire rol.", false)
 		.addField(".:bell:.", "Klik op deze emoji voor de Mededeling rol.", false);
-	var channel = client.channels.cache
-		.find(channel => channel.id == kanalen.nlserver.tekst.reactierollen);
-	channel.messages.fetch("904438373089947730").then(msg => {
+	client.channels.cache
+	.find(channel => channel.id == kanalen.nlserver.tekst.reactierollen)
+	.messages.fetch("904438373089947730").then(msg => {
 		msg.edit({ embeds: [embed] });
 	});
 }
