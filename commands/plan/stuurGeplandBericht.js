@@ -1,6 +1,6 @@
 const fs = require('fs');
 let geplandeBerichten;
-const time = require('time');
+const time = require('time.js');
 
 module.exports = {
     async execute(client) {
