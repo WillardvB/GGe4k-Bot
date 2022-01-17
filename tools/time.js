@@ -100,8 +100,11 @@ function dateToTimeStamp(datum, tijd) {
 
 function isDst() {
     console.log(timeStampToDate(Date.now()));
-    if (0 < 1 && 1 > 2) {
-        return true;
+    console.log(new Date(Date.now()).getDate() + "-" + new Date(Date.now()).getMonth() + "-" + new Date(Date.now()).getFullYear);
+    if (1 > 2 /*is zomertijd dit jaar begonnen?*/) {
+        if (0 < 1 /*is zomertijd dit jaar NIET geeindigd?*/) {
+            return true;
+        }
     }
     return false;
 }
