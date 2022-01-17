@@ -1,4 +1,4 @@
-const moment = require("moment.js");
+const moment = require("moment");
 
 module.exports = {
     secToDuration: function (num) {
