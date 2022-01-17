@@ -15,9 +15,9 @@ module.exports = {
 function stuurGeplandBericht(client, i, nu) {
     const bericht = geplandeBerichten.berichten[i];
     let wintertijdAftrek = 3600000;
-    console.log(moment([2021, 9, 30]).isDST);
-    console.log(moment([2021, 9, 31]).isDST);
-    console.log(moment([2021, 10, 1]).isDST);
+    console.log(moment([2021, 9, 30]).isDST());
+    console.log(moment([2021, 9, 31]).isDST());
+    console.log(moment([2021, 10, 1]).isDST());
     if (moment().isDST()) {
         wintertijdAftrek = 0;
     }
