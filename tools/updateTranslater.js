@@ -1,5 +1,5 @@
-const kanalen = require('./../data/kanalen.json');
 const translate = require('@vitalets/google-translate-api');
+const kanalen = require('./../data/kanalen.json');
 const jsdom = require('jsdom');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const { MessageEmbed } = require('discord.js');
