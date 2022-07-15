@@ -1,11 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\commands",
-    "\\commands\\plan",
-    "\\events",
-    "\\tools"
+    "\\e4kserver\\Commands",
+    "\\e4kserver\\onReceived",
+    "\\e4kserver\\onReceived\\handlers",
+    "\\e4kserver\\onReceived\\sys"
   ],
-  "SelectedNode": "\\commands\\plan\\regelPartyKanalen.js",
+  "SelectedNode": "\\e4kserver",
   "PreviewInSolutionExplorer": false
 }
