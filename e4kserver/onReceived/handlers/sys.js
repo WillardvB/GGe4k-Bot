@@ -1,4 +1,5 @@
 const path = require('node:path');
+const fs = require('fs');
 let commands = [];
 const commandsPath = path.join(__dirname, '../sys');
 const commandsFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));

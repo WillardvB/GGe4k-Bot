@@ -1,4 +1,5 @@
 const path = require('node:path');
+const fs = require('fs');
 const { setRoomList, onJoinRoom, getRoom } = require('./../../room.js');
 const { execute: searchByAllianceId } = require('./../../commands/searchAllianceById.js');
 
