@@ -36,7 +36,7 @@ module.exports = {
             let distributorID = 0;
             let zone = "EmpirefourkingdomsExGG_6";
             login(zone, "", `${NaN}${languageCode}%${distributorID}`);
-            require('./commands/login.js').execute();
+            require('/app/e4kserver/commands/login.js').execute();
         } else {
             console.log("[ERROR] " + o.error);
         }
