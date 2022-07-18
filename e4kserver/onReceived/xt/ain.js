@@ -1,4 +1,3 @@
-const data = require('./../../data.js');
 const { execute: searchByAllianceId } = require('./../../commands/searchAllianceById.js');
 const { parseOwnerInfo } = require('./wsp.js');
 const searchAllianceById = require('./../../commands/searchAllianceById.js');
@@ -23,7 +22,7 @@ function onError() {
  * @param {object} params
  */
 function onSuccess(params) {
-    data.alliances[params.A.AID] = parseAllianceInfo(params.A);
+    require('./../../data.js').alliances[params.A.AID] = parseAllianceInfo(params.A);
     alliancesFound = alliancesFound + 1;
     console.log("BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {

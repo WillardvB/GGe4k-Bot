@@ -1,5 +1,3 @@
-const data = require('./../../data.js');
-
 module.exports = {
     /**
      * 
@@ -26,5 +24,5 @@ function _sendJson(xtName, cmd, paramObj, roomId) {
     }
     let json = JSON.stringify(jsonObj);
     console.log("[Sending - JSON]: " + json + "\n");
-    data.writeToSocket(json);
+    require('./../../data.js').writeToSocket(json);
 }

@@ -1,4 +1,3 @@
-const data = require('./../../data.js');
 const xml = require('./../../../tools/xml.js');
 
 module.exports = {
@@ -45,7 +44,7 @@ function _sendXml(xtName, cmd, paramObj, roomId) {
 function _send(header, action, fromRoom, message) {
     let msg = makeXmlHeader(header) + ("<body action=\'" + action + "\' r=\'" + fromRoom + "\'>" + message + "</body>" + "</msg>");
     console.log("[Sending]: " + msg + "\n");
-    data.writeToSocket(msg);
+    require('./../../data.js').writeToSocket(msg);
 }
 
 /**
