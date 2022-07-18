@@ -34,7 +34,7 @@ function sendXtMessage(xtName, cmd, paramObj, type = "xml", roomId = -1) {
     console.log("xt.js sendXtMessage: " + paramObj);
     switch (type) {
         case "json": json.send(xtName, cmd, paramObj, roomId); break;
-        case "string": string.send(xtName, cmd, paramObj, roomId); break;
+        case "str": string.send(xtName, cmd, paramObj, roomId); break;
         case "xml": xml.send(xtName, cmd, paramObj, roomId); break;
         default: break;
     }
