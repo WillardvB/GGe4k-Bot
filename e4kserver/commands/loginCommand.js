@@ -16,5 +16,5 @@ module.exports = {
             getCmdId: "core_lga"
         }
         require('./../data.js').sendJsonVoSignal({ "commandVO": CoreC2SLoginWithAuthenticationVO, "lockConditionVO": "new DefaultLockConditionVO()" });
-    }
+    },
 }
