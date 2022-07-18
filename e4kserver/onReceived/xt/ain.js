@@ -40,6 +40,7 @@ function onSuccess(params) {
 }
 
 function waitAndNextCheck() {
+    console.log("waitandnextcheck: " + allianceId + "  " + allAlliancesInJSON + "  " + alliancesFound);
     setTimeout(function () {
         allianceId = 0;
         allAlliancesInJSON = false;
@@ -128,7 +129,6 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
-        console.log(params.A.N);
         if (errorCode == 114 || !params) {
             onError();
             return;
