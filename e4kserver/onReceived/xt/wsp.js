@@ -1,5 +1,3 @@
-const data = require('./../../data.js');
-
 module.exports = {
     name: "wsp",
     /**
@@ -82,13 +80,13 @@ function parseOwnerInfo(ownerInfo) {
         suffixTitleId: 0,
         staticAreaName: "",
     };
-    _worldMapOwnerInfoVO = data.players[playerId];
+    _worldMapOwnerInfoVO = require('./../../data.js').players[playerId];
     if (ownerInfo.DUM) {
         if (!_worldMapOwnerInfoVO) {
             _worldMapOwnerInfoVO
             _worldMapOwnerInfoVO.playerId = playerId;
             _worldMapOwnerInfoVO.isDummy = true;
-            data.players[playerId] = _worldMapOwnerInfoVO;
+            require('./../../data.js').players[playerId] = _worldMapOwnerInfoVO;
         }
         return _worldMapOwnerInfoVO;
     }
@@ -143,14 +141,14 @@ function parseOwnerInfo(ownerInfo) {
             staticAreaName: "",
         };
         _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(_worldMapOwnerInfoVO, ownerInfo);
-        data.players[playerId] = _worldMapOwnerInfoVO;
+        require('./../../data.js').players[playerId] = _worldMapOwnerInfoVO;
     }
     else {
-        _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(data.players[playerId], ownerInfo);
-        data.players[playerId] = _worldMapOwnerInfoVO;
+        _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(require('./../../data.js').players[playerId], ownerInfo);
+        require('./../../data.js').players[playerId] = _worldMapOwnerInfoVO;
     }
     _worldMapOwnerInfoVO.allianceRank = parseInt(ownerInfo.AR);
-    data.players[playerId] = _worldMapOwnerInfoVO
+    require('./../../data.js').players[playerId] = _worldMapOwnerInfoVO
     //setTitleVOForOwnerInfo(_worldMapOwnerInfoVO, ownerInfo.TI);
     return _worldMapOwnerInfoVO;
 }
