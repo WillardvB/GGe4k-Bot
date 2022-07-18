@@ -34,7 +34,7 @@ module.exports = {
             return;
         }
         let headers = { "t": "sys" };
-        sendAction(headers, "autoJoin", !!activeRoomId ? activeRoomId : -1, "");
+        sendAction(headers, "autoJoin", !!_activeRoomId ? _activeRoomId : -1, "");
     }
 }
 
