@@ -84,7 +84,9 @@ function allianceInfoFillFromParamObject(paramObject) {
     let i = 0;
     while (i < memberListArray.length) {
         let member = require('./wsp.js').parseOwnerInfo(memberListArray[i]);
-        _memberList.push(member);
+        console.log(member);
+        if(member != null)
+            _memberList.push(member);
         i++;
     }
     _memberList.sort((a, b) => {

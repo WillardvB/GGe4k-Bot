@@ -80,13 +80,15 @@ function parseOwnerInfo(ownerInfo) {
         suffixTitleId: 0,
         staticAreaName: "",
     };
-    _worldMapOwnerInfoVO = require('./../../data.js').players[playerId];
+    let tmpPlayers = require('./../../data.js').players;
+    _worldMapOwnerInfoVO = tmpPlayers[playerId];
     if (ownerInfo.DUM) {
         if (!_worldMapOwnerInfoVO) {
             _worldMapOwnerInfoVO
             _worldMapOwnerInfoVO.playerId = playerId;
             _worldMapOwnerInfoVO.isDummy = true;
-            require('./../../data.js').players[playerId] = _worldMapOwnerInfoVO;
+            tmpPlayers[playerId] = _worldMapOwnerInfoVO;
+            require('./../../data.js').players = tmpPlayers
         }
         return _worldMapOwnerInfoVO;
     }
@@ -141,14 +143,20 @@ function parseOwnerInfo(ownerInfo) {
             staticAreaName: "",
         };
         _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(_worldMapOwnerInfoVO, ownerInfo);
-        require('./../../data.js').players[playerId] = _worldMapOwnerInfoVO;
+        tmpPlayers = require('./../../data.js').players;
+        tmpPlayers[playerId] = _worldMapOwnerInfoVO;
+        require('./../../data.js').players = tmpPlayers;
     }
     else {
         _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(require('./../../data.js').players[playerId], ownerInfo);
-        require('./../../data.js').players[playerId] = _worldMapOwnerInfoVO;
+        tmpPlayers = require('./../../data.js').players;
+        tmpPlayers[playerId] = _worldMapOwnerInfoVO;
+        require('./../../data.js').players = tmpPlayers;
     }
     _worldMapOwnerInfoVO.allianceRank = parseInt(ownerInfo.AR);
-    require('./../../data.js').players[playerId] = _worldMapOwnerInfoVO
+    tmpPlayers = require('./../../data.js').players;
+    tmpPlayers[playerId] = _worldMapOwnerInfoVO;
+    require('./../../data.js').players = tmpPlayers;
     //setTitleVOForOwnerInfo(_worldMapOwnerInfoVO, ownerInfo.TI);
     return _worldMapOwnerInfoVO;
 }
