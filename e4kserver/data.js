@@ -67,7 +67,7 @@ function sendCommandVO(commandVO) {
         params[i] = getValideSmartFoxText(params[i]);
         i++;
     }
-    xt.sendMessage(defaultZone, msgId, params, "str", activeRoomId);
+    xt.sendMessage("EmpirefourkingdomsExGG_6", msgId, params, "str", activeRoomId);
 }
 
 /**
