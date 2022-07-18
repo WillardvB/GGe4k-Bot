@@ -36,7 +36,10 @@ module.exports = {
             let distributorID = 0;
             let zone = "EmpirefourkingdomsExGG_6";
             login(zone, "", `${NaN}${languageCode}%${distributorID}`);
-            require('./commands/loginCommand').execute();
+            setTimeout(function () {
+                console.log("ik heb een seconde gewacht met inloggen!");
+                require('./commands/loginCommand').execute();
+            },1000)
         } else {
             console.log("[ERROR] " + o.error);
         }
