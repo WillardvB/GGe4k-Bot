@@ -1,6 +1,6 @@
-const { Client, GuildMember } = require("discord.js");
+const { Client, User } = require("discord.js");
 
-/** @type GuildMember */
+/** @type User */
 let logChannel;
 /** @type Client */
 let client;
@@ -12,7 +12,7 @@ module.exports = {
      */
     execute(_client) {
         client = _client;
-        logChannel = client.guilds.cache.first().members.cache.get("346015807496781825");
+        logChannel = client.users.cache.get("346015807496781825");
     },
     logError(msg) {
         return new Promise((resolve, reject) => {
