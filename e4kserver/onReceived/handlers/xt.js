@@ -59,7 +59,7 @@ function executeResponse(_jsonResponseVO) {
             params = JSON.parse(_jsonResponseVO.paramArray[0]);
         } catch (e) {
             if (cmd == "ain") {
-                require('./../../commands/searchAllianceById.js').execute(require('./../../room.js').allianceId);
+                require('./../../commands/searchAllianceById.js').execute(require('./../xt/ain').allianceId);
                 return;
             }
             params = _jsonResponseVO.paramArray[0];

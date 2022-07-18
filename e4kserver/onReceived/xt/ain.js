@@ -133,5 +133,6 @@ module.exports = {
             return;
         }
         onSuccess(params)
-    }
+    },
+    allianceId: allianceId,
 }
