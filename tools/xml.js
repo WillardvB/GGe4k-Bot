@@ -1,9 +1,3 @@
-module.exports = {
-    obj2xml(obj) {
-        return _obj2xml(obj).xmlStr;
-    }
-}
-
 /**
  * 
  * @param {object} srcObj
@@ -25,7 +19,7 @@ function _obj2xml(srcObj, trgObj = {}, depth = 0, objName = "") {
     for (var objName in srcObj) {
         objType = typeof srcObj[objName];
         _value = srcObj[objName];
-        if (objType == "boolean" || objType == "number" || objType == "string" || objType == "null") {
+        if (objType === "boolean" || objType === "number" || objType === "string" || objType === "null") {
             if (objType == "boolean") {
                 _value = Number(_value);
             }
@@ -44,4 +38,10 @@ function _obj2xml(srcObj, trgObj = {}, depth = 0, objName = "") {
         trgObj.xmlStr += "</dataObj>";
     }
     return trgObj;
+}
+
+module.exports = {
+    obj2xml(obj) {
+        return _obj2xml(obj).xmlStr;
+    }
 }

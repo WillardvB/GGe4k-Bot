@@ -7,34 +7,6 @@ const xt = require('./commands/handlers/xt');
 const _alliances = {};
 const _players = {};
 
-module.exports = {
-    /**
-     * 
-     * @param {Buffer} data
-     */
-    onData(data) {
-        internal_OnData(data);
-    },
-    /**
-     * 
-     * @param {object} sendJsonMessageVO
-     */
-    sendJsonVoSignal(sendJsonMessageVO) {
-        sendCommandVO(sendJsonMessageVO.commandVO);
-    },
-    /**
-     * 
-     * @param {any} msg
-     */
-    writeToSocket(msg) {
-        internal_writeToSocket(msg);
-    },
-    get alliances() { return _alliances},
-    set alliances(val) { _alliances = val},
-    get players() { return _players },
-    set players(val) { _players = val },
-}
-
 let unfinishedDataString = "";
 /**
  * 
@@ -118,4 +90,32 @@ function internal_writeToSocket(msg) {
     _buff1.writeInt8(0);
     let bytes = Buffer.concat([_buff0, _buff1]);
     socket.write(bytes, "utf-8", (err) => { if (err) console.log("[ERROR] " + err); });
+}
+
+module.exports = {
+    /**
+     * 
+     * @param {Buffer} data
+     */
+    onData(data) {
+        internal_OnData(data);
+    },
+    /**
+     * 
+     * @param {object} sendJsonMessageVO
+     */
+    sendJsonVoSignal(sendJsonMessageVO) {
+        sendCommandVO(sendJsonMessageVO.commandVO);
+    },
+    /**
+     * 
+     * @param {any} msg
+     */
+    writeToSocket(msg) {
+        internal_writeToSocket(msg);
+    },
+    get alliances() { return _alliances },
+    set alliances(val) { _alliances = val },
+    get players() { return _players },
+    set players(val) { _players = val },
 }

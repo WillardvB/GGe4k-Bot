@@ -7,22 +7,6 @@ let allianceId = 0;
 let alliancesFound = 0;
 let allAlliancesInJSON = false;
 
-module.exports = {
-    name: "ain",
-    /**
-     * 
-     * @param {number} errorCode
-     * @param {object} params
-     */
-    execute(errorCode, params) {
-        if (errorCode == 114 || !params) {
-            onError();
-            return;
-        }
-        onSuccess(params)
-    }
-}
-
 function onError() {
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer && allianceId <= 25000) {
         allianceId += 1;
@@ -130,4 +114,20 @@ function parseChatJSONMessage(msgText) {
         return "";
     }
     return msgText.replace(/&percnt;/g, "%").replace(/&quot;/g, "\"").replace(/&#145;/g, "\'").replace(/<br \/>/g, "\r").replace(/&lt;/g, "<");
+}
+
+module.exports = {
+    name: "ain",
+    /**
+     * 
+     * @param {number} errorCode
+     * @param {object} params
+     */
+    execute(errorCode, params) {
+        if (errorCode == 114 || !params) {
+            onError();
+            return;
+        }
+        onSuccess(params)
+    }
 }
