@@ -5,7 +5,7 @@ module.exports = {
         let CoreC2SLoginWithAuthenticationVO = {
             params: {
                 NM: "E4K-NL",
-                PW: "E4K-NL-server",
+                PW: process.env.empirePassword,
                 L: "nl",
                 AID: accountID,
                 DID: 5,

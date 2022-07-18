@@ -5,6 +5,7 @@ const searchAllianceById = require('./../../commands/searchAllianceById.js');
 let allianceId = 0;
 let alliancesFound = 0;
 let allAlliancesInJSON = false;
+let alliancesOpNLServer = 202;
 
 function onError() {
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer && allianceId <= 25000) {
