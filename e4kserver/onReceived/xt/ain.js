@@ -23,9 +23,12 @@ function onError() {
  * @param {object} params
  */
 function onSuccess(params) {
-    require('./../../data.js').alliances[params.A.AID] = parseAllianceInfo(params.A);
+    console.log("a) BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
+    let tmpAlliances = require('./../../data.js').alliances;
+    tmpAlliances[params.A.AID] = parseAllianceInfo(params.A);
+    require('./../../data.js').alliances = tmpAlliances;
     alliancesFound = alliancesFound + 1;
-    console.log("BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
+    console.log("b) BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
         allianceId += 1;
         searchByAllianceId(allianceId);
@@ -39,6 +42,7 @@ function onSuccess(params) {
 function waitAndNextCheck() {
     setTimeout(function () {
         allianceId = 0;
+        allAlliancesInJSON = false;
         searchAllianceById(allianceId);
     }, 300000); //5 minutes
 }
@@ -124,6 +128,7 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
+        console.log(params.A.N);
         if (errorCode == 114 || !params) {
             onError();
             return;
