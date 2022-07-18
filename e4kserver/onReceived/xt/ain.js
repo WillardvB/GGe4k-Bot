@@ -1,4 +1,3 @@
-const { parseOwnerInfo } = require('./wsp.js');
 const searchAllianceById = require('./../../commands/searchAllianceById.js');
 
 let allianceId = 0;
@@ -86,7 +85,7 @@ function allianceInfoFillFromParamObject(paramObject) {
     let _memberList = [];
     let i = 0;
     while (i < memberListArray.length) {
-        _memberList.push(parseOwnerInfo(memberListArray[i]));
+        _memberList.push(require('./wsp.js').parseOwnerInfo(memberListArray[i]));
         i++;
     }
     _memberList.sort((a, b) => {
