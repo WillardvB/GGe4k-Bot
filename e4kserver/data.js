@@ -3,8 +3,8 @@ const onString = require('./onReceived/handlers/string.js');
 const onXml = require('./onReceived/handlers/xml.js');
 const xt = require('./commands/handlers/xt');
 
-const _alliances = {};
-const _players = {};
+let _alliances = {};
+let _players = {};
 
 let unfinishedDataString = "";
 /**
