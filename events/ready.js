@@ -18,15 +18,15 @@ function elkeXSec() {
 }
 
 async function weerOnline(client) {
-    const server = client.guilds.cache.find(guild => guild.id = kanalen.nlserver.id);
+    const server = client.guilds.cache.find(guild => guild.id == kanalen.nlserver.id);
     await server.members.fetch();
     await server.channels.cache.forEach(channel => {
         fetchMessagesFrom(client, channel.id, 5);
     })
-    await googleSheet.gebouwData(client);
-    await googleSheet.titelData(client);
-    await googleSheet.rrData(client);
-    await googleSheet.rrAttData(client);
+    //await googleSheet.gebouwData(client);
+    //await googleSheet.titelData(client);
+    //await googleSheet.rrData(client);
+    //await googleSheet.rrAttData(client);
     client.guilds.cache.find(guild => guild.id == kanalen.nlserver.id).fetchOwner().then(itsme => {
         itsme.send({ content: 'Hey, ik ben weer online! 🙂' });
         client.user.setActivity({ type: "PLAYING", name: `Goodgame Empire (Four Kingdoms)` })
