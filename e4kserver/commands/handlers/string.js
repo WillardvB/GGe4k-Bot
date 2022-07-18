@@ -1,5 +1,3 @@
-const data = require('./../../data.js');
-
 module.exports = {
     /**
      * 
@@ -21,5 +19,5 @@ function _sendString(xtName, cmd, paramObj, roomId) {
         i++;
     }
     console.log("[Sending - STR]: " + stringMsg + "\n");
-    data.writeToSocket(stringMsg);
+    require('./../../data.js').writeToSocket(stringMsg);
 }

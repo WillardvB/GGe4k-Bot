@@ -31,7 +31,6 @@ function sendXtMessage(xtName, cmd, paramObj, type = "xml", roomId = -1) {
     if (roomId == -1) {
         roomId = require('./../../room.js').activeRoomId;
     }
-    console.log("xt.js sendXtMessage: " + paramObj);
     switch (type) {
         case "json": json.send(xtName, cmd, paramObj, roomId); break;
         case "str": string.send(xtName, cmd, paramObj, roomId); break;

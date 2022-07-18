@@ -29,7 +29,6 @@ function _sendXml(xtName, cmd, paramObj, roomId) {
         "param": paramObj
     };
     let msg = "<![CDATA[" + require('./../../../tools/xml.js').obj2xml(_loc10_).xmlStr + "]]>";
-    console.log("xml.js _sendXml: " + msg);
     _send(headers, "xtReq", roomId, msg);
 }
 
