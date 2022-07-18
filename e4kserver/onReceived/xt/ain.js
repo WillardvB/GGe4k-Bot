@@ -22,17 +22,16 @@ function onError() {
  */
 async function onSuccess(params) {
     let tmpAlliances = require('./../../data.js').alliances;
-    if (tmpAlliances[params.A.AID] === null)
-        await logger.log(alliancesFound + ". " + params.A.AID + ": " + params.A.N);
     tmpAlliances[params.A.AID] = parseAllianceInfo(params.A);
     require('./../../data.js').alliances = tmpAlliances;
+    await logger.log(alliancesFound + ". " + params.A.AID + ": " + params.A.N);
     alliancesFound = alliancesFound + 1;
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
         allianceId += 1;
         require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
     else {
-        await logger.log(Object.keys(tmpAlliances));
+        await logger.log(Object.keys(tmpAlliances).length);
         allAlliancesInJSON = true;
         waitAndNextCheck();
     }
