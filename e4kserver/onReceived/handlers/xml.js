@@ -2,7 +2,11 @@ const sys = require('./sys.js');
 const xt = require('./xt');
 
 module.exports = {
-    execute() {
+    /**
+     * 
+     * @param {string} msg
+     */
+    execute(msg) {
         let xml = stringToXml(msg);
         if (xml === 'ERROR') return;
         let type = (_loc6_ = xml.msg).$.t;

@@ -2,7 +2,11 @@ const sys = require('./sys.js');
 const xt = require('./xt');
 
 module.exports = {
-    execute() {
+    /**
+     * 
+     * @param {string} msg
+     */
+    execute(msg) {
         let json = JSON.parse(msg);
         let type = json["t"];
         if (type == "xt") {
