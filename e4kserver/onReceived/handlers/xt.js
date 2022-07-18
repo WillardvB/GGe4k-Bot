@@ -1,7 +1,8 @@
-const room = require('./../../room.js');
+const { setRoomList, onJoinRoom, getRoom } = require('./../../room.js');
+const { execute: searchByAllianceId } = require('./../../commands/searchAllianceById.js');
 
 let commands = [];
-const commandsPath = path.join(__dirname, '..', 'xt');
+const commandsPath = path.join(__dirname, '../xt');
 const commandsFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 for (const file of commandsFiles) {
     const filePath = path.join(commandsPath, file);
@@ -20,14 +21,10 @@ module.exports = {
         let command = (params = event.dataObj).shift();
         switch (command) {
             case "rlu":
-                //setRoomList(params);
-                //if (!_hasAutoJoined) {
-                //    _hasAutoJoined = true;
-                //    autoJoinRoom();
-                //}
+                setRoomList(params);
                 return;
             case "jro":
-                //onJoinRoom({ params: { "room": getRoom(parseInt(params.shift())) } });
+                onJoinRoom({ params: { "room": getRoom(parseInt(params.shift())) } });
                 return;
             default:
                 params.shift();
@@ -55,7 +52,7 @@ function executeResponse(_jsonResponseVO) {
             params = JSON.parse(_jsonResponseVO.paramArray[0]);
         } catch (e) {
             if (cmd == "ain") {
-                //searchByAllianceId(allianceId);
+                searchByAllianceId(allianceId);
                 return;
             }
             params = _jsonResponseVO.paramArray[0];
@@ -66,7 +63,7 @@ function executeResponse(_jsonResponseVO) {
     else {
         console.log("[ERROR] Unknown xt command: " + cmd);
     }
-    switch (_jsonResponseVO.commandID.toLowerCase()) {
+    /*switch (_jsonResponseVO.commandID.toLowerCase()) {
         case "core_nfo": processResponseCoreNFO(params); break;
         case "core_lga": processResponseCoreLGA(_jsonResponseVO.error, JSON.parse(_jsonResponseVO.paramArray[0])); break;
         case "core_gfl": processResponseCoreGFL(_jsonResponseVO.error, _jsonResponseVO.paramArray[0]); break;
@@ -92,5 +89,5 @@ function executeResponse(_jsonResponseVO) {
         case "pin": processResponsePIN(_jsonResponseVO.error, _jsonResponseVO.paramArray[0]); break;
         case "wsp": processResponseWSP(JSON.parse(_jsonResponseVO.paramArray[0])); break;
         default: console.log("Er is not geen processResponse functie voor " + _jsonResponseVO.commandID); break;
-    }
+    }*/
 }
