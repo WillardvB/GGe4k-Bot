@@ -1,24 +1,13 @@
-let sysCommands = {};
-let xtCommands = {}
+const { socket } = require('./connection.js');
+const onJson = require('./onReceived/handlers/json.js');
+const onString = require('./onReceived/handlers/string.js');
+const onXml = require('./onReceived/handlers/xml.js');
+const xt = require('./commands/handlers/xt');
 
-const sysCommandsPath = path.join(__dirname, 'onReceived/sys');
-const xtCommandsPath = path.join(__dirname, 'onReceived/xt');
-const sysCommandsFiles = fs.readdirSync(sysCommandsPath).filter(file => file.endsWith('.js'));
-const xtCommandsFiles = fs.readdirSync(xtCommandsPath).filter(file => file.endsWith('.js'));
-for (const file of sysCommandsFiles) {
-    const filePath = path.join(sysCommandsPath, file);
-    const command = require(filePath);
-    sysCommands[command.name] = command.execute;
-}
-for (const file of xtCommandsFiles) {
-    const filePath = path.join(xtCommandsPath, file);
-    const command = require(filePath);
-    xtCommands[command.name] = command.execute;
-}
+const _alliances = {};
+const _players = {};
 
 module.exports = {
-    sysCommands: sysCommands,
-    xtCommands: xtCommands,
     /**
      * 
      * @param {Buffer} data
@@ -35,48 +24,15 @@ module.exports = {
     },
     /**
      * 
-     * @param {object} msgObj
+     * @param {any} msg
      */
-    sysHandleMessage(msgObj) {
-        let action = msgObj.body["$"].action;
-        let handler = sysCommands[action];
-        if (handler != null) {
-            handler.apply(this, [msgObj]);
-        }
-        else {
-            console.log("[ERROR] Unknown sys command: " + action);
-        }
+    writeToSocket(msg) {
+        internal_writeToSocket(msg);
     },
-    /**
-     * 
-     * @param {object} event
-     */
-    onExtensionResponse(event) {
-        /** @type Array */
-        let params = [];
-        let command = (params = event.dataObj).shift();
-        switch (command) {
-            case "rlu":
-                //setRoomList(params);
-                //if (!_hasAutoJoined) {
-                //    _hasAutoJoined = true;
-                //    autoJoinRoom();
-                //}
-                return;
-            case "jro":
-                //onJoinRoom({ params: { "room": getRoom(parseInt(params.shift())) } });
-                return;
-            default:
-                params.shift();
-                let responseVO = {
-                    error: params.shift(),
-                    commandID: command,
-                    paramArray: params,
-                }
-                //executeExtensionResponseSignalCommand(responseVO);
-                return;
-        }
-    }
+    get alliances() { return _alliances},
+    set alliances(val) { _alliances = val},
+    get players() { return _players },
+    set players(val) { _players = val },
 }
 
 let unfinishedDataString = "";
@@ -114,13 +70,13 @@ function internal_OnData(data) {
             console.log("[RECEIVED]: " + _msg.substring(0, 25) + "..., (len: " + _msg.length + ")");
         }
         if (firstChar == "<") {
-            require('./onReceived/handlers/xml.js').execute(_msg);
+            onXml.execute(_msg);
         }
         else if (firstChar == "%") {
-            require('./onReceived/handlers/string.js').execute(_msg);
+            onString.execute(_msg);
         }
         else if (firstChar == "{") {
-            require('./onReceived/handlers/json.js').execute(_msg);
+            onJson.execute(_msg);
         }
     }
 }
@@ -137,8 +93,29 @@ function sendCommandVO(commandVO) {
         if (params[i].trim() == "" || params[i].trim() == "{}") {
             params[i] = "<RoundHouseKick>";
         }
-        //params[i] = getValideSmartFoxText(params[i]);
+        params[i] = getValideSmartFoxText(params[i]);
         i++;
     }
-    //sendXtMessage(defaultZone, msgId, params, "str", activeRoomId);
+    xt.sendMessage(defaultZone, msgId, params, "str", activeRoomId);
+}
+
+/**
+ * 
+ * @param {string} value
+ */
+function getValideSmartFoxText(value) {
+    value = value.replace(/%/g, "&percnt;");
+    return value.replace(/'/g, "");
+}
+
+/**
+ * 
+ * @param {any} msg
+ */
+function internal_writeToSocket(msg) {
+    let _buff0 = Buffer.from(msg);
+    let _buff1 = Buffer.alloc(1);
+    _buff1.writeInt8(0);
+    let bytes = Buffer.concat([_buff0, _buff1]);
+    socket.write(bytes, "utf-8", (err) => { if (err) console.log("[ERROR] " + err); });
 }

@@ -1,3 +1,6 @@
+const sys = require('./sys.js');
+const xt = require('./xt');
+
 module.exports = {
     execute() {
         let msgParts = [];
@@ -6,7 +9,7 @@ module.exports = {
             xtHandleMessage(msgParts.splice(1, msgParts.length - 1))
         }
         else if (type == "sys") {
-            require('./../../data').sysHandleMessage(msgParts.splice(1, msgParts.length - 1));
+            sys.onResponse(msgParts.splice(1, msgParts.length - 1));
         }
     }
 }
@@ -20,5 +23,5 @@ function xtHandleMessage(msgObj) {
         dataObj: msgObj,
         type: "str",
     }
-    require('./../../data').onExtensionResponse(event);
+    xt.onResponse(event);
 }

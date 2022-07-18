@@ -1,3 +1,6 @@
+const sys = require('./sys.js');
+const xt = require('./xt');
+
 module.exports = {
     execute() {
         let xml = stringToXml(msg);
@@ -6,7 +9,7 @@ module.exports = {
             xtHandleMessage(_loc6_)
         }
         else if (type == "sys") {
-            require('./../../data').sysHandleMessage(_loc6_);
+            sys.onResponse(_loc6_);
         }
     }
 }
@@ -30,6 +33,6 @@ function xtHandleMessage(msgObj) {
             dataObj: _loc5_,
             type: "xml",
         }
-        require('./../../data').onExtensionResponse(event);
+        xt.onResponse(event);
     }
 }
