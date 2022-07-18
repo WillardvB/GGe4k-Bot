@@ -1,6 +1,6 @@
 module.exports = {
     name: "logKO",
-    execute() {
-        //onLogin({ "success": false, "error": o.body.login.$.e });
+    execute(xml) {
+        console.log("[ERROR] LoginResponce failed!: " + xml.body.login.$.e);
     }
 }

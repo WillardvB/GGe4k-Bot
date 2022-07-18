@@ -4,7 +4,8 @@ let _activeRoomId = -1;
 let roomList = [];
 
 module.exports = {
-    activeRoomId: _activeRoomId,
+    get activeRoomId() { return _activeRoomId; },
+    set activeRoomId(val) { _activeRoomId = val; },
     checkRoomList() {
         return _checkRoomList();
     },
@@ -35,6 +36,29 @@ module.exports = {
         }
         let headers = { "t": "sys" };
         sendAction(headers, "autoJoin", !!_activeRoomId ? _activeRoomId : -1, "");
+    },
+    /**
+     * 
+     * @param {object} u
+     * @param {number} id
+     * @param {number} roomID
+     */
+    addUserToRoom(u, id, roomID) {
+        roomList[roomID].userList[id] = u;
+        if (roomList[roomID].game && u.isSpectator()) {
+            roomList[roomID].specCount++;
+        }
+        else {
+            roomList[roomID].userCount++;
+        }
+    },
+    /**
+     * 
+     * @param {number} index
+     * @param {object} room
+     */
+    setRoomListIndex(index, room) {
+        roomList[index] = room;
     }
 }
 
