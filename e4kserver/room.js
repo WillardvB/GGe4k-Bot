@@ -28,7 +28,7 @@ module.exports = {
      */
     getRoom(index) {
         return _getRoom(index);
-    }
+    },
 }
 
 function _checkRoomList() {
@@ -86,7 +86,7 @@ function _getRoom(index) {
  */
 function _onJoinRoom(event) {
     let _loc3_ = event.params["room"];
-    activeRoomId = _loc3_.id;
+    _activeRoomId = _loc3_.id;
     if (_loc3_.name == "Lobby") {
         //benchStartTime = Date.now();
         sendAction({ "t": "sys" }, "roundTrip", activeRoomId, "");
