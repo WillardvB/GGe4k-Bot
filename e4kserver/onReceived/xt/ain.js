@@ -1,4 +1,3 @@
-const { execute: searchByAllianceId } = require('./../../commands/searchAllianceById.js');
 const { parseOwnerInfo } = require('./wsp.js');
 const searchAllianceById = require('./../../commands/searchAllianceById.js');
 
@@ -10,7 +9,7 @@ let alliancesOpNLServer = 202;
 function onError() {
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer && allianceId <= 25000) {
         allianceId += 1;
-        searchByAllianceId(allianceId);
+        searchAllianceById.execute(allianceId);
     }
     else {
         allAlliancesInJSON = true;
@@ -31,7 +30,7 @@ function onSuccess(params) {
     console.log("b) BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
         allianceId += 1;
-        searchByAllianceId(allianceId);
+        searchAllianceById.execute(allianceId);
     }
     else {
         allAlliancesInJSON = true;
@@ -44,7 +43,7 @@ function waitAndNextCheck() {
     setTimeout(function () {
         allianceId = 0;
         allAlliancesInJSON = false;
-        searchAllianceById(allianceId);
+        searchAllianceById.execute(allianceId);
     }, 300000); //5 minutes
 }
 
