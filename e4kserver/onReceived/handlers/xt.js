@@ -60,7 +60,7 @@ function executeResponse(_jsonResponseVO) {
             params = JSON.parse(_jsonResponseVO.paramArray[0]);
         } catch (e) {
             if (cmd == "ain") {
-                searchByAllianceId(allianceId);
+                searchByAllianceId(require('./../../room.js').allianceId);
                 return;
             }
             params = _jsonResponseVO.paramArray[0];
