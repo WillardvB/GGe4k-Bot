@@ -16,7 +16,6 @@ module.exports = {
             },
             getCmdId: "core_lga"
         }
-        console.log("trying to login with parameters: " + JSON.stringify(CoreC2SLoginWithAuthenticationVO));
         require('./../data.js').sendJsonVoSignal({ "commandVO": CoreC2SLoginWithAuthenticationVO, "lockConditionVO": "new DefaultLockConditionVO()" });
     },
 }
