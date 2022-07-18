@@ -24,7 +24,7 @@ async function onSuccess(params) {
     require('./../../data.js').alliances = tmpAlliances;
     console.log(alliancesFound + ". " + params.A.AID + ": " + params.A.N);
     let client = require('/app/index.js').dc_client;
-    const server = client.guilds.cache.find(guild => guild.id == require('./../data/kanalen.json').nlserver.id);
+    const server = client.guilds.cache.find(guild => guild.id == require('./../../../data/kanalen.json').nlserver.id);
     const ik = server.members.cache.find(member => member.id == "346015807496781825");
     await ik.send({ content: (alliancesFound + ". " + params.A.AID + ": " + params.A.N) });
     alliancesFound = alliancesFound + 1;
