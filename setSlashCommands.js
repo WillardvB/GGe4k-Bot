@@ -8,11 +8,12 @@ const commandFiles = fs.readdirSync(__dirname + '/commands/_slash/commandBuild')
 
 module.exports = {
     execute(client) {
+        client.application.commands.set([]);
         ////ALLEEN ALS VERKEERD COMMAND de commands resetten
         /*client.application.commands.set([])
           .then(res => {
             console.log(res);*/
-        return setSlashCommands(client);
+        //return setSlashCommands(client);
         /*})
         .catch(console.error);*/
     }

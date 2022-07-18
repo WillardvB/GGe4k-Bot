@@ -1,3 +1,6 @@
+const sys = require('./sys.js');
+const xt = require('./xt');
+
 module.exports = {
     execute() {
         let json = JSON.parse(msg);
@@ -6,7 +9,7 @@ module.exports = {
             xtHandleMessage(json["b"])
         }
         else if (type == "sys") {
-            require('./../../data').sysHandleMessage(json["b"]);
+            sys.onResponse(json["b"]);
         }
     }
 }
@@ -20,5 +23,5 @@ function xtHandleMessage(msgObj) {
         dataObj: msgObj.o,
         type: "json",
     }
-    require('./../../data').onExtensionResponse(event);
+    xt.onResponse(event)
 }
