@@ -147,7 +147,7 @@ function _onJoinRoom(event) {
     _activeRoomId = _loc3_.id;
     if (_loc3_.name == "Lobby") {
         //benchStartTime = Date.now();
-        sendAction({ "t": "sys" }, "roundTrip", activeRoomId, "");
+        sendAction({ "t": "sys" }, "roundTrip", _activeRoomId, "");
     }
     let RoomInfoVO = { name: (event.params.room).name };
     console.log("Vraagt een functie met alles in false if: roomInfoVO: " + JSON.stringify(RoomInfoVO));
