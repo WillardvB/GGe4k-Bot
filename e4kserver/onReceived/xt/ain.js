@@ -22,6 +22,7 @@ function onSuccess(params) {
     let tmpAlliances = require('./../../data.js').alliances;
     tmpAlliances[params.A.AID] = parseAllianceInfo(params.A);
     require('./../../data.js').alliances = tmpAlliances;
+    console.log(alliancesFound + ". " + params.A.AID + ": " + params.A.N);
     alliancesFound = alliancesFound + 1;
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
         allianceId += 1;
