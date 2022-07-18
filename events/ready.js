@@ -1,6 +1,7 @@
 const kanalen = require('./../data/kanalen.json');
 const googleSheet = require('./../data/googleSpreadSheetData.js');
 const embedEditor = require('./../tools/embedEditor.js');
+const { Client } = require('discord.js');
 let client1;
 
 module.exports = {
@@ -17,8 +18,14 @@ function elkeXSec() {
     client1.commands.get("plan").execute(client1);
 }
 
+/**
+ * 
+ * @param {Client} client
+ */
 async function weerOnline(client) {
-    const server = client.guilds.cache.find(guild => guild.id == kanalen.nlserver.id);
+    console.log(client.guilds.cache);
+    console.log(client.guilds.cache.first);
+    const server = await client.guilds.cache.find(guild => { console.log(guild); guild.id == kanalen.nlserver.id });
     await server.members.fetch();
     await server.channels.cache.forEach(channel => {
         fetchMessagesFrom(client, channel.id, 5);
