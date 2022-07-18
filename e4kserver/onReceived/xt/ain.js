@@ -1,6 +1,7 @@
 const { alliances } = require('./../../data.js');
 const { execute: searchByAllianceId } = require('./../../commands/searchAllianceById.js');
 const { parseOwnerInfo } = require('./wsp.js');
+const searchAllianceById = require('./../../commands/searchAllianceById.js');
 
 let allianceId = 0;
 let alliancesFound = 0;
@@ -15,24 +16,47 @@ module.exports = {
      */
     execute(errorCode, params) {
         if (errorCode == 114 || !params) {
-            if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer && allianceId <= 25000) {
-                allianceId += 1;
-                searchByAllianceId(allianceId);
-            }
-            else allAlliancesInJSON = true;
+            onError();
             return;
         }
-        alliances[params.A.AID] = parseAllianceInfo(params.A);
-        alliancesFound = alliancesFound + 1;
-        console.log("BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
-        if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
-            allianceId += 1;
-            searchByAllianceId(allianceId);
-        }
-        else{
-            allAlliancesInJSON = true;
-        }
+        onSuccess(params)
     }
+}
+
+function onError() {
+    if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer && allianceId <= 25000) {
+        allianceId += 1;
+        searchByAllianceId(allianceId);
+    }
+    else {
+        allAlliancesInJSON = true;
+        waitAndNextCheck();
+    }
+}
+
+/**
+ * 
+ * @param {object} params
+ */
+function onSuccess(params) {
+    alliances[params.A.AID] = parseAllianceInfo(params.A);
+    alliancesFound = alliancesFound + 1;
+    console.log("BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
+    if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
+        allianceId += 1;
+        searchByAllianceId(allianceId);
+    }
+    else {
+        allAlliancesInJSON = true;
+        waitAndNextCheck();
+    }
+}
+
+function waitAndNextCheck() {
+    setTimeout(function () {
+        allianceId = 0;
+        searchAllianceById(allianceId);
+    }, 300000); //5 minutes
 }
 
 /**
