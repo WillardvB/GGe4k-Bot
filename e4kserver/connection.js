@@ -49,6 +49,10 @@ module.exports = {
     connected: connected,
 }
 
+const majVersion = 1;
+const minVersion = 6;
+const subVersion = 6;
+
 function sendVersionCheck() {
     let header = { "t": "sys" };
     let version = "<ver v=\'" + majVersion.toString() + minVersion.toString() + subVersion.toString() + "\' />";
