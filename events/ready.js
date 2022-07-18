@@ -23,9 +23,7 @@ function elkeXSec() {
  * @param {Client} client
  */
 async function weerOnline(client) {
-    console.log(client.guilds.cache);
-    console.log(client.guilds.cache.first);
-    const server = await client.guilds.cache.find(guild => { console.log(guild); guild.id == kanalen.nlserver.id });
+    const server = client.guilds.cache.find(guild => guild.id == kanalen.nlserver.id);
     await server.members.fetch();
     await server.channels.cache.forEach(channel => {
         fetchMessagesFrom(client, channel.id, 5);
