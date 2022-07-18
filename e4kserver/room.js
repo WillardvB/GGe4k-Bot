@@ -85,7 +85,7 @@ function getAllRooms() {
  * @param {number} index
  */
 function _getRoom(index) {
-    if (!checkRoomList()) {
+    if (!_checkRoomList()) {
         return null;
     }
     return roomList[index];

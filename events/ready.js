@@ -29,11 +29,10 @@ async function weerOnline(client) {
     await server.channels.cache.forEach(channel => {
         fetchMessagesFrom(client, channel.id, 5);
     });
-    server.fetchOwner().then(itsme => {
-        itsme.send({ content: 'Hey, ik ben weer online! 🙂' }).catch(e => console.log(e));
-        client.user.setActivity({ type: "PLAYING", name: `Goodgame Empire (Four Kingdoms)` })
-        console.log('Ready!');
-    });
+    const ik = server.members.cache.find(member => member.id == "346015807496781825");
+    ik.send({ content: 'Hey, ik ben weer online! 🙂' }).catch(e => console.log(e));
+    client.user.setActivity({ type: "PLAYING", name: `Goodgame Empire (Four Kingdoms)` });
+    console.log('Ready!');
     //await googleSheet.gebouwData(client);
     //await googleSheet.titelData(client);
     //await googleSheet.rrData(client);
