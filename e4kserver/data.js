@@ -1,4 +1,3 @@
-const { socket } = require('./connection.js');
 const onJson = require('./onReceived/handlers/json.js');
 const onString = require('./onReceived/handlers/string.js');
 const onXml = require('./onReceived/handlers/xml.js');
@@ -89,7 +88,7 @@ function internal_writeToSocket(msg) {
     let _buff1 = Buffer.alloc(1);
     _buff1.writeInt8(0);
     let bytes = Buffer.concat([_buff0, _buff1]);
-    socket.write(bytes, "utf-8", (err) => { if (err) console.log("[ERROR] " + err); });
+    require('./connection.js').socket.write(bytes, "utf-8", (err) => { if (err) console.log("[ERROR] " + err); });
 }
 
 module.exports = {
