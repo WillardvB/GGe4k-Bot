@@ -1,5 +1,5 @@
-const { writeToSocket } = require('./../../data.js');
-const { obj2xml } = require('./../../../tools/xml.js');
+const data = require('./../../data.js');
+const xml = require('./../../../tools/xml.js');
 
 module.exports = {
     /**
@@ -31,7 +31,7 @@ function _sendXml(xtName, cmd, paramObj, roomId) {
         "cmd": cmd,
         "param": paramObj
     };
-    let msg = "<![CDATA[" + obj2xml(_loc10_).xmlStr + "]]>";
+    let msg = "<![CDATA[" + xml.obj2xml(_loc10_).xmlStr + "]]>";
     _send(headers, "xtReq", roomId, msg);
 }
 
@@ -45,7 +45,7 @@ function _sendXml(xtName, cmd, paramObj, roomId) {
 function _send(header, action, fromRoom, message) {
     let msg = makeXmlHeader(header) + ("<body action=\'" + action + "\' r=\'" + fromRoom + "\'>" + message + "</body>" + "</msg>");
     console.log("[Sending]: " + msg + "\n");
-    writeToSocket(msg);
+    data.writeToSocket(msg);
 }
 
 /**

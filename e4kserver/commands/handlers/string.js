@@ -1,4 +1,4 @@
-const { writeToSocket } = require('./../../data.js');
+const data = require('./../../data.js');
 
 module.exports = {
     /**
@@ -21,5 +21,5 @@ function _sendString(xtName, cmd, paramObj, roomId) {
         i++;
     }
     console.log("[Sending - STR]: " + stringMsg + "\n");
-    writeToSocket(stringMsg);
+    data.writeToSocket(stringMsg);
 }
