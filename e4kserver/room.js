@@ -29,6 +29,13 @@ module.exports = {
     getRoom(index) {
         return _getRoom(index);
     },
+    autoJoinRoom() {
+        if (!checkRoomList()) {
+            return;
+        }
+        let headers = { "t": "sys" };
+        sendAction(headers, "autoJoin", !!activeRoomId ? activeRoomId : -1, "");
+    }
 }
 
 function _checkRoomList() {

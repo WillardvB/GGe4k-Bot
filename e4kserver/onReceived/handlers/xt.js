@@ -1,7 +1,9 @@
 const path = require('node:path');
 const fs = require('fs');
-const { setRoomList, onJoinRoom, getRoom } = require('./../../room.js');
+const { setRoomList, onJoinRoom, getRoom, autoJoinRoom } = require('./../../room.js');
 const { execute: searchByAllianceId } = require('./../../commands/searchAllianceById.js');
+
+let _hasAutoJoined = false;
 
 let commands = [];
 const commandsPath = path.join(__dirname, '../xt');
@@ -24,6 +26,10 @@ module.exports = {
         switch (command) {
             case "rlu":
                 setRoomList(params);
+                if (!_hasAutoJoined) {
+                    _hasAutoJoined = true;
+                    autoJoinRoom();
+                }
                 return;
             case "jro":
                 onJoinRoom({ params: { "room": getRoom(parseInt(params.shift())) } });
