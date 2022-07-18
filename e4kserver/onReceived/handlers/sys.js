@@ -1,5 +1,6 @@
 let commands = [];
-const commandsPath = path.join(__dirname, '..',  'sys');
+console.log(__dirname);
+const commandsPath = path.join(__dirname, '../sys');
 const commandsFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 for (const file of commandsFiles) {
     const filePath = path.join(commandsPath, file);
