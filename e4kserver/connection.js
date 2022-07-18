@@ -43,7 +43,7 @@ module.exports = {
     },
     onSuccessfulLogin() {
         require('./commands/pingpong.js').execute();
-        require('./commands/searchAllianceById.js').execute(allianceId);
+        require('./commands/searchAllianceById.js').execute(0);
     },
     socket: _socket,
     connected: connected,
