@@ -1,4 +1,4 @@
-const { sendAction } = require("./Commands/handlers/xml");
+const { sendAction } = require("./commands/handlers/xml");
 
 let _activeRoomId = -1;
 let roomList = [];
