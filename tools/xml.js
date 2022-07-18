@@ -1,5 +1,7 @@
-export function obj2xml(obj) {
-    return _obj2xml(obj).xmlStr;
+module.exports = {
+    obj2xml(obj) {
+        return _obj2xml(obj).xmlStr;
+    }
 }
 
 /**
