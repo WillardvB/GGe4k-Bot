@@ -5,7 +5,6 @@ module.exports = {
      * @param {number} allianceId
      */
     execute(allianceId) {
-        console.log("allianceId:  " + allianceId);
         let C2SGetAllianceInfoVO = {
             params: {
                 AID: allianceId,

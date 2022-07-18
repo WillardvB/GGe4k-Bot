@@ -19,12 +19,10 @@ function onError() {
  * @param {object} params
  */
 function onSuccess(params) {
-    console.log("a) BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
     let tmpAlliances = require('./../../data.js').alliances;
     tmpAlliances[params.A.AID] = parseAllianceInfo(params.A);
     require('./../../data.js').alliances = tmpAlliances;
     alliancesFound = alliancesFound + 1;
-    console.log("b) BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
         allianceId += 1;
         require('./../../commands/searchAllianceById.js').execute(allianceId);
@@ -36,7 +34,6 @@ function onSuccess(params) {
 }
 
 function waitAndNextCheck() {
-    console.log("waitandnextcheck: " + allianceId + "  " + allAlliancesInJSON + "  " + alliancesFound);
     setTimeout(function () {
         allianceId = 0;
         allAlliancesInJSON = false;
@@ -84,7 +81,6 @@ function allianceInfoFillFromParamObject(paramObject) {
     let i = 0;
     while (i < memberListArray.length) {
         let member = require('./wsp.js').parseOwnerInfo(memberListArray[i]);
-        console.log(member);
         if(member != null)
             _memberList.push(member);
         i++;

@@ -70,31 +70,4 @@ function executeResponse(_jsonResponseVO) {
     else {
         //console.log("[ERROR] Unknown xt command: " + cmd);
     }
-    /*switch (_jsonResponseVO.commandID.toLowerCase()) {
-        case "core_nfo": processResponseCoreNFO(params); break;
-        case "core_lga": processResponseCoreLGA(_jsonResponseVO.error, JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "core_gfl": processResponseCoreGFL(_jsonResponseVO.error, _jsonResponseVO.paramArray[0]); break;
-        case "gmu": processResponseGMU(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "ufa": processResponseUFA(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "ufp": processResponseUFP(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "gus": processResponseGUS(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "tse": processResponseTSE(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "lfe": processResponseLFE(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "ftf": processResponseFTF(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "gam": processResponseGAM(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "nec": processResponseNEC(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "pre": processResponsePRE(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "gls": processResponseGLS(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "gbd": processResponseGBD(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "gpi": processResponseGPI(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "upi": processResponseUPI(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "gem": processResponseGEM(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "uar": processResponseUAR(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "irc": processResponseIRC(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "ato": processResponseATO(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "aas": processResponseAAS(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        case "pin": processResponsePIN(_jsonResponseVO.error, _jsonResponseVO.paramArray[0]); break;
-        case "wsp": processResponseWSP(JSON.parse(_jsonResponseVO.paramArray[0])); break;
-        default: console.log("Er is not geen processResponse functie voor " + _jsonResponseVO.commandID); break;
-    }*/
 }
