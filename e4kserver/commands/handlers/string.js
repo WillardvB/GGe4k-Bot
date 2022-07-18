@@ -18,7 +18,7 @@ function _sendString(xtName, cmd, paramObj, roomId) {
         stringMsg += paramObj[i].toString() + "%";
         i++;
     }
-    if (strMessage !== "%xt%EmpirefourkingdomsExGG_6%pin%1%<RoundHouseKick>%" && !strMessage.startsWith("%xt%EmpirefourkingdomsExGG_6%ain%1%{")) {
+    if (stringMsg !== "%xt%EmpirefourkingdomsExGG_6%pin%1%<RoundHouseKick>%" && !stringMsg.startsWith("%xt%EmpirefourkingdomsExGG_6%ain%1%{")) {
         console.log("[Sending - STR]: " + strMessage);
     }
     require('./../../data.js').writeToSocket(stringMsg);
