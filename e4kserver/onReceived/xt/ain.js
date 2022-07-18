@@ -42,6 +42,7 @@ function waitAndNextCheck() {
     setTimeout(function () {
         allianceId = 0;
         allAlliancesInJSON = false;
+        alliancesFound = 0;
         require('./../../commands/searchAllianceById.js').execute(allianceId);
     }, 300000); //5 minutes
 }
