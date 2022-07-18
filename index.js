@@ -52,7 +52,3 @@ client.on('threadCreate', thread => {
 client.on('threadUpdate', (oldThread, newThread) => {
 	client.events.get('threadUpdate').execute(client, oldThread, newThread);
 });
-
-module.exports = {
-	dc_client: client,
-}

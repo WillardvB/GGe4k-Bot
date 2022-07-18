@@ -1,3 +1,5 @@
+const logger = require('/app/tools/Logger.js');
+
 let allianceId = 0;
 let alliancesFound = 0;
 let allAlliancesInJSON = false;
@@ -20,19 +22,17 @@ function onError() {
  */
 async function onSuccess(params) {
     let tmpAlliances = require('./../../data.js').alliances;
+    if (tmpAlliances[params.A.AID] === null)
+        await logger.log(alliancesFound + ". " + params.A.AID + ": " + params.A.N);
     tmpAlliances[params.A.AID] = parseAllianceInfo(params.A);
     require('./../../data.js').alliances = tmpAlliances;
-    console.log(alliancesFound + ". " + params.A.AID + ": " + params.A.N);
-    let client = require('/app/index.js').dc_client;
-    const server = client.guilds.cache.find(guild => guild.id == require('./../../../data/kanalen.json').nlserver.id);
-    const ik = server.members.cache.find(member => member.id == "346015807496781825");
-    await ik.send({ content: (alliancesFound + ". " + params.A.AID + ": " + params.A.N) });
     alliancesFound = alliancesFound + 1;
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
         allianceId += 1;
         require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
     else {
+        await logger.log(Object.keys(tmpAlliances));
         allAlliancesInJSON = true;
         waitAndNextCheck();
     }
