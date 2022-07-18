@@ -1,5 +1,3 @@
-const searchAllianceById = require('./../../commands/searchAllianceById.js');
-
 let allianceId = 0;
 let alliancesFound = 0;
 let allAlliancesInJSON = false;
@@ -8,7 +6,7 @@ let alliancesOpNLServer = 202;
 function onError() {
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer && allianceId <= 25000) {
         allianceId += 1;
-        searchAllianceById.execute(allianceId);
+        require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
     else {
         allAlliancesInJSON = true;
@@ -29,7 +27,7 @@ function onSuccess(params) {
     console.log("b) BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
         allianceId += 1;
-        searchAllianceById.execute(allianceId);
+        require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
     else {
         allAlliancesInJSON = true;
@@ -42,7 +40,7 @@ function waitAndNextCheck() {
     setTimeout(function () {
         allianceId = 0;
         allAlliancesInJSON = false;
-        searchAllianceById.execute(allianceId);
+        require('./../../commands/searchAllianceById.js').execute(allianceId);
     }, 300000); //5 minutes
 }
 
@@ -85,7 +83,8 @@ function allianceInfoFillFromParamObject(paramObject) {
     let _memberList = [];
     let i = 0;
     while (i < memberListArray.length) {
-        _memberList.push(require('./wsp.js').parseOwnerInfo(memberListArray[i]));
+        let member = require('./wsp.js').parseOwnerInfo(memberListArray[i]);
+        _memberList.push(member);
         i++;
     }
     _memberList.sort((a, b) => {

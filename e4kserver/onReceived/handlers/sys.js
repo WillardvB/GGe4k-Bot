@@ -21,7 +21,7 @@ module.exports = {
             handler.apply(this, [event]);
         }
         else {
-            console.log("[ERROR] Unknown sys command: " + action);
+            //console.log("[ERROR] Unknown sys command: " + action);
         }
     }
 }

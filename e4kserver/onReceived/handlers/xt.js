@@ -1,7 +1,6 @@
 const path = require('node:path');
 const fs = require('fs');
 const { setRoomList, onJoinRoom, getRoom, autoJoinRoom } = require('./../../room.js');
-const { execute: searchByAllianceId } = require('./../../commands/searchAllianceById.js');
 
 let _hasAutoJoined = false;
 
@@ -60,7 +59,7 @@ function executeResponse(_jsonResponseVO) {
             params = JSON.parse(_jsonResponseVO.paramArray[0]);
         } catch (e) {
             if (cmd == "ain") {
-                searchByAllianceId(require('./../../room.js').allianceId);
+                require('./../../commands/searchAllianceById.js').execute(require('./../../room.js').allianceId);
                 return;
             }
             params = _jsonResponseVO.paramArray[0];
@@ -69,7 +68,7 @@ function executeResponse(_jsonResponseVO) {
         handler.apply(this, [error, params]);
     }
     else {
-        console.log("[ERROR] Unknown xt command: " + cmd);
+        //console.log("[ERROR] Unknown xt command: " + cmd);
     }
     /*switch (_jsonResponseVO.commandID.toLowerCase()) {
         case "core_nfo": processResponseCoreNFO(params); break;
