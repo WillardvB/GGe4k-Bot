@@ -1,5 +1,3 @@
-const xml = require('./../../../tools/xml.js');
-
 module.exports = {
     /**
      * 
@@ -30,7 +28,8 @@ function _sendXml(xtName, cmd, paramObj, roomId) {
         "cmd": cmd,
         "param": paramObj
     };
-    let msg = "<![CDATA[" + xml.obj2xml(_loc10_).xmlStr + "]]>";
+    let msg = "<![CDATA[" + require('./../../../tools/xml.js').obj2xml(_loc10_).xmlStr + "]]>";
+    console.log("xml.js _sendXml: " + msg);
     _send(headers, "xtReq", roomId, msg);
 }
 

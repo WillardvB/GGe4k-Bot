@@ -67,6 +67,7 @@ function sendCommandVO(commandVO) {
         params[i] = getValideSmartFoxText(params[i]);
         i++;
     }
+    console.log("data.js sendCommandVO: " + params);
     xt.sendMessage("EmpirefourkingdomsExGG_6", msgId, params, "str", require('./room.js').activeRoomId);
 }
 
@@ -88,6 +89,7 @@ function internal_writeToSocket(msg) {
     let _buff1 = Buffer.alloc(1);
     _buff1.writeInt8(0);
     let bytes = Buffer.concat([_buff0, _buff1]);
+    console.log("data.js internal_writeToSocket: " + bytes);
     require('./connection.js').socket.write(bytes, "utf-8", (err) => { if (err) console.log("[ERROR] " + err); });
 }
 
