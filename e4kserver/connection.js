@@ -6,10 +6,6 @@ let connected = false;
 let _socket = new Socket();
 _socket.timeout = 10000;
 
-_socket.connect(443, "e4k-live-nl1-game.goodgamestudios.com", () => {
-    console.log("socket connected to server");
-})
-
 //#region eventListeners
 _socket.on('connect', () => { console.log('succesfully connected'); });
 
@@ -29,6 +25,11 @@ _socket.on('timeout', () => { console.log('socket timed out'); });
 //#endregion
 
 module.exports = {
+    execute() {
+        _socket.connect(443, "e4k-live-nl1-game.goodgamestudios.com", () => {
+            console.log("socket connected to server");
+        })
+    },
     onConnection(obj) {
         if (obj.success) {
             connected = true;
