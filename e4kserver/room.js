@@ -30,7 +30,7 @@ module.exports = {
         return _getRoom(index);
     },
     autoJoinRoom() {
-        if (!checkRoomList()) {
+        if (!_checkRoomList()) {
             return;
         }
         let headers = { "t": "sys" };
