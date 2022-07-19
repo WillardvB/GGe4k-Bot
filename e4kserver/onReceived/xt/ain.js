@@ -91,6 +91,7 @@ function allianceInfoFillFromParamObject(paramObject) {
     let i = 0;
     while (i < memberListArray.length) {
         let member = require('./wsp.js').parseOwnerInfo(memberListArray[i]);
+        if (i == 0) console.log(member);
         if(member != null)
             _memberList.push(member);
         i++;
@@ -111,6 +112,7 @@ function allianceInfoFillFromParamObject(paramObject) {
         _memberIdList.push(_memberList[i].playerId);
         i++;
     }
+    console.log(_memberIdList);
     allianceInfoVO.memberList = _memberIdList;
     return allianceInfoVO;
 }
