@@ -14,9 +14,10 @@ module.exports = {
         console.log("alliances Count: " + Object.keys(_alliances).length);
         let alliance = null;
         for (let allianceId in _alliances) {
+            console.log("allianceId: " + allianceId);
             let _alliance = _alliances[allianceId];
-            console.log(_alliance.name + " is " + (_alliance.name == allianceName ? "wel" : "niet") + "hetzelfde ");
-            if (_alliance.name.toLowerCase() == allianceName) {
+            console.log(_alliance.allianceName + " is " + (_alliance.allianceName == allianceName ? "wel" : "niet") + " hetzelfde");
+            if (_alliance.allianceName.toLowerCase() == allianceName) {
                 alliance = _alliance;
             }
         }
