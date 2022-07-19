@@ -111,7 +111,7 @@ module.exports = {
             }
         }
         interaction.followUp({
-            embeds: embed
+            embeds: [embed]
         }).catch(e => {
             logger.logError(e);
         })
