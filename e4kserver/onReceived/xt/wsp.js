@@ -31,6 +31,7 @@ function parseOwnerInfoArray(ownerInfoArray) {
  * @param {object} ownerInfo
  */
 function parseOwnerInfo(ownerInfo) {
+    console.log(ownerInfo);
     if (!ownerInfo || !ownerInfo.OID) {
         return null;
     }
