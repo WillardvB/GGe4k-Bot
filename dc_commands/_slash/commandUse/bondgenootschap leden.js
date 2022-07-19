@@ -1,4 +1,5 @@
-const { CommandInteraction } = require("discord.js");
+const { CommandInteraction, MessageEmbed } = require("discord.js");
+const logger = require("../../../tools/Logger");
 
 let allianceRanks = {
     0: "Leider",
@@ -67,6 +68,10 @@ module.exports = {
      * @param {CommandInteraction} interaction
      */
     async execute(interaction) {
+        let embed = new MessageEmbed();
+        embed.setDescription("leden");
+        embed.setTimestamp();
+        embed.setColor("#000000");
         let allianceName = interaction.options.getString('naam').toLowerCase().trim();
         let rank = interaction.options.getInteger('rang');
         if (rank == null) rank = -1; else rank -= 1;
@@ -75,6 +80,7 @@ module.exports = {
         for (let allianceId in _alliances) {
             let _alliance = _alliances[allianceId];
             if (_alliance.allianceName.toLowerCase() == allianceName) {
+                embed.setTitle(_alliance.allianceName);
                 allianceInfoVO = _alliance;
                 break;
             }
@@ -85,17 +91,29 @@ module.exports = {
         }
         let tmpPlayers = require('./../../../e4kserver/data').players;
         let memberList = "";
+        let _allianceRank = "";
         for (let i = 0; i < allianceInfoVO.memberList.length; i++) {
             let memberId = allianceInfoVO.memberList[i];
             memberVO = tmpPlayers[memberId];
             let _rank = memberVO.allianceRank;
             if (rank == -1 || rank == _rank) {
-                let _allianceRank = allianceRanks[_rank];
-                memberList += `${memberVO.playerName} (${_allianceRank}), level: ${memberVO.playerLevel}\n`;
+                if (memberList!=""&&_allianceRank != allianceRanks[_rank]) {
+                    embed.addField(_allianceRank, memberList);
+                    memberList = "";
+                    _allianceRank = allianceRanks[_rank];
+                }
+                memberList += `${memberVO.playerName}, level: ${memberVO.playerLevel}\n`;
+            }
+            if (memberList != "" && (_allianceRank != allianceRanks[_rank] || i == allianceInfoVO.memberList.length - 1)) {
+                embed.addField(_allianceRank, memberList);
+                memberList = "";
+                _allianceRank = allianceRanks[_rank];
             }
         }
         interaction.followUp({
-            content: memberList
+            embeds: embed
+        }).catch(e => {
+            logger.logError(e);
         })
     }
 }
