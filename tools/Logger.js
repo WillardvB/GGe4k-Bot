@@ -14,7 +14,7 @@ module.exports = {
         client = _client;
         logChannel = client.users.cache.get("346015807496781825");
     },
-    logError(msg) {
+    async logError(msg) {
         return new Promise((resolve, reject) => {
             console.log("[ERROR] " + msg);
             try {
@@ -25,7 +25,7 @@ module.exports = {
             }
         })
     },
-    log(msg) {
+    async log(msg) {
         return new Promise((resolve, reject) => {
             console.log(msg);
             try {
