@@ -27,6 +27,8 @@ module.exports = {
             await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral: true });
             return;
         }
-        interaction.followUp({ content: "membercount: " + alliance.memberList.length, ephemeral: true })
+        interaction.followUp({
+            content: "Naam: " + alliance.allianceName + "\nOmschrijving: " + alliance.allianceDescription + "\nLeden aantal: " + alliance.memberList.length
+        })
     }
 }
