@@ -139,5 +139,5 @@ module.exports = {
         }
         onSuccess(params)
     },
-    allianceId: allianceId,
+    get allianceId() { return allianceId },
 }
