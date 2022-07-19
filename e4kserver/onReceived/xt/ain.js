@@ -135,6 +135,7 @@ module.exports = {
      */
     execute(errorCode, params) {
         if (errorCode == 114 || !params) {
+            if (errorCode != 114) console.log("error but not 114: " + errorCode + "  " + JSON.stringify(params));
             onError();
             return;
         }

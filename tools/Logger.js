@@ -14,33 +14,29 @@ module.exports = {
         client = _client;
         logChannel = client.users.cache.get("346015807496781825");
     },
-    async logError(msg) {
-        try {
-            await logChannel.send({ content: "[ERROR]" + msg });
-            return new Promise((resolve, reject) => {
+    logError(msg) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await logChannel.send({ content: "[ERROR]" + msg });
                 console.log("[ERROR] " + msg);
                 resolve();
-            })
-        } catch (e) {
-            return new Promise((resolve, reject) => {
+            } catch (e) {
                 console.log("[ERROR] " + e);
                 reject(e);
-            })
-        }
+            }
+        })
     },
-    async log(msg) {
-        try {
-            await logChannel.send({ content: msg });
-            return new Promise((resolve, reject) => {
+    log(msg) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await logChannel.send({ content: msg });
                 console.log(msg);
-                console.log("finished sending msg: " + msg);
+                console.log("finished sending: " + msg);
                 resolve();
-            })
-        } catch (e) {
-            return new Promise((resolve, reject) => {
+            } catch (e) {
                 console.log("[ERROR] " + e);
                 reject(e);
-            })
-        }
+            }
+        })
     }
 }
