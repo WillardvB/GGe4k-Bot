@@ -6,6 +6,7 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
+        console.log(JSON.stringify(params));
         parseOwnerInfoArray(params.gaa.OI);
     },
     parseOwnerInfo(ownerInfo) {
@@ -22,9 +23,7 @@ function parseOwnerInfoArray(ownerInfoArray) {
         return;
     }
     for (let ownerInfo in ownerInfoArray) {
-        console.log(ownerInfoArray);
-        console.log(ownerInfo);
-        parseOwnerInfo(ownerInfo);
+        parseOwnerInfo(ownerInfoArray[ownerInfo]);
     }
 }
 
