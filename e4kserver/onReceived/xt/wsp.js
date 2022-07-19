@@ -6,7 +6,6 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
-        console.log(JSON.stringify(params));
         parseOwnerInfoArray(params.gaa.OI);
     },
     parseOwnerInfo(ownerInfo) {
@@ -208,6 +207,7 @@ function parseOwnerInfo(ownerInfo) {
  * @param {object} paramObj
  */
 function worldMapOwnerFillFromParamObject(worldMapOwnerInfoVO, paramObj) {
+    console.log("AI: " + paramObj["AI"] + "\n\n\n\n:AI");
     let vo = worldMapOwnerInfoVO;
     vo.playerId = paramObj["OID"];
     vo.isDummy = paramObj["DUM"];

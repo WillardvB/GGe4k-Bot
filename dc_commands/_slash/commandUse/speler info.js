@@ -99,11 +99,12 @@ async function _execute(interaction, retried = false) {
         }
         return;
     }
+    let bgInfo = playerVO.allianceName == "" ? "" : playerVO.allianceName + " (" + allianceRanks[playerVO.allianceRank] + ")";
     interaction.followUp({
         content:
             "Naam: " + playerVO.playerName + "\n" +
-            "Level: " + playerVO.playerLevel + "\n" +
-            "BG: " + playerVO.allianceName + " (" + allianceRanks[playerVO.allianceRank] + ")"+ "\n" +
+            "Level: " + (playerVO.playerLevel == 70 ? playerVO.playerLevel + "." + playerVO.paragonLevel : playerVO.playerLevel) + "\n" +
+            "BG: " + bgInfo + "\n" +
             "Roempunten: " + playerVO.famePoints + "\n" +
             "Eerpunten: " + playerVO.honor + "\n" +
             "Machtpunten: " + playerVO.might + "\n" +
