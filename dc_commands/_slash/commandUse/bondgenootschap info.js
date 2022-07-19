@@ -20,8 +20,11 @@ module.exports = {
                 alliance = _alliance;
             }
         }
-        console.log("found alliance:"  +alliance)
-        if (alliance == null) return interaction.reply({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral = true });
+        console.log("found alliance:" + alliance);
+        if (alliance == null) {
+            await interaction.reply({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral = true });
+            return
+        }
         interaction.reply({ content: "membercount: " + alliance.members.length, ephemeral = true })
     }
 }
