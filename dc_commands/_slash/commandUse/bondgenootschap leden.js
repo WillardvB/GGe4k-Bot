@@ -1,5 +1,17 @@
 const { CommandInteraction } = require("discord.js");
 
+let allianceRanks = {
+    0: "Leider",
+    1: "Substituut",
+    2: "Veldmaarschalk",
+    3: "Schatbewaarder",
+    4: "Diplomaat",
+    5: "Ronselaar",
+    6: "Generaal",
+    7: "Sergeant",
+    8: "Lid",
+    9: "Novice",
+}
 
 let memberVO = {
     userData: {},
@@ -56,6 +68,8 @@ module.exports = {
      */
     async execute(interaction) {
         let allianceName = interaction.options.getString('naam').toLowerCase().trim();
+        let rank = interaction.options.getInteger('rang');
+        if (rank == null) rank = -1; else rank -= 1;
         let _alliances = require("./../../../e4kserver/data").alliances;
         let allianceInfoVO = null;
         for (let allianceId in _alliances) {
@@ -74,8 +88,11 @@ module.exports = {
         for (let i = 0; i < allianceInfoVO.memberList.length; i++) {
             let memberId = allianceInfoVO.memberList[i];
             memberVO = tmpPlayers[memberId];
-            if (i == 0) console.log(memberVO);
-            memberList += `[${memberVO.allianceRank}] ${memberVO.playerName}, level: ${memberVO.playerLevel}, id: ${memberVO.playerId}`;
+            let _rank = memberVO.allianceRank;
+            if (rank == -1 || rank == _rank) {
+                let _allianceRank = allianceRanks[_rank];
+                memberList += `${memberVO.playerName} (${_allianceRank}), level: ${memberVO.playerLevel}, *id: ${memberVO.playerId}*\n`;
+            }
         }
         interaction.followUp({
             content: memberList
