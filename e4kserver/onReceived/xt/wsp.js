@@ -9,7 +9,7 @@ module.exports = {
         parseOwnerInfoArray(params.gaa.OI);
     },
     parseOwnerInfo(ownerInfo) {
-        parseOwnerInfo(ownerInfo);
+        return parseOwnerInfo(ownerInfo);
     }
 }
 
@@ -22,7 +22,7 @@ function parseOwnerInfoArray(ownerInfoArray) {
         return;
     }
     for (let ownerInfo in ownerInfoArray) {
-        JSON.stringify(parseOwnerInfo(ownerInfo));
+        parseOwnerInfo(ownerInfo);
     }
 }
 
@@ -153,7 +153,6 @@ function parseOwnerInfo(ownerInfo) {
         tmpPlayers[playerId] = _worldMapOwnerInfoVO;
         require('./../../data.js').players = tmpPlayers;
     }
-    console.log("naam: " + _worldMapOwnerInfoVO.playerName + ", id: " + _worldMapOwnerInfoVO.playerId + ", alliance: " + _worldMapOwnerInfoVO.allianceName);
     //setTitleVOForOwnerInfo(_worldMapOwnerInfoVO, ownerInfo.TI);
     return _worldMapOwnerInfoVO;
 }
