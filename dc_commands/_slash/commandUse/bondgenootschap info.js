@@ -8,7 +8,7 @@ module.exports = {
      * @param {CommandInteraction} interaction
      */
     async execute(interaction) {
-        let allianceName = interaction.options.getString('naam');
+        let allianceName = interaction.options.getString('naam').toLowerCase().trim();
         console.log("allianceName: " + allianceName);
         let _alliances = require("./../../../e4kserver/data").alliances;
         console.log("alliances Count: " + Object.keys(_alliances).length);
@@ -16,15 +16,15 @@ module.exports = {
         for (let allianceId in _alliances) {
             let _alliance = _alliances[allianceId];
             console.log(_alliance.name + " is " + (_alliance.name == allianceName ? "wel" : "niet") + "hetzelfde ");
-            if (_alliance.name == allianceName) {
+            if (_alliance.name.toLowerCase() == allianceName) {
                 alliance = _alliance;
             }
         }
         console.log("found alliance:" + alliance);
         if (alliance == null) {
-            await interaction.reply({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral: true });
+            await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral: true });
             return;
         }
-        interaction.reply({ content: "membercount: " + alliance.members.length, ephemeral: true })
+        interaction.followUp({ content: "membercount: " + alliance.members.length, ephemeral: true })
     }
 }
