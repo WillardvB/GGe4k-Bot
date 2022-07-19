@@ -76,7 +76,7 @@ module.exports = {
  * @param {CommandInteraction} interaction
  * @param {boolean} retried
  */
-function _execute(interaction, retried = false) {
+async function _execute(interaction, retried = false) {
     let playerName = interaction.options.getString('naam').toLowerCase().trim();
     let _players = require("./../../../e4kserver/data").players;
     playerVO = null;
