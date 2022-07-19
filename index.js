@@ -14,6 +14,7 @@ const client = new Client({
 		Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
 	]
 });
+
 client.login(process.env.dcToken);
 
 require('./setClientCommands.js').execute(client);

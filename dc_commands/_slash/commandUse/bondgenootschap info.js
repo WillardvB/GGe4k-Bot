@@ -10,7 +10,7 @@ module.exports = {
     async execute(interaction) {
         let allianceName = interaction.options.getString('naam');
         console.log("allianceName: " + allianceName);
-        let _alliances = require("../../e4kserver/data").alliances;
+        let _alliances = require("./../../../e4kserver/data").alliances;
         console.log("alliances Count: " + Object.keys(_alliances).length);
         let alliance = null;
         for (let allianceId in _alliances) {
