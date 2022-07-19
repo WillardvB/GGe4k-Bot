@@ -9,7 +9,7 @@ module.exports = {
     description: 'Regelt ready event',
     execute(client) {
         require('./../tools/Logger').execute(client);
-        //require('./../e4kserver/connection').execute();
+        require('./../e4kserver/connection').execute();
         client1 = client;
         weerOnline(client);
         setInterval(elkeXSec, 1000);
@@ -34,10 +34,10 @@ async function weerOnline(client) {
     ik.send({ content: 'Hey, ik ben weer online! 🙂' }).catch(e => console.log(e));
     client.user.setActivity({ type: "PLAYING", name: `Goodgame Empire (Four Kingdoms)` });
     console.log('Ready!');
-    await googleSheet.gebouwData(client);
-    await googleSheet.titelData(client);
-    await googleSheet.rrData(client);
-    await googleSheet.rrAttData(client);
+    //await googleSheet.gebouwData(client);
+    //await googleSheet.titelData(client);
+    //await googleSheet.rrData(client);
+    //await googleSheet.rrAttData(client);
     
     //embedEditor.stuurRegelsBericht(client);
     //embedEditor.stuurReactieRollenBericht(client);
