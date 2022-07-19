@@ -17,13 +17,24 @@ module.exports = {
     logError(msg) {
         return new Promise((resolve, reject) => {
             console.log("[ERROR] " + msg);
-            logChannel.send({ content: "[ERROR]" + msg }).then(resolve(null)).catch(e => reject(e));
+            try {
+                await logChannel.send({ content: "[ERROR]" + msg });
+                resolve();
+            } catch (e) {
+                reject(e);
+            }
         })
     },
     log(msg) {
         return new Promise((resolve, reject) => {
             console.log(msg);
-            logChannel.send({ content: msg }).then(resolve(null)).catch(e => reject(e));
+            try {
+                await logChannel.send({ content: msg });
+                console.log("finished sending msg: " + msg);
+                resolve();
+            } catch (e) {
+                reject(e);
+            }
         })
     }
 }
