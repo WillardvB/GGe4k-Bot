@@ -102,7 +102,7 @@ module.exports = {
                     memberList = "";
                 }
                 _allianceRank = allianceRanks[_rank];
-                memberList += `${memberVO.playerName}, level: ${memberVO.playerLevel}\n`;
+                memberList += `${fixNameString(memberVO.playerName)}, level: ${memberVO.playerLevel}\n`;
             }
             if (memberList != "" && (_allianceRank != allianceRanks[_rank] || i == allianceInfoVO.memberList.length - 1)) {
                 embed.addField(_allianceRank, memberList, true);
@@ -116,4 +116,12 @@ module.exports = {
             logger.logError(e);
         })
     }
+}
+
+/**
+ * 
+ * @param {string} _string
+ */
+function fixNameString(_string) {
+    return _string.replace('_', '\_').replace('*', '\*').replace('~', '\~');
 }
