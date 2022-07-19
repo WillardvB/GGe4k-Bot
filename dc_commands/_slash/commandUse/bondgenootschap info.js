@@ -44,7 +44,7 @@ module.exports = {
         interaction.followUp({
             content:
                 "Naam: " + allianceInfoVO.allianceName + "\n" +
-                "Omschrijving:```\n" + allianceInfoVO.allianceDescription + "```" + "\n" +
+                "Omschrijving:```\n" + allianceInfoVO.allianceDescription + "```" +
                 "Leden aantal: " + allianceInfoVO.memberList.length + "\n" +
                 "Roempunten: " + allianceInfoVO.allianceFamePoints + "\n" +
                 "Level: " + allianceInfoVO.memberLevel + "\n" +
