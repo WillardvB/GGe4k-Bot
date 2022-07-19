@@ -111,7 +111,6 @@ function allianceInfoFillFromParamObject(paramObject) {
         _memberIdList.push(_memberList[i].playerId);
         i++;
     }
-    console.log(_memberIdList);
     allianceInfoVO.memberList = _memberIdList;
     return allianceInfoVO;
 }
@@ -142,5 +141,5 @@ module.exports = {
         }
         onSuccess(params)
     },
-    get allianceId() { return allianceId },
+    get allianceId() { return allianceId; },
 }
