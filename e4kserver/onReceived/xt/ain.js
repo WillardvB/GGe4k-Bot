@@ -34,7 +34,7 @@ async function onSuccess(params) {
         require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
     else {
-        await logger.log(Object.keys(tmpAlliances).length);
+        await logger.log("alliances in data json: " + Object.keys(tmpAlliances).length);
         allAlliancesInJSON = true;
         waitAndNextCheck();
     }
