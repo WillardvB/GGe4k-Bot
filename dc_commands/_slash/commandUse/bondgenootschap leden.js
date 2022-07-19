@@ -102,7 +102,7 @@ module.exports = {
                     memberList = "";
                 }
                 _allianceRank = allianceRanks[_rank];
-                memberList += `${fixNameString(memberVO.playerName)}, level: ${memberVO.playerLevel}\n`;
+                memberList += `__${fixNameString(memberVO.playerName)}__, level: ${memberVO.playerLevel}\n`;
             }
             if (memberList != "" && (_allianceRank != allianceRanks[_rank] || i == allianceInfoVO.memberList.length - 1)) {
                 embed.addField(_allianceRank, memberList, true);
