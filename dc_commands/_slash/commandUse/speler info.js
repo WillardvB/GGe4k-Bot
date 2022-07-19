@@ -77,12 +77,12 @@ module.exports = {
  * @param {boolean} retried
  */
 async function _execute(interaction, retried = false) {
-    let playerName = interaction.options.getString('naam').toLowerCase().trim();
+    let playerName = interaction.options.getString('naam').trim();
     let _players = require("./../../../e4kserver/data").players;
     playerVO = null;
     for (let playerId in _players) {
         let _player = _players[playerId];
-        if (_player.playerName.toLowerCase() == playerName) {
+        if (_player.playerName.toLowerCase() == playerName.toLowerCase()) {
             playerVO = _player;
             break;
         }
@@ -93,8 +93,9 @@ async function _execute(interaction, retried = false) {
         }
         else {
             require('./../../../e4kserver/commands/searchPlayerByName').execute(playerName);
-            await new Promise(resolve => setTimeout(resolve(), 2500));
-            _execute(interaction, true);
+            setTimeout(function () {
+                _execute(interaction, true);
+            }, 2500);
         }
         return;
     }
@@ -102,7 +103,7 @@ async function _execute(interaction, retried = false) {
         content:
             "Naam: " + playerVO.playerName + "\n" +
             "Level: " + playerVO.playerLevel + "\n" +
-            "BG: " + playerVO.allianceName + "(" + allianceRanks[playerVO.allianceRank] + ")"+ "\n" +
+            "BG: " + playerVO.allianceName + " (" + allianceRanks[playerVO.allianceRank] + ")"+ "\n" +
             "Roempunten: " + playerVO.famePoints + "\n" +
             "Eerpunten: " + playerVO.honor + "\n" +
             "Machtpunten: " + playerVO.might + "\n" +
