@@ -9,6 +9,12 @@ module.exports = {
      */
     execute(errorCode, params) {
         console.log("Send Show message command!");
+        let C2SShowRuinDataVO = {
+            getCmdId: "gre",
+            params: {},
+        }
+        require('./../../data').sendJsonVoSignal({ "commandVO": C2SShowRuinDataVO, "lockConditionVO": null });
         require('./../../commands/showMessages').execute();
+
     }
 }
