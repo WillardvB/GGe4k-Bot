@@ -41,7 +41,7 @@ function internal_OnData(data) {
     for (let i = 0; i < msgParts.length; i++) {
         let _msg = msgParts[i];
         let firstChar = _msg.charAt(0);
-        if ((firstChar == "<" || firstChar == "%" || firstChar == "{") && !(_msg === "%xt%pin%1%0%" || _msg.startsWith("%xt%irc%1%0%") || _msg === "%xt%ain%1%114%{}%" || _msg.startsWith("%xt%ain%1%0%"))) {
+        if ((firstChar == "<" || firstChar == "%" || firstChar == "{") && !(_msg === "%xt%pin%1%0%" || _msg.startsWith("%xt%irc%1%0%") || _msg === "%xt%ain%1%114%{}%" || _msg.startsWith("%xt%ain%1%0%") || _msg.startsWith("%xt%sei%1%0%"))) {
             console.log("[RECEIVED]: " + _msg.substring(0, 50) + "..., (len: " + _msg.length + ")");
         }
         if (firstChar == "<") {

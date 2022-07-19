@@ -8,6 +8,7 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
+        console.log("Send Show message command!");
         require('./../../commands/showMessages').execute();
     }
 }

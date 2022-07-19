@@ -1,5 +1,3 @@
-const logger = require('/app/tools/Logger.js');
-
 module.exports = {
     name: "sne",
     /**
@@ -8,6 +6,7 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
+        console.log("GOT SNE COMMAND!");
         if (params) {
             parseMessageInfoArray(params.MSG);
         }

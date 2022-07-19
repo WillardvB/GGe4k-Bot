@@ -5,6 +5,6 @@ module.exports = {
             getCmdId: "sne",
             params: {},
         }
-        require('./../data.js').sendJsonVoSignal({ "commandVO": C2SShowMessagesVO, "lockConditionVO": "new DefaultLockConditionVO()" });
+        require('./../data.js').sendJsonVoSignal({ "commandVO": C2SShowMessagesVO, "lockConditionVO": null });
     }
 }
