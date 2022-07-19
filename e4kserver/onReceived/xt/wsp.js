@@ -207,7 +207,6 @@ function parseOwnerInfo(ownerInfo) {
  * @param {object} paramObj
  */
 function worldMapOwnerFillFromParamObject(worldMapOwnerInfoVO, paramObj) {
-    console.log("AI: " + paramObj["AI"] + "\n\n\n\n:AI");
     let vo = worldMapOwnerInfoVO;
     vo.playerId = paramObj["OID"];
     vo.isDummy = paramObj["DUM"];
