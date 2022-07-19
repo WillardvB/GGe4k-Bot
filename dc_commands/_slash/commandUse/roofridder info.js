@@ -22,13 +22,17 @@ const stormKleur = "#ADD8E6";
 const beriThumb = "https://media.discordapp.net/attachments/884049583313928202/886594500762423329/icon_events_berimond_enter.png";
 const beriImg = "https://media.discordapp.net/attachments/884049583313928202/886598084958752808/teaser_berimond_splash.png";
 const beriKleur = "#FF00FF";
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 
 module.exports = {
     name: 'roofridder info',
-    async execute(client, interaction) {
+    /**
+     * 
+     * @param {Interaction} interaction
+     */
+    async execute(interaction) {
         let wereld;
         let level;
         let winsTotUp;
@@ -43,7 +47,7 @@ module.exports = {
             level = string[3];
             winsTotUp = string[4];
         }
-        const rows = await googleSheetsData.rrData(client);
+        const rows = await googleSheetsData.rrData(interaction.client);
         if (rows.length) {
             const kID = wereld * 1;
             let minLvlRRvanRijk = krijgMinimumVanRijk(kID);
@@ -66,7 +70,7 @@ module.exports = {
                 if (row[0] == victories) {
                     if (row[1] == kID) {
                         rrGevonden = true;
-                        naarOutput(client, interaction, row, kID, level, winsTotUp, victories);
+                        naarOutput(interaction, row, kID, level, winsTotUp, victories);
                         return;
                     }
                 }
@@ -75,7 +79,7 @@ module.exports = {
     },
 };
 
-function naarOutput(client, interaction, row, kID, level, winsTotUp, victories) {
+function naarOutput(interaction, row, kID, level, winsTotUp, victories) {
     let afbeelding = "";
     let thumbnail = "";
     let kleur = "";
@@ -102,7 +106,7 @@ function naarOutput(client, interaction, row, kID, level, winsTotUp, victories) 
         levelString = "";
         winsTotUpString = "";
     }
-    krijgAttTactiek(client, kID, victories).then(attTactiek => {
+    krijgAttTactiek(interaction.client, kID, victories).then(attTactiek => {
         let embed = new MessageEmbed()
             .setColor(kleur)
             .setTimestamp()

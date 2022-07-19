@@ -12,10 +12,10 @@ const productieSoort = ["Houtproductie", "Steenproductie", "Voedselproductie", "
 
 module.exports = {
 	name: 'gebouw algemeen',
-	description: 'Toont de algemene gegevens van het gebouw voor het gekozen level!',
-  aka: '`gebouw alg`, `gebouw a`, `gebouw general`, `gebouw gen`, `gebouw g`',
-  format: '`gge gebouw algemeen [level] [gebouwnaam]`',
-  voorbeeld: '`gge gebouw alg 10 brouwerij`, `gge gebouw a 1 toren`',
+    description: 'Toont de algemene gegevens van het gebouw voor het gekozen level!',
+    aka: '`gebouw alg`, `gebouw a`, `gebouw general`, `gebouw gen`, `gebouw g`',
+    format: '`gge gebouw algemeen [level] [gebouwnaam]`',
+    voorbeeld: '`gge gebouw alg 10 brouwerij`, `gge gebouw a 1 toren`',
 	async execute(client, message, args) {
     const level = args.shift();
     var gebouwnaam = "";

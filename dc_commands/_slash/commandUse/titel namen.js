@@ -1,12 +1,16 @@
 const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
-const { MessageEmbed, MessageActionRow, MessageSelectMenu } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageSelectMenu, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 const afbeelding = "https://i.pinimg.com/originals/a4/99/32/a49932ed0a33b50f3f2c25f38ba10572.jpg";
 
 module.exports = {
     name: 'titel namen',
-    async execute(client, interaction) {
+    /**
+     * 
+     * @param {Interaction} interaction
+     */
+    async execute(interaction) {
         let soort;
         if (interaction.options) {
             soort = interaction.options.getString('soort');
@@ -14,7 +18,7 @@ module.exports = {
         else if (interaction.customId) {
             soort = interaction.values[0];
         }
-        const rows = await googleSheetsData.titelData(client);
+        const rows = await googleSheetsData.titelData(interaction.client);
         if (rows.length) {
             var roemTitels = '';
             var beriTitels = '';

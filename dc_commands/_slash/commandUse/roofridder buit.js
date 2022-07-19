@@ -7,7 +7,7 @@ const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.j
 
 module.exports = {
     name: 'roofridder buit',
-    async execute(client, interaction) {
+    async execute(interaction) {
         let level;
         if (interaction.options) {
             level = interaction.options.getInteger('level');
@@ -16,11 +16,11 @@ module.exports = {
             var string = interaction.customId.split(' ');
             level = string[2];
         }
-        naarOutput(client, interaction, level);
+        naarOutput(interaction, level);
     },
 };
 
-function naarOutput(client, interaction, level) {
+function naarOutput(interaction, level) {
     let levelString = "Roofridder level ";
     let embed = new MessageEmbed()
         .setColor('#808080')

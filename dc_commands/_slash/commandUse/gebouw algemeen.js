@@ -1,6 +1,6 @@
 const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const formatNumber = require('./../../../tools/number.js');
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 const kostenKol = [7, 13, 33, 20, 15, 17, 25, 26, 27, 43, 47, 51, 52, 14, 1, 57, 1, 66, 70, 72, 76, 77, 78, 80, 83, 84, 85, 86, 88, 91, 92, 93, 94, 95, 96, 97, 98, 103, 109, 110, 111, 113, 115, 116, 118, 120, 121, 122, 123, 127, 128, 129, 130, 136, 137, 138, 139, 142, 144, 145, 146, 149];
@@ -12,7 +12,11 @@ const productieSoort = ["Houtproductie", "Steenproductie", "Voedselproductie", "
 
 module.exports = {
     name: 'gebouw algemeen',
-    async execute(client, interaction) {
+    /**
+     * 
+     * @param {Interaction} interaction
+     */
+    async execute(interaction) {
         let level;
         let gebouwnaam;
         if (interaction.options) {
@@ -28,7 +32,7 @@ module.exports = {
             }
         }
         gebouwnaam = gebouwnaam.trim().toLowerCase();
-        const rows = await googleSheetsData.gebouwData(client);
+        const rows = await googleSheetsData.gebouwData(interaction.client);
         if (rows.length) {
             let gebouwGevonden = false;
             let levelGevonden = false;

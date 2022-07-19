@@ -1,6 +1,6 @@
 const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const formatNumber = require('./../../../tools/number.js');
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 const afbeelding = "https://i.pinimg.com/originals/a4/99/32/a49932ed0a33b50f3f2c25f38ba10572.jpg";
@@ -9,7 +9,11 @@ let beriTresholds = [];
 
 module.exports = {
     name: 'titel info',
-    async execute(client, interaction) {
+    /**
+     * 
+     * @param {Interaction} interaction
+     */
+    async execute(interaction) {
         let titel;
         if (interaction.options) {
             titel = interaction.options.getString('titel');
@@ -22,7 +26,7 @@ module.exports = {
             }
         }
         titel = titel.trim().toLowerCase();
-        const data = await googleSheetsData.titelData(client);
+        const data = await googleSheetsData.titelData(interaction.client);
         const rows = [...data];
         if (rows.length) {
             var titelGevonden = false;

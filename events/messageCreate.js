@@ -6,6 +6,8 @@ module.exports = {
     name: 'message',
     description: 'Regelt messageCreate event',
     execute(client, message) {
+        return;
+        /*
         if (message.channel.id == kanalen.nlserver.tekst.onvertaalde_updates) {
             if (message.content.includes('<#817014369971994645>')) {
                 updateTranslator.vertaalUpdateE4K(client, message);
@@ -29,6 +31,6 @@ module.exports = {
                 console.error(error);
                 message.reply({ content: 'there was an error trying to execute that command!' });
             }
-        }
+        }*/
     }
 }
