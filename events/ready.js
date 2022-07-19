@@ -8,6 +8,7 @@ module.exports = {
     name: 'ready',
     description: 'Regelt ready event',
     execute(client) {
+        require('./../tools/Logger').execute(client);
         require('./../e4kserver/connection').execute();
         client1 = client;
         weerOnline(client);

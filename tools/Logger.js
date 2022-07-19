@@ -17,14 +17,12 @@ module.exports = {
     logError(msg) {
         return new Promise((resolve, reject) => {
             console.log("[ERROR] " + msg);
-            if (logChannel == null) logChannel = client.users.cache.get("346015807496781825");
             logChannel.send({ content: "[ERROR]" + msg }).then(resolve(null)).catch(e => reject(e));
         })
     },
     log(msg) {
         return new Promise((resolve, reject) => {
             console.log(msg);
-            if (logChannel == null) logChannel = client.users.cache.get("346015807496781825");
             logChannel.send({ content: msg }).then(resolve(null)).catch(e => reject(e));
         })
     }
