@@ -31,7 +31,6 @@ module.exports = {
             try {
                 await logChannel.send({ content: msg });
                 console.log(msg);
-                console.log("finished sending: " + msg);
                 resolve();
             } catch (e) {
                 console.log("[ERROR] " + e);

@@ -13,7 +13,11 @@ let unfinishedDataString = "";
  */
 function internal_OnData(data) {
     let msg = data.toString('utf-8');
-    if (msg.startsWith("%") && !(msg.charAt(msg.length - 2) == "%" && msg.charCodeAt(msg.length - 1) == 0)) {
+    if (msg.startsWith("%xt%ain%1%0%{") && !(msg.charAt(msg.length - 3) == "}" && msg.charAt(msg.length - 2) == "%" && msg.charCodeAt(msg.length - 1) == 0)) {
+        unfinishedDataString = unfinishedDataString + msg;
+        return;
+    }
+    else if (!msg.startsWith("%xt%ain%") && msg.startsWith("%") && !(msg.charAt(msg.length - 2) == "%" && msg.charCodeAt(msg.length - 1) == 0)) {
         unfinishedDataString = unfinishedDataString + msg;
         return;
     }
@@ -37,7 +41,7 @@ function internal_OnData(data) {
     for (let i = 0; i < msgParts.length; i++) {
         let _msg = msgParts[i];
         let firstChar = _msg.charAt(0);
-        if ((firstChar == "<" || firstChar == "%" || firstChar == "{") && !(_msg === "%xt%pin%1%0%" || _msg.startsWith("%xt%irc%1%0%") || _msg === "%xt%ain%1%114%{}%" || _msg.startsWith("%xt%ain%1%0%"))) {
+        if ((firstChar == "<" || firstChar == "%" || firstChar == "{") && !(_msg === "%xt%pin%1%0%" || _msg.startsWith("%xt%irc%1%0%"))) { //|| _msg === "%xt%ain%1%114%{}%" || _msg.startsWith("%xt%ain%1%0%"))) {
             console.log("[RECEIVED]: " + _msg.substring(0, 50) + "..., (len: " + _msg.length + ")");
         }
         if (firstChar == "<") {

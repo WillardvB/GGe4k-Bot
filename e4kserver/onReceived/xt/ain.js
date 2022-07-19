@@ -24,9 +24,7 @@ async function onSuccess(params) {
     let tmpAlliances = require('./../../data.js').alliances;
     if (tmpAlliances[params.A.AID] == null) {
         let logMsg = alliancesFound + ". " + params.A.AID + ": " + params.A.N;
-        console.log("before sending msg: " + logMsg);
         await logger.log(logMsg);
-        console.log("after sending msg: " + logMsg);
     }
     tmpAlliances[params.A.AID] = parseAllianceInfo(params.A);
     require('./../../data.js').alliances = tmpAlliances;

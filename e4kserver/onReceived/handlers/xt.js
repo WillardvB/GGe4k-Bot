@@ -59,6 +59,7 @@ function executeResponse(_jsonResponseVO) {
             params = JSON.parse(_jsonResponseVO.paramArray[0]);
         } catch (e) {
             if (cmd == "ain") {
+                console.log("allianceId: " + require('./../xt/ain').allianceId + " has some errors: " + e);
                 require('./../../commands/searchAllianceById.js').execute(require('./../xt/ain').allianceId);
                 return;
             }
