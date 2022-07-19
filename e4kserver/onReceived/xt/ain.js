@@ -11,6 +11,7 @@ async function onError() {
         require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
     else {
+        let tmpAlliances = require('./../../data.js').alliances;
         await logger.log("alliances in data json: " + Object.keys(tmpAlliances).length);
         let tmpPlayers = require('./../../data.js').players;
         await logger.log("players in data json: " + Object.keys(tmpPlayers).length);
