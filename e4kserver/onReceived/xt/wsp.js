@@ -31,7 +31,6 @@ function parseOwnerInfoArray(ownerInfoArray) {
  * @param {object} ownerInfo
  */
 function parseOwnerInfo(ownerInfo) {
-    console.log(ownerInfo);
     if (!ownerInfo || !ownerInfo.OID) {
         return null;
     }
@@ -89,7 +88,7 @@ function parseOwnerInfo(ownerInfo) {
             _worldMapOwnerInfoVO.playerId = playerId;
             _worldMapOwnerInfoVO.isDummy = true;
             tmpPlayers[playerId] = _worldMapOwnerInfoVO;
-            require('./../../data.js').players = tmpPlayers
+            require('./../../data.js').players = tmpPlayers;
         }
         return _worldMapOwnerInfoVO;
     }
@@ -149,15 +148,12 @@ function parseOwnerInfo(ownerInfo) {
         require('./../../data.js').players = tmpPlayers;
     }
     else {
-        _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(require('./../../data.js').players[playerId], ownerInfo);
         tmpPlayers = require('./../../data.js').players;
+        _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(tmpPlayers[playerId], ownerInfo);
         tmpPlayers[playerId] = _worldMapOwnerInfoVO;
         require('./../../data.js').players = tmpPlayers;
     }
-    _worldMapOwnerInfoVO.allianceRank = parseInt(ownerInfo.AR);
-    tmpPlayers = require('./../../data.js').players;
-    tmpPlayers[playerId] = _worldMapOwnerInfoVO;
-    require('./../../data.js').players = tmpPlayers;
+    console.log("naam: " + _worldMapOwnerInfoVO.playerName + ", id: " + _worldMapOwnerInfoVO.playerId + ", alliance: " + _worldMapOwnerInfoVO.allianceName);
     //setTitleVOForOwnerInfo(_worldMapOwnerInfoVO, ownerInfo.TI);
     return _worldMapOwnerInfoVO;
 }
@@ -211,7 +207,7 @@ function worldMapOwnerFillFromParamObject(worldMapOwnerInfoVO, paramObj) {
     vo.famePoints = paramObj["CF"];
     vo.isRuin = paramObj["R"] == 1;
     vo.allianceID = paramObj["AID"];
-    vo.allianceRank = paramObj["AR"];
+    vo.allianceRank = parseInt(paramObj["AR"]);
     vo.allianceName = !!paramObj["AN"] ? paramObj["AN"] : "";
     vo.allianceFame = paramObj["ACF"];
     vo.isSearchingAlliance = paramObj["SA"];
