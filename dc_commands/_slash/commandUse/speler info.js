@@ -60,7 +60,7 @@ let allianceRanks = {
 }
 
 module.exports = {
-    name: 'bondgenootschap info',
+    name: 'speler info',
     description: 'Toont informatie over het bondgenootschap!',
     /**
      * 
