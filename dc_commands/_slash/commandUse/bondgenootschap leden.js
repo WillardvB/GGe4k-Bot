@@ -91,13 +91,13 @@ module.exports = {
         }
         let tmpPlayers = require('./../../../e4kserver/data').players;
         let memberList = "";
-        let _allianceRank = "";
+        let _allianceRank = "Leider";
         for (let i = 0; i < allianceInfoVO.memberList.length; i++) {
             let memberId = allianceInfoVO.memberList[i];
             memberVO = tmpPlayers[memberId];
             let _rank = memberVO.allianceRank;
             if (rank == -1 || rank == _rank) {
-                if (memberList!=""&&_allianceRank != allianceRanks[_rank]) {
+                if (memberList != "" && _allianceRank != allianceRanks[_rank]) {
                     embed.addField(_allianceRank, memberList);
                     memberList = "";
                     _allianceRank = allianceRanks[_rank];
