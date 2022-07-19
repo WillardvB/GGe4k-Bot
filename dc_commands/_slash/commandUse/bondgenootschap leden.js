@@ -91,7 +91,7 @@ module.exports = {
             let _rank = memberVO.allianceRank;
             if (rank == -1 || rank == _rank) {
                 let _allianceRank = allianceRanks[_rank];
-                memberList += `${memberVO.playerName} (${_allianceRank}), level: ${memberVO.playerLevel}, *id: ${memberVO.playerId}*\n`;
+                memberList += `${memberVO.playerName} (${_allianceRank}), level: ${memberVO.playerLevel}\n`;
             }
         }
         interaction.followUp({
