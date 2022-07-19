@@ -11,6 +11,9 @@ function onError() {
         require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
     else {
+        await logger.log("alliances in data json: " + Object.keys(tmpAlliances).length);
+        let tmpPlayers = require('./../../data.js').players;
+        await logger.log("players in data json: " + Object.keys(tmpPlayers).length);
         allAlliancesInJSON = true;
         waitAndNextCheck();
     }
@@ -29,7 +32,7 @@ async function onSuccess(params) {
     tmpAlliances[params.A.AID] = parseAllianceInfo(params.A);
     require('./../../data.js').alliances = tmpAlliances;
     alliancesFound = alliancesFound + 1;
-    if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer && allianceId <= 25000) {
+    if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
         allianceId += 1;
         require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
