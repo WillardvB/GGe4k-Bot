@@ -18,7 +18,7 @@ module.exports = {
         else if (interaction.customId) {
             soort = interaction.values[0];
         }
-        const rows = await googleSheetsData.titelData(interaction.client);
+        const rows = await googleSheetsData.titelData();
         if (rows.length) {
             var roemTitels = '';
             var beriTitels = '';

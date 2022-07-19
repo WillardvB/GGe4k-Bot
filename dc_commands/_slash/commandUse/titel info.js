@@ -26,7 +26,7 @@ module.exports = {
             }
         }
         titel = titel.trim().toLowerCase();
-        const data = await googleSheetsData.titelData(interaction.client);
+        const data = await googleSheetsData.titelData();
         const rows = [...data];
         if (rows.length) {
             var titelGevonden = false;

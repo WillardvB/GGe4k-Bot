@@ -47,7 +47,7 @@ module.exports = {
             level = string[3];
             winsTotUp = string[4];
         }
-        const rows = await googleSheetsData.rrData(interaction.client);
+        const rows = await googleSheetsData.rrData();
         if (rows.length) {
             const kID = wereld * 1;
             let minLvlRRvanRijk = krijgMinimumVanRijk(kID);
@@ -106,7 +106,7 @@ function naarOutput(interaction, row, kID, level, winsTotUp, victories) {
         levelString = "";
         winsTotUpString = "";
     }
-    krijgAttTactiek(interaction.client, kID, victories).then(attTactiek => {
+    krijgAttTactiek(kID, victories).then(attTactiek => {
         let embed = new MessageEmbed()
             .setColor(kleur)
             .setTimestamp()
@@ -208,9 +208,9 @@ function krijgMaximumVanRijk(kID) {
     return maxLvlRRvanRijk;
 }
 
-function krijgAttTactiek(client, kID, victories) {
+function krijgAttTactiek(kID, victories) {
     return new Promise(async function (resolve, reject) {
-        const tactieken = await googleSheetsData.rrAttData(client, kID);
+        const tactieken = await googleSheetsData.rrAttData(kID);
         if (tactieken.length) {
             const rij = tactieken[victories];
             const midden = rij[5] != null ? rij[5] : "";

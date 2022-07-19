@@ -22,9 +22,9 @@ module.exports = {
         }
         console.log("found alliance:" + alliance);
         if (alliance == null) {
-            await interaction.reply({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral = true });
-            return
+            await interaction.reply({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral: true });
+            return;
         }
-        interaction.reply({ content: "membercount: " + alliance.members.length, ephemeral = true })
+        interaction.reply({ content: "membercount: " + alliance.members.length, ephemeral: true })
     }
 }

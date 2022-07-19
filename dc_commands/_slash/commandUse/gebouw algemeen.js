@@ -32,7 +32,7 @@ module.exports = {
             }
         }
         gebouwnaam = gebouwnaam.trim().toLowerCase();
-        const rows = await googleSheetsData.gebouwData(interaction.client);
+        const rows = await googleSheetsData.gebouwData();
         if (rows.length) {
             let gebouwGevonden = false;
             let levelGevonden = false;
