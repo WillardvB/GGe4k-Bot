@@ -89,7 +89,7 @@ async function _execute(interaction, retried = false) {
     }
     if (playerVO == null) {
         if (retried) {
-            await interaction.followUp({ content: "Sorry, ik heb de speler nog niet gevonden!", ephemeral: false });
+            await interaction.followUp({ content: "Sorry, ik heb de speler nog niet gevonden!\nCheck of je de naam goed heb gespeld inclusief hoofdletters." });
         }
         else {
             require('./../../../e4kserver/commands/searchPlayerByName').execute(playerName);

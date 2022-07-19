@@ -86,7 +86,7 @@ module.exports = {
             }
         }
         if (allianceInfoVO == null) {
-            await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral: false });
+            await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!" });
             return;
         }
         let tmpPlayers = require('./../../../e4kserver/data').players;
