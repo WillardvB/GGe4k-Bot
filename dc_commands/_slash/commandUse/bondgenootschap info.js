@@ -24,11 +24,13 @@ module.exports = {
         }
         console.log("found alliance:" + alliance);
         if (alliance == null) {
-            await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral: true });
+            await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral: false });
             return;
         }
+        console.log(alliance.memberList);
         interaction.followUp({
-            content: "Naam: " + alliance.allianceName + "\nOmschrijving: " + alliance.allianceDescription + "\nLeden aantal: " + alliance.memberList.length
+            content: "Naam: " + alliance.allianceName + "\nOmschrijving: " + alliance.allianceDescription + "\nLeden aantal: " + alliance.memberList.length,
+            ephemeral: false
         })
     }
 }
