@@ -16,9 +16,10 @@ module.exports = {
         for (let allianceId in _alliances) {
             console.log("allianceId: " + allianceId);
             let _alliance = _alliances[allianceId];
-            console.log(_alliance.allianceName + " is " + (_alliance.allianceName == allianceName ? "wel" : "niet") + " hetzelfde");
+            console.log(_alliance.allianceName + " is " + (_alliance.allianceName.toLowerCase() == allianceName ? "wel" : "niet") + " hetzelfde");
             if (_alliance.allianceName.toLowerCase() == allianceName) {
                 alliance = _alliance;
+                break;
             }
         }
         console.log("found alliance:" + alliance);
@@ -26,6 +27,6 @@ module.exports = {
             await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!", ephemeral: true });
             return;
         }
-        interaction.followUp({ content: "membercount: " + alliance.members.length, ephemeral: true })
+        interaction.followUp({ content: "membercount: " + alliance.memberList.length, ephemeral: true })
     }
 }
