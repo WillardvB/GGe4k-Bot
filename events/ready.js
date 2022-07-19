@@ -9,7 +9,7 @@ module.exports = {
     description: 'Regelt ready event',
     execute(client) {
         require('./../tools/Logger').execute(client);
-        require('./../e4kserver/connection').execute();
+        //require('./../e4kserver/connection').execute();
         client1 = client;
         weerOnline(client);
         setInterval(elkeXSec, 1000);
