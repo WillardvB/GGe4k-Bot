@@ -91,7 +91,6 @@ function allianceInfoFillFromParamObject(paramObject) {
     let i = 0;
     while (i < memberListArray.length) {
         let member = require('./wsp.js').parseOwnerInfo(memberListArray[i]);
-        if (i == 0) console.log(member);
         if(member != null)
             _memberList.push(member);
         i++;
@@ -125,7 +124,7 @@ function parseChatJSONMessage(msgText) {
     if (!msgText) {
         return "";
     }
-    return msgText.replace(/&percnt;/g, "%").replace(/&quot;/g, "\"").replace(/&#145;/g, "\'").replace(/<br \/>/g, "\r").replace(/&lt;/g, "<");
+    return msgText.replace(/&percnt;/g, "%").replace(/&quot;/g, "\"").replace(/&#145;/g, "\'").replace(/<br \/>/g, "\n").replace(/&lt;/g, "<");
 }
 
 module.exports = {

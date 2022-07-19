@@ -68,6 +68,6 @@ function executeResponse(_jsonResponseVO) {
         handler.apply(this, [error, params]);
     }
     else {
-        //console.log("[ERROR] Unknown xt command: " + cmd);
+        console.log("[ERROR] Unknown xt command: " + cmd);
     }
 }
