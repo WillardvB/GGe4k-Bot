@@ -100,12 +100,12 @@ module.exports = {
                 if (memberList != "" && _allianceRank != allianceRanks[_rank]) {
                     embed.addField(_allianceRank, memberList);
                     memberList = "";
-                    _allianceRank = allianceRanks[_rank];
                 }
+                _allianceRank = allianceRanks[_rank];
                 memberList += `${memberVO.playerName}, level: ${memberVO.playerLevel}\n`;
             }
             if (memberList != "" && (_allianceRank != allianceRanks[_rank] || i == allianceInfoVO.memberList.length - 1)) {
-                embed.addField(_allianceRank, memberList);
+                embed.addField(_allianceRank, memberList, true);
                 memberList = "";
                 _allianceRank = allianceRanks[_rank];
             }
