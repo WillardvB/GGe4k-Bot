@@ -18,7 +18,7 @@ module.exports = {
         return new Promise(async (resolve) => {
             try {
                 await logChannel.send({ content: "[ERROR]" + msg });
-                console.log("[ERROR] " + msg);
+                console.log('\x1b[31m[ERROR]\x1b[0m' + msg);
                 resolve();
             } catch (e) {
                 await this.logError(e);
