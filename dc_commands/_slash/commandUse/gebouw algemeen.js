@@ -49,7 +49,6 @@ module.exports = {
                     _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
             }
         }
-        console.log(translationData.dialogs.dialog_legendtemple_name);
         if (foundBuildingName === "<Not found>") {
             if (gebouwnaam === "zaal der legenden") foundBuildingName = translationData.dialogs.dialog_legendtemple_name;
         }
@@ -70,11 +69,20 @@ module.exports = {
         if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
         if (foundBuildingName.startsWith('deco_')) foundBuildingName = foundBuildingName.substring(5);
         for (let _building in buildingData) {
-            if (buildingData[_building].name === foundBuildingName) {
+            if (buildingData[_building].name.toLowerCase() === foundBuildingName) {
                 _output = JSON.stringify(buildingData[_building]);
             }
         }
-        interaction.followUp({ content: _output });
+        for (let _building in buildingData) {
+            if (buildingData[_building].type.toLowerCase() === foundBuildingName) {
+                _output = JSON.stringify(buildingData[_building]);
+            }
+        }
+        if (interaction.options) {
+            interaction.followUp({ content: _output });
+        } else {
+            interaction.editReply({ content: _output });
+        }
         return;
         const rows = await googleSheetsData.gebouwData();
         if (rows.length) {

@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, Message, Client } = require("discord.js");
 const formatDuration = require('./../tools/time.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
@@ -7,9 +7,14 @@ const kanalen = require('./../data/kanalen.json');
 module.exports = {
     name: 'messageDelete',
     description: 'Regelt messageDelete event',
+    /**
+     * 
+     * @param {Client} client
+     * @param {Message} message
+     */
     execute(client, message) {
         if (
-            oud.guild == null ||
+            message.guild == null ||
             message.author.bot ||
             message.guild.id != kanalen.nlserver.id ||
             message.channel.id == kanalen.nlserver.tekst.admins ||
