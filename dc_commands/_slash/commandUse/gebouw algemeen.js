@@ -50,20 +50,27 @@ module.exports = {
             }
         }
         if (foundBuildingName === "<Not found>") {
-            if (gebouwnaam === "zaal der legenden") foundBuildingName = translationData.dialogs.dialog_legendtemple_name;
+            if (gebouwnaam === "zaal der legenden") foundBuildingName = "dialog_legendtemple_name";
         }
         if (foundBuildingName === "<Not found>") {
-            const bestMatch = stringSimilarity.findBestMatch(gebouwnaam, _mogelijkeGebouwnamen).bestMatch;
+            let matches = stringSimilarity.findBestMatch(gebouwnaam, _mogelijkeGebouwnamen).ratings;
+            matches = matches.sort((a, b) => {
+                if (a.rating > b.rating) return -1;
+                if (a.rating < b.rating) return 1;
+                return 0;
+            }).slice(0, 5);
+            let _messageActionRow = new MessageActionRow();
+            for (let i = 0; i < matches.length; i++) {
+                _messageActionRow.addComponents(
+                    new MessageButton().setCustomId(`gebouw algemeen ${level} ${matches[i].target}`)
+                        .setLabel(matches[i].target).setStyle('PRIMARY')
+                );
+            }
             interaction.followUp({
-                content: "Ik kan het gebouw met de opgegeven naam niet vinden!\nBedoelde je __" + bestMatch.target + "__",
-                components: [
-                    new MessageActionRow().addComponents(
-                        new MessageButton().setCustomId(`gebouw algemeen ${level} ${bestMatch.target}`)
-                            .setLabel("Ja!").setStyle('SUCCESS')
-                    )
-                ]
+                content: "Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:",
+                components: [_messageActionRow]
             });
-            return;
+            return;408-338
         }
         foundBuildingName = foundBuildingName.split('_name')[0];
         if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
