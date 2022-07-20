@@ -126,10 +126,15 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         .setTitle(title)
         //.setDescription(row[156])
         //.setThumbnail(row[0])
+    if (interaction.options) {
+        interaction.followUp({ embeds: [embed], components: [] });
+    } else {
+        interaction.editReply({ embeds: [embed], components: [] });
+    }
     return;
     //#region old code
     let levelString = " (level " + level + ")";
-    var embed = new MessageEmbed()
+    embed = new MessageEmbed()
         .setColor('#996515')
         .setTimestamp()
         .setFooter(footerTekst, footerAfbeelding)
