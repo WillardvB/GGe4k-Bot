@@ -44,10 +44,9 @@ module.exports = {
                 break;
             }
             else if (_intern_buildingName.endsWith('_name')){
-                let __intern_buildingName = _intern_buildingName;
-                __intern_buildingName = __intern_buildingName.split('_name')[0];
-                if (__intern_buildingName.startsWith('deco_')) __intern_buildingName = __intern_buildingName.substring(5);
-                _mogelijkeGebouwnamen.push(__intern_buildingName);
+                let _mogelijkGebouwNaam = translationData.buildings_and_decorations[_intern_buildingName];
+                if(!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
+                    _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
             }
         }
         console.log(translationData.dialogs.dialog_legendtemple_name);
