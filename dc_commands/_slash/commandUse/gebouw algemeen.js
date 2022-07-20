@@ -43,23 +43,16 @@ module.exports = {
                 foundBuildingName = _intern_buildingName;
                 break;
             }
-            else {
+            else if (_intern_buildingName.endsWith('_name')){
                 let __intern_buildingName = _intern_buildingName;
                 __intern_buildingName = __intern_buildingName.split('_name')[0];
                 if (__intern_buildingName.startsWith('deco_')) __intern_buildingName = __intern_buildingName.substring(5);
                 _mogelijkeGebouwnamen.push(__intern_buildingName);
             }
         }
+        console.log(translationData.dialogs.dialog_legendtemple_name);
         if (foundBuildingName === "<Not found>") {
-            for (let _trDataPart in translationData) {
-                if (_trDataPart === "buildings_and_decorations") continue;
-                for (let _intern_buildingName in translationData[_trDataPart]) {
-                    if (translationData[_trDataPart][_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
-                        foundBuildingName = _intern_buildingName;
-                        break;
-                    }
-                }
-            }
+            if (gebouwnaam === "zaal der legenden") foundBuildingName = translationData.dialogs.dialog_legendtemple_name;
         }
         if (foundBuildingName === "<Not found>") {
             const bestMatch = stringSimilarity.findBestMatch(gebouwnaam, _mogelijkeGebouwnamen).bestMatch;
