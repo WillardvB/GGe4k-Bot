@@ -1,5 +1,5 @@
 const Socket = require('node:net').Socket;
-const { default: fetch } = require('node-fetch');
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const { connect } = require('node:tls');
 const e4kServerData = require('./data.js');
 
