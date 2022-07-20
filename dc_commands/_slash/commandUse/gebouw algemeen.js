@@ -1,3 +1,4 @@
+const stringSimilarity = require("string-similarity");
 const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const buildingData = require('./../../../ingame_data/buildings.json');
 const translationData = require('./../../../ingame_translations/nl.json');
@@ -34,18 +35,50 @@ module.exports = {
             }
         }
         gebouwnaam = gebouwnaam.trim().toLowerCase();
+        let _mogelijkeGebouwnamen = ["Zaal der legenden"];
         let _output = "null";
         let foundBuildingName = "<Not found>";
         for (let _intern_buildingName in translationData.buildings_and_decorations) {
             if (translationData.buildings_and_decorations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
-                console.log(_intern_buildingName);
                 foundBuildingName = _intern_buildingName;
                 break;
             }
+            else {
+                let __intern_buildingName = _intern_buildingName;
+                __intern_buildingName = __intern_buildingName.split('_name')[0];
+                if (__intern_buildingName.startsWith('deco_')) __intern_buildingName = __intern_buildingName.substring(5);
+                _mogelijkeGebouwnamen.push(__intern_buildingName);
+            }
+        }
+        if (foundBuildingName === "<Not found>") {
+            for (let _trDataPart in translationData) {
+                if (_trDataPart === "buildings_and_decorations") continue;
+                for (let _intern_buildingName in translationData[_trDataPart]) {
+                    if (translationData[_trDataPart][_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
+                        foundBuildingName = _intern_buildingName;
+                        break;
+                    }
+                }
+            }
+        }
+        if (foundBuildingName === "<Not found>") {
+            const bestMatch = stringSimilarity.findBestMatch(gebouwnaam, _mogelijkeGebouwnamen).bestMatch;
+            interaction.followUp({
+                content: "Ik kan het gebouw met de opgegeven naam niet vinden!\nBedoelde je __" + bestMatch.target + "__",
+                components: [
+                    new MessageActionRow().addComponents(
+                        new MessageButton().setCustomId(`gebouw algemeen ${level} ${bestMatch.target}`)
+                            .setLabel("Ja!").setStyle('SUCCESS')
+                    )
+                ]
+            });
+            return;
         }
         foundBuildingName = foundBuildingName.split('_name')[0];
+        if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
+        if (foundBuildingName.startsWith('deco_')) foundBuildingName = foundBuildingName.substring(5);
         for (let _building in buildingData) {
-            if (buildingData[_building].name) {
+            if (buildingData[_building].name === foundBuildingName) {
                 _output = JSON.stringify(buildingData[_building]);
             }
         }
@@ -80,7 +113,7 @@ module.exports = {
             if (gebouwGevonden) {
                 interaction.followUp({ content: "geef een level tussen `" + laagsteLevel + "` en `" + hoogsteLevel + "`", ephemeral: true })
             } else {
-                interaction.followUp({ content: "geef een geldige nederlandse gebouwnaam", ephemeral: true })
+                interaction.followUp({ content: "geef een geldige nederlandse gebouwnaam", ephemeral: true });
             }
         }
     },
