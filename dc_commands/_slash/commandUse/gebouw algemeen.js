@@ -1,5 +1,6 @@
 const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const buildingData = require('./../../../ingame_data/buildings.json');
+const buildingTranslationData = require('./../../../ingame_translations/nl.json').buildings_and_decorations;
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
@@ -23,7 +24,6 @@ module.exports = {
         if (interaction.options) {
             level = interaction.options.getInteger('level');
             gebouwnaam = interaction.options.getString('naam');
-            interaction.followUp({content: buildingData["12"].name})
         }
         else if (interaction.customId) {
             var string = interaction.customId.split(' ');
@@ -34,6 +34,15 @@ module.exports = {
             }
         }
         gebouwnaam = gebouwnaam.trim().toLowerCase();
+        let foundBuildingName = "";
+        for (let _intern_buildingName in buildingTranslationData) {
+            if (buildingTranslationData[_intern_buildingName].toLowerCase().trim() == gebouwnaam) {
+                foundBuildingName = _intern_buildingName;
+                break;
+            }
+        }
+        interaction.followUp({ content: foundBuildingName });
+        return;
         const rows = await googleSheetsData.gebouwData();
         if (rows.length) {
             let gebouwGevonden = false;
