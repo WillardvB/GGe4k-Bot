@@ -101,6 +101,7 @@ async function _execute(interaction, retried = false) {
     }
     let bgInfo = playerVO.allianceName == "" ? "" : playerVO.allianceName + " (" + allianceRanks[playerVO.allianceRank] + ")";
     let castleListString = "";
+    console.log(playerVO.castlePosList);
     for (let i = 0; i < playerVO.castlePosList.length; i++) {
         if (i != 0) castleListString += "\n";
         castleListString += JSON.stringify(playerVO.castlePosList[i]);
