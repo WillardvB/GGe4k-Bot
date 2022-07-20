@@ -14,9 +14,17 @@ async function onError() {
     }
     else {
         let tmpAlliances = require('./../../data.js').alliances;
-        await logger.log("alliances in data json: " + Object.keys(tmpAlliances).length);
+        let _tmpAllianceCount = Object.keys(tmpAlliances).length;
+        if (_tmpAllianceCount != _alliancesInJson) {
+            _alliancesInJson = _tmpAllianceCount;
+            await logger.log("alliances in data json: " + _tmpAllianceCount);
+        }
         let tmpPlayers = require('./../../data.js').players;
-        await logger.log("players in data json: " + Object.keys(tmpPlayers).length);
+        let _tmpPlayerCount = Object.keys(tmpPlayers).length;
+        if (_tmpPlayerCount != _playersInJson) {
+            _playersInJson = _tmpPlayerCount;
+            await logger.log("players in data json: " + _tmpPlayerCount);
+        }
         allAlliancesInJSON = true;
         waitAndNextCheck();
     }
