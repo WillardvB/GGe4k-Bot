@@ -36,7 +36,6 @@ module.exports = {
         }
         gebouwnaam = gebouwnaam.trim().toLowerCase();
         let _mogelijkeGebouwnamen = ["Zaal der legenden"];
-        let _output = "null";
         let foundBuildingName = "<Not found>";
         for (let _intern_buildingName in translationData.buildings_and_decorations) {
             if (translationData.buildings_and_decorations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
@@ -70,27 +69,60 @@ module.exports = {
                 content: "Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:",
                 components: [_messageActionRow]
             });
-            return;408-338
+            return;
         }
+        let _output = "null";
         foundBuildingName = foundBuildingName.split('_name')[0];
         if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
         if (foundBuildingName.startsWith('deco_')) foundBuildingName = foundBuildingName.substring(5);
+        let minLevel = 100;
+        let maxLevel = -1;
         for (let _building in buildingData) {
             if (buildingData[_building].name.toLowerCase() === foundBuildingName) {
-                _output = JSON.stringify(buildingData[_building]);
+                let _tmp_lvl = parseInt(buildingData[_building].level);
+                if (_tmp_lvl < minLevel) minLevel = _tmp_lvl;
+                if (_tmp_lvl > maxLevel) maxLevel = _tmp_lvl;
+            }
+            else if (buildingData[_building].type.toLowerCase() === foundBuildingName) {
+                let _tmp_lvl = parseInt(buildingData[_building].level);
+                if (_tmp_lvl < minLevel) minLevel = _tmp_lvl;
+                if (_tmp_lvl > maxLevel) maxLevel = _tmp_lvl;
             }
         }
+        level = Math.min(Math.max(level, minLevel), maxLevel).toString();
         for (let _building in buildingData) {
-            if (buildingData[_building].type.toLowerCase() === foundBuildingName) {
-                _output = JSON.stringify(buildingData[_building]);
+            if (buildingData[_building].name.toLowerCase() === foundBuildingName) {
+                if (buildingData[_building].level === level) {
+                    _output = buildingData[_building];
+                    break;
+                }
+            }
+            else if (buildingData[_building].type.toLowerCase() === foundBuildingName) {
+                if (buildingData[_building].level === level) {
+                    _output = buildingData[_building];
+                    break;
+                }
             }
         }
+        if (_output === "null") _output = "Er is iets misgegaan! Dit zou niet voor moeten komen.";
+        else _output = JSON.stringify(_output);
         if (interaction.options) {
             interaction.followUp({ content: _output });
         } else {
             interaction.editReply({ content: _output });
         }
         return;
+        /*
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         */
         const rows = await googleSheetsData.gebouwData();
         if (rows.length) {
             let gebouwGevonden = false;
