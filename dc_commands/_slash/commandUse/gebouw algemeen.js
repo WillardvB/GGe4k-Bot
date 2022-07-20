@@ -71,10 +71,18 @@ module.exports = {
             });
             return;
         }
-        let _output = "null";
-        foundBuildingName = foundBuildingName.split('_name')[0];
+        foundBuildingName = foundBuildingName.split('_name')[0].toLowerCase();
         if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
         if (foundBuildingName.startsWith('deco_')) foundBuildingName = foundBuildingName.substring(5);
+        //Guard, deco etc hoe dat te handelen?
+        /*
+         *
+         * 
+         * 
+         * 
+         * 
+         * 
+         */
         let minLevel = 100;
         let maxLevel = -1;
         for (let _building in buildingData) {
@@ -90,75 +98,36 @@ module.exports = {
             }
         }
         level = Math.min(Math.max(level, minLevel), maxLevel).toString();
+        let data = null;
         for (let _building in buildingData) {
             if (buildingData[_building].name.toLowerCase() === foundBuildingName) {
                 if (buildingData[_building].level === level) {
-                    _output = buildingData[_building];
+                    data = buildingData[_building];
                     break;
                 }
             }
             else if (buildingData[_building].type.toLowerCase() === foundBuildingName) {
                 if (buildingData[_building].level === level) {
-                    _output = buildingData[_building];
+                    data = buildingData[_building];
                     break;
                 }
             }
         }
-        if (_output === "null") _output = "Er is iets misgegaan! Dit zou niet voor moeten komen.";
-        else _output = JSON.stringify(_output);
-        if (interaction.options) {
-            interaction.followUp({ content: _output });
-        } else {
-            interaction.editReply({ content: _output });
-        }
-        return;
-        /*
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         */
-        const rows = await googleSheetsData.gebouwData();
-        if (rows.length) {
-            let gebouwGevonden = false;
-            let levelGevonden = false;
-            let hoogsteLevel = 1;
-            let laagsteLevel = 550;
-            let rij;
-            rows.map(row => {
-                if (row[1].toLowerCase() == gebouwnaam) {
-                    gebouwGevonden = true;
-                    gebouwGeweest = true;
-                    laagsteLevel = Math.max(1, Math.min(laagsteLevel, row[12]));
-                    hoogsteLevel = Math.max(hoogsteLevel, row[12]);
-                    if (row[12] == level) {
-                        levelGevonden = true;
-                        rij = [...row];
-                    }
-                }
-                else if (levelGevonden && gebouwGeweest) {
-                    gebouwGeweest = false;
-                    return naarOutput(interaction, rij, level, laagsteLevel, hoogsteLevel);
-                }
-            })
-            if (levelGevonden) {
-                return;
-            }
-            if (gebouwGevonden) {
-                interaction.followUp({ content: "geef een level tussen `" + laagsteLevel + "` en `" + hoogsteLevel + "`", ephemeral: true })
-            } else {
-                interaction.followUp({ content: "geef een geldige nederlandse gebouwnaam", ephemeral: true });
-            }
-        }
+        naarOutput(interaction, data, min, max);
     },
 };
 
-function naarOutput(interaction, row, level, min, max) {
+function naarOutput(interaction, data, minLevel, maxLevel) {
+    let title = `**${GetBuildingName(data)}** (level ${data.level})`;
+    let embed = new MessageEmbed()
+        .setColor('#996515')
+        .setTimestamp()
+        .setFooter(footerTekst, footerAfbeelding)
+        .setTitle(title)
+        //.setDescription(row[156])
+        //.setThumbnail(row[0])
+    return;
+    //#region old code
     let levelString = " (level " + level + ")";
     var embed = new MessageEmbed()
         .setColor('#996515')
@@ -236,4 +205,31 @@ function naarOutput(interaction, row, level, min, max) {
     } else {
         interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
     }
+    //#endregion
+}
+
+/**
+ * 
+ * @param {object} data
+ */
+function GetBuildingName(data) {
+    let dataName = data.name.toLowerCase();
+    let dataType = data.type?.toLowerCase();
+    let dataGroup = data.group?.toLowerCase();
+    if (dataName === "legendtemple") {
+        return translationData.dialogs.dialog_legendtemple_name;
+    }
+    else {
+        let _keys = Object.keys(translationData.buildings_and_decorations);
+        if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_name` })) {
+            return translationData.buildings_and_decorations[dataName + "_name"];
+        }
+        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataType}_name` })) {
+            return translationData.buildings_and_decorations[`${dataName}_${dataType}_name`];
+        }
+        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataGroup}_name` })) {
+            return translationData.buildings_and_decorations[`${dataName}_${dataGroup}_name`];
+        }
+    }
+    return data.name;
 }
