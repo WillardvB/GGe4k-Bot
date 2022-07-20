@@ -127,6 +127,7 @@ module.exports = {
 function naarOutput(interaction, data, minLevel, maxLevel) {
     let level = data.level;
     let gebouwNaam = GetBuildingName(data);
+    let description = GetBuildingDescription(data);
     let title = `**${gebouwNaam}** (level ${level})`;
 
     let embed = new MessageEmbed()
@@ -134,8 +135,8 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         .setTimestamp()
         .setFooter(footerTekst, footerAfbeelding)
         .setTitle(title)
-        //.setDescription(row[156])
         //.setThumbnail(row[0])
+    if (description !== "") embed.setDescription(description);
 
     const _messageActionRow = new MessageActionRow();
     if (level > minLevel) {
@@ -257,7 +258,7 @@ function GetBuildingName(data) {
     else {
         let _keys = Object.keys(translationData.buildings_and_decorations);
         if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_name` })) {
-            return translationData.buildings_and_decorations[dataName + "_name"];
+            return translationData.buildings_and_decorations[`${dataName}_name`];
         }
         else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataType}_name` })) {
             return translationData.buildings_and_decorations[`${dataName}_${dataType}_name`];
@@ -267,4 +268,30 @@ function GetBuildingName(data) {
         }
     }
     return data.name;
+}
+
+/**
+ * 
+ * @param {object} data
+ */
+function GetBuildingDescription(data) {
+    let dataName = data.name.toLowerCase();
+    let dataType = data.type?.toLowerCase();
+    let dataGroup = data.group?.toLowerCase();
+    if (dataName === "legendtemple") {
+        return translationData.dialogs.dialog_legendtemple_shortInfo;
+    }
+    else {
+        let _keys = Object.keys(translationData.buildings_and_decorations);
+        if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_short_info` })) {
+            return translationData.buildings_and_decorations[`${dataName}_short_info`];
+        }
+        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataType}_short_info` })) {
+            return translationData.buildings_and_decorations[`${dataName}_${dataType}_short_info`];
+        }
+        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataGroup}_short_info` })) {
+            return translationData.buildings_and_decorations[`${dataName}_${dataGroup}_short_info`];
+        }
+    }
+    return "";
 }
