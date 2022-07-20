@@ -1,4 +1,5 @@
 const Socket = require('node:net').Socket;
+const { connect } = require('node:tls');
 const e4kServerData = require('./data.js');
 
 let connected = false;
@@ -45,6 +46,7 @@ module.exports = {
     onSuccessfulLogin() {
         require('./commands/pingpong.js').execute();
         require('./commands/searchAllianceById.js').execute(0);
+        fetch("https://media.goodgamestudios.com/loader/empirefourkingdoms").then(res => console.log(res)).catch(e => { console.log("[ERROR] " + e) });
     },
     socket: _socket,
     connected: connected,

@@ -1,4 +1,5 @@
 const { Client, User } = require("discord.js");
+const ErrorText = '\x1b[31m[ERROR]\x1b[0m ';
 
 /** @type User */
 let logChannel;
@@ -23,7 +24,7 @@ module.exports = {
             try {
                 if (!(msg.startsWith("Unknown xt command: ") || msg.startsWith("Unknown sys command: ")))
                     await logChannel.send({ content: "[ERROR]" + msg });
-                console.log('\x1b[31m[ERROR]\x1b[0m' + msg);
+                console.log(ErrorText + msg);
                 resolve();
             } catch (e) {
                 await this.logError(e);
