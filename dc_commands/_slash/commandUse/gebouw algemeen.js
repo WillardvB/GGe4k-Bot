@@ -37,7 +37,7 @@ module.exports = {
         let _output = "null";
         let foundBuildingName = "<Not found>";
         for (let _intern_buildingName in translationData.buildings_and_decorations) {
-            if (buildingTranslationData[_intern_buildingName].toLowerCase().trim() == gebouwnaam) {
+            if (translationData.buildings_and_decorations[_intern_buildingName].toLowerCase().trim() == gebouwnaam) {
                 foundBuildingName = _intern_buildingName;
                 break;
             }
