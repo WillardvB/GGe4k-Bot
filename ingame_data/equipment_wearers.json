@@ -1,0 +1,12 @@
+{
+  "1": {
+    "wearerID": "1",
+    "dropRate": "47",
+    "name": "baron"
+  },
+  "2": {
+    "wearerID": "2",
+    "dropRate": "53",
+    "name": "general"
+  }
+}

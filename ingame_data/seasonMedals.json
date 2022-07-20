@@ -1,0 +1,44 @@
+{
+  "1": {
+    "medalID": "1",
+    "type": "goldMedal",
+    "minHighscoreRank": "1",
+    "medalPoints": "1000"
+  },
+  "2": {
+    "medalID": "2",
+    "type": "silverMedal",
+    "minHighscoreRank": "2",
+    "medalPoints": "950"
+  },
+  "3": {
+    "medalID": "3",
+    "type": "bronzeMedal",
+    "minHighscoreRank": "3",
+    "medalPoints": "850"
+  },
+  "4": {
+    "medalID": "4",
+    "type": "glasMedal",
+    "minHighscoreRank": "4",
+    "medalPoints": "700"
+  },
+  "5": {
+    "medalID": "5",
+    "type": "copperMedal",
+    "minHighscoreRank": "5",
+    "medalPoints": "500"
+  },
+  "6": {
+    "medalID": "6",
+    "type": "stoneMedal",
+    "minHighscoreRank": "6",
+    "medalPoints": "300"
+  },
+  "7": {
+    "medalID": "7",
+    "type": "woodMedal",
+    "minHighscoreRank": "7",
+    "medalPoints": "100"
+  }
+}

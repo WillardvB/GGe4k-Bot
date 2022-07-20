@@ -1,0 +1,14 @@
+{
+  "1": {
+    "currencyID": "1",
+    "taskType": "spendKhanTablets"
+  },
+  "2": {
+    "currencyID": "7",
+    "taskType": "spendSamuraiTokens"
+  },
+  "3": {
+    "currencyID": "10",
+    "taskType": "spendKhanMedals"
+  }
+}

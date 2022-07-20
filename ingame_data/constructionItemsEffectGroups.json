@@ -1,0 +1,222 @@
+{
+  "1": {
+    "constructionItemEffectGroupID": "1",
+    "constructionItemGroupID": "1",
+    "areaLimit": "1"
+  },
+  "2": {
+    "constructionItemEffectGroupID": "2",
+    "constructionItemGroupID": "2",
+    "areaLimit": "1"
+  },
+  "3": {
+    "constructionItemEffectGroupID": "3",
+    "constructionItemGroupID": "3",
+    "areaLimit": "1"
+  },
+  "4": {
+    "constructionItemEffectGroupID": "4",
+    "constructionItemGroupID": "4",
+    "areaLimit": "1"
+  },
+  "5": {
+    "constructionItemEffectGroupID": "5",
+    "constructionItemGroupID": "5",
+    "areaLimit": "1"
+  },
+  "6": {
+    "constructionItemEffectGroupID": "6",
+    "constructionItemGroupID": "6",
+    "areaLimit": "1"
+  },
+  "7": {
+    "constructionItemEffectGroupID": "7",
+    "constructionItemGroupID": "7",
+    "areaLimit": "15"
+  },
+  "8": {
+    "constructionItemEffectGroupID": "8",
+    "constructionItemGroupID": "8",
+    "areaLimit": "15"
+  },
+  "9": {
+    "constructionItemEffectGroupID": "9",
+    "constructionItemGroupID": "9",
+    "areaLimit": "15"
+  },
+  "10": {
+    "constructionItemEffectGroupID": "10",
+    "constructionItemGroupID": "10",
+    "areaLimit": "15"
+  },
+  "11": {
+    "constructionItemEffectGroupID": "11",
+    "constructionItemGroupID": "11",
+    "areaLimit": "15"
+  },
+  "12": {
+    "constructionItemEffectGroupID": "12",
+    "constructionItemGroupID": "12",
+    "areaLimit": "15"
+  },
+  "13": {
+    "constructionItemEffectGroupID": "14",
+    "constructionItemGroupID": "14",
+    "areaLimit": "15"
+  },
+  "14": {
+    "constructionItemEffectGroupID": "15",
+    "constructionItemGroupID": "15",
+    "areaLimit": "15"
+  },
+  "15": {
+    "constructionItemEffectGroupID": "17",
+    "constructionItemGroupID": "17",
+    "areaLimit": "1"
+  },
+  "16": {
+    "constructionItemEffectGroupID": "19",
+    "constructionItemGroupID": "19",
+    "areaLimit": "5"
+  },
+  "17": {
+    "constructionItemEffectGroupID": "20",
+    "constructionItemGroupID": "20",
+    "areaLimit": "5"
+  },
+  "18": {
+    "constructionItemEffectGroupID": "21",
+    "constructionItemGroupID": "21",
+    "areaLimit": "3"
+  },
+  "19": {
+    "constructionItemEffectGroupID": "22",
+    "constructionItemGroupID": "22",
+    "areaLimit": "1"
+  },
+  "20": {
+    "constructionItemEffectGroupID": "23",
+    "constructionItemGroupID": "23",
+    "areaLimit": "1"
+  },
+  "21": {
+    "constructionItemEffectGroupID": "24",
+    "constructionItemGroupID": "24",
+    "areaLimit": "1"
+  },
+  "22": {
+    "constructionItemEffectGroupID": "25",
+    "constructionItemGroupID": "25",
+    "areaLimit": "3"
+  },
+  "23": {
+    "constructionItemEffectGroupID": "26",
+    "constructionItemGroupID": "26",
+    "areaLimit": "1"
+  },
+  "24": {
+    "constructionItemEffectGroupID": "27",
+    "constructionItemGroupID": "27",
+    "areaLimit": "1"
+  },
+  "25": {
+    "constructionItemEffectGroupID": "29",
+    "constructionItemGroupID": "29",
+    "areaLimit": "1"
+  },
+  "26": {
+    "constructionItemEffectGroupID": "30",
+    "constructionItemGroupID": "30",
+    "areaLimit": "1"
+  },
+  "27": {
+    "constructionItemEffectGroupID": "28",
+    "constructionItemGroupID": "28",
+    "areaLimit": "100"
+  },
+  "28": {
+    "constructionItemEffectGroupID": "31",
+    "constructionItemGroupID": "32+33",
+    "areaLimit": "1"
+  },
+  "29": {
+    "constructionItemEffectGroupID": "32",
+    "constructionItemGroupID": "34+35",
+    "areaLimit": "20"
+  },
+  "30": {
+    "constructionItemEffectGroupID": "33",
+    "constructionItemGroupID": "36+37",
+    "areaLimit": "10"
+  },
+  "31": {
+    "constructionItemEffectGroupID": "34",
+    "constructionItemGroupID": "38",
+    "areaLimit": "1"
+  },
+  "32": {
+    "constructionItemEffectGroupID": "35",
+    "constructionItemGroupID": "39",
+    "areaLimit": "1"
+  },
+  "33": {
+    "constructionItemEffectGroupID": "36",
+    "constructionItemGroupID": "40",
+    "areaLimit": "1"
+  },
+  "34": {
+    "constructionItemEffectGroupID": "37",
+    "constructionItemGroupID": "41",
+    "areaLimit": "2"
+  },
+  "35": {
+    "constructionItemEffectGroupID": "38",
+    "constructionItemGroupID": "42",
+    "areaLimit": "2"
+  },
+  "36": {
+    "constructionItemEffectGroupID": "43",
+    "constructionItemGroupID": "43",
+    "areaLimit": "10"
+  },
+  "37": {
+    "constructionItemEffectGroupID": "44",
+    "constructionItemGroupID": "44",
+    "areaLimit": "10"
+  },
+  "38": {
+    "constructionItemEffectGroupID": "39",
+    "constructionItemGroupID": "45",
+    "areaLimit": "10"
+  },
+  "39": {
+    "constructionItemEffectGroupID": "40",
+    "constructionItemGroupID": "46",
+    "areaLimit": "10"
+  },
+  "40": {
+    "constructionItemEffectGroupID": "41",
+    "constructionItemGroupID": "47",
+    "areaLimit": "1"
+  },
+  "41": {
+    "constructionItemEffectGroupID": "42",
+    "constructionItemGroupID": "48",
+    "areaLimit": "1"
+  },
+  "42": {
+    "constructionItemEffectGroupID": "49",
+    "constructionItemGroupID": "49",
+    "areaLimit": "1"
+  },
+  "43": {
+    "constructionItemEffectGroupID": "50",
+    "constructionItemGroupID": "50",
+    "areaLimit": "1"
+  },
+  "44": {
+    "constructionItemEffectGroupID": "51",
+    "constructionItemGroupID": "51",
+    "areaLimit": "100"
+  }
+}

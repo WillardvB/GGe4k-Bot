@@ -1,0 +1,37 @@
+{
+  "1": {
+    "id": "1",
+    "categoryID": "101",
+    "currencyID": "35"
+  },
+  "2": {
+    "id": "2",
+    "categoryID": "102",
+    "currencyID": "36"
+  },
+  "3": {
+    "id": "3",
+    "categoryID": "103",
+    "currencyID": "37"
+  },
+  "4": {
+    "id": "4",
+    "categoryID": "104",
+    "currencyID": "50"
+  },
+  "5": {
+    "id": "5",
+    "categoryID": "105",
+    "currencyID": "51"
+  },
+  "6": {
+    "id": "6",
+    "categoryID": "106",
+    "currencyID": "52"
+  },
+  "7": {
+    "id": "7",
+    "categoryID": "107",
+    "currencyID": "53"
+  }
+}

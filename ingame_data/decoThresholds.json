@@ -1,0 +1,44 @@
+{
+  "1": {
+    "decoLevelID": "1",
+    "eventID": "44",
+    "decoWodID": "342",
+    "MinPoints": "1"
+  },
+  "2": {
+    "decoLevelID": "2",
+    "eventID": "44",
+    "decoWodID": "342",
+    "MinPoints": "140"
+  },
+  "3": {
+    "decoLevelID": "3",
+    "eventID": "44",
+    "decoWodID": "342",
+    "MinPoints": "215"
+  },
+  "4": {
+    "decoLevelID": "1",
+    "eventID": "55",
+    "decoWodID": "391",
+    "MinPoints": "1"
+  },
+  "5": {
+    "decoLevelID": "2",
+    "eventID": "55",
+    "decoWodID": "391",
+    "MinPoints": "140"
+  },
+  "6": {
+    "decoLevelID": "3",
+    "eventID": "55",
+    "decoWodID": "391",
+    "MinPoints": "200"
+  },
+  "7": {
+    "decoLevelID": "4",
+    "eventID": "55",
+    "decoWodID": "391",
+    "MinPoints": "230"
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "1": {
+    "entryID": "1",
+    "tombolaID": "1",
+    "rewardCategory": "Common",
+    "rewardIDs": "50000,50001",
+    "shares": "2500"
+  },
+  "2": {
+    "entryID": "2",
+    "tombolaID": "1",
+    "rewardCategory": "Common",
+    "rewardIDs": "50002",
+    "shares": "1250"
+  },
+  "3": {
+    "entryID": "3",
+    "tombolaID": "1",
+    "rewardCategory": "Common",
+    "rewardIDs": "50003",
+    "shares": "1000"
+  },
+  "4": {
+    "entryID": "4",
+    "tombolaID": "1",
+    "rewardCategory": "Common",
+    "rewardIDs": "50004",
+    "shares": "2500"
+  },
+  "5": {
+    "entryID": "5",
+    "tombolaID": "1",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50005",
+    "shares": "800"
+  },
+  "6": {
+    "entryID": "6",
+    "tombolaID": "1",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50006,50007,50008",
+    "shares": "650"
+  },
+  "7": {
+    "entryID": "7",
+    "tombolaID": "1",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50009",
+    "shares": "800"
+  },
+  "8": {
+    "entryID": "8",
+    "tombolaID": "1",
+    "rewardCategory": "Epic",
+    "rewardIDs": "50010",
+    "shares": "200"
+  },
+  "9": {
+    "entryID": "9",
+    "tombolaID": "1",
+    "rewardCategory": "Epic",
+    "rewardIDs": "50011",
+    "shares": "250"
+  },
+  "10": {
+    "entryID": "10",
+    "tombolaID": "1",
+    "rewardCategory": "Legendary",
+    "rewardIDs": "50012",
+    "shares": "50"
+  },
+  "11": {
+    "entryID": "11",
+    "tombolaID": "2",
+    "rewardCategory": "Common",
+    "rewardIDs": "50013,50014",
+    "shares": "1450"
+  },
+  "12": {
+    "entryID": "12",
+    "tombolaID": "2",
+    "rewardCategory": "Common",
+    "rewardIDs": "50015,50016,50017",
+    "shares": "1000"
+  },
+  "13": {
+    "entryID": "13",
+    "tombolaID": "2",
+    "rewardCategory": "Common",
+    "rewardIDs": "50018",
+    "shares": "1350"
+  },
+  "14": {
+    "entryID": "14",
+    "tombolaID": "2",
+    "rewardCategory": "Common",
+    "rewardIDs": "50019",
+    "shares": "1150"
+  },
+  "15": {
+    "entryID": "15",
+    "tombolaID": "2",
+    "rewardCategory": "Common",
+    "rewardIDs": "50020",
+    "shares": "1950"
+  },
+  "16": {
+    "entryID": "16",
+    "tombolaID": "2",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50021,50022",
+    "shares": "550"
+  },
+  "17": {
+    "entryID": "17",
+    "tombolaID": "2",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50023",
+    "shares": "675"
+  },
+  "18": {
+    "entryID": "18",
+    "tombolaID": "2",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50024",
+    "shares": "650"
+  },
+  "19": {
+    "entryID": "19",
+    "tombolaID": "2",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50025",
+    "shares": "575"
+  },
+  "20": {
+    "entryID": "20",
+    "tombolaID": "2",
+    "rewardCategory": "Epic",
+    "rewardIDs": "50026",
+    "shares": "250"
+  },
+  "21": {
+    "entryID": "21",
+    "tombolaID": "2",
+    "rewardCategory": "Epic",
+    "rewardIDs": "50027",
+    "shares": "300"
+  },
+  "22": {
+    "entryID": "22",
+    "tombolaID": "2",
+    "rewardCategory": "Legendary",
+    "rewardIDs": "50028",
+    "shares": "100"
+  },
+  "23": {
+    "entryID": "23",
+    "tombolaID": "3",
+    "rewardCategory": "Common",
+    "rewardIDs": "50029,50030",
+    "shares": "1300"
+  },
+  "24": {
+    "entryID": "24",
+    "tombolaID": "3",
+    "rewardCategory": "Common",
+    "rewardIDs": "50031,50032,50033",
+    "shares": "1100"
+  },
+  "25": {
+    "entryID": "25",
+    "tombolaID": "3",
+    "rewardCategory": "Common",
+    "rewardIDs": "50034",
+    "shares": "1300"
+  },
+  "26": {
+    "entryID": "26",
+    "tombolaID": "3",
+    "rewardCategory": "Common",
+    "rewardIDs": "50035",
+    "shares": "1000"
+  },
+  "27": {
+    "entryID": "27",
+    "tombolaID": "3",
+    "rewardCategory": "Common",
+    "rewardIDs": "50036",
+    "shares": "1800"
+  },
+  "28": {
+    "entryID": "28",
+    "tombolaID": "3",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50037,50038,50039",
+    "shares": "500"
+  },
+  "29": {
+    "entryID": "29",
+    "tombolaID": "3",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50040",
+    "shares": "700"
+  },
+  "30": {
+    "entryID": "30",
+    "tombolaID": "3",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50041",
+    "shares": "700"
+  },
+  "31": {
+    "entryID": "31",
+    "tombolaID": "3",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50042",
+    "shares": "750"
+  },
+  "32": {
+    "entryID": "32",
+    "tombolaID": "3",
+    "rewardCategory": "Epic",
+    "rewardIDs": "50043",
+    "shares": "200"
+  },
+  "33": {
+    "entryID": "33",
+    "tombolaID": "3",
+    "rewardCategory": "Epic",
+    "rewardIDs": "50044",
+    "shares": "215"
+  },
+  "34": {
+    "entryID": "34",
+    "tombolaID": "3",
+    "rewardCategory": "Epic",
+    "rewardIDs": "50045",
+    "shares": "235"
+  },
+  "35": {
+    "entryID": "35",
+    "tombolaID": "3",
+    "rewardCategory": "Legendary",
+    "rewardIDs": "50046",
+    "shares": "95"
+  },
+  "36": {
+    "entryID": "36",
+    "tombolaID": "3",
+    "rewardCategory": "Legendary",
+    "rewardIDs": "50047",
+    "shares": "105"
+  },
+  "37": {
+    "entryID": "37",
+    "tombolaID": "4",
+    "rewardCategory": "Common",
+    "rewardIDs": "50048",
+    "shares": "1300"
+  },
+  "38": {
+    "entryID": "38",
+    "tombolaID": "4",
+    "rewardCategory": "Common",
+    "rewardIDs": "50049",
+    "shares": "1300"
+  },
+  "39": {
+    "entryID": "39",
+    "tombolaID": "4",
+    "rewardCategory": "Common",
+    "rewardIDs": "50050",
+    "shares": "1300"
+  },
+  "40": {
+    "entryID": "40",
+    "tombolaID": "4",
+    "rewardCategory": "Common",
+    "rewardIDs": "50051",
+    "shares": "550"
+  },
+  "41": {
+    "entryID": "41",
+    "tombolaID": "4",
+    "rewardCategory": "Common",
+    "rewardIDs": "50052",
+    "shares": "550"
+  },
+  "42": {
+    "entryID": "42",
+    "tombolaID": "4",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50053",
+    "shares": "975"
+  },
+  "43": {
+    "entryID": "43",
+    "tombolaID": "4",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50054",
+    "shares": "575"
+  },
+  "44": {
+    "entryID": "44",
+    "tombolaID": "4",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50055",
+    "shares": "975"
+  },
+  "45": {
+    "entryID": "45",
+    "tombolaID": "4",
+    "rewardCategory": "Rare",
+    "rewardIDs": "50056",
+    "shares": "975"
+  },
+  "46": {
+    "entryID": "46",
+    "tombolaID": "4",
+    "rewardCategory": "Epic",
+    "rewardIDs": "50057",
+    "shares": "1000"
+  },
+  "47": {
+    "entryID": "47",
+    "tombolaID": "4",
+    "rewardCategory": "Legendary",
+    "rewardIDs": "50058",
+    "shares": "500"
+  }
+}

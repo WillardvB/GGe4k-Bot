@@ -1,0 +1,368 @@
+{
+  "1": {
+    "levelUpPriceID": "10",
+    "fromLevel": "10",
+    "toLevel": "11",
+    "c2Cost": "490"
+  },
+  "2": {
+    "levelUpPriceID": "11",
+    "fromLevel": "11",
+    "toLevel": "12",
+    "c2Cost": "590"
+  },
+  "3": {
+    "levelUpPriceID": "12",
+    "fromLevel": "12",
+    "toLevel": "13",
+    "c2Cost": "690"
+  },
+  "4": {
+    "levelUpPriceID": "13",
+    "fromLevel": "13",
+    "toLevel": "14",
+    "c2Cost": "790"
+  },
+  "5": {
+    "levelUpPriceID": "14",
+    "fromLevel": "14",
+    "toLevel": "15",
+    "c2Cost": "910"
+  },
+  "6": {
+    "levelUpPriceID": "15",
+    "fromLevel": "15",
+    "toLevel": "16",
+    "c2Cost": "1040"
+  },
+  "7": {
+    "levelUpPriceID": "16",
+    "fromLevel": "16",
+    "toLevel": "17",
+    "c2Cost": "1170"
+  },
+  "8": {
+    "levelUpPriceID": "17",
+    "fromLevel": "17",
+    "toLevel": "18",
+    "c2Cost": "1310"
+  },
+  "9": {
+    "levelUpPriceID": "18",
+    "fromLevel": "18",
+    "toLevel": "19",
+    "c2Cost": "1460"
+  },
+  "10": {
+    "levelUpPriceID": "19",
+    "fromLevel": "19",
+    "toLevel": "20",
+    "c2Cost": "1610"
+  },
+  "11": {
+    "levelUpPriceID": "20",
+    "fromLevel": "20",
+    "toLevel": "21",
+    "c2Cost": "1780"
+  },
+  "12": {
+    "levelUpPriceID": "21",
+    "fromLevel": "21",
+    "toLevel": "22",
+    "c2Cost": "1990"
+  },
+  "13": {
+    "levelUpPriceID": "22",
+    "fromLevel": "22",
+    "toLevel": "23",
+    "c2Cost": "2140"
+  },
+  "14": {
+    "levelUpPriceID": "23",
+    "fromLevel": "23",
+    "toLevel": "24",
+    "c2Cost": "2340"
+  },
+  "15": {
+    "levelUpPriceID": "24",
+    "fromLevel": "24",
+    "toLevel": "25",
+    "c2Cost": "2530"
+  },
+  "16": {
+    "levelUpPriceID": "25",
+    "fromLevel": "25",
+    "toLevel": "26",
+    "c2Cost": "2740"
+  },
+  "17": {
+    "levelUpPriceID": "26",
+    "fromLevel": "26",
+    "toLevel": "27",
+    "c2Cost": "2950"
+  },
+  "18": {
+    "levelUpPriceID": "27",
+    "fromLevel": "27",
+    "toLevel": "28",
+    "c2Cost": "3180"
+  },
+  "19": {
+    "levelUpPriceID": "28",
+    "fromLevel": "28",
+    "toLevel": "29",
+    "c2Cost": "3410"
+  },
+  "20": {
+    "levelUpPriceID": "29",
+    "fromLevel": "29",
+    "toLevel": "30",
+    "c2Cost": "3650"
+  },
+  "21": {
+    "levelUpPriceID": "30",
+    "fromLevel": "30",
+    "toLevel": "31",
+    "c2Cost": "3900"
+  },
+  "22": {
+    "levelUpPriceID": "31",
+    "fromLevel": "31",
+    "toLevel": "32",
+    "c2Cost": "4160"
+  },
+  "23": {
+    "levelUpPriceID": "32",
+    "fromLevel": "32",
+    "toLevel": "33",
+    "c2Cost": "4430"
+  },
+  "24": {
+    "levelUpPriceID": "33",
+    "fromLevel": "33",
+    "toLevel": "34",
+    "c2Cost": "4710"
+  },
+  "25": {
+    "levelUpPriceID": "34",
+    "fromLevel": "34",
+    "toLevel": "35",
+    "c2Cost": "4990"
+  },
+  "26": {
+    "levelUpPriceID": "35",
+    "fromLevel": "35",
+    "toLevel": "36",
+    "c2Cost": "5280"
+  },
+  "27": {
+    "levelUpPriceID": "36",
+    "fromLevel": "36",
+    "toLevel": "37",
+    "c2Cost": "5590"
+  },
+  "28": {
+    "levelUpPriceID": "37",
+    "fromLevel": "37",
+    "toLevel": "38",
+    "c2Cost": "5900"
+  },
+  "29": {
+    "levelUpPriceID": "38",
+    "fromLevel": "38",
+    "toLevel": "39",
+    "c2Cost": "6210"
+  },
+  "30": {
+    "levelUpPriceID": "39",
+    "fromLevel": "39",
+    "toLevel": "40",
+    "c2Cost": "6550"
+  },
+  "31": {
+    "levelUpPriceID": "40",
+    "fromLevel": "40",
+    "toLevel": "41",
+    "c2Cost": "6880"
+  },
+  "32": {
+    "levelUpPriceID": "41",
+    "fromLevel": "41",
+    "toLevel": "42",
+    "c2Cost": "7230"
+  },
+  "33": {
+    "levelUpPriceID": "42",
+    "fromLevel": "42",
+    "toLevel": "43",
+    "c2Cost": "7580"
+  },
+  "34": {
+    "levelUpPriceID": "43",
+    "fromLevel": "43",
+    "toLevel": "44",
+    "c2Cost": "7940"
+  },
+  "35": {
+    "levelUpPriceID": "44",
+    "fromLevel": "44",
+    "toLevel": "45",
+    "c2Cost": "8310"
+  },
+  "36": {
+    "levelUpPriceID": "45",
+    "fromLevel": "45",
+    "toLevel": "46",
+    "c2Cost": "8690"
+  },
+  "37": {
+    "levelUpPriceID": "46",
+    "fromLevel": "46",
+    "toLevel": "47",
+    "c2Cost": "9070"
+  },
+  "38": {
+    "levelUpPriceID": "47",
+    "fromLevel": "47",
+    "toLevel": "48",
+    "c2Cost": "9470"
+  },
+  "39": {
+    "levelUpPriceID": "48",
+    "fromLevel": "48",
+    "toLevel": "49",
+    "c2Cost": "9870"
+  },
+  "40": {
+    "levelUpPriceID": "49",
+    "fromLevel": "49",
+    "toLevel": "50",
+    "c2Cost": "10290"
+  },
+  "41": {
+    "levelUpPriceID": "50",
+    "fromLevel": "50",
+    "toLevel": "51",
+    "c2Cost": "10710"
+  },
+  "42": {
+    "levelUpPriceID": "51",
+    "fromLevel": "51",
+    "toLevel": "52",
+    "c2Cost": "11140"
+  },
+  "43": {
+    "levelUpPriceID": "52",
+    "fromLevel": "52",
+    "toLevel": "53",
+    "c2Cost": "11570"
+  },
+  "44": {
+    "levelUpPriceID": "53",
+    "fromLevel": "53",
+    "toLevel": "54",
+    "c2Cost": "12020"
+  },
+  "45": {
+    "levelUpPriceID": "54",
+    "fromLevel": "54",
+    "toLevel": "55",
+    "c2Cost": "12480"
+  },
+  "46": {
+    "levelUpPriceID": "55",
+    "fromLevel": "55",
+    "toLevel": "56",
+    "c2Cost": "12940"
+  },
+  "47": {
+    "levelUpPriceID": "56",
+    "fromLevel": "56",
+    "toLevel": "57",
+    "c2Cost": "13410"
+  },
+  "48": {
+    "levelUpPriceID": "57",
+    "fromLevel": "57",
+    "toLevel": "58",
+    "c2Cost": "13890"
+  },
+  "49": {
+    "levelUpPriceID": "58",
+    "fromLevel": "58",
+    "toLevel": "59",
+    "c2Cost": "14380"
+  },
+  "50": {
+    "levelUpPriceID": "59",
+    "fromLevel": "59",
+    "toLevel": "60",
+    "c2Cost": "14880"
+  },
+  "51": {
+    "levelUpPriceID": "60",
+    "fromLevel": "60",
+    "toLevel": "61",
+    "c2Cost": "15380"
+  },
+  "52": {
+    "levelUpPriceID": "61",
+    "fromLevel": "61",
+    "toLevel": "62",
+    "c2Cost": "15900"
+  },
+  "53": {
+    "levelUpPriceID": "62",
+    "fromLevel": "62",
+    "toLevel": "63",
+    "c2Cost": "16420"
+  },
+  "54": {
+    "levelUpPriceID": "63",
+    "fromLevel": "63",
+    "toLevel": "64",
+    "c2Cost": "16950"
+  },
+  "55": {
+    "levelUpPriceID": "64",
+    "fromLevel": "64",
+    "toLevel": "65",
+    "c2Cost": "17490"
+  },
+  "56": {
+    "levelUpPriceID": "65",
+    "fromLevel": "65",
+    "toLevel": "66",
+    "c2Cost": "18040"
+  },
+  "57": {
+    "levelUpPriceID": "66",
+    "fromLevel": "66",
+    "toLevel": "67",
+    "c2Cost": "18590"
+  },
+  "58": {
+    "levelUpPriceID": "67",
+    "fromLevel": "67",
+    "toLevel": "68",
+    "c2Cost": "19160"
+  },
+  "59": {
+    "levelUpPriceID": "68",
+    "fromLevel": "68",
+    "toLevel": "69",
+    "c2Cost": "19730"
+  },
+  "60": {
+    "levelUpPriceID": "69",
+    "fromLevel": "69",
+    "toLevel": "70",
+    "c2Cost": "20300"
+  },
+  "61": {
+    "levelUpPriceID": "70",
+    "fromLevel": "70",
+    "toLevel": "71",
+    "c2Cost": "20900"
+  }
+}

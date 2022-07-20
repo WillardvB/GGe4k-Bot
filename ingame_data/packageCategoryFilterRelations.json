@@ -1,0 +1,1016 @@
+{
+  "1": {
+    "relationID": "1",
+    "categoryID": "1",
+    "filterID": "1",
+    "subFilterID": "1"
+  },
+  "2": {
+    "relationID": "2",
+    "categoryID": "1",
+    "filterID": "1",
+    "subFilterID": "2"
+  },
+  "3": {
+    "relationID": "3",
+    "categoryID": "1",
+    "filterID": "1",
+    "subFilterID": "3"
+  },
+  "4": {
+    "relationID": "4",
+    "categoryID": "1",
+    "filterID": "1",
+    "subFilterID": "4"
+  },
+  "5": {
+    "relationID": "5",
+    "categoryID": "1",
+    "filterID": "1",
+    "subFilterID": "5"
+  },
+  "6": {
+    "relationID": "6",
+    "categoryID": "1",
+    "filterID": "1",
+    "subFilterID": "6"
+  },
+  "7": {
+    "relationID": "7",
+    "categoryID": "1",
+    "filterID": "1",
+    "subFilterID": "7"
+  },
+  "8": {
+    "relationID": "8",
+    "categoryID": "1",
+    "filterID": "2",
+    "subFilterID": "8"
+  },
+  "9": {
+    "relationID": "9",
+    "categoryID": "1",
+    "filterID": "2",
+    "subFilterID": "9"
+  },
+  "10": {
+    "relationID": "10",
+    "categoryID": "1",
+    "filterID": "4"
+  },
+  "11": {
+    "relationID": "11",
+    "categoryID": "1",
+    "filterID": "5"
+  },
+  "12": {
+    "relationID": "12",
+    "categoryID": "1",
+    "filterID": "6"
+  },
+  "13": {
+    "relationID": "13",
+    "categoryID": "1",
+    "filterID": "7",
+    "subFilterID": "10"
+  },
+  "14": {
+    "relationID": "14",
+    "categoryID": "1",
+    "filterID": "7",
+    "subFilterID": "11"
+  },
+  "15": {
+    "relationID": "50",
+    "categoryID": "10",
+    "filterID": "2",
+    "subFilterID": "8"
+  },
+  "16": {
+    "relationID": "51",
+    "categoryID": "10",
+    "filterID": "2",
+    "subFilterID": "9"
+  },
+  "17": {
+    "relationID": "52",
+    "categoryID": "10",
+    "filterID": "2",
+    "subFilterID": "20"
+  },
+  "18": {
+    "relationID": "53",
+    "categoryID": "10",
+    "filterID": "6"
+  },
+  "19": {
+    "relationID": "54",
+    "categoryID": "10",
+    "filterID": "7",
+    "subFilterID": "10"
+  },
+  "20": {
+    "relationID": "55",
+    "categoryID": "10",
+    "filterID": "7",
+    "subFilterID": "11"
+  },
+  "21": {
+    "relationID": "100",
+    "categoryID": "20",
+    "filterID": "20",
+    "subFilterID": "32"
+  },
+  "22": {
+    "relationID": "101",
+    "categoryID": "20",
+    "filterID": "20",
+    "subFilterID": "33"
+  },
+  "23": {
+    "relationID": "102",
+    "categoryID": "20",
+    "filterID": "21",
+    "subFilterID": "30"
+  },
+  "24": {
+    "relationID": "103",
+    "categoryID": "20",
+    "filterID": "21",
+    "subFilterID": "31"
+  },
+  "25": {
+    "relationID": "150",
+    "categoryID": "30",
+    "filterID": "20",
+    "subFilterID": "32"
+  },
+  "26": {
+    "relationID": "151",
+    "categoryID": "30",
+    "filterID": "20",
+    "subFilterID": "33"
+  },
+  "27": {
+    "relationID": "152",
+    "categoryID": "30",
+    "filterID": "21",
+    "subFilterID": "40"
+  },
+  "28": {
+    "relationID": "153",
+    "categoryID": "30",
+    "filterID": "21",
+    "subFilterID": "41"
+  },
+  "29": {
+    "relationID": "154",
+    "categoryID": "30",
+    "filterID": "21",
+    "subFilterID": "42"
+  },
+  "30": {
+    "relationID": "155",
+    "categoryID": "30",
+    "filterID": "21",
+    "subFilterID": "43"
+  },
+  "31": {
+    "relationID": "156",
+    "categoryID": "30",
+    "filterID": "21",
+    "subFilterID": "44"
+  },
+  "32": {
+    "relationID": "157",
+    "categoryID": "30",
+    "filterID": "21",
+    "subFilterID": "45"
+  },
+  "33": {
+    "relationID": "158",
+    "categoryID": "30",
+    "filterID": "21",
+    "subFilterID": "46"
+  },
+  "34": {
+    "relationID": "159",
+    "categoryID": "30",
+    "filterID": "21",
+    "subFilterID": "47"
+  },
+  "35": {
+    "relationID": "200",
+    "categoryID": "40",
+    "filterID": "41",
+    "subFilterID": "50"
+  },
+  "36": {
+    "relationID": "201",
+    "categoryID": "40",
+    "filterID": "41",
+    "subFilterID": "51"
+  },
+  "37": {
+    "relationID": "202",
+    "categoryID": "40",
+    "filterID": "40"
+  },
+  "38": {
+    "relationID": "250",
+    "categoryID": "50",
+    "filterID": "60",
+    "subFilterID": "60"
+  },
+  "39": {
+    "relationID": "251",
+    "categoryID": "50",
+    "filterID": "60",
+    "subFilterID": "61"
+  },
+  "40": {
+    "relationID": "257",
+    "categoryID": "50",
+    "filterID": "60",
+    "subFilterID": "67"
+  },
+  "41": {
+    "relationID": "252",
+    "categoryID": "50",
+    "filterID": "61",
+    "subFilterID": "62"
+  },
+  "42": {
+    "relationID": "253",
+    "categoryID": "50",
+    "filterID": "61",
+    "subFilterID": "63"
+  },
+  "43": {
+    "relationID": "254",
+    "categoryID": "50",
+    "filterID": "61",
+    "subFilterID": "64"
+  },
+  "44": {
+    "relationID": "255",
+    "categoryID": "50",
+    "filterID": "61",
+    "subFilterID": "65"
+  },
+  "45": {
+    "relationID": "256",
+    "categoryID": "50",
+    "filterID": "61",
+    "subFilterID": "66"
+  },
+  "46": {
+    "relationID": "300",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "80"
+  },
+  "47": {
+    "relationID": "301",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "81"
+  },
+  "48": {
+    "relationID": "302",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "82"
+  },
+  "49": {
+    "relationID": "303",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "83"
+  },
+  "50": {
+    "relationID": "304",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "84"
+  },
+  "51": {
+    "relationID": "305",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "85"
+  },
+  "52": {
+    "relationID": "306",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "86"
+  },
+  "53": {
+    "relationID": "307",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "87"
+  },
+  "54": {
+    "relationID": "308",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "7"
+  },
+  "55": {
+    "relationID": "309",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "88"
+  },
+  "56": {
+    "relationID": "310",
+    "categoryID": "60",
+    "filterID": "80",
+    "subFilterID": "89"
+  },
+  "57": {
+    "relationID": "1001",
+    "categoryID": "101",
+    "filterID": "1",
+    "subFilterID": "1"
+  },
+  "58": {
+    "relationID": "1002",
+    "categoryID": "101",
+    "filterID": "1",
+    "subFilterID": "2"
+  },
+  "59": {
+    "relationID": "1003",
+    "categoryID": "101",
+    "filterID": "1",
+    "subFilterID": "3"
+  },
+  "60": {
+    "relationID": "1004",
+    "categoryID": "101",
+    "filterID": "1",
+    "subFilterID": "4"
+  },
+  "61": {
+    "relationID": "1005",
+    "categoryID": "101",
+    "filterID": "1",
+    "subFilterID": "5"
+  },
+  "62": {
+    "relationID": "1006",
+    "categoryID": "101",
+    "filterID": "1",
+    "subFilterID": "6"
+  },
+  "63": {
+    "relationID": "1007",
+    "categoryID": "101",
+    "filterID": "1",
+    "subFilterID": "7"
+  },
+  "64": {
+    "relationID": "1008",
+    "categoryID": "101",
+    "filterID": "2",
+    "subFilterID": "8"
+  },
+  "65": {
+    "relationID": "1009",
+    "categoryID": "101",
+    "filterID": "2",
+    "subFilterID": "9"
+  },
+  "66": {
+    "relationID": "1010",
+    "categoryID": "101",
+    "filterID": "4"
+  },
+  "67": {
+    "relationID": "1011",
+    "categoryID": "101",
+    "filterID": "5"
+  },
+  "68": {
+    "relationID": "1012",
+    "categoryID": "101",
+    "filterID": "6"
+  },
+  "69": {
+    "relationID": "1013",
+    "categoryID": "101",
+    "filterID": "7",
+    "subFilterID": "10"
+  },
+  "70": {
+    "relationID": "1014",
+    "categoryID": "101",
+    "filterID": "7",
+    "subFilterID": "11"
+  },
+  "71": {
+    "relationID": "1050",
+    "categoryID": "101",
+    "filterID": "2",
+    "subFilterID": "8"
+  },
+  "72": {
+    "relationID": "1051",
+    "categoryID": "101",
+    "filterID": "2",
+    "subFilterID": "9"
+  },
+  "73": {
+    "relationID": "1052",
+    "categoryID": "101",
+    "filterID": "2",
+    "subFilterID": "20"
+  },
+  "74": {
+    "relationID": "1053",
+    "categoryID": "101",
+    "filterID": "6"
+  },
+  "75": {
+    "relationID": "1054",
+    "categoryID": "101",
+    "filterID": "7",
+    "subFilterID": "10"
+  },
+  "76": {
+    "relationID": "1055",
+    "categoryID": "101",
+    "filterID": "7",
+    "subFilterID": "11"
+  },
+  "77": {
+    "relationID": "1100",
+    "categoryID": "101",
+    "filterID": "20",
+    "subFilterID": "32"
+  },
+  "78": {
+    "relationID": "1101",
+    "categoryID": "101",
+    "filterID": "20",
+    "subFilterID": "33"
+  },
+  "79": {
+    "relationID": "1102",
+    "categoryID": "101",
+    "filterID": "21",
+    "subFilterID": "30"
+  },
+  "80": {
+    "relationID": "1103",
+    "categoryID": "101",
+    "filterID": "21",
+    "subFilterID": "31"
+  },
+  "81": {
+    "relationID": "1150",
+    "categoryID": "101",
+    "filterID": "20",
+    "subFilterID": "32"
+  },
+  "82": {
+    "relationID": "1151",
+    "categoryID": "101",
+    "filterID": "20",
+    "subFilterID": "33"
+  },
+  "83": {
+    "relationID": "1152",
+    "categoryID": "101",
+    "filterID": "21",
+    "subFilterID": "40"
+  },
+  "84": {
+    "relationID": "1153",
+    "categoryID": "101",
+    "filterID": "21",
+    "subFilterID": "41"
+  },
+  "85": {
+    "relationID": "1154",
+    "categoryID": "101",
+    "filterID": "21",
+    "subFilterID": "42"
+  },
+  "86": {
+    "relationID": "1155",
+    "categoryID": "101",
+    "filterID": "21",
+    "subFilterID": "43"
+  },
+  "87": {
+    "relationID": "1156",
+    "categoryID": "101",
+    "filterID": "21",
+    "subFilterID": "44"
+  },
+  "88": {
+    "relationID": "1157",
+    "categoryID": "101",
+    "filterID": "21",
+    "subFilterID": "45"
+  },
+  "89": {
+    "relationID": "1158",
+    "categoryID": "101",
+    "filterID": "21",
+    "subFilterID": "46"
+  },
+  "90": {
+    "relationID": "1159",
+    "categoryID": "101",
+    "filterID": "21",
+    "subFilterID": "47"
+  },
+  "91": {
+    "relationID": "1200",
+    "categoryID": "101",
+    "filterID": "40"
+  },
+  "92": {
+    "relationID": "1201",
+    "categoryID": "101",
+    "filterID": "41"
+  },
+  "93": {
+    "relationID": "1250",
+    "categoryID": "101",
+    "filterID": "60",
+    "subFilterID": "60"
+  },
+  "94": {
+    "relationID": "1251",
+    "categoryID": "101",
+    "filterID": "60",
+    "subFilterID": "61"
+  },
+  "95": {
+    "relationID": "1252",
+    "categoryID": "101",
+    "filterID": "61",
+    "subFilterID": "62"
+  },
+  "96": {
+    "relationID": "1253",
+    "categoryID": "101",
+    "filterID": "61",
+    "subFilterID": "63"
+  },
+  "97": {
+    "relationID": "1254",
+    "categoryID": "101",
+    "filterID": "61",
+    "subFilterID": "64"
+  },
+  "98": {
+    "relationID": "1255",
+    "categoryID": "101",
+    "filterID": "61",
+    "subFilterID": "65"
+  },
+  "99": {
+    "relationID": "1256",
+    "categoryID": "101",
+    "filterID": "61",
+    "subFilterID": "66"
+  },
+  "100": {
+    "relationID": "1300",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "80"
+  },
+  "101": {
+    "relationID": "1301",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "81"
+  },
+  "102": {
+    "relationID": "1302",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "82"
+  },
+  "103": {
+    "relationID": "1303",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "83"
+  },
+  "104": {
+    "relationID": "1304",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "84"
+  },
+  "105": {
+    "relationID": "1305",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "85"
+  },
+  "106": {
+    "relationID": "1306",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "86"
+  },
+  "107": {
+    "relationID": "1307",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "87"
+  },
+  "108": {
+    "relationID": "1308",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "7"
+  },
+  "109": {
+    "relationID": "1309",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "88"
+  },
+  "110": {
+    "relationID": "1310",
+    "categoryID": "101",
+    "filterID": "80",
+    "subFilterID": "89"
+  },
+  "111": {
+    "relationID": "1999",
+    "categoryID": "101",
+    "filterID": "99"
+  },
+  "112": {
+    "relationID": "2001",
+    "categoryID": "102",
+    "filterID": "1",
+    "subFilterID": "1"
+  },
+  "113": {
+    "relationID": "2002",
+    "categoryID": "102",
+    "filterID": "1",
+    "subFilterID": "2"
+  },
+  "114": {
+    "relationID": "2003",
+    "categoryID": "102",
+    "filterID": "1",
+    "subFilterID": "3"
+  },
+  "115": {
+    "relationID": "2004",
+    "categoryID": "102",
+    "filterID": "1",
+    "subFilterID": "4"
+  },
+  "116": {
+    "relationID": "2005",
+    "categoryID": "102",
+    "filterID": "1",
+    "subFilterID": "5"
+  },
+  "117": {
+    "relationID": "2006",
+    "categoryID": "102",
+    "filterID": "1",
+    "subFilterID": "6"
+  },
+  "118": {
+    "relationID": "2007",
+    "categoryID": "102",
+    "filterID": "1",
+    "subFilterID": "7"
+  },
+  "119": {
+    "relationID": "2008",
+    "categoryID": "102",
+    "filterID": "2",
+    "subFilterID": "8"
+  },
+  "120": {
+    "relationID": "2009",
+    "categoryID": "102",
+    "filterID": "2",
+    "subFilterID": "9"
+  },
+  "121": {
+    "relationID": "2010",
+    "categoryID": "102",
+    "filterID": "4"
+  },
+  "122": {
+    "relationID": "2011",
+    "categoryID": "102",
+    "filterID": "5"
+  },
+  "123": {
+    "relationID": "2012",
+    "categoryID": "102",
+    "filterID": "6"
+  },
+  "124": {
+    "relationID": "2013",
+    "categoryID": "102",
+    "filterID": "7",
+    "subFilterID": "10"
+  },
+  "125": {
+    "relationID": "2014",
+    "categoryID": "102",
+    "filterID": "7",
+    "subFilterID": "11"
+  },
+  "126": {
+    "relationID": "2050",
+    "categoryID": "102",
+    "filterID": "2",
+    "subFilterID": "8"
+  },
+  "127": {
+    "relationID": "2051",
+    "categoryID": "102",
+    "filterID": "2",
+    "subFilterID": "9"
+  },
+  "128": {
+    "relationID": "2052",
+    "categoryID": "102",
+    "filterID": "2",
+    "subFilterID": "20"
+  },
+  "129": {
+    "relationID": "2053",
+    "categoryID": "102",
+    "filterID": "6"
+  },
+  "130": {
+    "relationID": "2054",
+    "categoryID": "102",
+    "filterID": "7",
+    "subFilterID": "10"
+  },
+  "131": {
+    "relationID": "2055",
+    "categoryID": "102",
+    "filterID": "7",
+    "subFilterID": "11"
+  },
+  "132": {
+    "relationID": "2100",
+    "categoryID": "102",
+    "filterID": "20",
+    "subFilterID": "32"
+  },
+  "133": {
+    "relationID": "2101",
+    "categoryID": "102",
+    "filterID": "20",
+    "subFilterID": "33"
+  },
+  "134": {
+    "relationID": "2102",
+    "categoryID": "102",
+    "filterID": "21",
+    "subFilterID": "30"
+  },
+  "135": {
+    "relationID": "2103",
+    "categoryID": "102",
+    "filterID": "21",
+    "subFilterID": "31"
+  },
+  "136": {
+    "relationID": "2150",
+    "categoryID": "102",
+    "filterID": "20",
+    "subFilterID": "32"
+  },
+  "137": {
+    "relationID": "2151",
+    "categoryID": "102",
+    "filterID": "20",
+    "subFilterID": "33"
+  },
+  "138": {
+    "relationID": "2152",
+    "categoryID": "102",
+    "filterID": "21",
+    "subFilterID": "40"
+  },
+  "139": {
+    "relationID": "2153",
+    "categoryID": "102",
+    "filterID": "21",
+    "subFilterID": "41"
+  },
+  "140": {
+    "relationID": "2154",
+    "categoryID": "102",
+    "filterID": "21",
+    "subFilterID": "42"
+  },
+  "141": {
+    "relationID": "2155",
+    "categoryID": "102",
+    "filterID": "21",
+    "subFilterID": "43"
+  },
+  "142": {
+    "relationID": "2156",
+    "categoryID": "102",
+    "filterID": "21",
+    "subFilterID": "44"
+  },
+  "143": {
+    "relationID": "2157",
+    "categoryID": "102",
+    "filterID": "21",
+    "subFilterID": "45"
+  },
+  "144": {
+    "relationID": "2158",
+    "categoryID": "102",
+    "filterID": "21",
+    "subFilterID": "46"
+  },
+  "145": {
+    "relationID": "2159",
+    "categoryID": "102",
+    "filterID": "21",
+    "subFilterID": "47"
+  },
+  "146": {
+    "relationID": "2200",
+    "categoryID": "102",
+    "filterID": "40"
+  },
+  "147": {
+    "relationID": "2201",
+    "categoryID": "102",
+    "filterID": "41"
+  },
+  "148": {
+    "relationID": "2250",
+    "categoryID": "102",
+    "filterID": "60",
+    "subFilterID": "60"
+  },
+  "149": {
+    "relationID": "2251",
+    "categoryID": "102",
+    "filterID": "60",
+    "subFilterID": "61"
+  },
+  "150": {
+    "relationID": "2252",
+    "categoryID": "102",
+    "filterID": "61",
+    "subFilterID": "62"
+  },
+  "151": {
+    "relationID": "2253",
+    "categoryID": "102",
+    "filterID": "61",
+    "subFilterID": "63"
+  },
+  "152": {
+    "relationID": "2254",
+    "categoryID": "102",
+    "filterID": "61",
+    "subFilterID": "64"
+  },
+  "153": {
+    "relationID": "2255",
+    "categoryID": "102",
+    "filterID": "61",
+    "subFilterID": "65"
+  },
+  "154": {
+    "relationID": "2256",
+    "categoryID": "102",
+    "filterID": "61",
+    "subFilterID": "66"
+  },
+  "155": {
+    "relationID": "2300",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "80"
+  },
+  "156": {
+    "relationID": "2301",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "81"
+  },
+  "157": {
+    "relationID": "2302",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "82"
+  },
+  "158": {
+    "relationID": "2303",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "83"
+  },
+  "159": {
+    "relationID": "2304",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "84"
+  },
+  "160": {
+    "relationID": "2305",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "85"
+  },
+  "161": {
+    "relationID": "2306",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "86"
+  },
+  "162": {
+    "relationID": "2307",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "87"
+  },
+  "163": {
+    "relationID": "2308",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "7"
+  },
+  "164": {
+    "relationID": "2309",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "88"
+  },
+  "165": {
+    "relationID": "2310",
+    "categoryID": "102",
+    "filterID": "80",
+    "subFilterID": "89"
+  },
+  "166": {
+    "relationID": "2999",
+    "categoryID": "102",
+    "filterID": "99"
+  },
+  "167": {
+    "relationID": "400",
+    "categoryID": "101"
+  },
+  "168": {
+    "relationID": "401",
+    "categoryID": "102"
+  },
+  "169": {
+    "relationID": "402",
+    "categoryID": "103"
+  },
+  "170": {
+    "relationID": "403",
+    "categoryID": "104"
+  },
+  "171": {
+    "relationID": "404",
+    "categoryID": "105"
+  },
+  "172": {
+    "relationID": "405",
+    "categoryID": "106"
+  },
+  "173": {
+    "relationID": "406",
+    "categoryID": "107"
+  },
+  "174": {
+    "relationID": "407",
+    "categoryID": "108"
+  },
+  "175": {
+    "relationID": "999",
+    "categoryID": "99",
+    "filterID": "99"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "1": {
+    "id": "0",
+    "chance": "14.4",
+    "category": "Jackpot"
+  },
+  "2": {
+    "id": "1",
+    "chance": "30.6",
+    "category": "Tools"
+  },
+  "3": {
+    "id": "2",
+    "chance": "15",
+    "category": "Tickets"
+  },
+  "4": {
+    "id": "3",
+    "chance": "10",
+    "category": "Items"
+  },
+  "5": {
+    "id": "4",
+    "chance": "30",
+    "category": "Units"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "1": {
+    "tempServerDailyTaskRewardID": "1",
+    "minDailyTaskPointsPerDay": "5",
+    "rewardID": "2643"
+  },
+  "2": {
+    "tempServerDailyTaskRewardID": "2",
+    "minDailyTaskPointsPerDay": "10",
+    "rewardID": "2644"
+  },
+  "3": {
+    "tempServerDailyTaskRewardID": "3",
+    "minDailyTaskPointsPerDay": "15",
+    "rewardID": "2645"
+  },
+  "4": {
+    "tempServerDailyTaskRewardID": "4",
+    "minDailyTaskPointsPerDay": "35",
+    "rewardID": "2646"
+  },
+  "5": {
+    "tempServerDailyTaskRewardID": "5",
+    "minDailyTaskPointsPerDay": "40",
+    "rewardID": "2647"
+  }
+}

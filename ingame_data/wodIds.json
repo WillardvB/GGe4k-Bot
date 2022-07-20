@@ -1,0 +1,312 @@
+{
+  "1": {
+    "wodID": "900",
+    "group": "Mapobject",
+    "name": "Castle",
+    "type": "-",
+    "kIDs": "0,1,2,3,4",
+    "server": "0",
+    "block": "0",
+    "width": "0",
+    "height": "0"
+  },
+  "2": {
+    "wodID": "1000",
+    "group": "Mapobject",
+    "name": "Dungeon",
+    "type": "Level1",
+    "kIDs": "0,1,2,3,4",
+    "server": "0",
+    "block": "0",
+    "width": "0",
+    "height": "0"
+  },
+  "3": {
+    "wodID": "1100",
+    "group": "Mapobject",
+    "name": "Outpost",
+    "type": "Stone",
+    "kIDs": "0,1,2,3,4",
+    "server": "0",
+    "block": "0",
+    "width": "0",
+    "height": "0"
+  },
+  "4": {
+    "wodID": "1101",
+    "group": "Mapobject",
+    "name": "Outpost",
+    "type": "Wood",
+    "kIDs": "0,1,2,3,4",
+    "server": "0",
+    "block": "0",
+    "width": "0",
+    "height": "0"
+  },
+  "5": {
+    "wodID": "1102",
+    "group": "Mapobject",
+    "name": "Outpost",
+    "type": "Field",
+    "kIDs": "0,1,2,3,4",
+    "server": "0",
+    "block": "0",
+    "width": "0",
+    "height": "0"
+  },
+  "6": {
+    "wodID": "1200",
+    "group": "Mapobject",
+    "name": "Capital",
+    "type": "Basic",
+    "kIDs": "0,1,2,3,4",
+    "server": "0",
+    "block": "0",
+    "width": "0",
+    "height": "0"
+  },
+  "7": {
+    "wodID": "1300",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Bush1x1_1",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "8": {
+    "wodID": "1301",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Bush1x1_2",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "9": {
+    "wodID": "1302",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Bush1x2",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "2"
+  },
+  "10": {
+    "wodID": "1303",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Bush2x1",
+    "server": "1",
+    "block": "0",
+    "width": "2",
+    "height": "1"
+  },
+  "11": {
+    "wodID": "1304",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Bush2x2",
+    "server": "1",
+    "block": "0",
+    "width": "2",
+    "height": "2"
+  },
+  "12": {
+    "wodID": "1305",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Forest2x2",
+    "server": "1",
+    "block": "0",
+    "width": "2",
+    "height": "2"
+  },
+  "13": {
+    "wodID": "1306",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Gras1x1",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "14": {
+    "wodID": "1307",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Gras2x2",
+    "server": "1",
+    "block": "0",
+    "width": "2",
+    "height": "2"
+  },
+  "15": {
+    "wodID": "1308",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Gras3x1",
+    "server": "1",
+    "block": "0",
+    "width": "3",
+    "height": "1"
+  },
+  "16": {
+    "wodID": "1309",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Hill1x1_1",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "17": {
+    "wodID": "1310",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Hill1x1_2",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "18": {
+    "wodID": "1311",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Hill2x1",
+    "server": "1",
+    "block": "0",
+    "width": "2",
+    "height": "1"
+  },
+  "19": {
+    "wodID": "1312",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Mountain1x1_1",
+    "server": "1",
+    "block": "1",
+    "width": "1",
+    "height": "1"
+  },
+  "20": {
+    "wodID": "1313",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Mountain1x1_2",
+    "server": "1",
+    "block": "1",
+    "width": "1",
+    "height": "1"
+  },
+  "21": {
+    "wodID": "1314",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Mountain2x2",
+    "server": "1",
+    "block": "1",
+    "width": "2",
+    "height": "2"
+  },
+  "22": {
+    "wodID": "1315",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Wood1x1_1",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "23": {
+    "wodID": "1316",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Wood1x1_2",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "24": {
+    "wodID": "1317",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Wood1x1_3",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "25": {
+    "wodID": "1318",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Wood1x1_4",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "26": {
+    "wodID": "1319",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Wood1x1_5",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "27": {
+    "wodID": "1320",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Stonehead1x1",
+    "kIDs": "10",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "28": {
+    "wodID": "1321",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Ruin1x1",
+    "kIDs": "10",
+    "server": "1",
+    "block": "0",
+    "width": "1",
+    "height": "1"
+  },
+  "29": {
+    "wodID": "1322",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Ruin2x1_1",
+    "kIDs": "10",
+    "server": "1",
+    "block": "0",
+    "width": "2",
+    "height": "1"
+  },
+  "30": {
+    "wodID": "1323",
+    "group": "Mapobject",
+    "name": "Empty",
+    "type": "Ruin2x1_2",
+    "kIDs": "10",
+    "server": "1",
+    "block": "0",
+    "width": "2",
+    "height": "1"
+  }
+}

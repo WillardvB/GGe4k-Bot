@@ -1,0 +1,52 @@
+{
+  "1": {
+    "rankID": "0",
+    "rankRightName": "RANK_LEADER",
+    "rerankRight": "3"
+  },
+  "2": {
+    "rankID": "1",
+    "rankRightName": "RANK_COLEADER",
+    "rerankRight": "0"
+  },
+  "3": {
+    "rankID": "2",
+    "rankRightName": "RANK_MARSHAL",
+    "rerankRight": "4"
+  },
+  "4": {
+    "rankID": "3",
+    "rankRightName": "RANK_TREASURER",
+    "rerankRight": "4"
+  },
+  "5": {
+    "rankID": "4",
+    "rankRightName": "RANK_DIPLOMAT",
+    "rerankRight": "4"
+  },
+  "6": {
+    "rankID": "5",
+    "rankRightName": "RANK_RECRUITER",
+    "rerankRight": "4"
+  },
+  "7": {
+    "rankID": "6",
+    "rankRightName": "RANK_GENERAL",
+    "rerankRight": "4"
+  },
+  "8": {
+    "rankID": "7",
+    "rankRightName": "RANK_SERGEANT",
+    "rerankRight": "5"
+  },
+  "9": {
+    "rankID": "8",
+    "rankRightName": "RANK_MEMBER",
+    "rerankRight": "10"
+  },
+  "10": {
+    "rankID": "9",
+    "rankRightName": "RANK_APPLICANT",
+    "rerankRight": "10"
+  }
+}

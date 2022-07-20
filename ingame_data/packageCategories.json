@@ -1,0 +1,70 @@
+{
+  "1": {
+    "categoryID": "1",
+    "name": "Equipment"
+  },
+  "2": {
+    "categoryID": "10",
+    "name": "Gems"
+  },
+  "3": {
+    "categoryID": "20",
+    "name": "Troops"
+  },
+  "4": {
+    "categoryID": "30",
+    "name": "Tools"
+  },
+  "5": {
+    "categoryID": "40",
+    "name": "Buildings"
+  },
+  "6": {
+    "categoryID": "50",
+    "name": "Construction items"
+  },
+  "7": {
+    "categoryID": "60",
+    "name": "Resources"
+  },
+  "8": {
+    "categoryID": "99",
+    "name": "Misc"
+  },
+  "9": {
+    "categoryID": "101",
+    "name": "GoldCurrency"
+  },
+  "10": {
+    "categoryID": "102",
+    "name": "SilverCurrency"
+  },
+  "11": {
+    "categoryID": "103",
+    "name": "BronzeCurrency"
+  },
+  "12": {
+    "categoryID": "104",
+    "name": "AnniversaryToken"
+  },
+  "13": {
+    "categoryID": "105",
+    "name": "XmasLTPEToken"
+  },
+  "14": {
+    "categoryID": "106",
+    "name": "SpringLTPEToken"
+  },
+  "15": {
+    "categoryID": "107",
+    "name": "NewKingLTPEToken"
+  },
+  "16": {
+    "categoryID": "108",
+    "name": "LotusFlowerLTPEToken"
+  },
+  "17": {
+    "categoryID": "999",
+    "name": "Overall"
+  }
+}

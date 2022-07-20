@@ -1,0 +1,367 @@
+{
+  "1": {
+    "saleDaysWheelDropID": "1",
+    "rewardIDs": "6251",
+    "minLevel": "70",
+    "maxLegendLevel": "664",
+    "NormalDrop": "750"
+  },
+  "2": {
+    "saleDaysWheelDropID": "2",
+    "rewardIDs": "6252",
+    "minLevel": "70",
+    "maxLegendLevel": "664",
+    "NormalDrop": "750"
+  },
+  "3": {
+    "saleDaysWheelDropID": "3",
+    "rewardIDs": "6253",
+    "minLevel": "70",
+    "maxLegendLevel": "664",
+    "NormalDrop": "750"
+  },
+  "4": {
+    "saleDaysWheelDropID": "4",
+    "rewardIDs": "6254",
+    "minLevel": "70",
+    "maxLegendLevel": "664",
+    "NormalDrop": "750"
+  },
+  "5": {
+    "saleDaysWheelDropID": "22",
+    "rewardIDs": "6255",
+    "minLevel": "70",
+    "minLegendLevel": "665",
+    "maxLegendLevel": "669",
+    "NormalDrop": "750"
+  },
+  "6": {
+    "saleDaysWheelDropID": "23",
+    "rewardIDs": "6256",
+    "minLevel": "70",
+    "minLegendLevel": "665",
+    "maxLegendLevel": "669",
+    "NormalDrop": "750"
+  },
+  "7": {
+    "saleDaysWheelDropID": "24",
+    "rewardIDs": "6257",
+    "minLevel": "70",
+    "minLegendLevel": "665",
+    "maxLegendLevel": "669",
+    "NormalDrop": "750"
+  },
+  "8": {
+    "saleDaysWheelDropID": "25",
+    "rewardIDs": "6258",
+    "minLevel": "70",
+    "minLegendLevel": "665",
+    "maxLegendLevel": "669",
+    "NormalDrop": "750"
+  },
+  "9": {
+    "saleDaysWheelDropID": "26",
+    "rewardIDs": "6259",
+    "minLevel": "70",
+    "minLegendLevel": "670",
+    "maxLegendLevel": "684",
+    "NormalDrop": "750"
+  },
+  "10": {
+    "saleDaysWheelDropID": "27",
+    "rewardIDs": "6260",
+    "minLevel": "70",
+    "minLegendLevel": "670",
+    "maxLegendLevel": "684",
+    "NormalDrop": "750"
+  },
+  "11": {
+    "saleDaysWheelDropID": "28",
+    "rewardIDs": "6261",
+    "minLevel": "70",
+    "minLegendLevel": "670",
+    "maxLegendLevel": "684",
+    "NormalDrop": "750"
+  },
+  "12": {
+    "saleDaysWheelDropID": "29",
+    "rewardIDs": "6262",
+    "minLevel": "70",
+    "minLegendLevel": "670",
+    "maxLegendLevel": "684",
+    "NormalDrop": "750"
+  },
+  "13": {
+    "saleDaysWheelDropID": "30",
+    "rewardIDs": "6263",
+    "minLevel": "70",
+    "minLegendLevel": "685",
+    "maxLegendLevel": "694",
+    "NormalDrop": "750"
+  },
+  "14": {
+    "saleDaysWheelDropID": "31",
+    "rewardIDs": "6264",
+    "minLevel": "70",
+    "minLegendLevel": "685",
+    "maxLegendLevel": "694",
+    "NormalDrop": "750"
+  },
+  "15": {
+    "saleDaysWheelDropID": "32",
+    "rewardIDs": "6265",
+    "minLevel": "70",
+    "minLegendLevel": "685",
+    "maxLegendLevel": "694",
+    "NormalDrop": "750"
+  },
+  "16": {
+    "saleDaysWheelDropID": "33",
+    "rewardIDs": "6266",
+    "minLevel": "70",
+    "minLegendLevel": "685",
+    "maxLegendLevel": "694",
+    "NormalDrop": "750"
+  },
+  "17": {
+    "saleDaysWheelDropID": "34",
+    "rewardIDs": "5185",
+    "minLevel": "70",
+    "minLegendLevel": "695",
+    "maxLegendLevel": "704",
+    "NormalDrop": "750"
+  },
+  "18": {
+    "saleDaysWheelDropID": "35",
+    "rewardIDs": "5186",
+    "minLevel": "70",
+    "minLegendLevel": "695",
+    "maxLegendLevel": "704",
+    "NormalDrop": "750"
+  },
+  "19": {
+    "saleDaysWheelDropID": "36",
+    "rewardIDs": "5187",
+    "minLevel": "70",
+    "minLegendLevel": "695",
+    "maxLegendLevel": "704",
+    "NormalDrop": "750"
+  },
+  "20": {
+    "saleDaysWheelDropID": "37",
+    "rewardIDs": "5188",
+    "minLevel": "70",
+    "minLegendLevel": "695",
+    "maxLegendLevel": "704",
+    "NormalDrop": "750"
+  },
+  "21": {
+    "saleDaysWheelDropID": "38",
+    "rewardIDs": "6267",
+    "minLevel": "70",
+    "minLegendLevel": "705",
+    "maxLegendLevel": "714",
+    "NormalDrop": "750"
+  },
+  "22": {
+    "saleDaysWheelDropID": "39",
+    "rewardIDs": "6268",
+    "minLevel": "70",
+    "minLegendLevel": "705",
+    "maxLegendLevel": "714",
+    "NormalDrop": "750"
+  },
+  "23": {
+    "saleDaysWheelDropID": "40",
+    "rewardIDs": "6269",
+    "minLevel": "70",
+    "minLegendLevel": "705",
+    "maxLegendLevel": "714",
+    "NormalDrop": "750"
+  },
+  "24": {
+    "saleDaysWheelDropID": "41",
+    "rewardIDs": "6270",
+    "minLevel": "70",
+    "minLegendLevel": "705",
+    "maxLegendLevel": "714",
+    "NormalDrop": "750"
+  },
+  "25": {
+    "saleDaysWheelDropID": "42",
+    "rewardIDs": "6271",
+    "minLevel": "70",
+    "minLegendLevel": "715",
+    "maxLegendLevel": "724",
+    "NormalDrop": "750"
+  },
+  "26": {
+    "saleDaysWheelDropID": "43",
+    "rewardIDs": "6272",
+    "minLevel": "70",
+    "minLegendLevel": "715",
+    "maxLegendLevel": "724",
+    "NormalDrop": "750"
+  },
+  "27": {
+    "saleDaysWheelDropID": "44",
+    "rewardIDs": "6273",
+    "minLevel": "70",
+    "minLegendLevel": "715",
+    "maxLegendLevel": "724",
+    "NormalDrop": "750"
+  },
+  "28": {
+    "saleDaysWheelDropID": "45",
+    "rewardIDs": "6274",
+    "minLevel": "70",
+    "minLegendLevel": "715",
+    "maxLegendLevel": "724",
+    "NormalDrop": "750"
+  },
+  "29": {
+    "saleDaysWheelDropID": "46",
+    "rewardIDs": "6275",
+    "minLevel": "70",
+    "minLegendLevel": "725",
+    "maxLegendLevel": "734",
+    "NormalDrop": "750"
+  },
+  "30": {
+    "saleDaysWheelDropID": "47",
+    "rewardIDs": "6276",
+    "minLevel": "70",
+    "minLegendLevel": "725",
+    "maxLegendLevel": "734",
+    "NormalDrop": "750"
+  },
+  "31": {
+    "saleDaysWheelDropID": "48",
+    "rewardIDs": "6277",
+    "minLevel": "70",
+    "minLegendLevel": "725",
+    "maxLegendLevel": "734",
+    "NormalDrop": "750"
+  },
+  "32": {
+    "saleDaysWheelDropID": "49",
+    "rewardIDs": "6278",
+    "minLevel": "70",
+    "minLegendLevel": "725",
+    "maxLegendLevel": "734",
+    "NormalDrop": "750"
+  },
+  "33": {
+    "saleDaysWheelDropID": "50",
+    "rewardIDs": "6279",
+    "minLevel": "70",
+    "minLegendLevel": "735",
+    "NormalDrop": "750"
+  },
+  "34": {
+    "saleDaysWheelDropID": "51",
+    "rewardIDs": "6280",
+    "minLevel": "70",
+    "minLegendLevel": "735",
+    "NormalDrop": "750"
+  },
+  "35": {
+    "saleDaysWheelDropID": "52",
+    "rewardIDs": "6281",
+    "minLevel": "70",
+    "minLegendLevel": "735",
+    "NormalDrop": "750"
+  },
+  "36": {
+    "saleDaysWheelDropID": "53",
+    "rewardIDs": "6464",
+    "minLevel": "70",
+    "minLegendLevel": "735",
+    "NormalDrop": "750"
+  },
+  "37": {
+    "saleDaysWheelDropID": "5",
+    "rewardIDs": "5189",
+    "NormalDrop": "1500"
+  },
+  "38": {
+    "saleDaysWheelDropID": "6",
+    "rewardIDs": "5190",
+    "NormalDrop": "320"
+  },
+  "39": {
+    "saleDaysWheelDropID": "7",
+    "rewardIDs": "5191",
+    "NormalDrop": "245"
+  },
+  "40": {
+    "saleDaysWheelDropID": "8",
+    "rewardIDs": "5192",
+    "NormalDrop": "200"
+  },
+  "41": {
+    "saleDaysWheelDropID": "9",
+    "rewardIDs": "5193",
+    "NormalDrop": "320"
+  },
+  "42": {
+    "saleDaysWheelDropID": "10",
+    "rewardIDs": "5194",
+    "NormalDrop": "245"
+  },
+  "43": {
+    "saleDaysWheelDropID": "11",
+    "rewardIDs": "5195",
+    "NormalDrop": "200"
+  },
+  "44": {
+    "saleDaysWheelDropID": "12",
+    "rewardIDs": "5196",
+    "NormalDrop": "320"
+  },
+  "45": {
+    "saleDaysWheelDropID": "13",
+    "rewardIDs": "5197",
+    "NormalDrop": "245"
+  },
+  "46": {
+    "saleDaysWheelDropID": "14",
+    "rewardIDs": "5198",
+    "NormalDrop": "200"
+  },
+  "47": {
+    "saleDaysWheelDropID": "15",
+    "rewardIDs": "5199",
+    "NormalDrop": "320"
+  },
+  "48": {
+    "saleDaysWheelDropID": "16",
+    "rewardIDs": "5224",
+    "NormalDrop": "245"
+  },
+  "49": {
+    "saleDaysWheelDropID": "17",
+    "rewardIDs": "5225",
+    "NormalDrop": "200"
+  },
+  "50": {
+    "saleDaysWheelDropID": "18",
+    "rewardIDs": "5226",
+    "NormalDrop": "250"
+  },
+  "51": {
+    "saleDaysWheelDropID": "19",
+    "rewardIDs": "5227",
+    "NormalDrop": "250"
+  },
+  "52": {
+    "saleDaysWheelDropID": "20",
+    "rewardIDs": "5278",
+    "NormalDrop": "500"
+  },
+  "53": {
+    "saleDaysWheelDropID": "21",
+    "isJackpot": "1",
+    "NormalDrop": "1440"
+  }
+}

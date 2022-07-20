@@ -1,4 +1,5 @@
 const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
+const buildingData = require('./../../../ingame_data/buildings.json');
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
@@ -22,6 +23,7 @@ module.exports = {
         if (interaction.options) {
             level = interaction.options.getInteger('level');
             gebouwnaam = interaction.options.getString('naam');
+            interaction.followUp({content: buildingData["12"].name})
         }
         else if (interaction.customId) {
             var string = interaction.customId.split(' ');
