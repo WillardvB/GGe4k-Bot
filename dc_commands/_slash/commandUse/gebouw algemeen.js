@@ -66,7 +66,7 @@ module.exports = {
                 );
             }
             interaction.followUp({
-                content: "Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:",
+                embeds: [new MessageEmbed().setDescription("Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:")],
                 components: [_messageActionRow]
             });
             return;
@@ -117,6 +117,13 @@ module.exports = {
     },
 };
 
+/**
+ * 
+ * @param {Interaction} interaction
+ * @param {object} data
+ * @param {number} minLevel
+ * @param {number} maxLevel
+ */
 function naarOutput(interaction, data, minLevel, maxLevel) {
     let level = data.level;
     let gebouwNaam = GetBuildingName(data);
@@ -149,9 +156,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
     }
 
     if (interaction.options) {
-        interaction.followUp({ content: "", embeds: [embed], components: [_messageActionRow] });
+        interaction.followUp({ embeds: [embed], components: [_messageActionRow] });
     } else {
-        interaction.editReply({ content: "", embeds: [embed], components: [_messageActionRow] });
+        interaction.editReply({ embeds: [embed], components: [_messageActionRow] });
     }
     return;
     //#region old code
