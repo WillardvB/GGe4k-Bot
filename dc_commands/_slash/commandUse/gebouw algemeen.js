@@ -4,6 +4,7 @@ const buildingData = require('./../../../ingame_data/buildings.json');
 const translationData = require('./../../../ingame_translations/nl.json');
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
+const { max } = require("moment");
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 const kostenKol = [7, 13, 33, 20, 15, 17, 25, 26, 27, 43, 47, 51, 52, 14, 1, 57, 1, 66, 70, 72, 76, 77, 78, 80, 83, 84, 85, 86, 88, 91, 92, 93, 94, 95, 96, 97, 98, 103, 109, 110, 111, 113, 115, 116, 118, 120, 121, 122, 123, 127, 128, 129, 130, 136, 137, 138, 139, 142, 144, 145, 146, 149];
@@ -58,7 +59,7 @@ module.exports = {
                 if (a.rating < b.rating) return 1;
                 return 0;
             }).slice(0, 5);
-            let _messageActionRow = new MessageActionRow();
+            const _messageActionRow = new MessageActionRow();
             for (let i = 0; i < matches.length; i++) {
                 _messageActionRow.addComponents(
                     new MessageButton().setCustomId(`gebouw algemeen ${level} ${matches[i].target}`)
@@ -113,12 +114,15 @@ module.exports = {
                 }
             }
         }
-        naarOutput(interaction, data, min, max);
+        naarOutput(interaction, data, minLevel, maxLevel);
     },
 };
 
 function naarOutput(interaction, data, minLevel, maxLevel) {
-    let title = `**${GetBuildingName(data)}** (level ${data.level})`;
+    let level = data.level;
+    let gebouwNaam = GetBuildingName(data);
+    let title = `**${gebouwNaam}** (level ${level})`;
+
     let embed = new MessageEmbed()
         .setColor('#996515')
         .setTimestamp()
@@ -126,10 +130,29 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         .setTitle(title)
         //.setDescription(row[156])
         //.setThumbnail(row[0])
+
+    const _messageActionRow = new MessageActionRow();
+    if (level > minLevel) {
+        _messageActionRow.addComponents(
+            new MessageButton()
+                .setLabel('lvl ' + (level * 1 - 1))
+                .setStyle('PRIMARY')
+                .setCustomId(`gebouw algemeen ${(level * 1 - 1)} ${gebouwNaam}`)
+        )
+    }
+    if (level < max) {
+        messRow.addComponents(
+            new MessageButton()
+                .setLabel('lvl ' + (level * 1 + 1))
+                .setStyle('PRIMARY')
+                .setCustomId(`gebouw algemeen ${(level * 1 + 1)} ${gebouwNaam}`)
+        )
+    }
+
     if (interaction.options) {
-        interaction.followUp({ embeds: [embed], components: [] });
+        interaction.followUp({ embeds: [embed], components: [_messageActionRow] });
     } else {
-        interaction.editReply({ embeds: [embed], components: [] });
+        interaction.editReply({ embeds: [embed], components: [_messageActionRow] });
     }
     return;
     //#region old code
