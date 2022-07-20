@@ -100,6 +100,10 @@ async function _execute(interaction, retried = false) {
         return;
     }
     let bgInfo = playerVO.allianceName == "" ? "" : playerVO.allianceName + " (" + allianceRanks[playerVO.allianceRank] + ")";
+    let castleListString = "";
+    for (let i = 0; i < playerVO.castlePosList.length; i++) {
+        castleListString += JSON.stringify(playerVO.castlePosList[i]) + "\n";
+    }
     interaction.followUp({
         content:
             "Naam: " + playerVO.playerName + "\n" +
@@ -108,7 +112,7 @@ async function _execute(interaction, retried = false) {
             "Roempunten: " + playerVO.famePoints + "\n" +
             "Eerpunten: " + playerVO.honor + "\n" +
             "Machtpunten: " + playerVO.might + "\n" +
-            "Kasteelposities: " + playerVO.castlePosList + "\n" +
+            "Kasteelposities: \n" + castleListString + "\n" +
             "Dorpposities: " + playerVO.villagePosList + "\n" +
             "*id: " + playerVO.playerId + "*"
     })

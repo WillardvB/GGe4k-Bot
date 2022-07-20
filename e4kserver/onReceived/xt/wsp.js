@@ -6,6 +6,7 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
+        if (errorCode == 21) return;
         parseOwnerInfoArray(params.gaa.OI);
     },
     parseOwnerInfo(ownerInfo) {
