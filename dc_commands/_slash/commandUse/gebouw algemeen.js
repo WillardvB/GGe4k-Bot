@@ -140,7 +140,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         )
     }
     if (level < maxLevel) {
-        messRow.addComponents(
+        _messageActionRow.addComponents(
             new MessageButton()
                 .setLabel('lvl ' + (level * 1 + 1))
                 .setStyle('PRIMARY')
