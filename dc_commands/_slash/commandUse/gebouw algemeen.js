@@ -149,9 +149,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
     }
 
     if (interaction.options) {
-        interaction.followUp({ embeds: [embed], components: [_messageActionRow] });
+        interaction.followUp({ content: "", embeds: [embed], components: [_messageActionRow] });
     } else {
-        interaction.editReply({ embeds: [embed], components: [_messageActionRow] });
+        interaction.editReply({ content: "", embeds: [embed], components: [_messageActionRow] });
     }
     return;
     //#region old code
