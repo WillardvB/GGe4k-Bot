@@ -1,6 +1,6 @@
 const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const buildingData = require('./../../../ingame_data/buildings.json');
-const buildingTranslationData = require('./../../../ingame_translations/nl.json').buildings_and_decorations;
+const translationData = require('./../../../ingame_translations/nl.json');
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
@@ -34,14 +34,21 @@ module.exports = {
             }
         }
         gebouwnaam = gebouwnaam.trim().toLowerCase();
+        let _output = "null";
         let foundBuildingName = "<Not found>";
-        for (let _intern_buildingName in buildingTranslationData) {
+        for (let _intern_buildingName in translationData.buildings_and_decorations) {
             if (buildingTranslationData[_intern_buildingName].toLowerCase().trim() == gebouwnaam) {
                 foundBuildingName = _intern_buildingName;
                 break;
             }
         }
-        interaction.followUp({ content: foundBuildingName });
+        foundBuildingName = foundBuildingName.split('_name')[0];
+        for (let _building in buildingData) {
+            if (buildingData[_building].name) {
+                _output = JSON.stringify(buildingData[_building]);
+            }
+        }
+        interaction.followUp({ content: _output });
         return;
         const rows = await googleSheetsData.gebouwData();
         if (rows.length) {
