@@ -1,5 +1,7 @@
 const path = require('node:path');
 const fs = require('fs');
+const logger = require('../../../tools/Logger.js');
+
 let commands = [];
 const commandsPath = path.join(__dirname, '../sys');
 const commandsFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -21,7 +23,7 @@ module.exports = {
             handler.apply(this, [event]);
         }
         else {
-            console.log("[ERROR] Unknown sys command: " + action);
+            logger.logError("Unknown sys command: " + action);
         }
     }
 }

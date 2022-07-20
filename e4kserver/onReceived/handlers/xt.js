@@ -1,6 +1,7 @@
 const path = require('node:path');
 const fs = require('fs');
 const { setRoomList, onJoinRoom, getRoom, autoJoinRoom } = require('./../../room.js');
+const logger = require('../../../tools/Logger.js');
 
 let _hasAutoJoined = false;
 
@@ -68,6 +69,6 @@ function executeResponse(_jsonResponseVO) {
         handler.apply(this, [error, params]);
     }
     else {
-        console.log("[ERROR] Unknown xt command: " + cmd);
+        logger.logError("Unknown xt command: " + cmd);
     }
 }

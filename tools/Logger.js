@@ -14,10 +14,15 @@ module.exports = {
         client = _client;
         logChannel = client.users.cache.get("346015807496781825");
     },
+    /**
+     * 
+     * @param {string} msg
+     */
     logError(msg) {
         return new Promise(async (resolve) => {
             try {
-                await logChannel.send({ content: "[ERROR]" + msg });
+                if (!(msg.startsWith("Unknown xt command: ") || msg.startsWith("Unknown sys command: ")))
+                    await logChannel.send({ content: "[ERROR]" + msg });
                 console.log('\x1b[31m[ERROR]\x1b[0m' + msg);
                 resolve();
             } catch (e) {
@@ -26,6 +31,10 @@ module.exports = {
             }
         })
     },
+    /**
+     * 
+     * @param {string} msg
+     */
     log(msg) {
         return new Promise(async (resolve) => {
             try {
