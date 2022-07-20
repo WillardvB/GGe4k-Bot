@@ -286,7 +286,9 @@ function worldMapOwnerFillFromParamObject(worldMapOwnerInfoVO, paramObj) {
 function parsePosList(posItems) {
     var _loc3_ = null;
     var _loc2_ = [];
-    for (var _loc4_ in posItems) {
+    console.log(posItems);
+    for (var i in posItems) {
+        let _loc4_ = posItems[i];
         _loc3_ = {
             kingdomId: _loc4_[0],
             objectId: _loc4_[1],
