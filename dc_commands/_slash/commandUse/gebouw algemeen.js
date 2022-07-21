@@ -75,7 +75,6 @@ module.exports = {
         foundBuildingName = foundBuildingName.split('_name')[0].toLowerCase();
         if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
         let buildingNameParts = foundBuildingName.split('_');
-        console.log(buildingNameParts);
 
         let minLevel = 100;
         let maxLevel = -1;
@@ -86,7 +85,6 @@ module.exports = {
             let _dataGroup = _data.group.toLowerCase();
             let _dataLevel = parseInt(_data.level);
             if (buildingNameParts.length === 1) {
-                console.log(_dataName + " => " + _dataName === buildingNameParts[0] + " /\ " + _dataName == buildingNameParts[0]);
                 if (_dataName === buildingNameParts[0]) {
                     if (_dataLevel < minLevel) minLevel = _dataLevel;
                     if (_dataLevel > maxLevel) maxLevel = _dataLevel;
@@ -105,8 +103,7 @@ module.exports = {
                 }
             }
         }
-        console.log(minLevel + " - " + maxLevel)
-        level = Math.min(Math.max(level, minLevel), maxLevel).toString();
+        level = Math.min(Math.max(level, minLevel), maxLevel);
         let data = null;
         for (let _building in buildingData) {
             let _data = buildingData[_building];
