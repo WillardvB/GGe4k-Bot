@@ -75,6 +75,7 @@ module.exports = {
         foundBuildingName = foundBuildingName.split('_name')[0].toLowerCase();
         if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
         let buildingNameParts = foundBuildingName.split('_');
+        console.log(buildingNameParts);
 
         let minLevel = 100;
         let maxLevel = -1;
