@@ -74,46 +74,60 @@ module.exports = {
         }
         foundBuildingName = foundBuildingName.split('_name')[0].toLowerCase();
         if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
-        if (foundBuildingName.startsWith('deco_')) foundBuildingName = foundBuildingName.substring(5);
-        //Guard, deco etc hoe dat te handelen?
-        /*
-         *
-         * 
-         * 
-         * 
-         * 
-         * 
-         */
+        let buildingNameParts = foundBuildingName.split('_');
+
         let minLevel = 100;
         let maxLevel = -1;
         for (let _building in buildingData) {
-            if (buildingData[_building].name.toLowerCase() === foundBuildingName) {
-                let _tmp_lvl = parseInt(buildingData[_building].level);
-                if (_tmp_lvl < minLevel) minLevel = _tmp_lvl;
-                if (_tmp_lvl > maxLevel) maxLevel = _tmp_lvl;
+            let _data = buildingData[_building];
+            let _dataName = _data.name.toLowerCase();
+            let _dataType = _data.type.toLowerCase();
+            let _dataGroup = _data.group.toLowerCase();
+            let _dataLevel = parseInt(_data.level);
+            if (buildingNameParts.length == 1) {
+                if (_dataName === buildingNameParts[0]) {
+                    if (_dataLevel < minLevel) minLevel = _dataLevel;
+                    if (_dataLevel > maxLevel) maxLevel = _dataLevel;
+                }
             }
-            else if (buildingData[_building].type.toLowerCase() === foundBuildingName) {
-                let _tmp_lvl = parseInt(buildingData[_building].level);
-                if (_tmp_lvl < minLevel) minLevel = _tmp_lvl;
-                if (_tmp_lvl > maxLevel) maxLevel = _tmp_lvl;
+            else if (buildingNameParts.length == 2) {
+                if (_dataName === buildingNameParts[0] &&
+                    _dataType === buildingNameParts[1]) {
+                    if (_dataLevel < minLevel) minLevel = _dataLevel;
+                    if (_dataLevel > maxLevel) maxLevel = _dataLevel;
+                }
+                else if (_dataName === buildingNameParts[0] &&
+                    _dataGroup === buildingNameParts[1]) {
+                    if (_dataLevel < minLevel) minLevel = _dataLevel;
+                    if (_dataLevel > maxLevel) maxLevel = _dataLevel;
+                }
             }
         }
         level = Math.min(Math.max(level, minLevel), maxLevel).toString();
         let data = null;
         for (let _building in buildingData) {
-            if (buildingData[_building].name.toLowerCase() === foundBuildingName) {
-                if (buildingData[_building].level === level) {
-                    data = buildingData[_building];
-                    break;
+            let _data = buildingData[_building];
+            let _dataName = _data.name.toLowerCase();
+            let _dataType = _data.type.toLowerCase();
+            let _dataGroup = _data.group.toLowerCase();
+            let _dataLevel = parseInt(_data.level);
+            if (buildingNameParts.length == 1) {
+                if (_dataName === buildingNameParts[0]) {
+                    if (_dataLevel === level) data = _data;
                 }
             }
-            else if (buildingData[_building].type.toLowerCase() === foundBuildingName) {
-                if (buildingData[_building].level === level) {
-                    data = buildingData[_building];
-                    break;
+            else if (buildingNameParts.length == 2) {
+                if (_dataName === buildingNameParts[0] &&
+                    _dataType === buildingNameParts[1]) {
+                    if (_dataLevel === level) data = _data;
+                }
+                else if (_dataName === buildingNameParts[0] &&
+                    _dataGroup === buildingNameParts[1]) {
+                    if (_dataLevel === level) data = _data;
                 }
             }
         }
+        if (data === null) return;
         naarOutput(interaction, data, minLevel, maxLevel);
     },
 };
@@ -257,7 +271,6 @@ function GetBuildingName(data) {
     let dataName = data.name.toLowerCase();
     let dataType = data.type?.toLowerCase();
     let dataGroup = data.group?.toLowerCase();
-    console.log(dataName + " " + dataType + " " + dataGroup);
     if (dataName === "legendtemple") {
         return translationData.dialogs.dialog_legendtemple_name;
     }
@@ -269,19 +282,9 @@ function GetBuildingName(data) {
             if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
             return false;
         })
-        console.log(_key);
         if (_key !== undefined) {
             return buildingTranslations[_key];
         }
-        /*if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_name`; })) {
-            return buildingTranslations[`${dataName}_name`];
-        }
-        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataType}_name`; })) {
-            return buildingTranslations[`${dataName}_${dataType}_name`];
-        }
-        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataGroup}_name`; })) {
-            return buildingTranslations[`${dataName}_${dataGroup}_name`];
-        }*/
     }
     return data.name;
 }
@@ -305,19 +308,9 @@ function GetBuildingDescription(data) {
             if (_item.toLowerCase() === `${dataName}_${dataGroup}_short_info`) return true;
             return false;
         })
-        console.log(_key);
         if (_key !== undefined) {
             return buildingTranslations[_key];
         }
-        /*if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_short_info` })) {
-            return buildingTranslations[`${dataName}_short_info`];
-        }
-        else if (dataType !== undefined && _keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataType}_short_info` })) {
-            return buildingTranslations[`${dataName}_${dataType}_short_info`];
-        }
-        else if (dataGroup !== undefined && _keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataGroup}_short_info` })) {
-            return buildingTranslations[`${dataName}_${dataGroup}_short_info`];
-        }*/
     }
     return "";
 }
