@@ -75,58 +75,11 @@ module.exports = {
         foundBuildingName = foundBuildingName.split('_name')[0].toLowerCase();
         if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
         let buildingNameParts = foundBuildingName.split('_');
-
-        let minLevel = 100;
-        let maxLevel = -1;
-        for (let _building in buildingData) {
-            let _data = buildingData[_building];
-            let _dataName = _data.name.toLowerCase();
-            let _dataType = _data.type.toLowerCase();
-            let _dataGroup = _data.group.toLowerCase();
-            let _dataLevel = parseInt(_data.level);
-            if (buildingNameParts.length === 1) {
-                if (_dataName === buildingNameParts[0]) {
-                    if (_dataLevel < minLevel) minLevel = _dataLevel;
-                    if (_dataLevel > maxLevel) maxLevel = _dataLevel;
-                }
-            }
-            else if (buildingNameParts.length === 2) {
-                if (_dataName === buildingNameParts[0] &&
-                    _dataType === buildingNameParts[1]) {
-                    if (_dataLevel < minLevel) minLevel = _dataLevel;
-                    if (_dataLevel > maxLevel) maxLevel = _dataLevel;
-                }
-                else if (_dataName === buildingNameParts[0] &&
-                    _dataGroup === buildingNameParts[1]) {
-                    if (_dataLevel < minLevel) minLevel = _dataLevel;
-                    if (_dataLevel > maxLevel) maxLevel = _dataLevel;
-                }
-            }
-        }
+        let minMaxLevel = getLevelMinMax(buildingNameParts);
+        let minLevel = minMaxLevel[0];
+        let maxLevel = minMaxLevel[1];
         level = Math.min(Math.max(level, minLevel), maxLevel);
-        let data = null;
-        for (let _building in buildingData) {
-            let _data = buildingData[_building];
-            let _dataName = _data.name.toLowerCase();
-            let _dataType = _data.type.toLowerCase();
-            let _dataGroup = _data.group.toLowerCase();
-            let _dataLevel = parseInt(_data.level);
-            if (buildingNameParts.length == 1) {
-                if (_dataName === buildingNameParts[0]) {
-                    if (_dataLevel === level) data = _data;
-                }
-            }
-            else if (buildingNameParts.length == 2) {
-                if (_dataName === buildingNameParts[0] &&
-                    _dataType === buildingNameParts[1]) {
-                    if (_dataLevel === level) data = _data;
-                }
-                else if (_dataName === buildingNameParts[0] &&
-                    _dataGroup === buildingNameParts[1]) {
-                    if (_dataLevel === level) data = _data;
-                }
-            }
-        }
+        let data = getBuildingLevelData(buildingNameParts, level);
         if (data === null) return;
         naarOutput(interaction, data, minLevel, maxLevel);
     },
@@ -313,4 +266,71 @@ function GetBuildingDescription(data) {
         }
     }
     return "";
+}
+
+/**
+ * 
+ * @param {Array} buildingNameParts
+ */
+function getLevelMinMax(buildingNameParts) {
+    let minLevel = 0;
+    let maxLevel = 0;
+    for (let _building in buildingData) {
+        let _data = buildingData[_building];
+        let _dataName = _data.name.toLowerCase();
+        let _dataType = _data.type.toLowerCase();
+        let _dataGroup = _data.group.toLowerCase();
+        let _dataLevel = parseInt(_data.level);
+        if (buildingNameParts.length === 1) {
+            if (_dataName === buildingNameParts[0]) {
+                if (_dataLevel < minLevel) minLevel = _dataLevel;
+                if (_dataLevel > maxLevel) maxLevel = _dataLevel;
+            }
+        }
+        else if (buildingNameParts.length === 2) {
+            if (_dataName === buildingNameParts[0] &&
+                _dataType === buildingNameParts[1]) {
+                if (_dataLevel < minLevel) minLevel = _dataLevel;
+                if (_dataLevel > maxLevel) maxLevel = _dataLevel;
+            }
+            else if (_dataName === buildingNameParts[0] &&
+                _dataGroup === buildingNameParts[1]) {
+                if (_dataLevel < minLevel) minLevel = _dataLevel;
+                if (_dataLevel > maxLevel) maxLevel = _dataLevel;
+            }
+        }
+    }
+    return [minLevel, maxLevel];
+}
+
+/**
+ * 
+ * @param {Array} buildingNameParts
+ * @param {number} level
+ */
+function getBuildingLevelData(buildingNameParts, level) {
+    let data = null;
+    for (let _building in buildingData) {
+        let _data = buildingData[_building];
+        let _dataName = _data.name.toLowerCase();
+        let _dataType = _data.type.toLowerCase();
+        let _dataGroup = _data.group.toLowerCase();
+        let _dataLevel = parseInt(_data.level);
+        if (buildingNameParts.length == 1) {
+            if (_dataName === buildingNameParts[0]) {
+                if (_dataLevel === level) data = _data;
+            }
+        }
+        else if (buildingNameParts.length == 2) {
+            if (_dataName === buildingNameParts[0] &&
+                _dataType === buildingNameParts[1]) {
+                if (_dataLevel === level) data = _data;
+            }
+            else if (_dataName === buildingNameParts[0] &&
+                _dataGroup === buildingNameParts[1]) {
+                if (_dataLevel === level) data = _data;
+            }
+        }
+    }
+    return data;
 }
