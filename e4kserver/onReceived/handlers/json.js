@@ -1,3 +1,4 @@
+const Logger = require('../../../tools/Logger.js');
 const sys = require('./sys.js');
 const xt = require('./xt');
 
@@ -17,7 +18,8 @@ module.exports = {
                 sys.onResponse(json["b"]);
             }
         } catch (e) {
-            console.log("[ERROR] " + e);
+            Logger.logError(e);
+            Logger.log(msg);
         };
     }
 }

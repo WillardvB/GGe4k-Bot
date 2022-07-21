@@ -2,6 +2,7 @@ const stringSimilarity = require("string-similarity");
 const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const buildingData = require('./../../../ingame_data/buildings.json');
 const translationData = require('./../../../ingame_translations/nl.json');
+const buildingTranslations = translationData.buildings_and_decorations;
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
@@ -37,13 +38,13 @@ module.exports = {
         gebouwnaam = gebouwnaam.trim().toLowerCase();
         let _mogelijkeGebouwnamen = ["Zaal der legenden"];
         let foundBuildingName = "<Not found>";
-        for (let _intern_buildingName in translationData.buildings_and_decorations) {
-            if (translationData.buildings_and_decorations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
+        for (let _intern_buildingName in buildingTranslations) {
+            if (buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
                 foundBuildingName = _intern_buildingName;
                 break;
             }
             else if (_intern_buildingName.endsWith('_name')){
-                let _mogelijkGebouwNaam = translationData.buildings_and_decorations[_intern_buildingName];
+                let _mogelijkGebouwNaam = buildingTranslations[_intern_buildingName];
                 if(!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
                     _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
             }
@@ -256,20 +257,31 @@ function GetBuildingName(data) {
     let dataName = data.name.toLowerCase();
     let dataType = data.type?.toLowerCase();
     let dataGroup = data.group?.toLowerCase();
+    console.log(dataName + " " + dataType + " " + dataGroup);
     if (dataName === "legendtemple") {
         return translationData.dialogs.dialog_legendtemple_name;
     }
     else {
-        let _keys = Object.keys(translationData.buildings_and_decorations);
-        if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_name` })) {
-            return translationData.buildings_and_decorations[`${dataName}_name`];
+        let _keys = Object.keys(buildingTranslations);
+        let _key = _keys.find(_item => {
+            if (_item.toLowerCase() === `${dataName}_name`) return true;
+            if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
+            if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
+            return false;
+        })
+        console.log(_key);
+        if (_key !== undefined) {
+            return buildingTranslations[_key];
         }
-        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataType}_name` })) {
-            return translationData.buildings_and_decorations[`${dataName}_${dataType}_name`];
+        /*if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_name`; })) {
+            return buildingTranslations[`${dataName}_name`];
         }
-        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataGroup}_name` })) {
-            return translationData.buildings_and_decorations[`${dataName}_${dataGroup}_name`];
+        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataType}_name`; })) {
+            return buildingTranslations[`${dataName}_${dataType}_name`];
         }
+        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataGroup}_name`; })) {
+            return buildingTranslations[`${dataName}_${dataGroup}_name`];
+        }*/
     }
     return data.name;
 }
@@ -286,16 +298,26 @@ function GetBuildingDescription(data) {
         return translationData.dialogs.dialog_legendtemple_shortInfo;
     }
     else {
-        let _keys = Object.keys(translationData.buildings_and_decorations);
-        if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_short_info` })) {
-            return translationData.buildings_and_decorations[`${dataName}_short_info`];
+        let _keys = Object.keys(buildingTranslations);
+        let _key = _keys.find(_item => {
+            if (_item.toLowerCase() === `${dataName}_short_info`) return true;
+            if (_item.toLowerCase() === `${dataName}_${dataType}_short_info`) return true;
+            if (_item.toLowerCase() === `${dataName}_${dataGroup}_short_info`) return true;
+            return false;
+        })
+        console.log(_key);
+        if (_key !== undefined) {
+            return buildingTranslations[_key];
+        }
+        /*if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_short_info` })) {
+            return buildingTranslations[`${dataName}_short_info`];
         }
         else if (dataType !== undefined && _keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataType}_short_info` })) {
-            return translationData.buildings_and_decorations[`${dataName}_${dataType}_short_info`];
+            return buildingTranslations[`${dataName}_${dataType}_short_info`];
         }
         else if (dataGroup !== undefined && _keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataGroup}_short_info` })) {
-            return translationData.buildings_and_decorations[`${dataName}_${dataGroup}_short_info`];
-        }
+            return buildingTranslations[`${dataName}_${dataGroup}_short_info`];
+        }*/
     }
     return "";
 }

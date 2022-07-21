@@ -2,6 +2,7 @@ const onJson = require('./onReceived/handlers/json.js');
 const onString = require('./onReceived/handlers/string.js');
 const onXml = require('./onReceived/handlers/xml.js');
 const xt = require('./commands/handlers/xt');
+const Logger = require('../tools/Logger.js');
 
 let _alliances = {};
 let _players = {};
@@ -92,7 +93,7 @@ function internal_writeToSocket(msg) {
     let _buff1 = Buffer.alloc(1);
     _buff1.writeInt8(0);
     let bytes = Buffer.concat([_buff0, _buff1]);
-    require('./connection.js').socket.write(bytes, "utf-8", (err) => { if (err) console.log("[ERROR] " + err); });
+    require('./connection.js').socket.write(bytes, "utf-8", (err) => { if (err) Logger.logError(err); });
 }
 
 module.exports = {

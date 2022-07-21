@@ -1,6 +1,8 @@
+const Logger = require("../../../tools/Logger");
+
 module.exports = {
     name: "logKO",
     execute(xml) {
-        console.log("[ERROR] LoginResponce failed!: " + xml.body.login.$.e);
+        Logger.logError("LoginResponce failed!: " + xml.body.login.$.e);
     }
 }
