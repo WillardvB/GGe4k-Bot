@@ -128,7 +128,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
     let level = data.level;
     let gebouwNaam = GetBuildingName(data);
     let description = GetBuildingDescription(data);
-    let title = `**${gebouwNaam}** (level ${level})`;
+    let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : ` (level ${level})`}`;
 
     let embed = new MessageEmbed()
         .setColor('#996515')
@@ -136,30 +136,34 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         .setFooter(footerTekst, footerAfbeelding)
         .setTitle(title)
         //.setThumbnail(row[0])
+    console.log(description);
     if (description !== "") embed.setDescription(description);
 
-    const _messageActionRow = new MessageActionRow();
-    if (level > minLevel) {
-        _messageActionRow.addComponents(
-            new MessageButton()
-                .setLabel('lvl ' + (level * 1 - 1))
-                .setStyle('PRIMARY')
-                .setCustomId(`gebouw algemeen ${(level * 1 - 1)} ${gebouwNaam}`)
-        )
+    let components = [];
+    if (minLevel != maxLevel) {
+        const _messageActionRow = new MessageActionRow();
+        if (level > minLevel) {
+            _messageActionRow.addComponents(
+                new MessageButton()
+                    .setLabel('lvl ' + (level * 1 - 1))
+                    .setStyle('PRIMARY')
+                    .setCustomId(`gebouw algemeen ${(level * 1 - 1)} ${gebouwNaam}`)
+            )
+        }
+        if (level < maxLevel) {
+            _messageActionRow.addComponents(
+                new MessageButton()
+                    .setLabel('lvl ' + (level * 1 + 1))
+                    .setStyle('PRIMARY')
+                    .setCustomId(`gebouw algemeen ${(level * 1 + 1)} ${gebouwNaam}`)
+            )
+        }
+        components = [_messageActionRow];
     }
-    if (level < maxLevel) {
-        _messageActionRow.addComponents(
-            new MessageButton()
-                .setLabel('lvl ' + (level * 1 + 1))
-                .setStyle('PRIMARY')
-                .setCustomId(`gebouw algemeen ${(level * 1 + 1)} ${gebouwNaam}`)
-        )
-    }
-
     if (interaction.options) {
-        interaction.followUp({ embeds: [embed], components: [_messageActionRow] });
+        interaction.followUp({ embeds: [embed], components: components });
     } else {
-        interaction.editReply({ embeds: [embed], components: [_messageActionRow] });
+        interaction.editReply({ embeds: [embed], components: components });
     }
     return;
     //#region old code
@@ -286,10 +290,10 @@ function GetBuildingDescription(data) {
         if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_short_info` })) {
             return translationData.buildings_and_decorations[`${dataName}_short_info`];
         }
-        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataType}_short_info` })) {
+        else if (dataType !== undefined && _keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataType}_short_info` })) {
             return translationData.buildings_and_decorations[`${dataName}_${dataType}_short_info`];
         }
-        else if (_keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataGroup}_short_info` })) {
+        else if (dataGroup !== undefined && _keys.find(_item => { return _item.toLowerCase() === `${dataName}_${dataGroup}_short_info` })) {
             return translationData.buildings_and_decorations[`${dataName}_${dataGroup}_short_info`];
         }
     }
