@@ -85,13 +85,14 @@ module.exports = {
             let _dataType = _data.type.toLowerCase();
             let _dataGroup = _data.group.toLowerCase();
             let _dataLevel = parseInt(_data.level);
-            if (buildingNameParts.length == 1) {
+            if (buildingNameParts.length === 1) {
+                console.log(_dataName + " => " + _dataName === buildingNameParts[0] + " /\ " + _dataName == buildingNameParts[0]);
                 if (_dataName === buildingNameParts[0]) {
                     if (_dataLevel < minLevel) minLevel = _dataLevel;
                     if (_dataLevel > maxLevel) maxLevel = _dataLevel;
                 }
             }
-            else if (buildingNameParts.length == 2) {
+            else if (buildingNameParts.length === 2) {
                 if (_dataName === buildingNameParts[0] &&
                     _dataType === buildingNameParts[1]) {
                     if (_dataLevel < minLevel) minLevel = _dataLevel;
@@ -104,6 +105,7 @@ module.exports = {
                 }
             }
         }
+        console.log(minLevel + " - " + maxLevel)
         level = Math.min(Math.max(level, minLevel), maxLevel).toString();
         let data = null;
         for (let _building in buildingData) {
