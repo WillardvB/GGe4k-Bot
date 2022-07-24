@@ -25,6 +25,7 @@ module.exports = {
     logError(msg) {
         return new Promise(async (resolve) => {
             try {
+                msg = msg.toString();
                 if (msg.startsWith("Unknown xt command: ")) {
                     let _cmd = msg.substring(20).trim();
                     if (unknownXtCommands.includes(_cmd)) {
