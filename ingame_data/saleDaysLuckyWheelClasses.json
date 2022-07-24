@@ -1,0 +1,49 @@
+{
+  "1": {
+    "saleDaysLuckyWheelClassID": "1",
+    "neededSpinsForNextClass": "10",
+    "HighlightNormal": "7020,7003,7005,7000,7001,7002,7004,7006,7007,7008,7014,7019,7009,7010,7011,7015,7016,7017"
+  },
+  "2": {
+    "saleDaysLuckyWheelClassID": "2",
+    "neededSpinsForNextClass": "20",
+    "activityRewardThreshold": "2",
+    "HighlightNormal": "7041,7024,7026,7021,7022,7023,7025,7027,7028,7029,7035,7040,7030,7031,7032,7036,7037,7038"
+  },
+  "3": {
+    "saleDaysLuckyWheelClassID": "3",
+    "neededSpinsForNextClass": "30",
+    "HighlightNormal": "7062,7045,7047,7042,7043,7044,7046,7048,7049,7050,7056,7061,7051,7052,7053,7057,7058,7059"
+  },
+  "4": {
+    "saleDaysLuckyWheelClassID": "4",
+    "neededSpinsForNextClass": "40",
+    "activityRewardThreshold": "4",
+    "HighlightNormal": "7083,7066,7068,7063,7064,7065,7067,7069,7070,7071,7077,7082,7072,7073,7074,7078,7079,7080"
+  },
+  "5": {
+    "saleDaysLuckyWheelClassID": "5",
+    "neededSpinsForNextClass": "50",
+    "HighlightNormal": "7104,7087,7089,7084,7085,7086,7088,7090,7091,7092,7098,7103,7093,7094,7095,7099,7100,7101"
+  },
+  "6": {
+    "saleDaysLuckyWheelClassID": "6",
+    "neededSpinsForNextClass": "60",
+    "activityRewardThreshold": "6",
+    "HighlightNormal": "7125,7108,7110,7105,7106,7107,7109,7111,7112,7113,7119,7124,7114,7115,7116,7120,7121,7122"
+  },
+  "7": {
+    "saleDaysLuckyWheelClassID": "7",
+    "neededSpinsForNextClass": "80",
+    "HighlightNormal": "7146,7129,7131,7126,7127,7128,7130,7132,7133,7134,7140,7145,7135,7136,7137,7141,7142,7143"
+  },
+  "8": {
+    "saleDaysLuckyWheelClassID": "8",
+    "neededSpinsForNextClass": "100",
+    "HighlightNormal": "7167,7150,7152,7147,7148,7149,7151,7153,7154,7155,7161,7166,7156,7157,7158,7162,7163,7164"
+  },
+  "9": {
+    "saleDaysLuckyWheelClassID": "9",
+    "HighlightNormal": "7188,7171,7173,7168,7169,7170,7172,7174,7175,7176,7182,7187,7177,7178,7179,7183,7184,7185"
+  }
+}

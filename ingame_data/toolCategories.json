@@ -1,0 +1,22 @@
+{
+  "1": {
+    "toolCategoryID": "1",
+    "name": "basic"
+  },
+  "2": {
+    "toolCategoryID": "2",
+    "name": "premium"
+  },
+  "3": {
+    "toolCategoryID": "3",
+    "name": "elite"
+  },
+  "4": {
+    "toolCategoryID": "4",
+    "name": "event"
+  },
+  "5": {
+    "toolCategoryID": "5",
+    "name": "combo"
+  }
+}

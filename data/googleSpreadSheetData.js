@@ -1,6 +1,6 @@
-const kanalen = require('./../data/kanalen.json');
 const googleSheetScript = require('./../indexGoogleSheets.js');
 const { google } = require('googleapis');
+const logger = require('./../tools/Logger');
 var gebouwData = [];
 var titelData = [];
 var rrData = [];
@@ -28,12 +28,7 @@ module.exports = {
     }
 }
 
-function logError(client, err) {
-    console.log('The API returned an error: ' + err);
-    client.guilds.cache.get(kanalen.nlserver.id).channels.cache.get(kanalen.nlserver.tekst.admins).send({ content: `**Let op: Google verbinding ligt eruit. Geen van de commands op basis van data werkt meer!!**\n\`\`\`\n${err}\n\`\`\`` });
-}
-
-async function krijgGebouwData(client) {
+async function krijgGebouwData() {
     if (gebouwData != null && gebouwData.length != 0) {
         return gebouwData;
     }
@@ -46,14 +41,15 @@ async function krijgGebouwData(client) {
         },
         (err, res) => {
             if (err) {
-                return logError(client, err);
+                logger.logError(err);
+                return;
             }
             return gebouwData = res.data.values;
         }
     )
 }
 
-async function krijgTitelData(client) {
+async function krijgTitelData() {
     if (titelData != null && titelData.length != 0) {
         return titelData;
     }
@@ -66,14 +62,15 @@ async function krijgTitelData(client) {
         },
         (err, res) => {
             if (err) {
-                return logError(client, err);
+                logger.logError(err);
+                return;
             }
             return titelData = res.data.values;
         }
     )
 }
 
-async function krijgRrData(client) {
+async function krijgRrData() {
     if (rrData != null && rrData.length != 0) {
         return rrData;
     }
@@ -86,14 +83,15 @@ async function krijgRrData(client) {
         },
         (err, res) => {
             if (err) {
-                return logError(client, err);
+                logger.logError(err);
+                return;
             }
             return rrData = res.data.values;
         }
     )
 }
 
-async function krijgRrAttData(client, kID) {
+async function krijgRrAttData(kID) {
     if (rrAttData3 != null && rrAttData3.length != 0 && rrAttData2.length != 0 && rrAttData1.length != 0 && rrAttData0.length != 0) {
         let tmpTactiek = "";
         switch (kID.toString()) {
@@ -114,7 +112,8 @@ async function krijgRrAttData(client, kID) {
         },
         (err, res) => {
             if (err) {
-                return logError(client, err);
+                logger.logError(err);
+                return;
             }
             rrAttData0 = res.data.valueRanges[0].values;
             rrAttData1 = res.data.valueRanges[1].values;

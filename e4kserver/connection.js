@@ -1,4 +1,5 @@
 const Socket = require('node:net').Socket;
+const logger = require('../tools/Logger.js');
 const e4kServerData = require('./data.js');
 
 let connected = false;
@@ -6,29 +7,30 @@ let connected = false;
 let _socket = new Socket();
 _socket.timeout = 10000;
 
-_socket.connect(443, "e4k-live-nl1-game.goodgamestudios.com", () => {
-    console.log("socket connected to server");
-})
-
 //#region eventListeners
-_socket.on('connect', () => { console.log('succesfully connected'); });
+_socket.on('connect', () => { logger.log('Succesfully connected'); });
 
-_socket.on("close", (hadError) => { console.log("closed. had error: " + hadError); });
+_socket.on("close", (hadError) => { logger.log("Socket closed. Had error: " + hadError); });
 
-_socket.on('ready', () => { console.log("Socket ready"); sendVersionCheck(); });
+_socket.on('ready', () => { logger.log("Socket ready"); sendVersionCheck(); });
 
-_socket.on('drain', () => { console.log("Socket drained"); });
+_socket.on('drain', () => { logger.log("Socket drained"); });
 
-_socket.on('error', (err) => { console.log("[ERROR] Socket Error: " + err); });
+_socket.on('error', (err) => { logger.logError("Socket Error: " + err); });
 
 _socket.on('data', (data) => { e4kServerData.onData(data); });
 
-_socket.on('end', () => { console.log('server ends connection'); });
+_socket.on('end', () => { logger.log('Server ends connection'); });
 
-_socket.on('timeout', () => { console.log('socket timed out'); });
+_socket.on('timeout', () => { logger.log('Socket timed out'); });
 //#endregion
 
 module.exports = {
+    execute() {
+        _socket.connect(443, "e4k-live-nl1-game.goodgamestudios.com", () => {
+            logger.log("Socket connected to server");
+        })
+    },
     onConnection(obj) {
         if (obj.success) {
             connected = true;
@@ -36,18 +38,22 @@ module.exports = {
             let distributorID = 0;
             let zone = "EmpirefourkingdomsExGG_6";
             login(zone, "", `${NaN}${languageCode}%${distributorID}`);
-            require('./commands/login.js').execute();
+            require('./commands/loginCommand').execute();
         } else {
-            console.log("[ERROR] " + o.error);
+            logger.logError(obj.error);
         }
     },
     onSuccessfulLogin() {
         require('./commands/pingpong.js').execute();
-        require('./commands/searchAllianceById.js').execute(allianceId);
+        require('./commands/searchAllianceById.js').execute(0);
     },
     socket: _socket,
     connected: connected,
 }
+
+const majVersion = 1;
+const minVersion = 6;
+const subVersion = 6;
 
 function sendVersionCheck() {
     let header = { "t": "sys" };

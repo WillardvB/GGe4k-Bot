@@ -1,0 +1,74 @@
+{
+  "1": {
+    "entryID": "1",
+    "tombolaID": "1",
+    "addRareMysteryBoxKey": "1",
+    "shares": "9050"
+  },
+  "2": {
+    "entryID": "2",
+    "tombolaID": "1",
+    "addEpicMysteryBoxKey": "1",
+    "shares": "900"
+  },
+  "3": {
+    "entryID": "3",
+    "tombolaID": "1",
+    "addLegendaryMysteryBoxKey": "1",
+    "shares": "50"
+  },
+  "4": {
+    "entryID": "4",
+    "tombolaID": "2",
+    "addRareMysteryBoxKey": "1",
+    "shares": "8800"
+  },
+  "5": {
+    "entryID": "5",
+    "tombolaID": "2",
+    "addEpicMysteryBoxKey": "1",
+    "shares": "1100"
+  },
+  "6": {
+    "entryID": "6",
+    "tombolaID": "2",
+    "addLegendaryMysteryBoxKey": "1",
+    "shares": "100"
+  },
+  "7": {
+    "entryID": "7",
+    "tombolaID": "3",
+    "addRareMysteryBoxKey": "1",
+    "shares": "8500"
+  },
+  "8": {
+    "entryID": "8",
+    "tombolaID": "3",
+    "addEpicMysteryBoxKey": "1",
+    "shares": "1300"
+  },
+  "9": {
+    "entryID": "9",
+    "tombolaID": "3",
+    "addLegendaryMysteryBoxKey": "1",
+    "shares": "200"
+  },
+  "10": {
+    "entryID": "10",
+    "tombolaID": "4",
+    "addRareMysteryBoxKey": "1",
+    "shares": "7500"
+  },
+  "11": {
+    "entryID": "11",
+    "tombolaID": "4",
+    "addEpicMysteryBoxKey": "1",
+    "shares": "2000"
+  },
+  "12": {
+    "entryID": "12",
+    "tombolaID": "4",
+    "addLegendaryMysteryBoxKey": "1",
+    "shares": "500"
+  }
+}

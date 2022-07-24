@@ -1,5 +1,3 @@
-const { writeToSocket } = require('./../../data.js');
-
 module.exports = {
     /**
      * 
@@ -14,12 +12,14 @@ module.exports = {
 }
 
 function _sendString(xtName, cmd, paramObj, roomId) {
-    let stringMsg = "%" + "xt" + "%" + xtName + "%" + cmd + "%" + roomId + "%";
+    let msg = "%" + "xt" + "%" + xtName + "%" + cmd + "%" + roomId + "%";
     let i = 0;
     while (i < paramObj.length) {
-        stringMsg += paramObj[i].toString() + "%";
+        msg += paramObj[i].toString() + "%";
         i++;
     }
-    console.log("[Sending - STR]: " + stringMsg + "\n");
-    writeToSocket(stringMsg);
+    if (msg !== "%xt%EmpirefourkingdomsExGG_6%pin%1%<RoundHouseKick>%" && !msg.startsWith("%xt%EmpirefourkingdomsExGG_6%ain%1%{")) {
+        console.log("[Sending - STR]: " + msg);
+    }
+    require('./../../data.js').writeToSocket(msg);
 }

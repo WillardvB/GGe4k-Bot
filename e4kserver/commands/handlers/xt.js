@@ -1,7 +1,6 @@
 const json = require('./json.js');
 const string = require('./string.js');
 const xml = require('./xml.js');
-const { checkRoomList, activeRoomId } = require('./../../room.js');
 
 module.exports = {
     /**
@@ -26,15 +25,15 @@ module.exports = {
  * @param {number} roomId
  */
 function sendXtMessage(xtName, cmd, paramObj, type = "xml", roomId = -1) {
-    if (!checkRoomList()) {
+    if (!require('./../../room.js').checkRoomList()) {
         return;
     }
     if (roomId == -1) {
-        roomId = activeRoomId;
+        roomId = require('./../../room.js').activeRoomId;
     }
     switch (type) {
         case "json": json.send(xtName, cmd, paramObj, roomId); break;
-        case "string": string.send(xtName, cmd, paramObj, roomId); break;
+        case "str": string.send(xtName, cmd, paramObj, roomId); break;
         case "xml": xml.send(xtName, cmd, paramObj, roomId); break;
         default: break;
     }

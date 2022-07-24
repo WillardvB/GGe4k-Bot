@@ -1,0 +1,1010 @@
+{
+  "1": {
+    "id": "1",
+    "rewardSetID": "1",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "2": {
+    "id": "2",
+    "rewardSetID": "1",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "3": {
+    "id": "3",
+    "rewardSetID": "1",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "4": {
+    "id": "4",
+    "rewardSetID": "1",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "5": {
+    "id": "5",
+    "rewardSetID": "1",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "6": {
+    "id": "6",
+    "rewardSetID": "1",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "7": {
+    "id": "7",
+    "rewardSetID": "1",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "8": {
+    "id": "8",
+    "rewardSetID": "1",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "9": {
+    "id": "9",
+    "rewardSetID": "1",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "10": {
+    "id": "10",
+    "rewardSetID": "1",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "11": {
+    "id": "11",
+    "rewardSetID": "1",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "12": {
+    "id": "12",
+    "rewardSetID": "1",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "13": {
+    "id": "13",
+    "rewardSetID": "1",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "14": {
+    "id": "14",
+    "rewardSetID": "1",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "15": {
+    "id": "15",
+    "rewardSetID": "2",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "16": {
+    "id": "16",
+    "rewardSetID": "2",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "17": {
+    "id": "17",
+    "rewardSetID": "2",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "18": {
+    "id": "18",
+    "rewardSetID": "2",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "19": {
+    "id": "19",
+    "rewardSetID": "2",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "20": {
+    "id": "20",
+    "rewardSetID": "2",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "21": {
+    "id": "21",
+    "rewardSetID": "2",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "22": {
+    "id": "22",
+    "rewardSetID": "2",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "23": {
+    "id": "23",
+    "rewardSetID": "2",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "24": {
+    "id": "24",
+    "rewardSetID": "2",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "25": {
+    "id": "25",
+    "rewardSetID": "2",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "26": {
+    "id": "26",
+    "rewardSetID": "2",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "27": {
+    "id": "27",
+    "rewardSetID": "2",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "28": {
+    "id": "28",
+    "rewardSetID": "2",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "29": {
+    "id": "29",
+    "rewardSetID": "3",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "30": {
+    "id": "30",
+    "rewardSetID": "3",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "31": {
+    "id": "31",
+    "rewardSetID": "3",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "32": {
+    "id": "32",
+    "rewardSetID": "3",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "33": {
+    "id": "33",
+    "rewardSetID": "3",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "34": {
+    "id": "34",
+    "rewardSetID": "3",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "35": {
+    "id": "35",
+    "rewardSetID": "3",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "36": {
+    "id": "36",
+    "rewardSetID": "3",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "37": {
+    "id": "37",
+    "rewardSetID": "3",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "38": {
+    "id": "38",
+    "rewardSetID": "3",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "39": {
+    "id": "39",
+    "rewardSetID": "3",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "40": {
+    "id": "40",
+    "rewardSetID": "3",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "41": {
+    "id": "41",
+    "rewardSetID": "3",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "42": {
+    "id": "42",
+    "rewardSetID": "3",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "43": {
+    "id": "43",
+    "rewardSetID": "4",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "44": {
+    "id": "44",
+    "rewardSetID": "4",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "45": {
+    "id": "45",
+    "rewardSetID": "4",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "46": {
+    "id": "46",
+    "rewardSetID": "4",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "47": {
+    "id": "47",
+    "rewardSetID": "4",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "48": {
+    "id": "48",
+    "rewardSetID": "4",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "49": {
+    "id": "49",
+    "rewardSetID": "4",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "50": {
+    "id": "50",
+    "rewardSetID": "4",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "51": {
+    "id": "51",
+    "rewardSetID": "4",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "52": {
+    "id": "52",
+    "rewardSetID": "4",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "53": {
+    "id": "53",
+    "rewardSetID": "4",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "54": {
+    "id": "54",
+    "rewardSetID": "4",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "55": {
+    "id": "55",
+    "rewardSetID": "4",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "56": {
+    "id": "56",
+    "rewardSetID": "4",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "57": {
+    "id": "57",
+    "rewardSetID": "5",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "58": {
+    "id": "58",
+    "rewardSetID": "5",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "59": {
+    "id": "59",
+    "rewardSetID": "5",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "60": {
+    "id": "60",
+    "rewardSetID": "5",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "61": {
+    "id": "61",
+    "rewardSetID": "5",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "62": {
+    "id": "62",
+    "rewardSetID": "5",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "63": {
+    "id": "63",
+    "rewardSetID": "5",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "64": {
+    "id": "64",
+    "rewardSetID": "5",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "65": {
+    "id": "65",
+    "rewardSetID": "5",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "66": {
+    "id": "66",
+    "rewardSetID": "5",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "67": {
+    "id": "67",
+    "rewardSetID": "5",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "68": {
+    "id": "68",
+    "rewardSetID": "5",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "69": {
+    "id": "69",
+    "rewardSetID": "5",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "70": {
+    "id": "70",
+    "rewardSetID": "5",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "71": {
+    "id": "71",
+    "rewardSetID": "6",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "72": {
+    "id": "72",
+    "rewardSetID": "6",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "73": {
+    "id": "73",
+    "rewardSetID": "6",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "74": {
+    "id": "74",
+    "rewardSetID": "6",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "75": {
+    "id": "75",
+    "rewardSetID": "6",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "76": {
+    "id": "76",
+    "rewardSetID": "6",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "77": {
+    "id": "77",
+    "rewardSetID": "6",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "78": {
+    "id": "78",
+    "rewardSetID": "6",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "79": {
+    "id": "79",
+    "rewardSetID": "6",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "80": {
+    "id": "80",
+    "rewardSetID": "6",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "81": {
+    "id": "81",
+    "rewardSetID": "6",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "82": {
+    "id": "82",
+    "rewardSetID": "6",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "83": {
+    "id": "83",
+    "rewardSetID": "6",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "84": {
+    "id": "84",
+    "rewardSetID": "6",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "85": {
+    "id": "85",
+    "rewardSetID": "7",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "86": {
+    "id": "86",
+    "rewardSetID": "7",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "87": {
+    "id": "87",
+    "rewardSetID": "7",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "88": {
+    "id": "88",
+    "rewardSetID": "7",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "89": {
+    "id": "89",
+    "rewardSetID": "7",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "90": {
+    "id": "90",
+    "rewardSetID": "7",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "91": {
+    "id": "91",
+    "rewardSetID": "7",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "92": {
+    "id": "92",
+    "rewardSetID": "7",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "93": {
+    "id": "93",
+    "rewardSetID": "7",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "94": {
+    "id": "94",
+    "rewardSetID": "7",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "95": {
+    "id": "95",
+    "rewardSetID": "7",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "96": {
+    "id": "96",
+    "rewardSetID": "7",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "97": {
+    "id": "97",
+    "rewardSetID": "7",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "98": {
+    "id": "98",
+    "rewardSetID": "7",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "99": {
+    "id": "99",
+    "rewardSetID": "8",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "100": {
+    "id": "100",
+    "rewardSetID": "8",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "101": {
+    "id": "101",
+    "rewardSetID": "8",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "102": {
+    "id": "102",
+    "rewardSetID": "8",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "103": {
+    "id": "103",
+    "rewardSetID": "8",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "104": {
+    "id": "104",
+    "rewardSetID": "8",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "105": {
+    "id": "105",
+    "rewardSetID": "8",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "106": {
+    "id": "106",
+    "rewardSetID": "8",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "107": {
+    "id": "107",
+    "rewardSetID": "8",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "108": {
+    "id": "108",
+    "rewardSetID": "8",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "109": {
+    "id": "109",
+    "rewardSetID": "8",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "110": {
+    "id": "110",
+    "rewardSetID": "8",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "111": {
+    "id": "111",
+    "rewardSetID": "8",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "112": {
+    "id": "112",
+    "rewardSetID": "8",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "113": {
+    "id": "113",
+    "rewardSetID": "9",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "114": {
+    "id": "114",
+    "rewardSetID": "9",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "115": {
+    "id": "115",
+    "rewardSetID": "9",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "116": {
+    "id": "116",
+    "rewardSetID": "9",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "117": {
+    "id": "117",
+    "rewardSetID": "9",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "118": {
+    "id": "118",
+    "rewardSetID": "9",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "119": {
+    "id": "119",
+    "rewardSetID": "9",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "120": {
+    "id": "120",
+    "rewardSetID": "9",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "121": {
+    "id": "121",
+    "rewardSetID": "9",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "122": {
+    "id": "122",
+    "rewardSetID": "9",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "123": {
+    "id": "123",
+    "rewardSetID": "9",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "124": {
+    "id": "124",
+    "rewardSetID": "9",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "125": {
+    "id": "125",
+    "rewardSetID": "9",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "126": {
+    "id": "126",
+    "rewardSetID": "9",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "127": {
+    "id": "127",
+    "rewardSetID": "10",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "128": {
+    "id": "128",
+    "rewardSetID": "10",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "129": {
+    "id": "129",
+    "rewardSetID": "10",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "130": {
+    "id": "130",
+    "rewardSetID": "10",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "131": {
+    "id": "131",
+    "rewardSetID": "10",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "132": {
+    "id": "132",
+    "rewardSetID": "10",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "133": {
+    "id": "133",
+    "rewardSetID": "10",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "134": {
+    "id": "134",
+    "rewardSetID": "10",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "135": {
+    "id": "135",
+    "rewardSetID": "10",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "136": {
+    "id": "136",
+    "rewardSetID": "10",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "137": {
+    "id": "137",
+    "rewardSetID": "10",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "138": {
+    "id": "138",
+    "rewardSetID": "10",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "139": {
+    "id": "139",
+    "rewardSetID": "10",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "140": {
+    "id": "140",
+    "rewardSetID": "10",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "141": {
+    "id": "141",
+    "rewardSetID": "11",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "142": {
+    "id": "142",
+    "rewardSetID": "11",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "143": {
+    "id": "143",
+    "rewardSetID": "11",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "144": {
+    "id": "144",
+    "rewardSetID": "11",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "145": {
+    "id": "145",
+    "rewardSetID": "11",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "146": {
+    "id": "146",
+    "rewardSetID": "11",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "147": {
+    "id": "147",
+    "rewardSetID": "11",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "148": {
+    "id": "148",
+    "rewardSetID": "11",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "149": {
+    "id": "149",
+    "rewardSetID": "11",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "150": {
+    "id": "150",
+    "rewardSetID": "11",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "151": {
+    "id": "151",
+    "rewardSetID": "11",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "152": {
+    "id": "152",
+    "rewardSetID": "11",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "153": {
+    "id": "153",
+    "rewardSetID": "11",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "154": {
+    "id": "154",
+    "rewardSetID": "11",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  },
+  "155": {
+    "id": "155",
+    "rewardSetID": "12",
+    "minHighscoreRank": "1",
+    "rewardIDs": "29900,29901"
+  },
+  "156": {
+    "id": "156",
+    "rewardSetID": "12",
+    "minHighscoreRank": "2",
+    "rewardIDs": "29902,29903"
+  },
+  "157": {
+    "id": "157",
+    "rewardSetID": "12",
+    "minHighscoreRank": "3",
+    "rewardIDs": "29904,29905"
+  },
+  "158": {
+    "id": "158",
+    "rewardSetID": "12",
+    "minHighscoreRank": "4",
+    "rewardIDs": "29906,29907"
+  },
+  "159": {
+    "id": "159",
+    "rewardSetID": "12",
+    "minHighscoreRank": "5",
+    "rewardIDs": "29908,29909"
+  },
+  "160": {
+    "id": "160",
+    "rewardSetID": "12",
+    "minHighscoreRank": "6",
+    "rewardIDs": "29910,29911"
+  },
+  "161": {
+    "id": "161",
+    "rewardSetID": "12",
+    "minHighscoreRank": "11",
+    "rewardIDs": "29912,29913"
+  },
+  "162": {
+    "id": "162",
+    "rewardSetID": "12",
+    "minHighscoreRank": "21",
+    "rewardIDs": "29914,29915"
+  },
+  "163": {
+    "id": "163",
+    "rewardSetID": "12",
+    "minHighscoreRank": "51",
+    "rewardIDs": "29916,29917"
+  },
+  "164": {
+    "id": "164",
+    "rewardSetID": "12",
+    "minHighscoreRank": "101",
+    "rewardIDs": "29918,29919"
+  },
+  "165": {
+    "id": "165",
+    "rewardSetID": "12",
+    "minHighscoreRank": "201",
+    "rewardIDs": "29920,29921"
+  },
+  "166": {
+    "id": "166",
+    "rewardSetID": "12",
+    "minHighscoreRank": "501",
+    "rewardIDs": "29922,29923"
+  },
+  "167": {
+    "id": "167",
+    "rewardSetID": "12",
+    "minHighscoreRank": "1001",
+    "rewardIDs": "29924,29925"
+  },
+  "168": {
+    "id": "168",
+    "rewardSetID": "12",
+    "minHighscoreRank": "2501",
+    "rewardIDs": "29926,29927"
+  }
+}

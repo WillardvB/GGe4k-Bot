@@ -4,16 +4,15 @@ const fs = require('fs');
 const kanalen = require('./data/kanalen.json');
 
 const commands = [];
-const commandFiles = fs.readdirSync(__dirname + '/commands/_slash/commandBuild').filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync(__dirname + '/dc_commands/_slash/commandBuild').filter(file => file.endsWith('.js'));
 
 module.exports = {
     execute(client) {
-        client.application.commands.set([]);
         ////ALLEEN ALS VERKEERD COMMAND de commands resetten
         /*client.application.commands.set([])
           .then(res => {
             console.log(res);*/
-        //return setSlashCommands(client);
+        return setSlashCommands(client);
         /*})
         .catch(console.error);*/
     }
@@ -24,7 +23,7 @@ function setSlashCommands(client) {
     const guildId = kanalen.nlserver.id;
 
     for (const file of commandFiles) {
-        const command = require(`./commands/_slash/commandBuild/${file}`);
+        const command = require(`./dc_commands/_slash/commandBuild/${file}`);
         if (command.data != null) {
             commands.push(command.data.toJSON());
         }

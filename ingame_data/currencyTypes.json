@@ -1,0 +1,37 @@
+{
+  "1": {
+    "typeID": "1",
+    "typeName": "MinuteSkip",
+    "currencyIDRange": "1000-1999"
+  },
+  "2": {
+    "typeID": "2",
+    "typeName": "CraftingMaterial",
+    "currencyIDRange": "30001-39999"
+  },
+  "3": {
+    "typeID": "3",
+    "typeName": "EventCurrency",
+    "currencyIDRange": "1-999"
+  },
+  "4": {
+    "typeID": "4",
+    "typeName": "DecoFusionCatalysts",
+    "currencyIDRange": "100001-199999"
+  },
+  "5": {
+    "typeID": "6",
+    "typeName": "ItemBoosterConsumables",
+    "currencyIDRange": "2000-2999"
+  },
+  "6": {
+    "typeID": "7",
+    "typeName": "RecipeMaterial",
+    "currencyIDRange": "3000-4999"
+  },
+  "7": {
+    "typeID": "8",
+    "typeName": "LootBoxKeys",
+    "currencyIDRange": "5000-5999"
+  }
+}

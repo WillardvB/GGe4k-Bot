@@ -1,0 +1,22 @@
+{
+  "1": {
+    "eventAutoScalingCiID": "1",
+    "eventID": "71",
+    "useableConstructionItemGroupIDs": "6"
+  },
+  "2": {
+    "eventAutoScalingCiID": "2",
+    "eventID": "103",
+    "useableConstructionItemGroupIDs": "6"
+  },
+  "3": {
+    "eventAutoScalingCiID": "3",
+    "eventID": "80",
+    "useableConstructionItemGroupIDs": "6"
+  },
+  "4": {
+    "eventAutoScalingCiID": "4",
+    "eventID": "72",
+    "useableConstructionItemGroupIDs": "6"
+  }
+}

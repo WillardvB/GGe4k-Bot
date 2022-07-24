@@ -1,34 +1,30 @@
-const { alliances } = require('./../../data.js');
-const { execute: searchByAllianceId } = require('./../../commands/searchAllianceById.js');
-const { parseOwnerInfo } = require('./wsp.js');
-const searchAllianceById = require('./../../commands/searchAllianceById.js');
+const logger = require('/app/tools/Logger.js');
 
 let allianceId = 0;
 let alliancesFound = 0;
 let allAlliancesInJSON = false;
+let alliancesOpNLServer = 225;
+let _alliancesInJson = 0;
+let _playersInJson = 0;
 
-module.exports = {
-    name: "ain",
-    /**
-     * 
-     * @param {number} errorCode
-     * @param {object} params
-     */
-    execute(errorCode, params) {
-        if (errorCode == 114 || !params) {
-            onError();
-            return;
-        }
-        onSuccess(params)
-    }
-}
-
-function onError() {
+async function onError() {
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer && allianceId <= 25000) {
         allianceId += 1;
-        searchByAllianceId(allianceId);
+        require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
     else {
+        let tmpAlliances = require('./../../data.js').alliances;
+        let _tmpAllianceCount = Object.keys(tmpAlliances).length;
+        if (_tmpAllianceCount != _alliancesInJson) {
+            _alliancesInJson = _tmpAllianceCount;
+            await logger.log("alliances in data json: " + _tmpAllianceCount);
+        }
+        let tmpPlayers = require('./../../data.js').players;
+        let _tmpPlayerCount = Object.keys(tmpPlayers).length;
+        if (_tmpPlayerCount != _playersInJson) {
+            _playersInJson = _tmpPlayerCount;
+            await logger.log("players in data json: " + _tmpPlayerCount);
+        }
         allAlliancesInJSON = true;
         waitAndNextCheck();
     }
@@ -38,15 +34,27 @@ function onError() {
  * 
  * @param {object} params
  */
-function onSuccess(params) {
-    alliances[params.A.AID] = parseAllianceInfo(params.A);
+async function onSuccess(params) {
+    let tmpAlliances = require('./../../data.js').alliances;
+    tmpAlliances[params.A.AID] = parseAllianceInfo(params.A);
+    require('./../../data.js').alliances = tmpAlliances;
     alliancesFound = alliancesFound + 1;
-    console.log("BG id: " + params.A.AID + ", BG naam: " + params.A.N + ", allianceFound nr.: " + alliancesFound);
     if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
         allianceId += 1;
-        searchByAllianceId(allianceId);
+        require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
     else {
+        let _tmpAllianceCount = Object.keys(tmpAlliances).length;
+        if (_tmpAllianceCount != _alliancesInJson) {
+            _alliancesInJson = _tmpAllianceCount;
+            await logger.log("alliances in data json: " + _tmpAllianceCount);
+        }
+        let tmpPlayers = require('./../../data.js').players;
+        let _tmpPlayerCount = Object.keys(tmpPlayers).length;
+        if (_tmpPlayerCount != _playersInJson) {
+            _playersInJson = _tmpPlayerCount;
+            await logger.log("players in data json: " + _tmpPlayerCount);
+        }
         allAlliancesInJSON = true;
         waitAndNextCheck();
     }
@@ -55,7 +63,9 @@ function onSuccess(params) {
 function waitAndNextCheck() {
     setTimeout(function () {
         allianceId = 0;
-        searchAllianceById(allianceId);
+        allAlliancesInJSON = false;
+        alliancesFound = 0;
+        require('./../../commands/searchAllianceById.js').execute(allianceId);
     }, 300000); //5 minutes
 }
 
@@ -98,7 +108,9 @@ function allianceInfoFillFromParamObject(paramObject) {
     let _memberList = [];
     let i = 0;
     while (i < memberListArray.length) {
-        _memberList.push(parseOwnerInfo(memberListArray[i]));
+        let member = require('./wsp.js').parseOwnerInfo(memberListArray[i]);
+        if(member != null)
+            _memberList.push(member);
         i++;
     }
     _memberList.sort((a, b) => {
@@ -129,5 +141,23 @@ function parseChatJSONMessage(msgText) {
     if (!msgText) {
         return "";
     }
-    return msgText.replace(/&percnt;/g, "%").replace(/&quot;/g, "\"").replace(/&#145;/g, "\'").replace(/<br \/>/g, "\r").replace(/&lt;/g, "<");
+    return msgText.replace(/&percnt;/g, "%").replace(/&quot;/g, "\"").replace(/&#145;/g, "\'").replace(/<br \/>/g, "\n").replace(/&lt;/g, "<");
+}
+
+module.exports = {
+    name: "ain",
+    /**
+     * 
+     * @param {number} errorCode
+     * @param {object} params
+     */
+    execute(errorCode, params) {
+        if (errorCode == 114 || !params) {
+            if (errorCode != 114) console.log("error but not 114: " + errorCode + "  " + JSON.stringify(params));
+            onError();
+            return;
+        }
+        onSuccess(params)
+    },
+    get allianceId() { return allianceId; },
 }

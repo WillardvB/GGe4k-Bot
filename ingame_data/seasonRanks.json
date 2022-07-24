@@ -1,0 +1,128 @@
+{
+  "1": {
+    "rankID": "1",
+    "minMedalPointsForUnlock": "0",
+    "majorRank": "1",
+    "minorRank": "0"
+  },
+  "2": {
+    "rankID": "2",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "1",
+    "minorRank": "1"
+  },
+  "3": {
+    "rankID": "3",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "1",
+    "minorRank": "2"
+  },
+  "4": {
+    "rankID": "4",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "1",
+    "minorRank": "3"
+  },
+  "5": {
+    "rankID": "5",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "2",
+    "minorRank": "0"
+  },
+  "6": {
+    "rankID": "6",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "2",
+    "minorRank": "1"
+  },
+  "7": {
+    "rankID": "7",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "2",
+    "minorRank": "2"
+  },
+  "8": {
+    "rankID": "8",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "2",
+    "minorRank": "3"
+  },
+  "9": {
+    "rankID": "9",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "3",
+    "minorRank": "0"
+  },
+  "10": {
+    "rankID": "10",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "3",
+    "minorRank": "1"
+  },
+  "11": {
+    "rankID": "11",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "3",
+    "minorRank": "2"
+  },
+  "12": {
+    "rankID": "12",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "3",
+    "minorRank": "3"
+  },
+  "13": {
+    "rankID": "13",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "4",
+    "minorRank": "0"
+  },
+  "14": {
+    "rankID": "14",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "4",
+    "minorRank": "1"
+  },
+  "15": {
+    "rankID": "15",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "4",
+    "minorRank": "2"
+  },
+  "16": {
+    "rankID": "16",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "4",
+    "minorRank": "3"
+  },
+  "17": {
+    "rankID": "17",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "5",
+    "minorRank": "0"
+  },
+  "18": {
+    "rankID": "18",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "5",
+    "minorRank": "1"
+  },
+  "19": {
+    "rankID": "19",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "5",
+    "minorRank": "2"
+  },
+  "20": {
+    "rankID": "20",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "5",
+    "minorRank": "3"
+  },
+  "21": {
+    "rankID": "21",
+    "minMedalPointsForUnlock": "2000",
+    "majorRank": "6",
+    "minorRank": "0"
+  }
+}

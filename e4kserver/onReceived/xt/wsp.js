@@ -1,5 +1,3 @@
-const { players } = require('./../../data.js');
-
 module.exports = {
     name: "wsp",
     /**
@@ -8,10 +6,11 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
+        if (errorCode == 21) return;
         parseOwnerInfoArray(params.gaa.OI);
     },
     parseOwnerInfo(ownerInfo) {
-        parseOwnerInfo(ownerInfo);
+        return parseOwnerInfo(ownerInfo);
     }
 }
 
@@ -24,7 +23,7 @@ function parseOwnerInfoArray(ownerInfoArray) {
         return;
     }
     for (let ownerInfo in ownerInfoArray) {
-        JSON.stringify(parseOwnerInfo(ownerInfo));
+        parseOwnerInfo(ownerInfoArray[ownerInfo]);
     }
 }
 
@@ -82,13 +81,59 @@ function parseOwnerInfo(ownerInfo) {
         suffixTitleId: 0,
         staticAreaName: "",
     };
-    _worldMapOwnerInfoVO = players[playerId];
+    let tmpPlayers = require('./../../data.js').players;
+    _worldMapOwnerInfoVO = tmpPlayers[playerId];
     if (ownerInfo.DUM) {
         if (!_worldMapOwnerInfoVO) {
-            _worldMapOwnerInfoVO
+            _worldMapOwnerInfoVO = {
+                userData: {},
+                playerInfoModel: {},
+                kingdomData: {},
+                playerId: 0,
+                playerName: "",
+                playerLevel: 0,
+                paragonLevel: 0,
+                crest: {},
+                remainingNoobTime: 0,
+                noobTimeOffset: 0,
+                remainingPeaceTime: 0,
+                peaceTimeOffset: 0,
+                honor: 0,
+                famePoints: 0,
+                isRuin: false,
+                allianceID: -1,
+                allianceRank: 0,
+                allianceName: "",
+                allianceFame: 0,
+                isSearchingAlliance: false,
+                isOutpostOwner: false,
+                isNPC: false,
+                castlePosList: [{}],
+                villagePosList: [{}],
+                hasPremiumFlag: false,
+                hasVIPFlag: false,
+                isDummy: false,
+                achievementPoints: 0,
+                relocateDurationEndTimestamp: 0,
+                might: 0,
+                factionID: 0,
+                factionMainCampID: 0,
+                factionProtectionStatus: 0,
+                factionProtectionEndTime: 0,
+                factionNoobProtectionEndTime: 0,
+                factionIsSpectator: false,
+                titleVO: {},
+                gameTickSignal: null,
+                namesFactory: {},
+                nameTextId: "",
+                prefixTitleId: 0,
+                suffixTitleId: 0,
+                staticAreaName: "",
+            };
             _worldMapOwnerInfoVO.playerId = playerId;
             _worldMapOwnerInfoVO.isDummy = true;
-            players[playerId] = _worldMapOwnerInfoVO;
+            tmpPlayers[playerId] = _worldMapOwnerInfoVO;
+            require('./../../data.js').players = tmpPlayers;
         }
         return _worldMapOwnerInfoVO;
     }
@@ -143,14 +188,16 @@ function parseOwnerInfo(ownerInfo) {
             staticAreaName: "",
         };
         _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(_worldMapOwnerInfoVO, ownerInfo);
-        players[playerId] = _worldMapOwnerInfoVO;
+        tmpPlayers = require('./../../data.js').players;
+        tmpPlayers[playerId] = _worldMapOwnerInfoVO;
+        require('./../../data.js').players = tmpPlayers;
     }
     else {
-        _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(players[playerId], ownerInfo);
-        players[playerId] = _worldMapOwnerInfoVO;
+        tmpPlayers = require('./../../data.js').players;
+        _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(tmpPlayers[playerId], ownerInfo);
+        tmpPlayers[playerId] = _worldMapOwnerInfoVO;
+        require('./../../data.js').players = tmpPlayers;
     }
-    _worldMapOwnerInfoVO.allianceRank = parseInt(ownerInfo.AR);
-    players[playerId] = _worldMapOwnerInfoVO
     //setTitleVOForOwnerInfo(_worldMapOwnerInfoVO, ownerInfo.TI);
     return _worldMapOwnerInfoVO;
 }
@@ -204,7 +251,7 @@ function worldMapOwnerFillFromParamObject(worldMapOwnerInfoVO, paramObj) {
     vo.famePoints = paramObj["CF"];
     vo.isRuin = paramObj["R"] == 1;
     vo.allianceID = paramObj["AID"];
-    vo.allianceRank = paramObj["AR"];
+    vo.allianceRank = parseInt(paramObj["AR"]);
     vo.allianceName = !!paramObj["AN"] ? paramObj["AN"] : "";
     vo.allianceFame = paramObj["ACF"];
     vo.isSearchingAlliance = paramObj["SA"];
@@ -239,7 +286,8 @@ function worldMapOwnerFillFromParamObject(worldMapOwnerInfoVO, paramObj) {
 function parsePosList(posItems) {
     var _loc3_ = null;
     var _loc2_ = [];
-    for (var _loc4_ in posItems) {
+    for (var i in posItems) {
+        let _loc4_ = posItems[i];
         _loc3_ = {
             kingdomId: _loc4_[0],
             objectId: _loc4_[1],

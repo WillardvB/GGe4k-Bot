@@ -1,3 +1,5 @@
+const logger = require('../../../tools/Logger.js');
+
 module.exports = {
     name: "core_lga",
     /**
@@ -12,25 +14,25 @@ module.exports = {
                 require('./../../connection.js').onSuccessfulLogin();
                 break;
             case 2:
-                console.log("[ERROR] AuthenticationProblem: Missing LoginData!");
+                logger.logError("AuthenticationProblem: Missing LoginData!");
                 break;
             case 5:
-                console.log("[ERROR] AuthenticationProblem: User Not Found!");
+                logger.logError("AuthenticationProblem: User Not Found!");
                 break;
             case 6:
-                console.log("[ERROR] AuthenticationProblem: Invalid Password!");
+                logger.logError("AuthenticationProblem: Invalid Password!");
                 break;
             case 7:
-                console.log("[ERROR] AuthenticationProblem: User Banned or Account Deleted!");
+                logger.logError("AuthenticationProblem: User Banned or Account Deleted!");
                 break;
             case 11:
-                console.log("[ERROR] AuthenticationProblem: Invalid Language!");
+                logger.logError("AuthenticationProblem: Invalid Language!");
                 break;
             case 15:
-                console.log("[ERROR] AuthenticationProblem: User Kicked!");
+                logger.logError("AuthenticationProblem: User Kicked!");
                 break;
             default:
-                console.log("[ERROR] Ander probleem: errorCode: " + errorCode + " params: " + JSON.stringify(params));
+                logger.logError("Ander probleem: errorCode: " + errorCode + " params: " + JSON.stringify(params));
         }
     }
 }

@@ -1,0 +1,22 @@
+{
+  "1": {
+    "tierID": "2",
+    "unlockThreshold": "40"
+  },
+  "2": {
+    "tierID": "3",
+    "unlockThreshold": "80"
+  },
+  "3": {
+    "tierID": "4",
+    "unlockThreshold": "90"
+  },
+  "4": {
+    "tierID": "5",
+    "unlockThreshold": "90"
+  },
+  "5": {
+    "tierID": "6",
+    "unlockThreshold": "90"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "1": {
+    "difficultyTypeID": "1",
+    "name": "easy",
+    "sortOrder": "1"
+  },
+  "2": {
+    "difficultyTypeID": "2",
+    "name": "easyPlus",
+    "sortOrder": "2"
+  },
+  "3": {
+    "difficultyTypeID": "3",
+    "name": "intermediate",
+    "sortOrder": "3"
+  },
+  "4": {
+    "difficultyTypeID": "4",
+    "name": "intermediatePlus",
+    "sortOrder": "4"
+  },
+  "5": {
+    "difficultyTypeID": "5",
+    "name": "hard",
+    "sortOrder": "5"
+  },
+  "6": {
+    "difficultyTypeID": "6",
+    "name": "hardPlus",
+    "sortOrder": "6"
+  },
+  "7": {
+    "difficultyTypeID": "7",
+    "name": "expert",
+    "sortOrder": "7"
+  },
+  "8": {
+    "difficultyTypeID": "8",
+    "name": "expertPlus",
+    "sortOrder": "8"
+  },
+  "9": {
+    "difficultyTypeID": "9",
+    "name": "master",
+    "sortOrder": "9"
+  },
+  "10": {
+    "difficultyTypeID": "10",
+    "name": "masterPlus",
+    "sortOrder": "10"
+  },
+  "11": {
+    "difficultyTypeID": "11",
+    "name": "archmaster",
+    "sortOrder": "11"
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "1": {
+    "effectType": "additionalAttackToolAmountFlank",
+    "boostType": "NOMINAL_ADD"
+  },
+  "2": {
+    "effectType": "additionalDefenseToolSlotFlank",
+    "boostType": "NOMINAL_ADD"
+  },
+  "3": {
+    "effectType": "additionalPeasantsAmount",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "4": {
+    "effectType": "additionalUnitAmountOnFlank",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "5": {
+    "effectType": "additionalUnitAmountOnFront",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "6": {
+    "effectType": "additionalUnitAmountOnWall",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "7": {
+    "effectType": "additionalWave",
+    "boostType": "NOMINAL_ADD"
+  },
+  "8": {
+    "effectType": "attackBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "9": {
+    "effectType": "attackMeleeBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "10": {
+    "effectType": "attackRangeBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "11": {
+    "effectType": "attackYardBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "12": {
+    "effectType": "cooldownReduction",
+    "boostType": "PERCENTAGE_SUBTRACT"
+  },
+  "13": {
+    "effectType": "defenseBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "14": {
+    "effectType": "defenseMeleeBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "15": {
+    "effectType": "defenseRangeBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "16": {
+    "effectType": "defenseYardBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "17": {
+    "effectType": "fameAttackBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "18": {
+    "effectType": "fameDefenseBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "19": {
+    "effectType": "fireBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "20": {
+    "effectType": "fireBrigadeBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "21": {
+    "effectType": "gateBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "22": {
+    "effectType": "gateReduction",
+    "boostType": "PERCENTAGE_SUBTRACT"
+  },
+  "23": {
+    "effectType": "guardAmountBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "24": {
+    "effectType": "hideoutCapacityBonus",
+    "boostType": "NOMINAL_ADD"
+  },
+  "25": {
+    "effectType": "honorBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "26": {
+    "effectType": "lootBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "27": {
+    "effectType": "lootCapacityBonus",
+    "boostType": "NOMINAL_ADD"
+  },
+  "28": {
+    "effectType": "lootReduction",
+    "boostType": "PERCENTAGE_SUBTRACT"
+  },
+  "29": {
+    "effectType": "magicFindBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "30": {
+    "effectType": "moatBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "31": {
+    "effectType": "moatReduction",
+    "boostType": "PERCENTAGE_SUBTRACT"
+  },
+  "32": {
+    "effectType": "smashChanceBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "33": {
+    "effectType": "spyAmountBonus",
+    "boostType": "NOMINAL_ADD"
+  },
+  "34": {
+    "effectType": "travelAttackBoost",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "35": {
+    "effectType": "travelConquerBoost",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "36": {
+    "effectType": "travelCostReduction",
+    "boostType": "PERCENTAGE_SUBTRACT"
+  },
+  "37": {
+    "effectType": "travelReturnPvEBoost",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "38": {
+    "effectType": "travelReturnPvPBoost",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "39": {
+    "effectType": "wallBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "40": {
+    "effectType": "wallReduction",
+    "boostType": "PERCENTAGE_SUBTRACT"
+  },
+  "41": {
+    "effectType": "XPAttackPvEBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "42": {
+    "effectType": "XPAttackPvPBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "43": {
+    "effectType": "XPConstructionBonus",
+    "boostType": "PERCENTAGE_ADD"
+  },
+  "44": {
+    "effectType": "XPDefenseBonus",
+    "boostType": "PERCENTAGE_ADD"
+  }
+}

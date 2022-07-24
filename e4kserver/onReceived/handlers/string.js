@@ -2,7 +2,11 @@ const sys = require('./sys.js');
 const xt = require('./xt');
 
 module.exports = {
-    execute() {
+    /**
+     * 
+     * @param {string} msg
+     */
+    execute(msg) {
         let msgParts = [];
         let type = (msgParts = msg.substring(1, msg.length - 1).split("%"))[0];
         if (type == "xt") {
