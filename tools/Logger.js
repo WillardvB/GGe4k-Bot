@@ -23,10 +23,13 @@ module.exports = {
         return new Promise(async (resolve) => {
             try {
                 if (!(msg.startsWith("Unknown xt command: ") || msg.startsWith("Unknown sys command: ")))
-                    await logChannel.send({ content: "[ERROR]" + msg });
+                    await logChannel.send({ content: "[ERROR] " + msg });
                 console.log(ErrorText + msg);
                 resolve();
             } catch (e) {
+                await logChannel.send({ content: "[ERROR] There was an error when trying to log: " + e });
+                console.log(ErrorText + "There was an error when trying to log: " + e)
+                resolve();
                 await this.logError(e);
                 resolve();
             }
