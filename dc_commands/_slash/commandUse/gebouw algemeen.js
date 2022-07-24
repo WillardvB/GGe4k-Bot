@@ -2,6 +2,7 @@ const stringSimilarity = require("string-similarity");
 const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const buildingData = require('./../../../ingame_data/buildings.json');
 const translationData = require('./../../../ingame_translations/nl.json');
+const imagesData = require('./../../../ingame_images/x768.json')
 const buildingTranslations = translationData.buildings_and_decorations;
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
@@ -98,13 +99,14 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
     let gebouwNaam = getBuildingName(data);
     let description = getBuildingDescription(data);
     let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : ` (level ${level})`}`;
+    let image = getBuildingImage(data);
 
     let embed = new MessageEmbed()
         .setColor('#996515')
         .setTimestamp()
         .setFooter(footerTekst, footerAfbeelding)
         .setTitle(title)
-        //.setThumbnail(row[0])
+    if (image) embed.setThumbnail(image);
     if (description !== "") embed.setDescription(description);
 
     let values = "";
@@ -354,4 +356,19 @@ function getBuildingLevelData(buildingNameParts, level) {
         }
     }
     return data;
+}
+
+/**
+ * 
+ * @param {object} data
+ */
+function getBuildingImage(data) {
+    let dataName = data.name.toLowerCase();
+    let dataType = data.type?.toLowerCase();
+    let dataGroup = data.group?.toLowerCase();
+    let imgData = imagesData[dataName + "_" + dataGroup + "_" + dataType];
+    if (imgData) {
+        return "https://github.com/WillardvB/GGe4k-Bot/raw/master/ingame_images/" + imgData.url;
+    }
+    return "";
 }
