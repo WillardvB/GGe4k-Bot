@@ -14,8 +14,9 @@ const opslagSoort = ["Houtopslag", "Steenopslag", "Voedselopslag", "Houtskoolops
 const productieKol = [54, 55, 56, 131, 133, 134, 135, 140, 141];
 const productieSoort = ["Houtproductie", "Steenproductie", "Voedselproductie", "Houtskoolproductie", "Olijfolieproductie", "Glasproductie", "IJzerertsproductie", "Honingproductie", "Honingwijnproductie"];
 
+const _name = "gebouw algemeen";
 module.exports = {
-    name: 'gebouw algemeen',
+    name: _name,
     /**
      * 
      * @param {Interaction} interaction
@@ -62,7 +63,7 @@ module.exports = {
             const _messageActionRow = new MessageActionRow();
             for (let i = 0; i < matches.length; i++) {
                 _messageActionRow.addComponents(
-                    new MessageButton().setCustomId(`gebouw algemeen ${level} ${matches[i].target}`)
+                    new MessageButton().setCustomId(`${_name} ${level} ${matches[i].target}`)
                         .setLabel(matches[i].target).setStyle('PRIMARY')
                 );
             }
@@ -94,8 +95,8 @@ module.exports = {
  */
 function naarOutput(interaction, data, minLevel, maxLevel) {
     let level = data.level;
-    let gebouwNaam = GetBuildingName(data);
-    let description = GetBuildingDescription(data);
+    let gebouwNaam = getBuildingName(data);
+    let description = getBuildingDescription(data);
     let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : ` (level ${level})`}`;
 
     let embed = new MessageEmbed()
@@ -104,8 +105,25 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         .setFooter(footerTekst, footerAfbeelding)
         .setTitle(title)
         //.setThumbnail(row[0])
-    console.log(description);
     if (description !== "") embed.setDescription(description);
+
+    let values = "";
+    const _keys = Object.keys(data);
+    for (let _key in _keys) {
+        if (_key.startsWith("cost")) continue;
+        let _value = data[_key];
+        if (_key == "burnable" || _key == "tempServerBurnable" || _key == "destructable" || _key == "tempServerDestructable") {
+            _value = data[_key] == "1" ? "Ja" : "Nee";
+        }
+        if (_key == "width") {
+            _value = `${data[_key]}x${data["height"]}`;
+
+        } else if (_key == "height"){
+            continue;
+        }
+        values = `**${_key}**: ${_value}\n`;
+    }
+    embed.addField("info", values);
 
     let components = [];
     if (minLevel != maxLevel) {
@@ -115,7 +133,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 new MessageButton()
                     .setLabel('lvl ' + (level * 1 - 1))
                     .setStyle('PRIMARY')
-                    .setCustomId(`gebouw algemeen ${(level * 1 - 1)} ${gebouwNaam}`)
+                    .setCustomId(`${_name} ${(level * 1 - 1)} ${gebouwNaam}`)
             )
         }
         if (level < maxLevel) {
@@ -123,7 +141,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 new MessageButton()
                     .setLabel('lvl ' + (level * 1 + 1))
                     .setStyle('PRIMARY')
-                    .setCustomId(`gebouw algemeen ${(level * 1 + 1)} ${gebouwNaam}`)
+                    .setCustomId(`${_name} ${(level * 1 + 1)} ${gebouwNaam}`)
             )
         }
         components = [_messageActionRow];
@@ -135,14 +153,16 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
     }
     return;
     //#region old code
-    let levelString = " (level " + level + ")";
-    embed = new MessageEmbed()
-        .setColor('#996515')
-        .setTimestamp()
-        .setFooter(footerTekst, footerAfbeelding)
-        .setTitle("**" + row[1] + "**" + levelString)
-        .setDescription(row[156])
-        .setThumbnail(row[0])
+    /*
+     * let levelString = " (level " + level + ")";
+     * embed = new MessageEmbed()
+     * .setColor('#996515')
+     * .setTimestamp()
+     * .setFooter(footerTekst, footerAfbeelding)
+     * .setTitle("**" + row[1] + "**" + levelString)
+     * .setDescription(row[156])
+     * .setThumbnail(row[0])
+     */
     for (var i = 0; i < kostenKol.length; i++) {
         let waarde = row[kostenKol[i]];
         let soort = kostenSoort[i];
@@ -183,36 +203,37 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         }
     }
     /*
-    const messRow = new MessageActionRow();
-    if (max == min) {
-        messRow.addComponents(
-            new MessageButton()
-                .setLabel('lvl ' + level)
-                .setStyle('PRIMARY')
-                .setCustomId('gebouw algemeen ' + level + " " + row[1])
-        )
-    }
-    if (level > min) {
-        messRow.addComponents(
-            new MessageButton()
-                .setLabel('lvl ' + (level * 1 - 1))
-                .setStyle('PRIMARY')
-                .setCustomId('gebouw algemeen ' + (level * 1 - 1) + " " + row[1])
-        )
-    }
-    if (level < max) {
-        messRow.addComponents(
-            new MessageButton()
-                .setLabel('lvl ' + (level * 1 + 1))
-                .setStyle('PRIMARY')
-                .setCustomId('gebouw algemeen ' + (level * 1 + 1) + " " + row[1])
-        )
-    }
-    if (interaction.options) {
-        interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
-    } else {
-        interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
-    }*/
+     * const messRow = new MessageActionRow();
+     * if (max == min) {
+     * messRow.addComponents(
+     * new MessageButton()
+     * .setLabel('lvl ' + level)
+     * .setStyle('PRIMARY')
+     * .setCustomId('gebouw algemeen ' + level + " " + row[1])
+     * )
+     * }
+     * if (level > min) {
+     * messRow.addComponents(
+     * new MessageButton()
+     * .setLabel('lvl ' + (level * 1 - 1))
+     * .setStyle('PRIMARY')
+     * .setCustomId('gebouw algemeen ' + (level * 1 - 1) + " " + row[1])
+     * )
+     * }
+     * if (level < max) {
+     * messRow.addComponents(
+     * new MessageButton()
+     * .setLabel('lvl ' + (level * 1 + 1))
+     * .setStyle('PRIMARY')
+     * .setCustomId('gebouw algemeen ' + (level * 1 + 1) + " " + row[1])
+     * )
+     * }
+     * if (interaction.options) {
+     * interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
+     * } else {
+     * interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
+     * }
+     */
     //#endregion
 }
 
@@ -220,7 +241,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
  * 
  * @param {object} data
  */
-function GetBuildingName(data) {
+function getBuildingName(data) {
     let dataName = data.name.toLowerCase();
     let dataType = data.type?.toLowerCase();
     let dataGroup = data.group?.toLowerCase();
@@ -246,7 +267,7 @@ function GetBuildingName(data) {
  * 
  * @param {object} data
  */
-function GetBuildingDescription(data) {
+function getBuildingDescription(data) {
     let dataName = data.name.toLowerCase();
     let dataType = data.type?.toLowerCase();
     let dataGroup = data.group?.toLowerCase();
@@ -273,7 +294,7 @@ function GetBuildingDescription(data) {
  * @param {Array} buildingNameParts
  */
 function getLevelMinMax(buildingNameParts) {
-    let minLevel = 0;
+    let minLevel = 1000;
     let maxLevel = 0;
     for (let _building in buildingData) {
         let _data = buildingData[_building];
