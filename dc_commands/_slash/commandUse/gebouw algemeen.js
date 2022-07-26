@@ -115,10 +115,13 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         console.log(JSON.stringify(data));
         const _keys = Object.keys(data);
         console.log(_keys);
-        for (let _i; _i < _keys.length; _i++) {
+        console.log(_keys.length);
+        for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
+            console.log(_key);
             if (_key.startsWith("cost")) continue;
             let _value = data[_key];
+            console.log(_value);
             if (_key == "burnable" || _key == "tempServerBurnable" || _key == "destructable" || _key == "tempServerDestructable") {
                 _value = data[_key] == "1" ? "Ja" : "Nee";
             }
@@ -128,9 +131,11 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             } else if (_key == "height") {
                 continue;
             }
+            console.log(`**${_key}**: ${_value}\n`);
             values += `**${_key}**: ${_value}\n`;
         }
         values = values.substring(0, 1000);
+        console.log(values);
         embed.addField("info", values);
 
         let components = [];
