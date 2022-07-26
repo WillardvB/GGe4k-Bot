@@ -48,7 +48,7 @@ module.exports = {
             }
             else if (_intern_buildingName.endsWith('_name')){
                 let _mogelijkGebouwNaam = buildingTranslations[_intern_buildingName];
-                if(!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
+                if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam) && _mogelijkGebouwNaam !== "village_name" && _mogelijkGebouwNaam !== "barrel_name")
                     _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
             }
         }
@@ -108,7 +108,6 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             .setTimestamp()
             .setFooter(footerTekst, footerAfbeelding)
             .setTitle(title)
-        console.log(image);
         if (image !== "") embed.setThumbnail(image);
         if (description !== "") embed.setDescription(description);
 
@@ -160,16 +159,6 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         }
         return;
         //#region old code
-        /*
-         * let levelString = " (level " + level + ")";
-         * embed = new MessageEmbed()
-         * .setColor('#996515')
-         * .setTimestamp()
-         * .setFooter(footerTekst, footerAfbeelding)
-         * .setTitle("**" + row[1] + "**" + levelString)
-         * .setDescription(row[156])
-         * .setThumbnail(row[0])
-         */
         for (var i = 0; i < kostenKol.length; i++) {
             let waarde = row[kostenKol[i]];
             let soort = kostenSoort[i];
@@ -209,38 +198,6 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 embed.addField("**" + soort + "**", waarde, true);
             }
         }
-        /*
-         * const messRow = new MessageActionRow();
-         * if (max == min) {
-         * messRow.addComponents(
-         * new MessageButton()
-         * .setLabel('lvl ' + level)
-         * .setStyle('PRIMARY')
-         * .setCustomId('gebouw algemeen ' + level + " " + row[1])
-         * )
-         * }
-         * if (level > min) {
-         * messRow.addComponents(
-         * new MessageButton()
-         * .setLabel('lvl ' + (level * 1 - 1))
-         * .setStyle('PRIMARY')
-         * .setCustomId('gebouw algemeen ' + (level * 1 - 1) + " " + row[1])
-         * )
-         * }
-         * if (level < max) {
-         * messRow.addComponents(
-         * new MessageButton()
-         * .setLabel('lvl ' + (level * 1 + 1))
-         * .setStyle('PRIMARY')
-         * .setCustomId('gebouw algemeen ' + (level * 1 + 1) + " " + row[1])
-         * )
-         * }
-         * if (interaction.options) {
-         * interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
-         * } else {
-         * interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
-         * }
-         */
         //#endregion
     } catch (e) {
         Logger.logError(e);
