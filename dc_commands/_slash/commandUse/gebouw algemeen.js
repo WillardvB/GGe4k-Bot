@@ -108,20 +108,16 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             .setTimestamp()
             .setFooter(footerTekst, footerAfbeelding)
             .setTitle(title)
-        if (image) embed.setThumbnail(image);
+        console.log(image);
+        if (image !== "") embed.setThumbnail(image);
         if (description !== "") embed.setDescription(description);
 
         let values = "";
-        console.log(JSON.stringify(data));
         const _keys = Object.keys(data);
-        console.log(_keys);
-        console.log(_keys.length);
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
-            console.log(_key);
             if (_key.startsWith("cost")) continue;
             let _value = data[_key];
-            console.log(_value);
             if (_key == "burnable" || _key == "tempServerBurnable" || _key == "destructable" || _key == "tempServerDestructable") {
                 _value = data[_key] == "1" ? "Ja" : "Nee";
             }
@@ -131,11 +127,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             } else if (_key == "height") {
                 continue;
             }
-            console.log(`**${_key}**: ${_value}\n`);
             values += `**${_key}**: ${_value}\n`;
         }
         values = values.substring(0, 1000);
-        console.log(values);
         embed.addField("info", values);
 
         let components = [];
@@ -380,8 +374,11 @@ function getBuildingImage(data) {
     let dataName = data.name.toLowerCase();
     let dataType = data.type?.toLowerCase();
     let dataGroup = data.group?.toLowerCase();
+    console.log(dataName + "_" + dataGroup + "_" + dataType);
     let imgData = imagesData[dataName + "_" + dataGroup + "_" + dataType];
-    if (imgData) {
+    console.log(imgData);
+    console.log(imgData.url);
+    if (imgData !== null) {
         return "https://github.com/WillardvB/GGe4k-Bot/raw/master/ingame_images/" + imgData.url;
     }
     return "";
