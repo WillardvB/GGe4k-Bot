@@ -374,11 +374,14 @@ function getBuildingImage(data) {
     let dataName = data.name.toLowerCase();
     let dataType = data.type?.toLowerCase();
     let dataGroup = data.group?.toLowerCase();
-    console.log(dataName + "_" + dataGroup + "_" + dataType);
-    let imgData = imagesData[dataName + "_" + dataGroup + "_" + dataType];
-    console.log(imgData);
-    console.log(imgData.url);
-    if (imgData !== null) {
+
+    let _keys = Object.keys(imagesData);
+    let _key = _keys.find(_item => {
+        if (_item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}`) return true;
+        return false;
+    })
+    if (_key !== undefined) {
+        let imgData = imagesData[_key];
         return "https://github.com/WillardvB/GGe4k-Bot/raw/master/ingame_images/" + imgData.url;
     }
     return "";
