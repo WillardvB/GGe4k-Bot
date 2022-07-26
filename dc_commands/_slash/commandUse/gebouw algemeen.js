@@ -112,7 +112,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         if (description !== "") embed.setDescription(description);
 
         let values = "";
+        console.log(JSON.stringify(data));
         const _keys = Object.keys(data);
+        console.log(_keys);
         for (let _i; _i < _keys.length; _i++) {
             let _key = _keys[_i];
             if (_key.startsWith("cost")) continue;
