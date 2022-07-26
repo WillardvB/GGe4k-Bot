@@ -114,9 +114,10 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let values = "";
         const _keys = Object.keys(data);
         let storageValues = "";
+        let productionValues = "";
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
-            if (_key.startsWith("cost") || _key == "height" || _key == "foodRatio") continue;
+            if (_key.startsWith("cost") || _key === "height" || _key === "foodRatio" || _key === "buildDuration") continue;
             let _value = data[_key];
             if (_key == "burnable" || _key == "tempServerBurnable" || _key == "destructable" || _key == "tempServerDestructable") {
                 _value = data[_key] == "1" ? "Ja" : "Nee";
@@ -132,8 +133,11 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             }
             if (_key.toLowerCase().endsWith("storage"))
             {
-                console.log(_key.substring(0, _key.length - 7));
-                storageValues += `${translationData.generic[_key.substring(0, _key.length - 7)]}: ${data[_key]}\n`;
+                storageValues += `**${translationData.generic[_key.substring(0, _key.length - 7)]}**: ${formatNumber.formatNum(data[_key])}\n`;
+                continue;
+            }
+            if (_key.toLowerCase().endsWith("production")) {
+                productionValues += `**${translationData.generic[_key.substring(0, _key.length - 10)]}**: ${formatNumber.formatNum(data[_key])}\n`;
                 continue;
             }
             if (_key.startsWith("tempServer")) _key.replace("tempServer", "buitenrijken ");
@@ -143,6 +147,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         }
         if (storageValues !== "") {
             embed.addField(`**${translationData.buildings_and_decorations.storehouse_name}**`, storageValues.trim());
+        }
+        if (productionValues !== "") {
+            embed.addField(`**${translationData.generic.produce}**`, productionValues.trim());
         }
         values = values.substring(0, 1000);
         embed.addField("**Overige informatie**", values);
