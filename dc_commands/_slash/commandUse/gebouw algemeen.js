@@ -121,8 +121,11 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             let _value = data[_key];
             if (_key == "burnable" || _key == "tempServerBurnable" || _key == "destructable" || _key == "tempServerDestructable") {
                 _value = data[_key] == "1" ? "Ja" : "Nee";
+                if (_key.endsWith("burnable")) _key.replace("burnable", "brandbaar");
+                if (_key.endsWith("destructable")) _key.replace("destructable", "verwoestbaar");
             }
             if (_key == "width") {
+                _key = "Oppervlakte";
                 _value = `${data[_key]}x${data["height"]}`;
             }
             if (_key == "hunterRatio") {
@@ -137,12 +140,11 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 continue;
             }
             if (_key.toLowerCase().endsWith("production")) {
-                productionValues += `**${translationData.generic[_key.substring(0, _key.length - 10)]}**: ${formatNumber.formatNum(data[_key])}\n`;
+                productionValues += `**${translationData.generic[_key.substring(0, _key.length - 10).toLowerCase()]}**: ${formatNumber.formatNum(data[_key])}\n`;
                 continue;
             }
             if (_key.startsWith("tempServer")) _key.replace("tempServer", "buitenrijken ");
             _key = _key.toLowerCase();
-            if (_key.endsWith("burnable")) _key.replace("burnable", "brandbaar");
             values += `**${_key}**: ${_value}\n`;
         }
         if (storageValues !== "") {
@@ -185,38 +187,6 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         for (var i = 0; i < kostenKol.length; i++) {
             let waarde = row[kostenKol[i]];
             let soort = kostenSoort[i];
-            if (soort == "Sloopbaar" || soort == "Brandbaar") {
-                waarde = waarde == "0" ? "nee" : "ja";
-            }
-            if (soort == "Oppervlakte") {
-                waarde = waarde + "x" + row[kostenKol[i] + 1];
-            }
-            if (soort == "Productie") {
-                waarde = "";
-                for (var a = 0; a < productieKol.length; a++) {
-                    productie = row[productieKol[a]];
-                    productie = formatNumber.formatNum(productie);
-                    if (productie != "") {
-                        waarde += productieSoort[a] + ": " + productie + "\n";
-                    }
-                }
-            }
-            if (soort == "Opslag") {
-                waarde = "";
-                for (var a = 0; a < opslagKol.length; a++) {
-                    opslag = row[opslagKol[a]];
-                    opslag = formatNumber.formatNum(opslag);
-                    if (opslag != "") {
-                        waarde += opslagSoort[a] + ": " + opslag + "\n";
-                    }
-                }
-            }
-            if (soort == "Ratio" && waarde != "" && waarde != null && waarde != 0) {
-                waarde = `${waarde / 100} bs geeft 1 brood`;
-            }
-            if (soort == "Honingwijnratio" && waarde != "" && waarde != null && waarde != 0) {
-                waarde = `${waarde} honing en ${row[kostenKol[i] + 1]} brood geven samen 1 honingwijn`;
-            }
             if (waarde != null && waarde != "" && soort != null && soort != "") {
                 embed.addField("**" + soort + "**", waarde, true);
             }
