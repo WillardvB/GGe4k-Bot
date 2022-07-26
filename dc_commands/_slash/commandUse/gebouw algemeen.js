@@ -6,6 +6,7 @@ const imagesData = require('./../../../ingame_images/x768.json')
 const buildingTranslations = translationData.buildings_and_decorations;
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
+const Logger = require("../../../tools/Logger.js");
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 const kostenKol = [7, 13, 33, 20, 15, 17, 25, 26, 27, 43, 47, 51, 52, 14, 1, 57, 1, 66, 70, 72, 76, 77, 78, 80, 83, 84, 85, 86, 88, 91, 92, 93, 94, 95, 96, 97, 98, 103, 109, 110, 111, 113, 115, 116, 118, 120, 121, 122, 123, 127, 128, 129, 130, 136, 137, 138, 139, 142, 144, 145, 146, 149];
@@ -95,149 +96,154 @@ module.exports = {
  * @param {number} maxLevel
  */
 function naarOutput(interaction, data, minLevel, maxLevel) {
-    let level = data.level;
-    let gebouwNaam = getBuildingName(data);
-    let description = getBuildingDescription(data);
-    let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : ` (level ${level})`}`;
-    let image = getBuildingImage(data);
+    try {
+        let level = data.level;
+        let gebouwNaam = getBuildingName(data);
+        let description = getBuildingDescription(data);
+        let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : ` (level ${level})`}`;
+        let image = getBuildingImage(data);
 
-    let embed = new MessageEmbed()
-        .setColor('#996515')
-        .setTimestamp()
-        .setFooter(footerTekst, footerAfbeelding)
-        .setTitle(title)
-    if (image) embed.setThumbnail(image);
-    if (description !== "") embed.setDescription(description);
+        let embed = new MessageEmbed()
+            .setColor('#996515')
+            .setTimestamp()
+            .setFooter(footerTekst, footerAfbeelding)
+            .setTitle(title)
+        if (image) embed.setThumbnail(image);
+        if (description !== "") embed.setDescription(description);
 
-    let values = "";
-    const _keys = Object.keys(data);
-    for (let _i; _i < _keys.length; _i++) {
-        let _key = _keys[_i];
-        if (_key.startsWith("cost")) continue;
-        let _value = data[_key];
-        if (_key == "burnable" || _key == "tempServerBurnable" || _key == "destructable" || _key == "tempServerDestructable") {
-            _value = data[_key] == "1" ? "Ja" : "Nee";
-        }
-        if (_key == "width") {
-            _value = `${data[_key]}x${data["height"]}`;
+        let values = "";
+        const _keys = Object.keys(data);
+        for (let _i; _i < _keys.length; _i++) {
+            let _key = _keys[_i];
+            if (_key.startsWith("cost")) continue;
+            let _value = data[_key];
+            if (_key == "burnable" || _key == "tempServerBurnable" || _key == "destructable" || _key == "tempServerDestructable") {
+                _value = data[_key] == "1" ? "Ja" : "Nee";
+            }
+            if (_key == "width") {
+                _value = `${data[_key]}x${data["height"]}`;
 
-        } else if (_key == "height"){
-            continue;
+            } else if (_key == "height") {
+                continue;
+            }
+            values += `**${_key}**: ${_value}\n`;
         }
-        values += `**${_key}**: ${_value}\n`;
-    }
-    embed.addField("info", values);
+        values = values.substring(0, 1000);
+        embed.addField("info", values);
 
-    let components = [];
-    if (minLevel != maxLevel) {
-        const _messageActionRow = new MessageActionRow();
-        if (level > minLevel) {
-            _messageActionRow.addComponents(
-                new MessageButton()
-                    .setLabel('lvl ' + (level * 1 - 1))
-                    .setStyle('PRIMARY')
-                    .setCustomId(`${_name} ${(level * 1 - 1)} ${gebouwNaam}`)
-            )
+        let components = [];
+        if (minLevel != maxLevel) {
+            const _messageActionRow = new MessageActionRow();
+            if (level > minLevel) {
+                _messageActionRow.addComponents(
+                    new MessageButton()
+                        .setLabel('lvl ' + (level * 1 - 1))
+                        .setStyle('PRIMARY')
+                        .setCustomId(`${_name} ${(level * 1 - 1)} ${gebouwNaam}`)
+                )
+            }
+            if (level < maxLevel) {
+                _messageActionRow.addComponents(
+                    new MessageButton()
+                        .setLabel('lvl ' + (level * 1 + 1))
+                        .setStyle('PRIMARY')
+                        .setCustomId(`${_name} ${(level * 1 + 1)} ${gebouwNaam}`)
+                )
+            }
+            components = [_messageActionRow];
         }
-        if (level < maxLevel) {
-            _messageActionRow.addComponents(
-                new MessageButton()
-                    .setLabel('lvl ' + (level * 1 + 1))
-                    .setStyle('PRIMARY')
-                    .setCustomId(`${_name} ${(level * 1 + 1)} ${gebouwNaam}`)
-            )
+        if (interaction.options) {
+            interaction.followUp({ embeds: [embed], components: components });
+        } else {
+            interaction.editReply({ embeds: [embed], components: components });
         }
-        components = [_messageActionRow];
-    }
-    if (interaction.options) {
-        interaction.followUp({ embeds: [embed], components: components });
-    } else {
-        interaction.editReply({ embeds: [embed], components: components });
-    }
-    return;
-    //#region old code
-    /*
-     * let levelString = " (level " + level + ")";
-     * embed = new MessageEmbed()
-     * .setColor('#996515')
-     * .setTimestamp()
-     * .setFooter(footerTekst, footerAfbeelding)
-     * .setTitle("**" + row[1] + "**" + levelString)
-     * .setDescription(row[156])
-     * .setThumbnail(row[0])
-     */
-    for (var i = 0; i < kostenKol.length; i++) {
-        let waarde = row[kostenKol[i]];
-        let soort = kostenSoort[i];
-        if (soort == "Sloopbaar" || soort == "Brandbaar") {
-            waarde = waarde == "0" ? "nee" : "ja";
-        }
-        if (soort == "Oppervlakte") {
-            waarde = waarde + "x" + row[kostenKol[i] + 1];
-        }
-        if (soort == "Productie") {
-            waarde = "";
-            for (var a = 0; a < productieKol.length; a++) {
-                productie = row[productieKol[a]];
-                productie = formatNumber.formatNum(productie);
-                if (productie != "") {
-                    waarde += productieSoort[a] + ": " + productie + "\n";
+        return;
+        //#region old code
+        /*
+         * let levelString = " (level " + level + ")";
+         * embed = new MessageEmbed()
+         * .setColor('#996515')
+         * .setTimestamp()
+         * .setFooter(footerTekst, footerAfbeelding)
+         * .setTitle("**" + row[1] + "**" + levelString)
+         * .setDescription(row[156])
+         * .setThumbnail(row[0])
+         */
+        for (var i = 0; i < kostenKol.length; i++) {
+            let waarde = row[kostenKol[i]];
+            let soort = kostenSoort[i];
+            if (soort == "Sloopbaar" || soort == "Brandbaar") {
+                waarde = waarde == "0" ? "nee" : "ja";
+            }
+            if (soort == "Oppervlakte") {
+                waarde = waarde + "x" + row[kostenKol[i] + 1];
+            }
+            if (soort == "Productie") {
+                waarde = "";
+                for (var a = 0; a < productieKol.length; a++) {
+                    productie = row[productieKol[a]];
+                    productie = formatNumber.formatNum(productie);
+                    if (productie != "") {
+                        waarde += productieSoort[a] + ": " + productie + "\n";
+                    }
                 }
             }
-        }
-        if (soort == "Opslag") {
-            waarde = "";
-            for (var a = 0; a < opslagKol.length; a++) {
-                opslag = row[opslagKol[a]];
-                opslag = formatNumber.formatNum(opslag);
-                if (opslag != "") {
-                    waarde += opslagSoort[a] + ": " + opslag + "\n";
+            if (soort == "Opslag") {
+                waarde = "";
+                for (var a = 0; a < opslagKol.length; a++) {
+                    opslag = row[opslagKol[a]];
+                    opslag = formatNumber.formatNum(opslag);
+                    if (opslag != "") {
+                        waarde += opslagSoort[a] + ": " + opslag + "\n";
+                    }
                 }
             }
+            if (soort == "Ratio" && waarde != "" && waarde != null && waarde != 0) {
+                waarde = `${waarde / 100} bs geeft 1 brood`;
+            }
+            if (soort == "Honingwijnratio" && waarde != "" && waarde != null && waarde != 0) {
+                waarde = `${waarde} honing en ${row[kostenKol[i] + 1]} brood geven samen 1 honingwijn`;
+            }
+            if (waarde != null && waarde != "" && soort != null && soort != "") {
+                embed.addField("**" + soort + "**", waarde, true);
+            }
         }
-        if (soort == "Ratio" && waarde != "" && waarde != null && waarde != 0) {
-            waarde = `${waarde / 100} bs geeft 1 brood`;
-        }
-        if (soort == "Honingwijnratio" && waarde != "" && waarde != null && waarde != 0) {
-            waarde = `${waarde} honing en ${row[kostenKol[i] + 1]} brood geven samen 1 honingwijn`;
-        }
-        if (waarde != null && waarde != "" && soort != null && soort != "") {
-            embed.addField("**" + soort + "**", waarde, true);
-        }
+        /*
+         * const messRow = new MessageActionRow();
+         * if (max == min) {
+         * messRow.addComponents(
+         * new MessageButton()
+         * .setLabel('lvl ' + level)
+         * .setStyle('PRIMARY')
+         * .setCustomId('gebouw algemeen ' + level + " " + row[1])
+         * )
+         * }
+         * if (level > min) {
+         * messRow.addComponents(
+         * new MessageButton()
+         * .setLabel('lvl ' + (level * 1 - 1))
+         * .setStyle('PRIMARY')
+         * .setCustomId('gebouw algemeen ' + (level * 1 - 1) + " " + row[1])
+         * )
+         * }
+         * if (level < max) {
+         * messRow.addComponents(
+         * new MessageButton()
+         * .setLabel('lvl ' + (level * 1 + 1))
+         * .setStyle('PRIMARY')
+         * .setCustomId('gebouw algemeen ' + (level * 1 + 1) + " " + row[1])
+         * )
+         * }
+         * if (interaction.options) {
+         * interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
+         * } else {
+         * interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
+         * }
+         */
+        //#endregion
+    } catch (e) {
+        Logger.logError(e);
     }
-    /*
-     * const messRow = new MessageActionRow();
-     * if (max == min) {
-     * messRow.addComponents(
-     * new MessageButton()
-     * .setLabel('lvl ' + level)
-     * .setStyle('PRIMARY')
-     * .setCustomId('gebouw algemeen ' + level + " " + row[1])
-     * )
-     * }
-     * if (level > min) {
-     * messRow.addComponents(
-     * new MessageButton()
-     * .setLabel('lvl ' + (level * 1 - 1))
-     * .setStyle('PRIMARY')
-     * .setCustomId('gebouw algemeen ' + (level * 1 - 1) + " " + row[1])
-     * )
-     * }
-     * if (level < max) {
-     * messRow.addComponents(
-     * new MessageButton()
-     * .setLabel('lvl ' + (level * 1 + 1))
-     * .setStyle('PRIMARY')
-     * .setCustomId('gebouw algemeen ' + (level * 1 + 1) + " " + row[1])
-     * )
-     * }
-     * if (interaction.options) {
-     * interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
-     * } else {
-     * interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
-     * }
-     */
-    //#endregion
 }
 
 /**
