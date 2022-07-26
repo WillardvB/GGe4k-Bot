@@ -113,24 +113,40 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
 
         let values = "";
         const _keys = Object.keys(data);
+        let storageValues = "";
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
-            if (_key.startsWith("cost")) continue;
+            if (_key.startsWith("cost") || _key == "height" || _key == "foodRatio") continue;
             let _value = data[_key];
             if (_key == "burnable" || _key == "tempServerBurnable" || _key == "destructable" || _key == "tempServerDestructable") {
                 _value = data[_key] == "1" ? "Ja" : "Nee";
             }
             if (_key == "width") {
                 _value = `${data[_key]}x${data["height"]}`;
-
-            } else if (_key == "height") {
+            }
+            if (_key == "hunterRatio") {
+                _value = `${data[_key] / 100} bs geeft 1 brood`;
+            }
+            if (_key == "honeyRatio") {
+                _value = `${data[_key]} honing en ${data["foodRatio"]} brood geven samen 1 honingwijn`;
+            }
+            if (_key.toLowerCase().endsWith("storage"))
+            {
+                console.log(_key.substring(0, _key.length - 7));
+                storageValues += `${translationData.generic[_key.substring(0, _key.length - 7)]}: ${data[_key]}\n`;
                 continue;
             }
+            if (_key.startsWith("tempServer")) _key.replace("tempServer", "buitenrijken ");
+            _key = _key.toLowerCase();
+            if (_key.endsWith("burnable")) _key.replace("burnable", "brandbaar");
             values += `**${_key}**: ${_value}\n`;
         }
+        if (storageValues !== "") {
+            embed.addField(`**${translationData.buildings_and_decorations.storehouse_name}**`, storageValues.trim());
+        }
         values = values.substring(0, 1000);
-        embed.addField("info", values);
-
+        embed.addField("**Overige informatie**", values);
+        
         let components = [];
         if (minLevel != maxLevel) {
             const _messageActionRow = new MessageActionRow();
