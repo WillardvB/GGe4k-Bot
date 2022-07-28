@@ -122,7 +122,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let level = data.level;
         let gebouwNaam = getBuildingName(data);
         let description = getBuildingDescription(data);
-        let title = `**${gebouwNaam}**${level == 0 ? "(totaal alle levels)" : minLevel === maxLevel ? "" : ` (level ${level})`}`;
+        let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : level == 0 ? "(totaal alle levels)" : ` (level ${level})`}`;
         let image = getBuildingImage(data);
 
         let embed = new MessageEmbed()
@@ -205,7 +205,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 new MessageButton()
                     .setLabel('Totaal alle levels')
                     .setStyle('PRIMARY')
-                    .setCustomId(`${_name} -1 ${gebouwNaam}`)
+                    .setCustomId(`${_name} 0 ${gebouwNaam}`)
             )
             components = [messRow];
         }
@@ -393,26 +393,27 @@ function getBuildingLevelData(buildingNameParts, level) {
         if (buildingNameParts.length == 1) {
             if (_dataName === buildingNameParts[0]) {
                 if (level === 0) data = sumDataCostObjects(data, _data);
-                else if (_dataLevel === level) data = _data;
+                else if (_dataLevel === level) { data = _data; break; }
             }
             else if (_dataGroup === buildingNameParts[0]) {
                 if (level === 0) data = sumDataCostObjects(data, _data);
-                else if (_dataLevel === level) data = _data;
+                else if (_dataLevel === level) { data = _data; break; }
             }
         }
         else if (buildingNameParts.length == 2) {
             if (_dataName === buildingNameParts[0] &&
                 _dataType === buildingNameParts[1]) {
                 if (level === 0) data = sumDataCostObjects(data, _data);
-                else if (_dataLevel === level) data = _data;
+                else if (_dataLevel === level) { data = _data; break; }
             }
             else if (_dataName === buildingNameParts[0] &&
                 _dataGroup === buildingNameParts[1]) {
                 if (level === 0) data = sumDataCostObjects(data, _data);
-                else if (_dataLevel === level) data = _data;
+                else if (_dataLevel === level) { data = _data; break; }
             }
         }
     }
+    if (level === 0) data.level = 0;
     return data;
 }
 
@@ -453,13 +454,13 @@ function sumDataCostObjects(dataOutput, dataInput) {
             /** @type string */
             let _value = dataInput[_key];
             if (_keyLowCase.startsWith("cost")) {
-                if (dataOutput[_key] === null) dataOutput[_key] = dataInput[_key];
+                if (dataOutput[_key] === undefined) dataOutput[_key] = dataInput[_key];
                 else dataOutput[_key] = (parseInt(dataOutput[_key]) + parseInt(dataInput[_key])).toString()
                 continue;
             }
             if (_keyLowCase.endsWith("duration")) {
                 if (_keyLowCase === "buildduration") {
-                    if (dataOutput[_key] === null) dataOutput[_key] = dataInput[_key];
+                    if (dataOutput[_key] === undefined) dataOutput[_key] = dataInput[_key];
                     else dataOutput[_key] = (parseInt(dataOutput[_key]) + parseInt(dataInput[_key])).toString()
                     continue;
                 }
@@ -467,13 +468,12 @@ function sumDataCostObjects(dataOutput, dataInput) {
             if (_keyLowCase.startsWith("tempserver")) {
                 _keyLowCase = _key.substring(10).toLowerCase();
                 if (_keyLowCase.startsWith("cost") || _keyLowCase === "time") {
-                    if (dataOutput[_key] === null) dataOutput[_key] = dataInput[_key];
+                    if (dataOutput[_key] === undefined) dataOutput[_key] = dataInput[_key];
                     else dataOutput[_key] = (parseInt(dataOutput[_key]) + parseInt(dataInput[_key])).toString()
                     continue;
                 }
             }
         }
-        dataOutput.level = 0;
         return dataOutput;
     }
     catch (e) {
