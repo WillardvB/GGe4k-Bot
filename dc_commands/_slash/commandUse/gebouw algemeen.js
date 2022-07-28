@@ -40,8 +40,6 @@ module.exports = {
         }
         gebouwnaam = gebouwnaam.trim().toLowerCase();
         let foundBuildingName = "<Not found>";
-        let _mogelijkeGebouwnamen = ["Zaal der legenden"];
-        if (gebouwnaam === "zaal der legenden") foundBuildingName = "dialog_legendtemple_name";
         if (foundBuildingName === "<Not found>") {
             for (let _intern_buildingName in buildingTranslations) {
                 if (buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
@@ -54,11 +52,31 @@ module.exports = {
                         _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
                 }
             }
+            for (let _intern_dialog in translationData.dialogs) {
+                if (translationData.dialogs[_intern_dialog].toLowerCase().trim() === gebouwnaam) {
+                    foundBuildingName = _intern_dialog;
+                    break;
+                }
+                else if (_intern_dialog.endsWith('_name') && (_intern_dialog.startsWith('deco_') || _intern_dialog === 'OfficersSchool_name' || _intern_dialog === 'TradeDistrict_name' || _intern_dialog === 'dialog_legendtemple_name')) {
+                    let _mogelijkGebouwNaam = translationData.dialogs[_intern_dialog];
+                    if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
+                        _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
+                }
+            }
+            for (let _intern_generic in translationData.generic) {
+                if (translationData.generic[_intern_generic].toLowerCase().trim() === gebouwnaam) {
+                    foundBuildingName = _intern_generic;
+                    break;
+                }
+                else if (_intern_generic.endsWith('_name') && (_intern_generic === 'MayaPalace_name' || _intern_generic === 'MilitaryDistrict_name')) {
+                    let _mogelijkGebouwNaam = translationData.generic[_intern_generic];
+                    if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
+                        _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
+                }
+            }
         }
         if (foundBuildingName === "<Not found>") {
-            if (gebouwnaam === "zaal der legenden") foundBuildingName = "dialog_legendtemple_name";
-        }
-        if (foundBuildingName === "<Not found>") {
+            _mogelijkeGebouwnamen.sort();
             let matches = stringSimilarity.findBestMatch(gebouwnaam, _mogelijkeGebouwnamen).ratings;
             matches = matches.sort((a, b) => {
                 if (a.rating > b.rating) return -1;
@@ -117,6 +135,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let values = "";
         const _keys = Object.keys(data);
         let constructionValues = "";
+        let rewardValues = "";
         let storageValues = "";
         let productionValues = "";
         let protectionValues = "";
@@ -130,8 +149,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 _keyLowCase === "height" || _keyLowCase.includes("cost") || _keyLowCase == "movable" ||
                 _keyLowCase === "rotatetype" || _keyLowCase === "foodratio" || _keyLowCase.endsWith("duration") ||
                 _keyLowCase === "tempservertime" || _keyLowCase.startsWith("comment") || _keyLowCase === "shopcategory" ||
-                _keyLowCase === "constructionitemgroupids" || _keyLowCase === "buildinggrouptype" ||
-                _keyLowCase.endsWith("wodid") || _keyLowCase === "sortorder") continue;
+                _keyLowCase === "constructionitemgroupids" || _keyLowCase === "buildinggroundtype" ||
+                _keyLowCase.endsWith("wodid") || _keyLowCase.endsWith("sortorder") || _keyLowCase === "effectlocked" ||
+                _keyLowCase.startsWith("earlyunlock")) continue;
             if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
             /** @type string */
             let _value = data[_key];
@@ -148,6 +168,11 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             if (_keyLowCase.startsWith("required")) {
                 _keyLowCase = _keyLowCase.substring(8,9) + _key.substring(9);
                 requirementsValues += `**${translationData.generic[_keyLowCase]}**: ${_value}\n`;
+                continue;
+            }
+            if (_keyLowCase === "sceatskilllocked") {
+                _value = parseInt(_value) > 0 ? "Ja" : "Nee"; 
+                requirementsValues += `**Zaal vaardigheid nodig**: ${_value}\n`;
                 continue;
             }
             if (_keyLowCase.startsWith("sell")) {
@@ -191,13 +216,49 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 constructionValues += `**Toegestane kastelen**: ${_value}\n`;
                 continue;
             }
+            if (_keyLowCase === "mightvalue") {
+                _keyLowCase = translationData.dialogs.mightPoints;
+                rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
+                continue;
+            }
+            if (_keyLowCase === "xp") {
+                _keyLowCase = translationData.generic.xp;
+                rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
+                continue;
+            }
+            if (_keyLowCase === "buildspeedboost") {
+                _keyLowCase = "Bouwsnelheid";
+                _value = `+${_value}%`;
+                rewardValues += `**${_keyLowCase}**: ${_value}\n`;
+                continue;
+            }
+            if (_keyLowCase === "decopoints") {
+                _keyLowCase = translationData.generic.publicOrder;
+                rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
+                continue;
+            }
             if (_keyLowCase == "hunterratio") {
                 _value = `${data[_key] / 100} ${translationData.generic.goods} geeft 1 ${translationData.generic.food}`;
                 _keyLowCase = translationData.dialogs.dialog_hunter_exchangeRate;
+                rewardValues += `**${_keyLowCase}**: ${_value}\n`;
+                continue;
             }
             if (_keyLowCase == "honeyratio") {
                 _value = `${data[_key]} ${translationData.generic.honey} en ${data["foodRatio"]} ${translationData.generic.food} geven samen 1 ${translationData.generic.mead}`;
                 _keyLowCase = translationData.dialogs.dialog_hunter_exchangeRate;
+                rewardValues += `**${_keyLowCase}**: ${_value}\n`;
+                continue;
+            }
+            if (_keyLowCase === "buildspeedboost") {
+                _keyLowCase = translationData.dialogs.ci_effect_unitWallCount_tt.substring(0, translationData.dialogs.ci_effect_unitWallCount_tt.length - 1);
+                _value = `+${_value}`;
+                rewardValues += `**${_keyLowCase}**: ${_value}\n`;
+                continue;
+            }
+            if (_keyLowCase === "skillpoints") {
+                _keyLowCase = translationData.dialogs.dialog_legendTemple_SkillPointPlural;
+                rewardValues += `**${_keyLowCase}**: ${_value}\n`;
+                continue;
             }
             if (_keyLowCase.endsWith("storage"))
             {
@@ -229,20 +290,17 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 destructionValues += `**${_keyLowCase}**: ${_value}\n`;
                 continue;
             }
-            if (_keyLowCase === "mightvalue") {
-                _keyLowCase = translationData.dialogs.mightPoints;
-                _value = formatNumber.formatNum(_value);
-            }
-            if (_keyLowCase === "xp") {
-                _keyLowCase = translationData.generic.xp;
-                _value = formatNumber.formatNum(_value);
-            }
-            if (_keyLowCase === "buildspeedboost") {
-                _keyLowCase = "Bouwsnelheid";
-                _value = `+${_value}%`
-            }
             if (_keyLowCase === "maximumcount") {
                 _keyLowCase = "Maximum aantal";
+            }
+            if (_keyLowCase === "districttypeid") {
+                _keyLowCase = "Kan in district";
+                switch (_value) {
+                    case 1: translationData.buildings_and_decorations.MilitaryDistrict_name; break;
+                    case 3: translationData.buildings_and_decorations.InnerDistrict_name; break;
+                    case 4: translationData.dialogs.TradeDistrict_name; break;
+                    default: "-";
+                }
             }
 
             _keyLowCase = _keyLowCase.substring(0, 1).toUpperCase() + _keyLowCase.substring(1);
@@ -255,6 +313,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         if (requirementsValues !== "") {
             requirementsValues += "**Kosten**: zie `/gebouw kosten`";
             embed.addField(`**Benodigdheden**`, requirementsValues.trim(), true);
+        }
+        if (rewardValues !== "") {
+            embed.addField(`**Voordelen**`, rewardValues.trim(), true);
         }
         if (storageValues !== "") {
             embed.addField(`**${translationData.buildings_and_decorations.storehouse_name}**`, storageValues.trim(), true);
@@ -328,6 +389,27 @@ function getBuildingName(data) {
             if (_item.toLowerCase() === `${dataGroup}_name`) return true;
             return false;
         })
+        if (_key === undefined) {
+            _keys = Object.keys(translationData.generic);
+            _key = _keys.find(_item => {
+                if (_item.toLowerCase() === `${dataName}_name`) return true;
+                if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
+                if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
+                if (_item.toLowerCase() === `${dataGroup}_name`) return true;
+                return false;
+            })
+        }
+        if (_key === undefined) {
+            _keys = Object.keys(translationData.dialogs);
+            _key = _keys.find(_item => {
+                if (_item.toLowerCase() === `${dataName}_name`) return true;
+                if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
+                if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
+                if (_item.toLowerCase() === `${dataGroup}_name`) return true;
+                if (_item.toLowerCase() === `dialog_${dataName}_name`) return true;
+                return false;
+            })
+        }
         if (_key !== undefined) {
             return buildingTranslations[_key];
         }
@@ -354,6 +436,27 @@ function getBuildingDescription(data) {
             if (_item.toLowerCase() === `${dataName}_${dataGroup}_short_info`) return true;
             return false;
         })
+        if (_key === undefined) {
+            _keys = Object.keys(translationData.generic);
+            _key = _keys.find(_item => {
+                if (_item.toLowerCase() === `${dataName}_short_info`) return true;
+                if (_item.toLowerCase() === `${dataName}_${dataType}_short_info`) return true;
+                if (_item.toLowerCase() === `${dataName}_${dataGroup}_short_info`) return true;
+                if (_item.toLowerCase() === `${dataGroup}_short_info`) return true;
+                return false;
+            })
+        }
+        if (_key === undefined) {
+            _keys = Object.keys(translationData.dialogs);
+            _key = _keys.find(_item => {
+                if (_item.toLowerCase() === `${dataName}_short_info`) return true;
+                if (_item.toLowerCase() === `${dataName}_${dataType}_short_info`) return true;
+                if (_item.toLowerCase() === `${dataName}_${dataGroup}_short_info`) return true;
+                if (_item.toLowerCase() === `${dataGroup}_short_info`) return true;
+                if (_item.toLowerCase() === `dialog_${dataName}_short_info`) return true;
+                return false;
+            })
+        }
         if (_key !== undefined) {
             return buildingTranslations[_key];
         }
