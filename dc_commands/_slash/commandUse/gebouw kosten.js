@@ -143,7 +143,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             let _value = data[_key];
             if (_keyLowCase.startsWith("cost")) {
                 let _tmpKey = translationData.generic[_keyLowCase.substring(4)];
-                if (_tmpKey !== null) {
+                if (_tmpKey !== null && _tmpKey !== undefined && _tmpKey !== NaN) {
                     normalCostValues += `**${_tmpKey}**: ${formatNumber.formatNum(_value)}\n`;
                     continue;
                 }
@@ -176,12 +176,15 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         }
         if (normalCostValues !== "") {
             embed.addField(`**${translationData.generic.costs}**`, normalCostValues.trim(), true);
+        } else {
+            embed.addField(`**${translationData.generic.costs}**`, "Geen", true);
         }
         if (tmpServerCostValues !== "") {
             embed.addField("_" + translationData.dialogs.temp_server_name + " " + translationData.generic.costs.toLowerCase() + "_", tmpServerCostValues.trim(), true);
         }
+        let components = [];
         const messRow = new MessageActionRow();
-        if (level >= minLevel && level <= maxLevel) {
+        if (level >= minLevel && level <= maxLevel && minLevel != maxLevel) {
             if (level > minLevel && level <= maxLevel) {
                 messRow.addComponents(
                     new MessageButton()
@@ -204,28 +207,28 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                     .setStyle('PRIMARY')
                     .setCustomId(`${_name} -1 ${gebouwNaam}`)
             )
+            components = [messRow];
         }
-        else {
-            if (minLevel != maxLevel) {
-                messRow.addComponents(
-                    new MessageButton()
-                        .setLabel('lvl ' + minLevel)
-                        .setStyle('PRIMARY')
-                        .setCustomId(`${_name} ${minLevel} ${gebouwNaam}`)
-                )
-            }
+        else if (minLevel != maxLevel) {
+            messRow.addComponents(
+                new MessageButton()
+                    .setLabel('lvl ' + minLevel)
+                    .setStyle('PRIMARY')
+                    .setCustomId(`${_name} ${minLevel} ${gebouwNaam}`)
+            )
             messRow.addComponents(
                 new MessageButton()
                     .setLabel('lvl ' + maxLevel)
                     .setStyle('PRIMARY')
                     .setCustomId(`${_name} ${maxLevel} ${gebouwNaam}`)
             )
+            components = [messRow];
         }
         if (interaction.options) {
-            interaction.followUp({ embeds: [embed], components: [messRow] });
+            interaction.followUp({ embeds: [embed], components: components });
         }
         else {
-            interaction.editReply({ embeds: [embed], components: [messRow] });
+            interaction.editReply({ embeds: [embed], components: components });
         }
         return;
     }
