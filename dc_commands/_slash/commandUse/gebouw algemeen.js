@@ -40,6 +40,7 @@ module.exports = {
         }
         gebouwnaam = gebouwnaam.trim().toLowerCase();
         let foundBuildingName = "<Not found>";
+        let _mogelijkeGebouwnamen = [];
         if (foundBuildingName === "<Not found>") {
             for (let _intern_buildingName in buildingTranslations) {
                 if (buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
