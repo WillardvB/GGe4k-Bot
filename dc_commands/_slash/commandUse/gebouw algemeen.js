@@ -1,15 +1,13 @@
 const stringSimilarity = require("string-similarity");
-const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const buildingData = require('./../../../ingame_data/buildings.json');
 const translationData = require('./../../../ingame_translations/nl.json');
-const imagesData = require('./../../../ingame_images/x768.json')
-const buildingTranslations = translationData.buildings_and_decorations;
+const imagesData = require('./../../../ingame_images/x768.json');
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const Logger = require("../../../tools/Logger.js");
+const buildingTranslations = translationData.buildings_and_decorations;
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
-const ___________ = ["Groter zichtveld", "Bouwsnelheidsboost", "Troepen per vak te trainen", "Troepen train boost", "Plekken in het district", "Bevolking", "Marktkarren", "Spionnen", "Burchtvoogden", "Commandanten", "Stadswachten", "Brandweerbonus", "Getoonde reistijdbonus", "Verlaging bouwkosten", "% overlevingsbonus", "Hospitaalgrootte", "Hospitaalvakken", "Max % jachtbonus", "Extra bouwvakken", "Onderzoeksnelheidbonus", "BG voedselbonus", "Max aantal soldaten", "Max aantal beri-soldaten", "Vrachtpunten", "Veilige aqua opslag", "Relikwieschervenbonus", "Extra uitrustingopslag", "Vaardighedenpunten", "Roembonus", "% XP bonus", "Tuigencreatieboost", "Houtproductiebonus", "Steenproductiebonus", "Voedselproductiebonus", "Consumptie reductie", "IJzerertsproductiebonus", "Houtskoolproductiebonus", "Olijfolieproductiebonus", "Glasproductiebonus", "Verlaging honingwijnconsumptie", "Honingwijnproductieboost", "Honingproductiebonus"];
 
 const _name = "gebouw algemeen";
 module.exports = {
@@ -43,9 +41,9 @@ module.exports = {
                         foundBuildingName = _intern_buildingName;
                         break;
                     }
-                    else if (_intern_buildingName.endsWith('_name')) {
+                    else if (_intern_buildingName.endsWith('_name') && !_intern_buildingName.startsWith('merchantItem_ci')) {
                         let _mogelijkGebouwNaam = buildingTranslations[_intern_buildingName];
-                        if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam) && _mogelijkGebouwNaam !== "village_name" && _mogelijkGebouwNaam !== "barrel_name")
+                        if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam) && _mogelijkGebouwNaam !== "village_name" && _mogelijkGebouwNaam !== "barrel_name" && _mogelijkeGebouwnamen !== "deco_thornskull_name")
                             _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
                     }
                 }
@@ -151,13 +149,14 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             let _key = _keys[_i];
             let _keyLowCase = _key.toLowerCase();
             if (_keyLowCase === "name" || _keyLowCase === "level" || _keyLowCase === "type" || _keyLowCase === "group" ||
-                _keyLowCase === "height" || (_keyLowCase.includes("cost") && _keyLowCase !== "buildingcostreduction") || _keyLowCase == "movable" ||
+                _keyLowCase === "height" || (_keyLowCase.includes("cost") && _keyLowCase !== "buildingcostreduction") ||
                 _keyLowCase === "rotatetype" || _keyLowCase === "foodratio" || _keyLowCase.endsWith("duration") ||
                 _keyLowCase === "tempservertime" || _keyLowCase.startsWith("comment") || _keyLowCase === "shopcategory" ||
                 _keyLowCase === "constructionitemgroupids" || _keyLowCase === "buildinggroundtype" ||
                 _keyLowCase.endsWith("wodid") || _keyLowCase.endsWith("sortorder") || _keyLowCase === "effectlocked" ||
                 _keyLowCase.startsWith("earlyunlock") || _keyLowCase === "eventIDs" || _keyLowCase === "slumlevelneeded" ||
-                _keyLowCase === "requiredprivateoffer" || _keyLowCase === "canbeprimesaleoffer") continue;
+                _keyLowCase === "requiredprivateoffer" || _keyLowCase === "canbeprimesaleoffer" ||
+                _keyLowCase === "isdistrict" || _keyLowCase == "movable") continue;
             if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
             /** @type string */
             let _value = data[_key];
@@ -260,7 +259,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 rewardValues += `**${_keyLowCase}**: ${_value}\n`;
                 continue;
             }
-            if (_keyLowCase === "buildspeedboost") {
+            if (_keyLowCase === "unitwallcount") {
                 _keyLowCase = translationData.dialogs.ci_effect_unitWallCount_tt.substring(0, translationData.dialogs.ci_effect_unitWallCount_tt.length - 1);
                 _value = `+${_value}`;
                 rewardValues += `**${_keyLowCase}**: ${_value}\n`;
@@ -375,7 +374,8 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         }
         if (interaction.options) {
             interaction.followUp({ embeds: [embed], components: components });
-        } else {
+        }
+        else {
             interaction.editReply({ embeds: [embed], components: components });
         }
         return;
@@ -404,29 +404,39 @@ function getBuildingName(data) {
             if (_item.toLowerCase() === `${dataGroup}_name`) return true;
             return false;
         })
-        if (_key === undefined) {
-            _keys = Object.keys(translationData.generic);
-            _key = _keys.find(_item => {
-                if (_item.toLowerCase() === `${dataName}_name`) return true;
-                if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
-                if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
-                if (_item.toLowerCase() === `${dataGroup}_name`) return true;
-                return false;
-            })
-        }
-        if (_key === undefined) {
-            _keys = Object.keys(translationData.dialogs);
-            _key = _keys.find(_item => {
-                if (_item.toLowerCase() === `${dataName}_name`) return true;
-                if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
-                if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
-                if (_item.toLowerCase() === `${dataGroup}_name`) return true;
-                if (_item.toLowerCase() === `dialog_${dataName}_name`) return true;
-                return false;
-            })
-        }
         if (_key !== undefined) {
             return buildingTranslations[_key];
+        }
+        else {
+            if (_key === undefined) {
+                _keys = Object.keys(translationData.generic);
+                _key = _keys.find(_item => {
+                    if (_item.toLowerCase() === `${dataName}_name`) return true;
+                    if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
+                    if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
+                    if (_item.toLowerCase() === `${dataGroup}_name`) return true;
+                    return false;
+                })
+            }
+        }
+        if (_key !== undefined) {
+            return translationData.generic[_key];
+        }
+        else {
+            if (_key === undefined) {
+                _keys = Object.keys(translationData.dialogs);
+                _key = _keys.find(_item => {
+                    if (_item.toLowerCase() === `${dataName}_name`) return true;
+                    if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
+                    if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
+                    if (_item.toLowerCase() === `${dataGroup}_name`) return true;
+                    if (_item.toLowerCase() === `dialog_${dataName}_name`) return true;
+                    return false;
+                })
+            }
+        }
+        if (_key !== undefined) {
+            return translationData.dialogs[_key];
         }
     }
     return data.name;
@@ -571,7 +581,7 @@ function getBuildingImage(data) {
     let _keys = Object.keys(imagesData);
     let _key = _keys.find(_item => {
         if (_item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}`) return true;
-        if (_item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}_Full`) return true;
+        if (_item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}_full`) return true;
         return false;
     })
     if (_key !== undefined) {
