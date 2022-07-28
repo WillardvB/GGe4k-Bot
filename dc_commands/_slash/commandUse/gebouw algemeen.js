@@ -39,17 +39,20 @@ module.exports = {
             }
         }
         gebouwnaam = gebouwnaam.trim().toLowerCase();
-        let _mogelijkeGebouwnamen = ["Zaal der legenden"];
         let foundBuildingName = "<Not found>";
-        for (let _intern_buildingName in buildingTranslations) {
-            if (buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
-                foundBuildingName = _intern_buildingName;
-                break;
-            }
-            else if (_intern_buildingName.endsWith('_name')){
-                let _mogelijkGebouwNaam = buildingTranslations[_intern_buildingName];
-                if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam) && _mogelijkGebouwNaam !== "village_name" && _mogelijkGebouwNaam !== "barrel_name")
-                    _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
+        let _mogelijkeGebouwnamen = ["Zaal der legenden"];
+        if (gebouwnaam === "zaal der legenden") foundBuildingName = "dialog_legendtemple_name";
+        if (foundBuildingName === "<Not found>") {
+            for (let _intern_buildingName in buildingTranslations) {
+                if (buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
+                    foundBuildingName = _intern_buildingName;
+                    break;
+                }
+                else if (_intern_buildingName.endsWith('_name')) {
+                    let _mogelijkGebouwNaam = buildingTranslations[_intern_buildingName];
+                    if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam) && _mogelijkGebouwNaam !== "village_name" && _mogelijkGebouwNaam !== "barrel_name")
+                        _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
+                }
             }
         }
         if (foundBuildingName === "<Not found>") {
@@ -221,6 +224,7 @@ function getBuildingName(data) {
             if (_item.toLowerCase() === `${dataName}_name`) return true;
             if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
             if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
+            if (_item.toLowerCase() === `${dataGroup}_name`) return true;
             return false;
         })
         if (_key !== undefined) {
@@ -274,6 +278,10 @@ function getLevelMinMax(buildingNameParts) {
                 if (_dataLevel < minLevel) minLevel = _dataLevel;
                 if (_dataLevel > maxLevel) maxLevel = _dataLevel;
             }
+            else if (_dataGroup === buildingNameParts[0]) {
+                if (_dataLevel < minLevel) minLevel = _dataLevel;
+                if (_dataLevel > maxLevel) maxLevel = _dataLevel;
+            }
         }
         else if (buildingNameParts.length === 2) {
             if (_dataName === buildingNameParts[0] &&
@@ -306,6 +314,9 @@ function getBuildingLevelData(buildingNameParts, level) {
         let _dataLevel = parseInt(_data.level);
         if (buildingNameParts.length == 1) {
             if (_dataName === buildingNameParts[0]) {
+                if (_dataLevel === level) data = _data;
+            }
+            else if (_dataGroup === buildingNameParts[0]) {
                 if (_dataLevel === level) data = _data;
             }
         }
