@@ -222,7 +222,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             )
         }
         if (interaction.options) {
-            interaction.followUp({ embeds: [embed], components: components });
+            interaction.followUp({ embeds: [embed], components: [messRow] });
         }
         else {
             interaction.editReply({ embeds: [embed], components: components });
