@@ -140,7 +140,13 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             }
             if (_keyLowCase.startsWith("required")) {
                 _keyLowCase = _keyLowCase.substring(8,9) + _key.substring(9);
-                requirementsValues += `**${translationData.generic[_keyLowCase]}**: ${_value}\n`;;
+                requirementsValues += `**${translationData.generic[_keyLowCase]}**: ${_value}\n`;
+                continue;
+            }
+            if (_keyLowCase.startsWith("sell")) {
+                if (_key.length === 6) _key = _key.replace("sellC","sellcurrency");
+                requirementsValues += `**${translationData.dialogs[`currency_name_${_key.substring(4)}`]}**: ${_value}\n`;
+                continue;
             }
             if (_keyLowCase == "kids") {
                 let _valueArray = _value.split(',');
@@ -207,7 +213,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             embed.addField(`**Constructie**`, constructionValues.trim());
         }
         if (requirementsValues !== "") {
-            requirementsValues += "Kosten: zie `/gebouw kosten`";
+            requirementsValues += "**Kosten**: zie `/gebouw kosten`";
             embed.addField(`**Benodigdheden**`, requirementsValues.trim());
         }
         if (storageValues !== "") {
