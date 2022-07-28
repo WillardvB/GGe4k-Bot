@@ -9,12 +9,7 @@ const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('
 const Logger = require("../../../tools/Logger.js");
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
-const kostenKol = [7, 13, 33, 20, 15, 17, 25, 26, 27, 43, 47, 51, 52, 14, 1, 57, 1, 66, 70, 72, 76, 77, 78, 80, 83, 84, 85, 86, 88, 91, 92, 93, 94, 95, 96, 97, 98, 103, 109, 110, 111, 113, 115, 116, 118, 120, 121, 122, 123, 127, 128, 129, 130, 136, 137, 138, 139, 142, 144, 145, 146, 149];
-const kostenSoort = ["Oppervlakte", "Benodigd level", "Benodigd legendarisch level", "Maximum aantal", "Sloopbaar", "Brandbaar", "XP", "Macht", "Decoratiepunten", "Groter zichtveld", "Grachtbonus", "Muurbonus", "Poortbonus", "Man op muur", "Productie", "Veilige opslag", "Opslag", "Bouwsnelheidsboost", "Troepen per vak te trainen", "Troepen train boost", "Plekken in het district", "Bevolking", "Marktkarren", "Spionnen", "Burchtvoogden", "Commandanten", "Stadswachten", "Brandweerbonus", "Getoonde reistijdbonus", "Verlaging bouwkosten", "% overlevingsbonus", "Hospitaalgrootte", "Hospitaalvakken", "Ratio", "Max % jachtbonus", "Extra bouwvakken", "Onderzoeksnelheidbonus", "BG voedselbonus", "Max aantal soldaten", "Moraalpunten", "Max aantal beri-soldaten", "Vrachtpunten", "Veilige aqua opslag", "Relikwieschervenbonus", "Extra uitrustingopslag", "Vaardighedenpunten", "Roembonus", "% XP bonus", "Tuigencreatieboost", "Houtproductiebonus", "Steenproductiebonus", "Voedselproductiebonus", "Consumptie reductie", "IJzerertsproductiebonus", "Houtskoolproductiebonus", "Olijfolieproductiebonus", "Glasproductiebonus", "Honingwijnratio", "Verlaging honingwijnconsumptie", "Honingwijnproductieboost", "Honingproductiebonus", "Munten opbrengst bij verkoop"];
-const opslagKol = [58, 59, 60, 61, 62, 63, 64, 65, 67, 68];
-const opslagSoort = ["Houtopslag", "Steenopslag", "Voedselopslag", "Houtskoolopslag", "Olijfolieopslag", "Glasopslag", "Aquamarijnopslag", "IJzerertsopslag", "Honingopslag", "Honingwijnopslag"];
-const productieKol = [54, 55, 56, 131, 133, 134, 135, 140, 141];
-const productieSoort = ["Houtproductie", "Steenproductie", "Voedselproductie", "Houtskoolproductie", "Olijfolieproductie", "Glasproductie", "IJzerertsproductie", "Honingproductie", "Honingwijnproductie"];
+const ___________ = ["Groter zichtveld", "Bouwsnelheidsboost", "Troepen per vak te trainen", "Troepen train boost", "Plekken in het district", "Bevolking", "Marktkarren", "Spionnen", "Burchtvoogden", "Commandanten", "Stadswachten", "Brandweerbonus", "Getoonde reistijdbonus", "Verlaging bouwkosten", "% overlevingsbonus", "Hospitaalgrootte", "Hospitaalvakken", "Max % jachtbonus", "Extra bouwvakken", "Onderzoeksnelheidbonus", "BG voedselbonus", "Max aantal soldaten", "Max aantal beri-soldaten", "Vrachtpunten", "Veilige aqua opslag", "Relikwieschervenbonus", "Extra uitrustingopslag", "Vaardighedenpunten", "Roembonus", "% XP bonus", "Tuigencreatieboost", "Houtproductiebonus", "Steenproductiebonus", "Voedselproductiebonus", "Consumptie reductie", "IJzerertsproductiebonus", "Houtskoolproductiebonus", "Olijfolieproductiebonus", "Glasproductiebonus", "Verlaging honingwijnconsumptie", "Honingwijnproductieboost", "Honingproductiebonus"];
 
 const _name = "gebouw algemeen";
 module.exports = {
@@ -24,89 +19,94 @@ module.exports = {
      * @param {Interaction} interaction
      */
     async execute(interaction) {
-        let level;
-        let gebouwnaam;
-        if (interaction.options) {
-            level = interaction.options.getInteger('level');
-            gebouwnaam = interaction.options.getString('naam');
+        try {
+            let level;
+            let gebouwnaam;
+            if (interaction.options) {
+                level = interaction.options.getInteger('level');
+                gebouwnaam = interaction.options.getString('naam');
+            }
+            else if (interaction.customId) {
+                var string = interaction.customId.split(' ');
+                level = string[2];
+                gebouwnaam = string[3];
+                for (i = 4; i < string.length; i++) {
+                    gebouwnaam += " " + string[i];
+                }
+            }
+            gebouwnaam = gebouwnaam.trim().toLowerCase();
+            let foundBuildingName = "<Not found>";
+            let _mogelijkeGebouwnamen = [];
+            if (foundBuildingName === "<Not found>") {
+                for (let _intern_buildingName in buildingTranslations) {
+                    if (buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
+                        foundBuildingName = _intern_buildingName;
+                        break;
+                    }
+                    else if (_intern_buildingName.endsWith('_name')) {
+                        let _mogelijkGebouwNaam = buildingTranslations[_intern_buildingName];
+                        if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam) && _mogelijkGebouwNaam !== "village_name" && _mogelijkGebouwNaam !== "barrel_name")
+                            _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
+                    }
+                }
+                for (let _intern_dialog in translationData.dialogs) {
+                    if (translationData.dialogs[_intern_dialog].toLowerCase().trim() === gebouwnaam) {
+                        foundBuildingName = _intern_dialog;
+                        break;
+                    }
+                    else if (_intern_dialog.endsWith('_name') && (_intern_dialog.startsWith('deco_') || _intern_dialog === 'OfficersSchool_name' || _intern_dialog === 'TradeDistrict_name' || _intern_dialog === 'dialog_legendtemple_name')) {
+                        let _mogelijkGebouwNaam = translationData.dialogs[_intern_dialog];
+                        if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
+                            _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
+                    }
+                }
+                for (let _intern_generic in translationData.generic) {
+                    if (translationData.generic[_intern_generic].toLowerCase().trim() === gebouwnaam) {
+                        foundBuildingName = _intern_generic;
+                        break;
+                    }
+                    else if (_intern_generic.endsWith('_name') && (_intern_generic === 'MayaPalace_name' || _intern_generic === 'MilitaryDistrict_name')) {
+                        let _mogelijkGebouwNaam = translationData.generic[_intern_generic];
+                        if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
+                            _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
+                    }
+                }
+            }
+            if (foundBuildingName === "<Not found>") {
+                _mogelijkeGebouwnamen.sort();
+                let matches = stringSimilarity.findBestMatch(gebouwnaam, _mogelijkeGebouwnamen).ratings;
+                matches = matches.sort((a, b) => {
+                    if (a.rating > b.rating) return -1;
+                    if (a.rating < b.rating) return 1;
+                    return 0;
+                }).slice(0, 5);
+                const _messageActionRow = new MessageActionRow();
+                for (let i = 0; i < matches.length; i++) {
+                    _messageActionRow.addComponents(
+                        new MessageButton().setCustomId(`${_name} ${level} ${matches[i].target}`)
+                            .setLabel(matches[i].target).setStyle('PRIMARY')
+                    );
+                }
+                interaction.followUp({
+                    embeds: [new MessageEmbed().setDescription("Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:")],
+                    components: [_messageActionRow]
+                });
+                return;
+            }
+            foundBuildingName = foundBuildingName.split('_name')[0].toLowerCase();
+            if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
+            let buildingNameParts = foundBuildingName.split('_');
+            let minMaxLevel = getLevelMinMax(buildingNameParts);
+            let minLevel = minMaxLevel[0];
+            let maxLevel = minMaxLevel[1];
+            level = Math.min(Math.max(level, minLevel), maxLevel);
+            let data = getBuildingLevelData(buildingNameParts, level);
+            if (data === null) return;
+            naarOutput(interaction, data, minLevel, maxLevel);
         }
-        else if (interaction.customId) {
-            var string = interaction.customId.split(' ');
-            level = string[2];
-            gebouwnaam = string[3];
-            for (i = 4; i < string.length; i++) {
-                gebouwnaam += " " + string[i];
-            }
+        catch (e) {
+            Logger.logError(e);
         }
-        gebouwnaam = gebouwnaam.trim().toLowerCase();
-        let foundBuildingName = "<Not found>";
-        let _mogelijkeGebouwnamen = [];
-        if (foundBuildingName === "<Not found>") {
-            for (let _intern_buildingName in buildingTranslations) {
-                if (buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
-                    foundBuildingName = _intern_buildingName;
-                    break;
-                }
-                else if (_intern_buildingName.endsWith('_name')) {
-                    let _mogelijkGebouwNaam = buildingTranslations[_intern_buildingName];
-                    if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam) && _mogelijkGebouwNaam !== "village_name" && _mogelijkGebouwNaam !== "barrel_name")
-                        _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
-                }
-            }
-            for (let _intern_dialog in translationData.dialogs) {
-                if (translationData.dialogs[_intern_dialog].toLowerCase().trim() === gebouwnaam) {
-                    foundBuildingName = _intern_dialog;
-                    break;
-                }
-                else if (_intern_dialog.endsWith('_name') && (_intern_dialog.startsWith('deco_') || _intern_dialog === 'OfficersSchool_name' || _intern_dialog === 'TradeDistrict_name' || _intern_dialog === 'dialog_legendtemple_name')) {
-                    let _mogelijkGebouwNaam = translationData.dialogs[_intern_dialog];
-                    if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
-                        _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
-                }
-            }
-            for (let _intern_generic in translationData.generic) {
-                if (translationData.generic[_intern_generic].toLowerCase().trim() === gebouwnaam) {
-                    foundBuildingName = _intern_generic;
-                    break;
-                }
-                else if (_intern_generic.endsWith('_name') && (_intern_generic === 'MayaPalace_name' || _intern_generic === 'MilitaryDistrict_name')) {
-                    let _mogelijkGebouwNaam = translationData.generic[_intern_generic];
-                    if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
-                        _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
-                }
-            }
-        }
-        if (foundBuildingName === "<Not found>") {
-            _mogelijkeGebouwnamen.sort();
-            let matches = stringSimilarity.findBestMatch(gebouwnaam, _mogelijkeGebouwnamen).ratings;
-            matches = matches.sort((a, b) => {
-                if (a.rating > b.rating) return -1;
-                if (a.rating < b.rating) return 1;
-                return 0;
-            }).slice(0, 5);
-            const _messageActionRow = new MessageActionRow();
-            for (let i = 0; i < matches.length; i++) {
-                _messageActionRow.addComponents(
-                    new MessageButton().setCustomId(`${_name} ${level} ${matches[i].target}`)
-                        .setLabel(matches[i].target).setStyle('PRIMARY')
-                );
-            }
-            interaction.followUp({
-                embeds: [new MessageEmbed().setDescription("Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:")],
-                components: [_messageActionRow]
-            });
-            return;
-        }
-        foundBuildingName = foundBuildingName.split('_name')[0].toLowerCase();
-        if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
-        let buildingNameParts = foundBuildingName.split('_');
-        let minMaxLevel = getLevelMinMax(buildingNameParts);
-        let minLevel = minMaxLevel[0];
-        let maxLevel = minMaxLevel[1];
-        level = Math.min(Math.max(level, minLevel), maxLevel);
-        let data = getBuildingLevelData(buildingNameParts, level);
-        if (data === null) return;
-        naarOutput(interaction, data, minLevel, maxLevel);
     },
 };
 
@@ -134,7 +134,6 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         if (description !== "") embed.setDescription(description);
 
         let values = "";
-        const _keys = Object.keys(data);
         let constructionValues = "";
         let rewardValues = "";
         let storageValues = "";
@@ -143,6 +142,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let requirementsValues = "";
         let destructionValues = "";
         let sellValues = "";
+        const _keys = Object.keys(data);
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
             let _keyLowCase = _key.toLowerCase();
@@ -152,7 +152,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 _keyLowCase === "tempservertime" || _keyLowCase.startsWith("comment") || _keyLowCase === "shopcategory" ||
                 _keyLowCase === "constructionitemgroupids" || _keyLowCase === "buildinggroundtype" ||
                 _keyLowCase.endsWith("wodid") || _keyLowCase.endsWith("sortorder") || _keyLowCase === "effectlocked" ||
-                _keyLowCase.startsWith("earlyunlock")) continue;
+                _keyLowCase.startsWith("earlyunlock") || _keyLowCase === "eventIDs") continue;
             if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
             /** @type string */
             let _value = data[_key];
@@ -227,6 +227,11 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
                 continue;
             }
+            if (_keyLowCase === "moral") {
+                _keyLowCase = translationData.generic.morality;
+                rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
+                continue;
+            }
             if (_keyLowCase === "buildspeedboost") {
                 _keyLowCase = "Bouwsnelheid";
                 _value = `+${_value}%`;
@@ -297,10 +302,10 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             if (_keyLowCase === "districttypeid") {
                 _keyLowCase = "Kan in district";
                 switch (_value) {
-                    case 1: translationData.buildings_and_decorations.MilitaryDistrict_name; break;
-                    case 3: translationData.buildings_and_decorations.InnerDistrict_name; break;
-                    case 4: translationData.dialogs.TradeDistrict_name; break;
-                    default: "-";
+                    case "1": _value = translationData.generic.MilitaryDistrict_name; break;
+                    case "3": _value = translationData.buildings_and_decorations.InnerDistrict_name; break;
+                    case "4": _value = translationData.dialogs.TradeDistrict_name; break;
+                    default: _value = "-";
                 }
             }
 
@@ -437,7 +442,10 @@ function getBuildingDescription(data) {
             if (_item.toLowerCase() === `${dataName}_${dataGroup}_short_info`) return true;
             return false;
         })
-        if (_key === undefined) {
+        if (_key !== undefined) {
+            return buildingTranslations[_key];
+        }
+        else {
             _keys = Object.keys(translationData.generic);
             _key = _keys.find(_item => {
                 if (_item.toLowerCase() === `${dataName}_short_info`) return true;
@@ -447,7 +455,10 @@ function getBuildingDescription(data) {
                 return false;
             })
         }
-        if (_key === undefined) {
+        if (_key !== undefined) {
+            return translationData.generic[_key];
+        }
+        else {
             _keys = Object.keys(translationData.dialogs);
             _key = _keys.find(_item => {
                 if (_item.toLowerCase() === `${dataName}_short_info`) return true;
@@ -459,7 +470,7 @@ function getBuildingDescription(data) {
             })
         }
         if (_key !== undefined) {
-            return buildingTranslations[_key];
+            return translationData.dialogs[_key];
         }
     }
     return "";
