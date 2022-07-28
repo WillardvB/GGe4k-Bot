@@ -129,7 +129,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             if (_keyLowCase === "name" || _keyLowCase === "level" || _keyLowCase === "type" || _keyLowCase === "group" ||
                 _keyLowCase === "height" || _keyLowCase.includes("cost") || _keyLowCase == "movable" ||
                 _keyLowCase === "rotatetype" || _keyLowCase === "foodratio" || _keyLowCase.endsWith("duration") ||
-                _keyLowCase === "tempservertime" || _keyLowCase.startsWith("comment")) continue;
+                _keyLowCase === "tempservertime" || _keyLowCase.startsWith("comment") || _keyLowCase === "shopcategory" ||
+                _keyLowCase === "constructionitemgroupids" || _keyLowCase === "buildinggrouptype" ||
+                _keyLowCase.endsWith("wodid") || _keyLowCase === "sortorder") continue;
             if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
             /** @type string */
             let _value = data[_key];
@@ -202,6 +204,10 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 storageValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 7)]}**: ${formatNumber.formatNum(data[_key])}\n`;
                 continue;
             }
+            if (_keyLowCase === "hideout") {
+                storageValues += `**Beveiligde opslag**: ${formatNumber.formatNum(data[_key])}\n`;
+                continue;
+            }
             if (_keyLowCase.endsWith("production")) {
                 productionValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 10)]}**: ${formatNumber.formatNum(data[_key])}\n`;
                 continue;
@@ -225,6 +231,18 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             }
             if (_keyLowCase === "mightvalue") {
                 _keyLowCase = translationData.dialogs.mightPoints;
+                _value = formatNumber.formatNum(_value);
+            }
+            if (_keyLowCase === "xp") {
+                _keyLowCase = translationData.generic.xp;
+                _value = formatNumber.formatNum(_value);
+            }
+            if (_keyLowCase === "buildspeedboost") {
+                _keyLowCase = "Bouwsnelheid";
+                _value = `+${_value}%`
+            }
+            if (_keyLowCase === "maximumcount") {
+                _keyLowCase = "Maximum aantal";
             }
 
             _keyLowCase = _keyLowCase.substring(0, 1).toUpperCase() + _keyLowCase.substring(1);
@@ -232,29 +250,31 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             values += `**${_key}**: ${_value}\n`;
         }
         if (constructionValues !== "") {
-            embed.addField(`**Constructie**`, constructionValues.trim());
+            embed.addField(`**Constructie**`, constructionValues.trim(), true);
         }
         if (requirementsValues !== "") {
             requirementsValues += "**Kosten**: zie `/gebouw kosten`";
-            embed.addField(`**Benodigdheden**`, requirementsValues.trim());
+            embed.addField(`**Benodigdheden**`, requirementsValues.trim(), true);
         }
         if (storageValues !== "") {
-            embed.addField(`**${translationData.buildings_and_decorations.storehouse_name}**`, storageValues.trim());
+            embed.addField(`**${translationData.buildings_and_decorations.storehouse_name}**`, storageValues.trim(), true);
         }
         if (productionValues !== "") {
-            embed.addField(`**${translationData.generic.produce}**`, productionValues.trim());
+            embed.addField(`**${translationData.generic.produce}**`, productionValues.trim(), true);
         }
         if (protectionValues !== "") {
-            embed.addField(`**${translationData.generic.protection}**`, protectionValues.trim());
+            embed.addField(`**${translationData.generic.protection}**`, protectionValues.trim(), true);
         }
         if (sellValues !== "") {
-            embed.addField(`**${translationData.generic.sellPrice}**`, sellValues.trim());
+            embed.addField(`**${translationData.generic.sellPrice}**`, sellValues.trim(), true);
         }
         if (destructionValues !== "") {
-            embed.addField(`**Afbreekbaarheid**`, destructionValues.trim());
+            embed.addField(`**Afbreekbaarheid**`, destructionValues.trim(), true);
         }
-        values = values.substring(0, 1000);
-        embed.addField("**Overige informatie**", values.trim());
+        if (values.trim() !== "") {
+            values = values.substring(0, 1000);
+            embed.addField("**Overige informatie**", values.trim(), true);
+        }
         
         let components = [];
         if (minLevel != maxLevel) {
