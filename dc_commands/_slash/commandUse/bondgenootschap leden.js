@@ -68,53 +68,58 @@ module.exports = {
      * @param {CommandInteraction} interaction
      */
     async execute(interaction) {
-        let embed = new MessageEmbed();
-        embed.setDescription("leden");
-        embed.setTimestamp();
-        embed.setColor("#000000");
-        let allianceName = interaction.options.getString('naam').toLowerCase().trim();
-        let rank = interaction.options.getInteger('rang');
-        if (rank == null) rank = -1; else rank -= 1;
-        let _alliances = require("./../../../e4kserver/data").alliances;
-        let allianceInfoVO = null;
-        for (let allianceId in _alliances) {
-            let _alliance = _alliances[allianceId];
-            if (_alliance.allianceName.toLowerCase() == allianceName) {
-                embed.setTitle(_alliance.allianceName);
-                allianceInfoVO = _alliance;
-                break;
-            }
-        }
-        if (allianceInfoVO == null) {
-            await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!" });
-            return;
-        }
-        let tmpPlayers = require('./../../../e4kserver/data').players;
-        let memberList = "";
-        let _allianceRank = "Leider";
-        for (let i = 0; i < allianceInfoVO.memberList.length; i++) {
-            let memberId = allianceInfoVO.memberList[i];
-            memberVO = tmpPlayers[memberId];
-            let _rank = memberVO.allianceRank;
-            if (rank == -1 || rank == _rank) {
-                if (memberList != "" && _allianceRank != allianceRanks[_rank]) {
-                    embed.addField(_allianceRank, memberList);
-                    memberList = "";
+        try {
+            let embed = new MessageEmbed();
+            embed.setDescription("leden");
+            embed.setTimestamp();
+            embed.setColor("#000000");
+            let allianceName = interaction.options.getString('naam').toLowerCase().trim();
+            let rank = interaction.options.getInteger('rang');
+            if (rank == null) rank = -1; else rank -= 1;
+            let _alliances = require("./../../../e4kserver/data").alliances;
+            let allianceInfoVO = null;
+            for (let allianceId in _alliances) {
+                let _alliance = _alliances[allianceId];
+                if (_alliance.allianceName.toLowerCase() == allianceName) {
+                    embed.setTitle(_alliance.allianceName);
+                    allianceInfoVO = _alliance;
+                    break;
                 }
-                _allianceRank = allianceRanks[_rank];
-                memberList += `__${fixNameString(memberVO.playerName)}__, level: ${memberVO.playerLevel}\n`;
             }
-            if (memberList != "" && (_allianceRank != allianceRanks[_rank] || i == allianceInfoVO.memberList.length - 1)) {
-                embed.addField(_allianceRank, memberList, true);
-                memberList = "";
-                _allianceRank = allianceRanks[_rank];
+            if (allianceInfoVO == null) {
+                await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!" });
+                return;
             }
+            let tmpPlayers = require('./../../../e4kserver/data').players;
+            let memberList = "";
+            let _allianceRank = "Leider";
+            for (let i = 0; i < allianceInfoVO.memberList.length; i++) {
+                let memberId = allianceInfoVO.memberList[i];
+                memberVO = tmpPlayers[memberId];
+                let _rank = memberVO.allianceRank;
+                if (rank == -1 || rank == _rank) {
+                    if (memberList != "" && _allianceRank != allianceRanks[_rank]) {
+                        embed.addField(_allianceRank, memberList);
+                        memberList = "";
+                    }
+                    _allianceRank = allianceRanks[_rank];
+                    memberList += `__${fixNameString(memberVO.playerName)}__, level: ${memberVO.playerLevel}\n`;
+                }
+                if (memberList != "" && (_allianceRank != allianceRanks[_rank] || i == allianceInfoVO.memberList.length - 1)) {
+                    embed.addField(_allianceRank, memberList, true);
+                    memberList = "";
+                    _allianceRank = allianceRanks[_rank];
+                }
+            }
+            interaction.followUp({
+                embeds: [embed]
+            }).catch(e => {
+                logger.logError(e);
+            })
         }
-        interaction.followUp({
-            embeds: [embed]
-        }).catch(e => {
+        catch (e) {
             logger.logError(e);
-        })
+        }
     }
 }
 

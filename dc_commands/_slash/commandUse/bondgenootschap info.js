@@ -1,4 +1,5 @@
-const { CommandInteraction } = require("discord.js")
+const { CommandInteraction } = require("discord.js");
+const Logger = require("../../../tools/Logger");
 
 let allianceInfoVO = {
     allianceId: "",
@@ -27,31 +28,36 @@ module.exports = {
      * @param {CommandInteraction} interaction
      */
     async execute(interaction) {
-        let allianceName = interaction.options.getString('naam').toLowerCase().trim();
-        let _alliances = require("./../../../e4kserver/data").alliances;
-        allianceInfoVO = null;
-        for (let allianceId in _alliances) {
-            let _alliance = _alliances[allianceId];
-            if (_alliance.allianceName.toLowerCase() == allianceName) {
-                allianceInfoVO = _alliance;
-                break;
+        try {
+            let allianceName = interaction.options.getString('naam').toLowerCase().trim();
+            let _alliances = require("./../../../e4kserver/data").alliances;
+            allianceInfoVO = null;
+            for (let allianceId in _alliances) {
+                let _alliance = _alliances[allianceId];
+                if (_alliance.allianceName.toLowerCase() == allianceName) {
+                    allianceInfoVO = _alliance;
+                    break;
+                }
             }
+            if (allianceInfoVO == null) {
+                await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!" });
+                return;
+            }
+            interaction.followUp({
+                content:
+                    "Naam: " + allianceInfoVO.allianceName + "\n" +
+                    "Omschrijving:```\n" + allianceInfoVO.allianceDescription + "```" +
+                    "Leden aantal: " + allianceInfoVO.memberList.length + "\n" +
+                    "Roempunten: " + allianceInfoVO.allianceFamePoints + "\n" +
+                    "Level: " + allianceInfoVO.memberLevel + "\n" +
+                    "Macht: " + allianceInfoVO.might + "\n" +
+                    "Taal: " + allianceInfoVO.languageId + "\n" +
+                    "Is open BG: " + allianceInfoVO.isOpenAlliance + "\n" +
+                    "*id: " + allianceInfoVO.allianceId + "*"
+            })
         }
-        if (allianceInfoVO == null) {
-            await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!" });
-            return;
+        catch (e) {
+            Logger.logError(e);
         }
-        interaction.followUp({
-            content:
-                "Naam: " + allianceInfoVO.allianceName + "\n" +
-                "Omschrijving:```\n" + allianceInfoVO.allianceDescription + "```" +
-                "Leden aantal: " + allianceInfoVO.memberList.length + "\n" +
-                "Roempunten: " + allianceInfoVO.allianceFamePoints + "\n" +
-                "Level: " + allianceInfoVO.memberLevel + "\n" +
-                "Macht: " + allianceInfoVO.might + "\n" +
-                "Taal: " + allianceInfoVO.languageId + "\n" +
-                "Is open BG: " + allianceInfoVO.isOpenAlliance + "\n" +
-                "*id: " + allianceInfoVO.allianceId + "*"
-        })
     }
 }

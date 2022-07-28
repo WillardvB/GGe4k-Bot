@@ -1,4 +1,5 @@
 const { CommandInteraction } = require("discord.js");
+const Logger = require("../../../tools/Logger");
 
 let playerVO = {
     userData: {},
@@ -77,44 +78,49 @@ module.exports = {
  * @param {boolean} retried
  */
 async function _execute(interaction, retried = false) {
-    let playerName = interaction.options.getString('naam').trim();
-    let _players = require("./../../../e4kserver/data").players;
-    playerVO = null;
-    for (let playerId in _players) {
-        let _player = _players[playerId];
-        if (_player.playerName.toLowerCase() == playerName.toLowerCase()) {
-            playerVO = _player;
-            break;
+    try {
+        let playerName = interaction.options.getString('naam').trim();
+        let _players = require("./../../../e4kserver/data").players;
+        playerVO = null;
+        for (let playerId in _players) {
+            let _player = _players[playerId];
+            if (_player.playerName.toLowerCase() == playerName.toLowerCase()) {
+                playerVO = _player;
+                break;
+            }
         }
-    }
-    if (playerVO == null) {
-        if (retried) {
-            await interaction.followUp({ content: "Sorry, ik heb de speler nog niet gevonden!\nCheck of je de naam goed heb gespeld inclusief hoofdletters." });
+        if (playerVO == null) {
+            if (retried) {
+                await interaction.followUp({ content: "Sorry, ik heb de speler nog niet gevonden!\nCheck of je de naam goed heb gespeld inclusief hoofdletters." });
+            }
+            else {
+                require('./../../../e4kserver/commands/searchPlayerByName').execute(playerName);
+                setTimeout(function () {
+                    _execute(interaction, true);
+                }, 2500);
+            }
+            return;
         }
-        else {
-            require('./../../../e4kserver/commands/searchPlayerByName').execute(playerName);
-            setTimeout(function () {
-                _execute(interaction, true);
-            }, 2500);
+        let bgInfo = playerVO.allianceName == "" ? "" : playerVO.allianceName + " (" + allianceRanks[playerVO.allianceRank] + ")";
+        let castleListString = "";
+        for (let i = 0; i < playerVO.castlePosList.length; i++) {
+            if (i != 0) castleListString += "\n";
+            castleListString += JSON.stringify(playerVO.castlePosList[i]);
         }
-        return;
+        await interaction.followUp({
+            content:
+                "Naam: " + playerVO.playerName + "\n" +
+                "Level: " + (playerVO.playerLevel == 70 ? playerVO.playerLevel + "." + playerVO.paragonLevel : playerVO.playerLevel) + "\n" +
+                "BG: " + bgInfo + "\n" +
+                "Roempunten: " + playerVO.famePoints + "\n" +
+                "Eerpunten: " + playerVO.honor + "\n" +
+                "Machtpunten: " + playerVO.might + "\n" +
+                "Kasteelposities: \n" + castleListString + "\n" +
+                "Dorpposities: " + playerVO.villagePosList + "\n" +
+                "*id: " + playerVO.playerId + "*"
+        })
     }
-    let bgInfo = playerVO.allianceName == "" ? "" : playerVO.allianceName + " (" + allianceRanks[playerVO.allianceRank] + ")";
-    let castleListString = "";
-    for (let i = 0; i < playerVO.castlePosList.length; i++) {
-        if (i != 0) castleListString += "\n";
-        castleListString += JSON.stringify(playerVO.castlePosList[i]);
+    catch (e) {
+        Logger.logError(e);
     }
-    interaction.followUp({
-        content:
-            "Naam: " + playerVO.playerName + "\n" +
-            "Level: " + (playerVO.playerLevel == 70 ? playerVO.playerLevel + "." + playerVO.paragonLevel : playerVO.playerLevel) + "\n" +
-            "BG: " + bgInfo + "\n" +
-            "Roempunten: " + playerVO.famePoints + "\n" +
-            "Eerpunten: " + playerVO.honor + "\n" +
-            "Machtpunten: " + playerVO.might + "\n" +
-            "Kasteelposities: \n" + castleListString + "\n" +
-            "Dorpposities: " + playerVO.villagePosList + "\n" +
-            "*id: " + playerVO.playerId + "*"
-    })
 }

@@ -117,7 +117,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let productionValues = "";
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
-            if (_key.startsWith("cost") || _key === "height" || _key === "foodRatio" || _key.toLowerCase.endsWith("duration")) continue;
+            if (_key.startsWith("cost") || _key === "height" || _key === "foodRatio" || _key.toLowerCase().endsWith("duration")) continue;
             let _value = data[_key];
             if (_key.toLowerCase().endsWith("burnable") || _key.toLowerCase().endsWith("destructable")) {
                 _value = data[_key] == "1" ? "Ja" : "Nee";

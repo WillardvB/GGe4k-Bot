@@ -25,9 +25,9 @@ module.exports = {
     logError(msg) {
         return new Promise(async (resolve) => {
             try {
-                msg = msg.toString();
-                if (msg.startsWith("Unknown xt command: ")) {
-                    let _cmd = msg.substring(20).trim();
+                let msgStr = msg.toString();
+                if (msgStr.startsWith("Unknown xt command: ")) {
+                    let _cmd = msgStr.substring(20).trim();
                     if (unknownXtCommands.includes(_cmd)) {
                         resolve();
                         return;
@@ -36,8 +36,8 @@ module.exports = {
                         unknownXtCommands.push(_cmd);
                     }
                 }
-                else if (msg.startsWith("Unknown sys command: ")) {
-                    let _cmd = msg.substring(21).trim();
+                else if (msgStr.startsWith("Unknown sys command: ")) {
+                    let _cmd = msgStr.substring(21).trim();
                     if (unknownSysCommands.includes(_cmd)) {
                         resolve();
                         return;
@@ -47,7 +47,7 @@ module.exports = {
                     }
                 }
                 await logChannel.send({ content: "[ERROR] " + msg });
-                console.log(ErrorText + msg);
+                console.log(ErrorText + msgStr);
                 resolve();
             }
             catch (e) {
