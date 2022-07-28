@@ -117,38 +117,39 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let productionValues = "";
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
-            if (_key.startsWith("cost") || _key === "height" || _key === "foodRatio" || _key.toLowerCase().endsWith("duration")) continue;
+            let _keyLowCase = _key.toLowerCase();
+            if (_keyLowCase.startsWith("cost") || _keyLowCase === "height" || _keyLowCase === "foodratio" || _keyLowCase.endsWith("duration")) continue;
             let _value = data[_key];
-            if (_key.toLowerCase().endsWith("burnable") || _key.toLowerCase().endsWith("destructable")) {
+            if (_keyLowCase.endsWith("burnable") || _keyLowCase.endsWith("destructable")) {
                 _value = data[_key] == "1" ? "Ja" : "Nee";
-                if (_key.toLowerCase().endsWith("burnable")) _key = _key.replace("burnable", "brandbaar");
-                if (_key.toLowerCase().endsWith("destructable")) _key = _key.replace("destructable", "verwoestbaar");
+                if (_keyLowCase.endsWith("burnable")) _keyLowCase = _keyLowCase.replace("burnable", "brandbaar");
+                if (_keyLowCase.endsWith("destructable")) _keyLowCase = _keyLowCase.replace("destructable", "verwoestbaar");
             }
-            if (_key == "width") {
-                _key = "Oppervlakte";
+            if (_keyLowCase == "width") {
+                _keyLowCase = "Oppervlakte";
                 _value = `${data["width"]}x${data["height"]}`;
             }
-            if (_key == "hunterRatio") {
+            if (_keyLowCase == "hunterratio") {
                 _value = `${data[_key] / 100} ${translationData.generic.goods} geeft 1 ${translationData.generic.food}`;
-                _key = translationData.dialogs.dialog_hunter_exchangeRate;
+                _keyLowCase = translationData.dialogs.dialog_hunter_exchangeRate;
             }
-            if (_key == "honeyRatio") {
+            if (_keyLowCase == "honeyratio") {
                 _value = `${data[_key]} ${translationData.generic.honey} en ${data["foodRatio"]} ${translationData.generic.food} geven samen 1 ${translationData.generic.mead}`;
-                _key = translationData.dialogs.dialog_hunter_exchangeRate;
+                _keyLowCase = translationData.dialogs.dialog_hunter_exchangeRate;
             }
-            if (_key.toLowerCase().endsWith("storage"))
+            if (_keyLowCase.endsWith("storage"))
             {
-                storageValues += `**${translationData.generic[_key.substring(0, _key.length - 7)]}**: ${formatNumber.formatNum(data[_key])}\n`;
+                storageValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 7)]}**: ${formatNumber.formatNum(data[_key])}\n`;
                 continue;
             }
-            if (_key.toLowerCase().endsWith("production")) {
-                productionValues += `**${translationData.generic[_key.substring(0, _key.length - 10).toLowerCase()]}**: ${formatNumber.formatNum(data[_key])}\n`;
+            if (_keyLowCase.endsWith("production")) {
+                productionValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 10)]}**: ${formatNumber.formatNum(data[_key])}\n`;
                 continue;
             }
-            if (_key.startsWith("tempServer")) _key = _key.replace("tempServer", `${translationData.dialogs.temp_server_name} `);
-            _key = _key.toLowerCase();
-            _key = _key.substring(0, 1).toUpperCase() + _key.substring(1);
-            values += `**${_key}**: ${_value}\n`;
+            if (_keyLowCase === "mightvalue") _keyLowCase = translationData.dialogs.mightPoints;
+            if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
+            _keyLowCase = _keyLowCase.substring(0, 1).toUpperCase() + _keyLowCase.substring(1);
+            values += `**${_keyLowCase}**: ${_value}\n`;
         }
         if (storageValues !== "") {
             embed.addField(`**${translationData.buildings_and_decorations.storehouse_name}**`, storageValues.trim());
