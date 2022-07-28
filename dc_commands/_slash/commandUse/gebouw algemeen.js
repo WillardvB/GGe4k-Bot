@@ -116,19 +116,50 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
 
         let values = "";
         const _keys = Object.keys(data);
+        let constructionValues = "";
         let storageValues = "";
         let productionValues = "";
         let protectionValues = "";
+        let requirementsValues = "";
         let destructionValues = "";
+        let sellValues = "";
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
             let _keyLowCase = _key.toLowerCase();
-            if (_keyLowCase.includes("cost") || _keyLowCase === "height" || _keyLowCase === "foodratio" || _keyLowCase.endsWith("duration")) continue;
+            if (_keyLowCase === "name" || _keyLowCase === "level" || _keyLowCase === "type" || _keyLowCase === "group" ||
+                _keyLowCase === "height" || _keyLowCase.includes("cost") || _keyLowCase == "movable" ||
+                _keyLowCase === "rotatetype" || _keyLowCase === "foodratio" || _keyLowCase.endsWith("duration") ||
+                _keyLowCase === "tempservertime" || _keyLowCase.startsWith("comment")) continue;
             if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
+            /** @type string */
             let _value = data[_key];
             if (_keyLowCase == "width") {
-                _keyLowCase = "Oppervlakte";
                 _value = `${data["width"]}x${data["height"]}`;
+                constructionValues += `**${translationData.dialogs.gridSize}**: ${_value}\n`;
+                continue;
+            }
+            if (_keyLowCase.startsWith("required")) {
+                _keyLowCase = _keyLowCase.substring(8,9) + _key.substring(9);
+                requirementsValues += `**${translationData.generic[_keyLowCase]}**: ${_value}\n`;;
+            }
+            if (_keyLowCase == "kids") {
+                let _valueArray = _value.split(',');
+                _value = "";
+                for (let i = 0; i < _valueArray.length; i++) {
+                    if (i > 0) _value += ", ";
+                    switch (_valueArray[i].trim()) {
+                        case "0": _value += translationData.generic.kingdomName_Classic; break;
+                        case "1": _value += translationData.generic.kingdomName_Dessert; break;
+                        case "2": _value += translationData.generic.kingdomName_Icecream; break;
+                        case "3": _value += translationData.generic.kingdomName_Volcano; break;
+                        case "4": _value += translationData.generic.kingdomName_Island; break;
+                        case "10": _value += translationData.generic.kingdomName_Faction; break;
+                        //case "ehm": _value += translationData.generic.kingdomName_Classic_Maya; break;
+                        default: _value += "-";
+                    }
+                }
+                constructionValues += `**Toegestane koninkrijken**: ${_value}\n`;
+                continue;
             }
             if (_keyLowCase == "hunterratio") {
                 _value = `${data[_key] / 100} ${translationData.generic.goods} geeft 1 ${translationData.generic.food}`;
@@ -152,7 +183,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 continue;
             }
             if (_keyLowCase.startsWith("wall") || _keyLowCase.startsWith("gate") || _keyLowCase.startsWith("moat")) {
-                protectionValues += `**${translationData.generic[_keyLowCase.substring(0, 4)]}**: +${formatNumber.formatNum(data[_key])}\n`;
+                protectionValues += `**${translationData.generic[_keyLowCase.substring(0, 4)]}**: +${formatNumber.formatNum(data[_key])}%\n`;
                 continue;
             }
             if (_keyLowCase.endsWith("burnable") || _keyLowCase.endsWith("destructable") || _keyLowCase.endsWith("smashable")) {
@@ -164,9 +195,20 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 destructionValues += `**${_keyLowCase}**: ${_value}\n`;
                 continue;
             }
-            if (_keyLowCase === "mightvalue") _keyLowCase = translationData.dialogs.mightPoints;
+            if (_keyLowCase === "mightvalue") {
+                _keyLowCase = translationData.dialogs.mightPoints;
+            }
+
             _keyLowCase = _keyLowCase.substring(0, 1).toUpperCase() + _keyLowCase.substring(1);
-            values += `**${_keyLowCase}**: ${_value}\n`;
+            if (_key.toLowerCase() !== _keyLowCase.toLowerCase()) _key = _keyLowCase;
+            values += `**${_key}**: ${_value}\n`;
+        }
+        if (constructionValues !== "") {
+            embed.addField(`**Constructie**`, constructionValues.trim());
+        }
+        if (requirementsValues !== "") {
+            requirementsValues += "Kosten: zie `/gebouw kosten`";
+            embed.addField(`**Benodigdheden**`, requirementsValues.trim());
         }
         if (storageValues !== "") {
             embed.addField(`**${translationData.buildings_and_decorations.storehouse_name}**`, storageValues.trim());
@@ -177,11 +219,14 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         if (protectionValues !== "") {
             embed.addField(`**${translationData.generic.protection}**`, protectionValues.trim());
         }
+        if (sellValues !== "") {
+            embed.addField(`**${translationData.generic.sellPrice}**`, sellValues.trim());
+        }
         if (destructionValues !== "") {
             embed.addField(`**Afbreekbaarheid**`, destructionValues.trim());
         }
         values = values.substring(0, 1000);
-        embed.addField("**Overige informatie**", values);
+        embed.addField("**Overige informatie**", values.trim());
         
         let components = [];
         if (minLevel != maxLevel) {
