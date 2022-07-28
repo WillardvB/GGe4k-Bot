@@ -119,16 +119,13 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let storageValues = "";
         let productionValues = "";
         let protectionValues = "";
+        let destructionValues = "";
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
             let _keyLowCase = _key.toLowerCase();
             if (_keyLowCase.includes("cost") || _keyLowCase === "height" || _keyLowCase === "foodratio" || _keyLowCase.endsWith("duration")) continue;
+            if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
             let _value = data[_key];
-            if (_keyLowCase.endsWith("burnable") || _keyLowCase.endsWith("destructable")) {
-                _value = data[_key] == "1" ? "Ja" : "Nee";
-                if (_keyLowCase.endsWith("burnable")) _keyLowCase = _keyLowCase.replace("burnable", "brandbaar");
-                if (_keyLowCase.endsWith("destructable")) _keyLowCase = _keyLowCase.replace("destructable", "verwoestbaar");
-            }
             if (_keyLowCase == "width") {
                 _keyLowCase = "Oppervlakte";
                 _value = `${data["width"]}x${data["height"]}`;
@@ -158,8 +155,16 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 protectionValues += `**${translationData.generic[_keyLowCase.substring(0, 4)]}**: +${formatNumber.formatNum(data[_key])}\n`;
                 continue;
             }
+            if (_keyLowCase.endsWith("burnable") || _keyLowCase.endsWith("destructable") || _keyLowCase.endsWith("smashable")) {
+                _value = data[_key] == "1" ? "Ja" : "Nee";
+                if (_keyLowCase.endsWith("burnable")) _keyLowCase = _keyLowCase.replace("burnable", "brandbaar");
+                else if (_keyLowCase.endsWith("destructable")) _keyLowCase = _keyLowCase.replace("destructable", "afbreekbaar");
+                else if (_keyLowCase.endsWith("smashable")) _keyLowCase = _keyLowCase.replace("smashable", "verwoestbaar");
+                _keyLowCase = _keyLowCase.substring(0, 1).toUpperCase() + _keyLowCase.substring(1);
+                destructionValues += `**${_keyLowCase}**: ${_value}\n`;
+                continue;
+            }
             if (_keyLowCase === "mightvalue") _keyLowCase = translationData.dialogs.mightPoints;
-            if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
             _keyLowCase = _keyLowCase.substring(0, 1).toUpperCase() + _keyLowCase.substring(1);
             values += `**${_keyLowCase}**: ${_value}\n`;
         }
@@ -171,6 +176,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         }
         if (protectionValues !== "") {
             embed.addField(`**${translationData.generic.protection}**`, protectionValues.trim());
+        }
+        if (destructionValues !== "") {
+            embed.addField(`**Afbreekbaarheid**`, destructionValues.trim());
         }
         values = values.substring(0, 1000);
         embed.addField("**Overige informatie**", values);
