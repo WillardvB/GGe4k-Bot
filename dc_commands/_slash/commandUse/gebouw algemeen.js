@@ -39,7 +39,7 @@ module.exports = {
             let _mogelijkeGebouwnamen = [];
             if (foundBuildingName === "<Not found>") {
                 for (let _intern_buildingName in buildingTranslations) {
-                    if (buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
+                    if (_intern_buildingName.endsWith('_name') && buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
                         foundBuildingName = _intern_buildingName;
                         break;
                     }
@@ -49,8 +49,10 @@ module.exports = {
                             _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
                     }
                 }
+            }
+            if (foundBuildingName === "<Not found>") {
                 for (let _intern_dialog in translationData.dialogs) {
-                    if (translationData.dialogs[_intern_dialog].toLowerCase().trim() === gebouwnaam) {
+                    if (_intern_dialog.endsWith('_name') && translationData.dialogs[_intern_dialog].toLowerCase().trim() === gebouwnaam) {
                         foundBuildingName = _intern_dialog;
                         break;
                     }
@@ -60,8 +62,10 @@ module.exports = {
                             _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
                     }
                 }
+            }
+            if (foundBuildingName === "<Not found>") {
                 for (let _intern_generic in translationData.generic) {
-                    if (translationData.generic[_intern_generic].toLowerCase().trim() === gebouwnaam) {
+                    if (_intern_generic.endsWith('_name') && translationData.generic[_intern_generic].toLowerCase().trim() === gebouwnaam) {
                         foundBuildingName = _intern_generic;
                         break;
                     }
@@ -147,21 +151,22 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             let _key = _keys[_i];
             let _keyLowCase = _key.toLowerCase();
             if (_keyLowCase === "name" || _keyLowCase === "level" || _keyLowCase === "type" || _keyLowCase === "group" ||
-                _keyLowCase === "height" || _keyLowCase.includes("cost") || _keyLowCase == "movable" ||
+                _keyLowCase === "height" || (_keyLowCase.includes("cost") && _keyLowCase !== "buildingcostreduction") || _keyLowCase == "movable" ||
                 _keyLowCase === "rotatetype" || _keyLowCase === "foodratio" || _keyLowCase.endsWith("duration") ||
                 _keyLowCase === "tempservertime" || _keyLowCase.startsWith("comment") || _keyLowCase === "shopcategory" ||
                 _keyLowCase === "constructionitemgroupids" || _keyLowCase === "buildinggroundtype" ||
                 _keyLowCase.endsWith("wodid") || _keyLowCase.endsWith("sortorder") || _keyLowCase === "effectlocked" ||
-                _keyLowCase.startsWith("earlyunlock") || _keyLowCase === "eventIDs") continue;
+                _keyLowCase.startsWith("earlyunlock") || _keyLowCase === "eventIDs" || _keyLowCase === "slumlevelneeded" ||
+                _keyLowCase === "requiredprivateoffer" || _keyLowCase === "canbeprimesaleoffer") continue;
             if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
             /** @type string */
             let _value = data[_key];
-            if (_keyLowCase == "width") {
+            if (_keyLowCase === "width") {
                 _value = `${data["width"]}x${data["height"]}`;
                 constructionValues += `**${translationData.dialogs.gridSize}**: ${_value}\n`;
                 continue;
             }
-            if (_keyLowCase == "storeable") {
+            if (_keyLowCase === "storeable") {
                 _value = _value = data[_key] == "1" ? "Ja" : "Nee";
                 constructionValues += `**Opslaanbaar**: ${_value}\n`;
                 continue;
@@ -181,7 +186,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 sellValues += `**${translationData.dialogs[`currency_name_${_key.substring(4)}`]}**: ${_value}\n`;
                 continue;
             }
-            if (_keyLowCase == "kids") {
+            if (_keyLowCase === "kids") {
                 let _valueArray = _value.split(',');
                 _value = "";
                 for (let i = 0; i < _valueArray.length; i++) {
@@ -200,7 +205,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 constructionValues += `**Toegestane koninkrijken**: ${_value}\n`;
                 continue;
             }
-            if (_keyLowCase == "onlyinareatypes") {
+            if (_keyLowCase === "onlyinareatypes") {
                 let _valueArray = _value.split(',');
                 _value = "";
                 for (let i = 0; i < _valueArray.length; i++) {
@@ -243,13 +248,13 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
                 continue;
             }
-            if (_keyLowCase == "hunterratio") {
+            if (_keyLowCase === "hunterratio") {
                 _value = `${data[_key] / 100} ${translationData.generic.goods} geeft 1 ${translationData.generic.food}`;
                 _keyLowCase = translationData.dialogs.dialog_hunter_exchangeRate;
                 rewardValues += `**${_keyLowCase}**: ${_value}\n`;
                 continue;
             }
-            if (_keyLowCase == "honeyratio") {
+            if (_keyLowCase === "honeyratio") {
                 _value = `${data[_key]} ${translationData.generic.honey} en ${data["foodRatio"]} ${translationData.generic.food} geven samen 1 ${translationData.generic.mead}`;
                 _keyLowCase = translationData.dialogs.dialog_hunter_exchangeRate;
                 rewardValues += `**${_keyLowCase}**: ${_value}\n`;
@@ -269,6 +274,10 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             if (_keyLowCase.endsWith("storage"))
             {
                 storageValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 7)]}**: ${formatNumber.formatNum(data[_key])}\n`;
+                continue;
+            }
+            if (_keyLowCase.endsWith("boost")) {
+                productionValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 5)]} boost**: ${formatNumber.formatNum(data[_key])}%\n`;
                 continue;
             }
             if (_keyLowCase === "hideout") {
@@ -562,6 +571,7 @@ function getBuildingImage(data) {
     let _keys = Object.keys(imagesData);
     let _key = _keys.find(_item => {
         if (_item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}`) return true;
+        if (_item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}_Full`) return true;
         return false;
     })
     if (_key !== undefined) {
