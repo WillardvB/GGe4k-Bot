@@ -138,6 +138,11 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 constructionValues += `**${translationData.dialogs.gridSize}**: ${_value}\n`;
                 continue;
             }
+            if (_keyLowCase == "storeable") {
+                _value = _value = data[_key] == "1" ? "Ja" : "Nee";
+                constructionValues += `**Opslaanbaar**: ${_value}\n`;
+                continue;
+            }
             if (_keyLowCase.startsWith("required")) {
                 _keyLowCase = _keyLowCase.substring(8,9) + _key.substring(9);
                 requirementsValues += `**${translationData.generic[_keyLowCase]}**: ${_value}\n`;
@@ -145,7 +150,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             }
             if (_keyLowCase.startsWith("sell")) {
                 if (_key.length === 6) _key = _key.replace("sellC","sellcurrency");
-                requirementsValues += `**${translationData.dialogs[`currency_name_${_key.substring(4)}`]}**: ${_value}\n`;
+                sellValues += `**${translationData.dialogs[`currency_name_${_key.substring(4)}`]}**: ${_value}\n`;
                 continue;
             }
             if (_keyLowCase == "kids") {
@@ -165,6 +170,23 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                     }
                 }
                 constructionValues += `**Toegestane koninkrijken**: ${_value}\n`;
+                continue;
+            }
+            if (_keyLowCase == "onlyinareatypes") {
+                let _valueArray = _value.split(',');
+                _value = "";
+                for (let i = 0; i < _valueArray.length; i++) {
+                    if (i > 0) _value += ", ";
+                    switch (_valueArray[i].trim()) {
+                        case "1": _value += "Hoofdkasteel"; break;
+                        case "3": _value += translationData.generic.capital; break;
+                        case "4": _value += translationData.generic.outpost; break;
+                        case "12": _value += translationData.generic.kingdomCastle_name; break;
+                        case "22": _value += translationData.generic.metropol; break;
+                        default: _value += "-";
+                    }
+                }
+                constructionValues += `**Toegestane kastelen**: ${_value}\n`;
                 continue;
             }
             if (_keyLowCase == "hunterratio") {

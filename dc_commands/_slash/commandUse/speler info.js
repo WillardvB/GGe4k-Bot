@@ -80,6 +80,7 @@ module.exports = {
 async function _execute(interaction, retried = false) {
     try {
         let playerName = interaction.options.getString('naam').trim();
+        playerName = playerName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         let _players = require("./../../../e4kserver/data").players;
         playerVO = null;
         for (let playerId in _players) {
