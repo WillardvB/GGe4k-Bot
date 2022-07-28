@@ -117,22 +117,24 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let productionValues = "";
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
-            if (_key.startsWith("cost") || _key === "height" || _key === "foodRatio" || _key === "buildDuration") continue;
+            if (_key.startsWith("cost") || _key === "height" || _key === "foodRatio" || _key.toLowerCase.endsWith("duration")) continue;
             let _value = data[_key];
-            if (_key == "burnable" || _key == "tempServerBurnable" || _key == "destructable" || _key == "tempServerDestructable") {
+            if (_key.toLowerCase().endsWith("burnable") || _key.toLowerCase().endsWith("destructable")) {
                 _value = data[_key] == "1" ? "Ja" : "Nee";
-                if (_key.endsWith("burnable")) _key.replace("burnable", "brandbaar");
-                if (_key.endsWith("destructable")) _key.replace("destructable", "verwoestbaar");
+                if (_key.toLowerCase().endsWith("burnable")) _key = _key.replace("burnable", "brandbaar");
+                if (_key.toLowerCase().endsWith("destructable")) _key = _key.replace("destructable", "verwoestbaar");
             }
             if (_key == "width") {
                 _key = "Oppervlakte";
-                _value = `${data[_key]}x${data["height"]}`;
+                _value = `${data["width"]}x${data["height"]}`;
             }
             if (_key == "hunterRatio") {
-                _value = `${data[_key] / 100} bs geeft 1 brood`;
+                _value = `${data[_key] / 100} ${translationData.generic.goods} geeft 1 ${translationData.generic.food}`;
+                _key = translationData.dialogs.dialog_hunter_exchangeRate;
             }
             if (_key == "honeyRatio") {
-                _value = `${data[_key]} honing en ${data["foodRatio"]} brood geven samen 1 honingwijn`;
+                _value = `${data[_key]} ${translationData.generic.honey} en ${data["foodRatio"]} ${translationData.generic.food} geven samen 1 ${translationData.generic.mead}`;
+                _key = translationData.dialogs.dialog_hunter_exchangeRate;
             }
             if (_key.toLowerCase().endsWith("storage"))
             {
@@ -143,8 +145,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 productionValues += `**${translationData.generic[_key.substring(0, _key.length - 10).toLowerCase()]}**: ${formatNumber.formatNum(data[_key])}\n`;
                 continue;
             }
-            if (_key.startsWith("tempServer")) _key.replace("tempServer", "buitenrijken ");
+            if (_key.startsWith("tempServer")) _key = _key.replace("tempServer", `${translationData.dialogs.temp_server_name} `);
             _key = _key.toLowerCase();
+            _key = _key.substring(0, 1).toUpperCase() + _key.substring(1);
             values += `**${_key}**: ${_value}\n`;
         }
         if (storageValues !== "") {
@@ -183,15 +186,6 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             interaction.editReply({ embeds: [embed], components: components });
         }
         return;
-        //#region old code
-        for (var i = 0; i < kostenKol.length; i++) {
-            let waarde = row[kostenKol[i]];
-            let soort = kostenSoort[i];
-            if (waarde != null && waarde != "" && soort != null && soort != "") {
-                embed.addField("**" + soort + "**", waarde, true);
-            }
-        }
-        //#endregion
     } catch (e) {
         Logger.logError(e);
     }
