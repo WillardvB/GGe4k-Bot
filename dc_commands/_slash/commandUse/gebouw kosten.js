@@ -122,7 +122,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let level = data.level;
         let gebouwNaam = getBuildingName(data);
         let description = getBuildingDescription(data);
-        let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : ` (level ${level})`}`;
+        let title = `**${gebouwNaam}**${level == 0 ? "(totaal alle levels)" : minLevel === maxLevel ? "" : ` (level ${level})`}`;
         let image = getBuildingImage(data);
 
         let embed = new MessageEmbed()
@@ -161,7 +161,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 _keyLowCase = _key.toLowerCase();
                 if (_keyLowCase.startsWith("cost")) {
                     let _tmpKey = translationData.generic[_keyLowCase.substring(4)];
-                    if (_tmpKey !== null) {
+                    if (_tmpKey !== null && _tmpKey !== undefined && _tmpKey !== NaN) {
                         tmpServerCostValues += `**${_tmpKey}**: ${formatNumber.formatNum(_value)}\n`;
                         continue;
                     }
@@ -175,7 +175,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             }
         }
         if (normalCostValues !== "") {
-            embed.addField(`**${translationData.generic.costs.toLowerCase()}**`, normalCostValues.trim(), true);
+            embed.addField(`**${translationData.generic.costs}**`, normalCostValues.trim(), true);
         }
         if (tmpServerCostValues !== "") {
             embed.addField("_" + translationData.dialogs.temp_server_name + " " + translationData.generic.costs.toLowerCase() + "_", tmpServerCostValues.trim(), true);
@@ -225,7 +225,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             interaction.followUp({ embeds: [embed], components: [messRow] });
         }
         else {
-            interaction.editReply({ embeds: [embed], components: components });
+            interaction.editReply({ embeds: [embed], components: [messRow] });
         }
         return;
     }
@@ -470,6 +470,7 @@ function sumDataCostObjects(dataOutput, dataInput) {
                 }
             }
         }
+        dataOutput.level = 0;
         return dataOutput;
     }
     catch (e) {
