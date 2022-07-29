@@ -15,6 +15,11 @@ const client = new Client({
 	]
 });
 
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.mongoDBuri;
+const mongoClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+require('./myMongoDB.js').execute(mongoClient);
+
 client.login(process.env.dcToken);
 
 require('./setClientCommands.js').execute(client);

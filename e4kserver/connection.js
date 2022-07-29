@@ -46,7 +46,7 @@ module.exports = {
     onSuccessfulLogin() {
         require('./commands/pingpong.js').execute();
         require('./commands/searchAllianceById.js').execute(0);
-        onSendMessage("-ares-", "test bericht!", "1i2ndadfhkjwe9");
+        //onSendMessage("-ares-", "test bericht!", "1i2ndadfhkjwe9");
     },
     socket: _socket,
     connected: connected,
