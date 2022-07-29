@@ -20,7 +20,7 @@ module.exports = {
      */
     async execute(interaction) {
         try {
-            let level;
+            let level = 0;
             let gebouwnaam;
             if (interaction.options) {
                 level = interaction.options.getInteger('level');
@@ -120,9 +120,10 @@ module.exports = {
 function naarOutput(interaction, data, minLevel, maxLevel) {
     try {
         let level = data.level;
+        Logger.log(`level: ${level}`);
         let gebouwNaam = getBuildingName(data);
         let description = getBuildingDescription(data);
-        let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : level == 0 ? "(totaal alle levels)" : ` (level ${level})`}`;
+        let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : level == 0 ? " (totaal alle levels)" : ` (level ${level})`}`;
         let image = getBuildingImage(data);
 
         let embed = new MessageEmbed()
@@ -143,34 +144,40 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             let _value = data[_key];
             if (_keyLowCase.startsWith("cost")) {
                 let _tmpKey = translationData.generic[_keyLowCase.substring(4)];
-                if (_tmpKey !== null && _tmpKey !== undefined && _tmpKey !== NaN) {
-                    normalCostValues += `**${_tmpKey}**: ${formatNumber.formatNum(_value)}\n`;
-                    continue;
+                if (_tmpKey === null || _tmpKey === undefined || _tmpKey === NaN) {
+                    if (_key.length === 6) _key = _key.replace("costC", "costcurrency");
+                    _tmpKey = translationData.dialogs[`currency_name_${_key.substring(4)}`];
+                    if (_tmpKey === null || _tmpKey === undefined || _tmpKey === NaN) {
+                        _tmpKey = translationData.generic[`currency_name_${_key.substring(4)}`];
+                    }
                 }
-                if (_key.length === 6) _key = _key.replace("costC", "costcurrency");
-                normalCostValues += `**${translationData.dialogs[`currency_name_${_key.substring(4)}`]}**: ${formatNumber.formatNum(_value)}\n`;
+                normalCostValues += `**${_tmpKey}**: ${formatNumber.formatNum(_value)}\n`;
                 continue;
             }
             if (_keyLowCase.endsWith("duration")) {
                 if (_keyLowCase === "buildduration") {
                     normalCostValues += `**Tijd**: ${formatDuration.secToDuration(_value)}\n`;
                 }
+                continue;
             }
             if (_keyLowCase.startsWith("tempserver")) {
                 _key = _key.substring(10);
                 _keyLowCase = _key.toLowerCase();
                 if (_keyLowCase.startsWith("cost")) {
                     let _tmpKey = translationData.generic[_keyLowCase.substring(4)];
-                    if (_tmpKey !== null && _tmpKey !== undefined && _tmpKey !== NaN) {
-                        tmpServerCostValues += `**${_tmpKey}**: ${formatNumber.formatNum(_value)}\n`;
-                        continue;
+                    if (_tmpKey === null || _tmpKey === undefined || _tmpKey === NaN) {
+                        if (_key.length === 6) _key = _key.replace("costC", "costcurrency");
+                        _tmpKey = translationData.dialogs[`currency_name_${_key.substring(4)}`];
+                        if (_tmpKey === null || _tmpKey === undefined || _tmpKey === NaN) {
+                            _tmpKey = translationData.generic[`currency_name_${_key.substring(4)}`];
+                        }
                     }
-                    if (_key.length === 6) _key = _key.replace("costC", "costcurrency");
-                    tmpServerCostValues += `**${translationData.dialogs[`currency_name_${_key.substring(4)}`]}**: ${formatNumber.formatNum(_value)}\n`;
+                    normalCostValues += `**${_tmpKey}**: ${formatNumber.formatNum(_value)}\n`;
                     continue;
                 }
                 if (_keyLowCase === "time") {
                     tmpServerCostValues += `**Tijd**: ${formatDuration.secToDuration(_value)}\n`;
+                    continue;
                 }
             }
         }
@@ -184,7 +191,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         }
         let components = [];
         const messRow = new MessageActionRow();
-        if (level >= minLevel && level <= maxLevel && minLevel != maxLevel) {
+        if (level !== 0 && minLevel !== maxLevel) {
             if (level > minLevel && level <= maxLevel) {
                 messRow.addComponents(
                     new MessageButton()
@@ -209,7 +216,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             )
             components = [messRow];
         }
-        else if (minLevel != maxLevel) {
+        else if (minLevel !== maxLevel) {
             messRow.addComponents(
                 new MessageButton()
                     .setLabel('lvl ' + minLevel)
@@ -392,6 +399,7 @@ function getBuildingLevelData(buildingNameParts, level) {
         let _dataLevel = parseInt(_data.level);
         if (buildingNameParts.length == 1) {
             if (_dataName === buildingNameParts[0]) {
+                Logger.log(`_data.level: ${_data.level}`);
                 if (level === 0) data = sumDataCostObjects(data, _data);
                 else if (_dataLevel === level) { data = _data; break; }
             }
@@ -451,8 +459,6 @@ function sumDataCostObjects(dataOutput, dataInput) {
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
             let _keyLowCase = _key.toLowerCase();
-            /** @type string */
-            let _value = dataInput[_key];
             if (_keyLowCase.startsWith("cost")) {
                 if (dataOutput[_key] === undefined) dataOutput[_key] = dataInput[_key];
                 else dataOutput[_key] = (parseInt(dataOutput[_key]) + parseInt(dataInput[_key])).toString()
@@ -473,6 +479,11 @@ function sumDataCostObjects(dataOutput, dataInput) {
                     continue;
                 }
             }
+        }
+        if (dataInput.level * 1 >= dataOutput.level * 1) {
+            dataOutput.name = dataInput.name;
+            dataOutput.type = dataInput.type;
+            dataOutput.group = dataInput.group;
         }
         return dataOutput;
     }

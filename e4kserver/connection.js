@@ -1,6 +1,7 @@
 const Socket = require('node:net').Socket;
 const logger = require('../tools/Logger.js');
 const e4kServerData = require('./data.js');
+const room = require('./room.js');
 
 let connected = false;
 
@@ -46,6 +47,8 @@ module.exports = {
     onSuccessfulLogin() {
         require('./commands/pingpong.js').execute();
         require('./commands/searchAllianceById.js').execute(0);
+        sendPrivateMessage("test! :)", 75684);
+        registerAndroidNotificationForPlayer();
     },
     socket: _socket,
     connected: connected,
@@ -65,4 +68,33 @@ function login(zone, name, pass) {
     let header = { "t": "sys" };
     let msg = "<login z=\'" + zone + "\'><nick><![CDATA[" + name + "]]></nick><pword><![CDATA[" + pass + "]]></pword></login>";
     require('./commands/handlers/xml.js').sendAction(header, "login", 0, msg);
+}
+
+/**
+ * 
+ * @param {string} message
+ * @param {number} recipientId
+ * @param {number} roomId
+ */
+function sendPrivateMessage(message, recipientId, roomId = -1) {
+    if (!room.checkRoomList() || !room.activeRoomId < 0) {
+        return;
+    }
+    if (roomId == -1) {
+        roomId = room.activeRoomId;
+    }
+    var headers = { "t": "sys" };
+    var msg = "<txt rcp=\'" + recipientId + "\'><![CDATA[" + message + "]]></txt>";
+    require('./commands/handlers/xml.js').sendAction(headers, "prvMsg", roomId, msg);
+}
+
+function registerAndroidNotificationForPlayer() {
+    const C2SRegisterPushNotificationDevice = {
+        params: {
+            "PL": "gcm",
+            "D": "null",
+        },
+        getCmdId: "rpd",
+    }
+    e4kServerData.sendJsonVoSignal(C2SRegisterPushNotificationDevice);
 }
