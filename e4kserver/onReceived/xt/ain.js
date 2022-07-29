@@ -1,4 +1,5 @@
-const logger = require('/app/tools/Logger.js');
+const myMongoDB = require('../../../myMongoDB.js');
+const logger = require('../../../tools/Logger.js');
 
 let allianceId = 0;
 let alliancesFound = 0;
@@ -35,28 +36,35 @@ async function onError() {
  * @param {object} params
  */
 async function onSuccess(params) {
-    let tmpAlliances = require('./../../data.js').alliances;
-    tmpAlliances[params.A.AID] = parseAllianceInfo(params.A);
-    require('./../../data.js').alliances = tmpAlliances;
-    alliancesFound = alliancesFound + 1;
-    if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
-        allianceId += 1;
-        require('./../../commands/searchAllianceById.js').execute(allianceId);
+    try {
+        let tmpAlliances = require('./../../data.js').alliances;
+        tmpAlliances[params.A.AID] = parseAllianceInfo(params.A);
+        require('./../../data.js').alliances = tmpAlliances;
+        alliancesFound = alliancesFound + 1;
+        if (!allAlliancesInJSON && alliancesFound < alliancesOpNLServer) {
+            allianceId += 1;
+            require('./../../commands/searchAllianceById.js').execute(allianceId);
+        }
+        else {
+            let _tmpAllianceCount = Object.keys(tmpAlliances).length;
+            if (_tmpAllianceCount != _alliancesInJson) {
+                _alliancesInJson = _tmpAllianceCount;
+                await logger.log("alliances in data json: " + _tmpAllianceCount);
+            }
+            await myMongoDB.compareData(require('./../../data.js').alliances, myMongoDB.Collection.E4K.ALLIANCES);
+            let tmpPlayers = require('./../../data.js').players;
+            let _tmpPlayerCount = Object.keys(tmpPlayers).length;
+            if (_tmpPlayerCount != _playersInJson) {
+                _playersInJson = _tmpPlayerCount;
+                await logger.log("players in data json: " + _tmpPlayerCount);
+            }
+            await myMongoDB.compareData(require('./../../data.js').players, myMongoDB.Collection.E4K.PLAYERS);
+            allAlliancesInJSON = true;
+            waitAndNextCheck();
+        }
     }
-    else {
-        let _tmpAllianceCount = Object.keys(tmpAlliances).length;
-        if (_tmpAllianceCount != _alliancesInJson) {
-            _alliancesInJson = _tmpAllianceCount;
-            await logger.log("alliances in data json: " + _tmpAllianceCount);
-        }
-        let tmpPlayers = require('./../../data.js').players;
-        let _tmpPlayerCount = Object.keys(tmpPlayers).length;
-        if (_tmpPlayerCount != _playersInJson) {
-            _playersInJson = _tmpPlayerCount;
-            await logger.log("players in data json: " + _tmpPlayerCount);
-        }
-        allAlliancesInJSON = true;
-        waitAndNextCheck();
+    catch (e) {
+        logger.logError(e);
     }
 }
 
