@@ -86,7 +86,6 @@ async function _execute(interaction, retried = false) {
         for (let playerId in _players) {
             let _player = _players[playerId];
             let _playerName = _player.playerName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            Logger.log("playerName: " + playerName + ", _playerName: " + _playerName);
             if (_playerName.toLowerCase() == playerName.toLowerCase()) {
                 playerVO = _player;
                 break;
