@@ -83,10 +83,6 @@ module.exports = {
                         }
                     }
                 }
-                console.log("dataToInsert");
-                console.log(dataToInsert.slice(0, 3));
-                console.log("dataToUpdate");
-                console.log(dataToUpdate.slice(0, 3));
                 if (dataToInsert.length != 0) {
                     await insertMany(dataToInsert, dbName, collName);
                 }
@@ -116,8 +112,8 @@ async function RefreshData() {
             await client.connect();
             await GetData(DATA.E4K.ALLIANCES);
             await GetData(DATA.E4K.PLAYERS);
-            //await GetData(DATA.DC.USERS);
-            //await GetData(DATA.DC.CHANNELS);
+            await GetData(DATA.DC.USERS);
+            await GetData(DATA.DC.CHANNELS);
             await client.close();
             resolve("finished");
         }
@@ -180,23 +176,21 @@ function GetData(db_collection) {
 function insertMany(obj, dbName, collectionName) {
     return new Promise((resolve, reject) => {
         try {
-            client.connect(err => {
-                if (err) console.log(err);
-                /** @type Collection */
-                const collection = client.db(dbName).collection(collectionName);
-                if (collection != null && collection.dbName == dbName) {
-                    collection.insertMany(obj, function (err, res) {
-                        if (err) throw err;
-                        console.log("Number of documents inserted: " + res.insertedCount);
-                        client.close();
-                        return resolve(res);
-                    });
-                }
-                else {
-                    client.close();
-                    return reject("Collection not found in database");
-                }
-            });
+            await client.connect();
+            /** @type Collection */
+            const collection = client.db(dbName).collection(collectionName);
+            if (collection != null && collection.dbName == dbName) {
+                collection.insertMany(obj, function (err, res) {
+                    if (err) throw err;
+                    console.log("Number of documents inserted: " + res.insertedCount);
+                    await client.close();
+                    return resolve(res);
+                });
+            }
+            else {
+                await client.close();
+                return reject("Collection not found in database");
+            }
         }
         catch (e) {
             return reject(e);
@@ -213,32 +207,29 @@ function insertMany(obj, dbName, collectionName) {
 function updateMany(obj, dbName, collectionName, idCompare) {
     return new Promise(async (resolve, reject) => {
         try {
-            client.connect(async (err) => {
-                if (err)
-                    console.log(err);
-                /** @type Collection */
-                const collection = client.db(dbName).collection(collectionName);
-                if (collection != null && collection.dbName == dbName) {
-                    let modifiedCount = 0;
-                    for (let i = 0; i < obj.length; i++) {
-                        let filter = { };
-                        filter[idCompare] = obj[i][idCompare];
-                        let updateDoc = { $set: obj[i], };
-                        let result = await collection.updateOne(filter, updateDoc);
-                        if (result.modifiedCount == 0) {
-                            console.log(result);
-                        }
-                        modifiedCount += result.modifiedCount;
+            await client.connect();
+            /** @type Collection */
+            const collection = client.db(dbName).collection(collectionName);
+            if (collection != null && collection.dbName == dbName) {
+                let modifiedCount = 0;
+                for (let i = 0; i < obj.length; i++) {
+                    let filter = { };
+                    filter[idCompare] = obj[i][idCompare];
+                    let updateDoc = { $set: obj[i], };
+                    let result = await collection.updateOne(filter, updateDoc);
+                    if (result.modifiedCount == 0) {
+                        console.log(result);
                     }
-                    console.log("Number of documents updated: " + modifiedCount);
-                    client.close();
-                    return resolve("Number of documents updated: " + modifiedCount);
+                    modifiedCount += result.modifiedCount;
                 }
-                else {
-                    client.close();
-                    return reject("Collection not found in database");
-                }
-            });
+                console.log("Number of documents updated: " + modifiedCount);
+                await client.close();
+                return resolve("Number of documents updated: " + modifiedCount);
+            }
+            else {
+                await client.close();
+                return reject("Collection not found in database");
+            }
         }
         catch (e) {
             return reject(e);
@@ -272,14 +263,6 @@ function CompareJSON(json1, json2) {
         }
     }
     if (differences.length >= 1) {
-        let text = json1.name + " heeft de volgende veranderingen: ";
-        for (let i = 0; i < differences.length; i++) {
-            if (typeof json2[differences[i]] !== "object") {
-                text = text + '\n' + differences[i] + ": van " + json1[differences[i]] + " naar " + json2[differences[i]];
-            }
-        }
-        if (text != json1.name + " heeft de volgende veranderingen: ")
-            console.log(text);
         return false;
     }
     else
