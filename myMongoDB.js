@@ -113,14 +113,17 @@ async function RefreshData() {
     return new Promise(async (resolve, reject) => {
         try {
             finishedGettingData = false;
+            await client.connect();
             await GetData(DATA.E4K.ALLIANCES);
             await GetData(DATA.E4K.PLAYERS);
-            await GetData(DATA.DC.USERS);
-            await GetData(DATA.DC.CHANNELS);
+            //await GetData(DATA.DC.USERS);
+            //await GetData(DATA.DC.CHANNELS);
+            await client.close();
             resolve("finished");
         }
         catch (e) {
-            console.log(`Error getting data: ${e}`);
+            await client.close();
+            Logger.logError(`Error getting data: ${e}`);
             reject(e);
         }
     })
@@ -131,42 +134,36 @@ async function RefreshData() {
  * @param {string} dbName
  * @param {string} collectionName
  */
-function GetData(collection) {
+function GetData(db_collection) {
     return new Promise((resolve, reject) => {
         try {
-            let dbName = collection.split('_')[0];
-            let collectionName = collection.split('_')[1];
-            client.connect(err => {
-                if (err) throw err;
-                /** @type Collection */
-                const collection = client.db(dbName).collection(collectionName);
-                if (collection != null && collection.dbName == dbName) {
-                    collection.find({}).toArray(function (err, result) {
-                        client.close();
-                        if (err) throw err;
-                        let output = [];
-                        for (let i = 0; i < result.length; i++) {
-                            let data = result[i];
-                            delete data['_id'];
-                            output.push(data);
-                        }
-                        if (dbName + '_' + collectionName == DATA.E4K.PLAYERS)
-                            playerData = output;
-                        if (dbName + '_' + collectionName == DATA.E4K.ALLIANCES)
-                            allianceData = output;
-                        if (dbName + '_' + collectionName == DATA.DC.USERS)
-                            dcUserData = output;
-                        if (dbName + '_' + collectionName == DATA.DC.CHANNELS)
-                            channelData = output;
-
-                        return resolve(output);
-                    });
-                }
-                else {
-                    client.close();
-                    return reject("Collection not found in database");
-                }
-            });
+            let dbName = db_collection.split('_')[0];
+            let collectionName = db_collection.split('_')[1];
+            /** @type Collection */
+            const collection = client.db(dbName).collection(collectionName);
+            if (collection != null && collection.dbName == dbName) {
+                collection.find({}).toArray(function (err, result) {
+                    if (err) throw err;
+                    let output = [];
+                    for (let i = 0; i < result.length; i++) {
+                        let data = result[i];
+                        delete data['_id'];
+                        output.push(data);
+                    }
+                    if (dbName + '_' + collectionName == DATA.E4K.PLAYERS)
+                        playerData = output;
+                    if (dbName + '_' + collectionName == DATA.E4K.ALLIANCES)
+                        allianceData = output;
+                    if (dbName + '_' + collectionName == DATA.DC.USERS)
+                        dcUserData = output;
+                    if (dbName + '_' + collectionName == DATA.DC.CHANNELS)
+                        channelData = output;
+                    return resolve(output);
+                });
+            }
+            else {
+                return reject("Collection not found in database");
+            }
         }
         catch (err) {
             return reject(err);
