@@ -1,4 +1,5 @@
 const { MongoClient, Collection } = require('mongodb');
+const Logger = require('./tools/Logger');
 
 /** @type MongoClient */
 let client = null;
@@ -33,7 +34,7 @@ module.exports = {
             await RefreshData();
         }
         catch (e) {
-            console.log(e);
+            Logger.logError(e);
         }
         finishedGettingData = true;
     },
@@ -46,6 +47,7 @@ module.exports = {
         if (client === null) return;
         return new Promise(async (resolve, reject) => {
             try {
+                await client.connect();
                 let dbName = collection.split('_')[0];
                 let collName = collection.split('_')[1];
                 let idCompare = "id";
@@ -95,9 +97,12 @@ module.exports = {
                     await RefreshData();
                 }
                 finishedGettingData = true;
+                await client.close();
                 return resolve("finished database");
-            } catch (err) {
+            }
+            catch (err) {
                 finishedGettingData = true;
+                await client.close();
                 return reject(err);
             }
         })
