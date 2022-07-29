@@ -25,7 +25,7 @@ async function onError() {
             for (let ___i in tmpAlliances) {
                 _alliancesArray.push(tmpAlliances[___i]);
             }
-            await myMongoDB.compareData(tmpAlliances, myMongoDB.Collection.E4K.ALLIANCES);
+            await myMongoDB.compareData(_alliancesArray, myMongoDB.Collection.E4K.ALLIANCES);
             let tmpPlayers = require('./../../data.js').players;
             let _tmpPlayerCount = Object.keys(tmpPlayers).length;
             if (_tmpPlayerCount != _playersInJson) {
