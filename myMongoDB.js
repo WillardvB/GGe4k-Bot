@@ -88,7 +88,7 @@ module.exports = {
                     await insertMany(dataToInsert, dbName, collName);
                 }
                 if (dataToUpdate.length != 0) {
-                    await updateMany(dataToUpdate, dbName, collName);
+                    await updateMany(dataToUpdate, dbName, collName, idCompare);
                 }
                 if (dataToUpdate.length != 0 || dataToInsert.length != 0) {
                     await RefreshData();
@@ -207,7 +207,7 @@ function insertMany(obj, dbName, collectionName) {
  * @param {string} dbName
  * @param {string} collectionName
  */
-async function updateMany(obj, dbName, collectionName) {
+function updateMany(obj, dbName, collectionName, idCompare) {
     return new Promise(async (resolve, reject) => {
         try {
             client.connect(async (err) => {
@@ -218,7 +218,8 @@ async function updateMany(obj, dbName, collectionName) {
                 if (collection != null && collection.dbName == dbName) {
                     let modifiedCount = 0;
                     for (let i = 0; i < obj.length; i++) {
-                        let filter = { tag: obj[i].tag };
+                        let filter = { };
+                        filter[idCompare] = obj[i][idCompare];
                         let updateDoc = { $set: obj[i], };
                         let result = await collection.updateOne(filter, updateDoc);
                         if (result.modifiedCount == 0) {
