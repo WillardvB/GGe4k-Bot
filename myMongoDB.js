@@ -53,12 +53,10 @@ module.exports = {
                 let idCompare = "id";
                 let oldData;
                 if (collection === DATA.E4K.PLAYERS) {
-                    console.log("Player data count: " + newData.length);
                     oldData = playerData;
                     idCompare = "playerId";
                 }
                 else if (collection === DATA.E4K.ALLIANCES) {
-                    console.log("Alliance data count: " + newData.length);
                     oldData = allianceData;
                     idCompare = "allianceId";
                 }
@@ -66,8 +64,6 @@ module.exports = {
                     oldData = dcUserData;
                 else if (collection === DATA.DC.CHANNELS)
                     oldData = channelData;
-                console.log("old data count: " + oldData.length);
-                console.log("finishedGettingData: " + finishedGettingData);
                 let dataToInsert = [];
                 let dataToUpdate = [];
                 if (finishedGettingData) {
@@ -87,8 +83,6 @@ module.exports = {
                         }
                     }
                 }
-                console.log(dataToInsert.length);
-                console.log(dataToUpdate.length);
                 if (dataToInsert.length != 0) {
                     await insertMany(dataToInsert, dbName, collName);
                 }
