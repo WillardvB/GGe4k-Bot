@@ -1,7 +1,7 @@
 const { MongoClient, Collection } = require('mongodb');
 
 /** @type MongoClient */
-let client;
+let client = null;
 
 let playerData = [];
 let allianceData = [];
@@ -43,6 +43,7 @@ module.exports = {
      * @param {string} collection
      */
     async compareData(newData, collection) {
+        if (client === null) return;
         return new Promise(async (resolve, reject) => {
             try {
                 let dbName = collection.split('_')[0];
@@ -81,9 +82,9 @@ module.exports = {
                     }
                 }
                 console.log("dataToInsert");
-                console.log(dataToInsert.slice(0, 25));
+                console.log(dataToInsert.slice(0, 3));
                 console.log("dataToUpdate");
-                console.log(dataToUpdate.slice(0, 25));
+                console.log(dataToUpdate.slice(0, 3));
                 if (dataToInsert.length != 0) {
                     await insertMany(dataToInsert, dbName, collName);
                 }
