@@ -52,25 +52,29 @@ module.exports = {
                 let collName = collection.split('_')[1];
                 let idCompare = "id";
                 let oldData;
-                if (collection == DATA.E4K.PLAYERS) {
+                if (collection === DATA.E4K.PLAYERS) {
+                    console.log("Player data count: " + newData.length);
                     oldData = playerData;
                     idCompare = "playerId";
                 }
-                else if (collection == DATA.E4K.ALLIANCES) {
+                else if (collection === DATA.E4K.ALLIANCES) {
+                    console.log("Alliance data count: " + newData.length);
                     oldData = allianceData;
                     idCompare = "allianceId";
                 }
-                else if (collection == DATA.DC.USERS)
+                else if (collection === DATA.DC.USERS)
                     oldData = dcUserData;
-                else if (collection == DATA.DC.CHANNELS)
+                else if (collection === DATA.DC.CHANNELS)
                     oldData = channelData;
+                console.log("old data count: " + oldData.length);
+                console.log("finishedGettingData: " + finishedGettingData);
                 let dataToInsert = [];
                 let dataToUpdate = [];
                 if (finishedGettingData) {
                     for (let i = 0; i < newData.length; i++) {
                         let foundData = false;
                         for (let j = 0; j < oldData.length; j++) {
-                            if (oldData[j][idCompare] == newData[i][idCompare]) {
+                            if (oldData[j][idCompare] === newData[i][idCompare]) {
                                 foundData = true;
                                 if (!CompareJSON(oldData[j], newData[i])) {
                                     dataToUpdate.push(newData[i]);
@@ -83,6 +87,8 @@ module.exports = {
                         }
                     }
                 }
+                console.log(dataToInsert.length);
+                console.log(dataToUpdate.length);
                 if (dataToInsert.length != 0) {
                     await insertMany(dataToInsert, dbName, collName);
                 }
@@ -137,7 +143,7 @@ function GetData(db_collection) {
             let collectionName = db_collection.split('_')[1];
             /** @type Collection */
             const collection = client.db(dbName).collection(collectionName);
-            if (collection != null && collection.dbName == dbName) {
+            if (collection !== null && collection.dbName === dbName) {
                 collection.find({}).toArray(function (err, result) {
                     if (err) throw err;
                     let output = [];
@@ -146,13 +152,13 @@ function GetData(db_collection) {
                         delete data['_id'];
                         output.push(data);
                     }
-                    if (dbName + '_' + collectionName == DATA.E4K.PLAYERS)
+                    if (dbName + '_' + collectionName === DATA.E4K.PLAYERS)
                         playerData = output;
-                    if (dbName + '_' + collectionName == DATA.E4K.ALLIANCES)
+                    if (dbName + '_' + collectionName === DATA.E4K.ALLIANCES)
                         allianceData = output;
-                    if (dbName + '_' + collectionName == DATA.DC.USERS)
+                    if (dbName + '_' + collectionName === DATA.DC.USERS)
                         dcUserData = output;
-                    if (dbName + '_' + collectionName == DATA.DC.CHANNELS)
+                    if (dbName + '_' + collectionName === DATA.DC.CHANNELS)
                         channelData = output;
                     return resolve(output);
                 });
@@ -179,7 +185,7 @@ function insertMany(obj, dbName, collectionName) {
             await client.connect();
             /** @type Collection */
             const collection = client.db(dbName).collection(collectionName);
-            if (collection != null && collection.dbName == dbName) {
+            if (collection !== null && collection.dbName === dbName) {
                 let res = await collection.insertMany(obj);
                 console.log("Number of documents inserted: " + res.insertedCount);
                 await client.close();
@@ -208,16 +214,13 @@ function updateMany(obj, dbName, collectionName, idCompare) {
             await client.connect();
             /** @type Collection */
             const collection = client.db(dbName).collection(collectionName);
-            if (collection != null && collection.dbName == dbName) {
+            if (collection !== null && collection.dbName === dbName) {
                 let modifiedCount = 0;
                 for (let i = 0; i < obj.length; i++) {
                     let filter = { };
                     filter[idCompare] = obj[i][idCompare];
                     let updateDoc = { $set: obj[i], };
                     let result = await collection.updateOne(filter, updateDoc);
-                    if (result.modifiedCount == 0) {
-                        console.log(result);
-                    }
                     modifiedCount += result.modifiedCount;
                 }
                 console.log("Number of documents updated: " + modifiedCount);
@@ -247,12 +250,12 @@ function CompareJSON(json1, json2) {
     for (let i = 0; i < keys2.length; i++) {
         let key = keys2[i];
 
-        if (json1[key] != json2[key] && (typeof json1[key] !== "object" || typeof json2[key] !== "object")) { //values are not the same
+        if (json1[key] !== json2[key] && (typeof json1[key] !== "object" || typeof json2[key] !== "object")) { //values are not the same
             differences.push(key);
         }
         else if (typeof json1[key] === "object" || typeof json2[key] === "object") {
-            if (json1[key] == null && json2[key] == null) { }
-            else if (json1[key] == null || json2[key] == null || typeof json1[key] !== typeof json2[key]) {
+            if (json1[key] === null && json2[key] === null) { }
+            else if (json1[key] === null || json2[key] === null || typeof json1[key] !== typeof json2[key]) {
                 differences.push(key);
             }
             else if (!CompareJSON(json1[key], json2[key])) {
