@@ -174,7 +174,7 @@ function GetData(db_collection) {
  * @param {string} collectionName
  */
 function insertMany(obj, dbName, collectionName) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         try {
             await client.connect();
             /** @type Collection */
