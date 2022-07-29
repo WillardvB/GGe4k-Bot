@@ -47,11 +47,16 @@ module.exports = {
             try {
                 let dbName = collection.split('_')[0];
                 let collName = collection.split('_')[1];
+                let idCompare = "id";
                 let oldData;
-                if (collection == DATA.E4K.PLAYERS)
+                if (collection == DATA.E4K.PLAYERS) {
                     oldData = playerData;
-                else if (collection == DATA.E4K.ALLIANCES)
+                    idCompare = "playerId";
+                }
+                else if (collection == DATA.E4K.ALLIANCES) {
                     oldData = allianceData;
+                    idCompare = "allianceId";
+                }
                 else if (collection == DATA.DC.USERS)
                     oldData = dcUserData;
                 else if (collection == DATA.DC.CHANNELS)
@@ -62,7 +67,7 @@ module.exports = {
                     for (let i = 0; i < newData.length; i++) {
                         let foundData = false;
                         for (let j = 0; j < oldData.length; j++) {
-                            if (oldData[j].tag == newData[i].tag) {
+                            if (oldData[j][idCompare] == newData[i][idCompare]) {
                                 foundData = true;
                                 if (!CompareJSON(oldData[j], newData[i])) {
                                     dataToUpdate.push(newData[i]);
