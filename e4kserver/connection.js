@@ -69,19 +69,19 @@ function login(zone, name, pass) {
 }
 
 function onSendMessage(receiver, subject, copy) {
-    let messageVO = null;
     let _subject = getValideSmartFoxJSONMailMessage(subject);
     var msg = getValideSmartFoxJSONMailMessage(copy);
     if (msg && msg != "") {
-        switch (0) {
-            case 0:
-                messageVO = new C2SSendMessageVO(receiver, _subject, msg);
-                break;
-            case 1:
-                messageVO = new C2SAllianceNewsletterVO(_subject, msg);
+        let C2SSendMessageVO = {
+            params: {
+                RN: receiver,
+                MH: _subject,
+                TXT: msg,
+            },
+            getCmdId: "sms"
         }
         //btnSend.lock();
-        e4kServerData.sendJsonVoSignal({ "commandVO": messageVO, "lockConditionVO": "new DefaultLockConditionVO()" });
+        e4kServerData.sendJsonVoSignal({ "commandVO": C2SSendMessageVO, "lockConditionVO": "new DefaultLockConditionVO()" });
     }
     else {
         logger.logError("Missing msg in onSendMessage()");
