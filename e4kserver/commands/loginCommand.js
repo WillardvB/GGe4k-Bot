@@ -1,7 +1,7 @@
 module.exports = {
     name: "login",
     execute() {
-        let accountID = "165774755424378480";//Date.now().toString() + (Math.random() * 999999).toFixed();
+        let accountID = /*"165774755424378480";/*/Date.now().toString() + (Math.random() * 999999).toFixed();
         let CoreC2SLoginWithAuthenticationVO = {
             params: {
                 NM: "E4K-NL",

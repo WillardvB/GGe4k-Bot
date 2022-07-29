@@ -96,5 +96,5 @@ function registerAndroidNotificationForPlayer() {
         },
         getCmdId: "rpd",
     }
-    e4kServerData.sendJsonVoSignal(C2SRegisterPushNotificationDevice);
+    e4kServerData.sendJsonVoSignal({ "commandVO": C2SRegisterPushNotificationDevice, "lockConditionVO": null });
 }
