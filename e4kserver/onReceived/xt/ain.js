@@ -51,14 +51,24 @@ async function onSuccess(params) {
                 _alliancesInJson = _tmpAllianceCount;
                 await logger.log("alliances in data json: " + _tmpAllianceCount);
             }
-            await myMongoDB.compareData(require('./../../data.js').alliances, myMongoDB.Collection.E4K.ALLIANCES);
+            let _alliancesArray = [];
+            for (let ___i in tmpAlliances) {
+                _alliancesArray.push(tmpAlliances[___i]);
+            }
+            console.log(_alliancesArray.slice(0, 25));
+            await myMongoDB.compareData(tmpAlliances, myMongoDB.Collection.E4K.ALLIANCES);
             let tmpPlayers = require('./../../data.js').players;
             let _tmpPlayerCount = Object.keys(tmpPlayers).length;
             if (_tmpPlayerCount != _playersInJson) {
                 _playersInJson = _tmpPlayerCount;
                 await logger.log("players in data json: " + _tmpPlayerCount);
             }
-            await myMongoDB.compareData(require('./../../data.js').players, myMongoDB.Collection.E4K.PLAYERS);
+            let _playersArray = [];
+            for (let ___i in tmpPlayers) {
+                _playersArray.push(tmpPlayers[___i]);
+            }
+            console.log(_playersArray.slice(0, 25));
+            await myMongoDB.compareData(_playersArray, myMongoDB.Collection.E4K.PLAYERS);
             allAlliancesInJSON = true;
             waitAndNextCheck();
         }

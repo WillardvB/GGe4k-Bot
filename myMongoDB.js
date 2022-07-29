@@ -75,6 +75,10 @@ module.exports = {
                         }
                     }
                 }
+                console.log("dataToInsert");
+                console.log(dataToInsert.slice(0, 25));
+                console.log("dataToUpdate");
+                console.log(dataToUpdate.slice(0, 25));
                 if (dataToInsert.length != 0) {
                     await insertMany(dataToInsert, dbName, collName);
                 }
