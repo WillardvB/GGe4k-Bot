@@ -180,12 +180,10 @@ function insertMany(obj, dbName, collectionName) {
             /** @type Collection */
             const collection = client.db(dbName).collection(collectionName);
             if (collection != null && collection.dbName == dbName) {
-                collection.insertMany(obj, function (err, res) {
-                    if (err) throw err;
-                    console.log("Number of documents inserted: " + res.insertedCount);
-                    await client.close();
-                    return resolve(res);
-                });
+                let res = await collection.insertMany(obj);
+                console.log("Number of documents inserted: " + res.insertedCount);
+                await client.close();
+                return resolve(res);
             }
             else {
                 await client.close();
