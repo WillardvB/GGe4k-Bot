@@ -6,7 +6,8 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
-        if (errorCode == 21) return;
+        if (errorCode == 21) return; //playername doenst exist.
+        if (errorCode == 96) return; //playercastle is removed from worldmap after being offline for a long time
         parseOwnerInfoArray(params.gaa.OI);
     },
     parseOwnerInfo(ownerInfo) {
