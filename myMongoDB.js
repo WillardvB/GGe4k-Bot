@@ -109,9 +109,18 @@ async function RefreshData() {
     return new Promise(async (resolve, reject) => {
         try {
             finishedGettingData = false;
+            const datajs = require('./e4kserver/data.js');
             await client.connect();
             await GetData(DATA.E4K.ALLIANCES);
+            for (let i = 0; i < allianceData.length; i++) {
+                let _alliance = allianceData[i];
+                datajs.alliances[_alliance.allianceId] = _alliance;
+            }
             await GetData(DATA.E4K.PLAYERS);
+            for (let i = 0; i < playerData.length; i++) {
+                let _player = playerData[i];
+                datajs.alliances[_player.playerId] = _player;
+            }
             await GetData(DATA.DC.USERS);
             await GetData(DATA.DC.CHANNELS);
             await client.close();
@@ -119,7 +128,7 @@ async function RefreshData() {
         }
         catch (e) {
             await client.close();
-            Logger.logError(`Error getting data: ${e}`);
+            Logger.logError(e);
             reject(e);
         }
     })

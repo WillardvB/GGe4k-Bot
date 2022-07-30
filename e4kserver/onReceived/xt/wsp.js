@@ -24,7 +24,14 @@ function parseOwnerInfoArray(ownerInfoArray) {
         return;
     }
     for (let ownerInfo in ownerInfoArray) {
-        parseOwnerInfo(ownerInfoArray[ownerInfo]);
+        let owner = parseOwnerInfo(ownerInfoArray[ownerInfo]);
+        let C2SGetDetailPlayerInfo = {
+            params: {
+                PID: owner.playerId,
+            },
+            getCmdId: "gdi",
+        }
+        require('./../../data.js').sendJsonVoSignal({ "commandVO": C2SGetDetailPlayerInfo, "lockConditionVO": null })
     }
 }
 

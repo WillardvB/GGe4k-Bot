@@ -17,7 +17,7 @@ async function onError() {
         try {
             let tmpAlliances = require('./../../data.js').alliances;
             let _tmpAllianceCount = Object.keys(tmpAlliances).length;
-            if (_tmpAllianceCount != _alliancesInJson) {
+            if (_tmpAllianceCount !== _alliancesInJson) {
                 _alliancesInJson = _tmpAllianceCount;
                 await logger.log("alliances in data json: " + _tmpAllianceCount);
             }
@@ -28,7 +28,7 @@ async function onError() {
             await myMongoDB.compareData(_alliancesArray, myMongoDB.Collection.E4K.ALLIANCES);
             let tmpPlayers = require('./../../data.js').players;
             let _tmpPlayerCount = Object.keys(tmpPlayers).length;
-            if (_tmpPlayerCount != _playersInJson) {
+            if (_tmpPlayerCount !== _playersInJson) {
                 _playersInJson = _tmpPlayerCount;
                 await logger.log("players in data json: " + _tmpPlayerCount);
             }
@@ -141,7 +141,13 @@ function allianceInfoFillFromParamObject(paramObject) {
     let _memberList = [];
     let i = 0;
     while (i < memberListArray.length) {
-        let member = require('./wsp.js').parseOwnerInfo(memberListArray[i]);
+        let member = null;
+        if (memberListArray[i] && memberListArray[i].OID) {
+            member = {
+                playerId: memberListArray[i].OID,
+                allianceRank: parseInt(memberListArray[i].AR),
+            }
+        }
         if(member != null)
             _memberList.push(member);
         i++;
