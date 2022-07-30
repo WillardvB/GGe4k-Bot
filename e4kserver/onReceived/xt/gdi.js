@@ -7,8 +7,7 @@ module.exports = {
      */
     execute(errorCode, params) {
         if (errorCode == 21) return; //player not found.
-        require("./wsp").parseOwnerInfo(params.O, true);
-        console.log(JSON.stringify(params));
+        let player = require("./wsp").parseOwnerInfo(params.O, true);
         /**
          var _loc2_:CastleListVO = new CastleListVO();
          _loc2_.ownerID = _loc4_.playerID;
@@ -22,6 +21,7 @@ module.exports = {
          _loc3_.setParsePayload(_loc2_.allianceTowers);
          _loc3_.parse(paramObj["tie"]);
          detailPlayerInfoLoadedSignal.dispatch(_loc2_);
-         */ 
+         */
+        require("../../data").players[player.playerId] = player;
     },
 }

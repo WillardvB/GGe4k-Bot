@@ -12,14 +12,14 @@ module.exports = {
     },
     parseOwnerInfo(ownerInfo, isGDI = false) {
         let owner = parseOwnerInfo(ownerInfo);
-        if (owner === null) { console.log(owner); return owner; }
-        let C2SGetDetailPlayerInfo = {
-            params: {
-                PID: owner.playerId,
-            },
-            getCmdId: "gdi",
-        }
+        if (owner === null) return owner;
         if (!isGDI) {
+            let C2SGetDetailPlayerInfo = {
+                params: {
+                    PID: owner.playerId,
+                },
+                getCmdId: "gdi",
+            }
             require('./../../data.js').sendJsonVoSignal({ "commandVO": C2SGetDetailPlayerInfo, "lockConditionVO": null });
         }
         return owner;
