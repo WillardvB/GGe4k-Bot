@@ -8,6 +8,10 @@ module.exports = {
     execute(errorCode, params) {
         if (errorCode == 21) return; //player not found.
         let player = require("./wsp").parseOwnerInfo(params.O, true);
+        if (player === null) {
+            console.log(params);
+            return;
+        }
         /**
          var _loc2_:CastleListVO = new CastleListVO();
          _loc2_.ownerID = _loc4_.playerID;
