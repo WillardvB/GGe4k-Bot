@@ -119,7 +119,7 @@ async function RefreshData() {
             await GetData(DATA.E4K.PLAYERS);
             for (let i = 0; i < playerData.length; i++) {
                 let _player = playerData[i];
-                datajs.alliances[_player.playerId] = _player;
+                datajs.players[_player.playerId] = _player;
             }
             await GetData(DATA.DC.USERS);
             await GetData(DATA.DC.CHANNELS);

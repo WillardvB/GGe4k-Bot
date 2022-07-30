@@ -11,7 +11,15 @@ module.exports = {
         parseOwnerInfoArray(params.gaa.OI);
     },
     parseOwnerInfo(ownerInfo) {
-        return parseOwnerInfo(ownerInfo);
+        let owner = parseOwnerInfo(ownerInfo);
+        let C2SGetDetailPlayerInfo = {
+            params: {
+                PID: owner.playerId,
+            },
+            getCmdId: "gdi",
+        }
+        require('./../../data.js').sendJsonVoSignal({ "commandVO": C2SGetDetailPlayerInfo, "lockConditionVO": null })
+        return owner;
     }
 }
 
@@ -31,7 +39,7 @@ function parseOwnerInfoArray(ownerInfoArray) {
             },
             getCmdId: "gdi",
         }
-        require('./../../data.js').sendJsonVoSignal({ "commandVO": C2SGetDetailPlayerInfo, "lockConditionVO": null })
+        require('./../../data.js').sendJsonVoSignal({ "commandVO": C2SGetDetailPlayerInfo, "lockConditionVO": null });
     }
 }
 
