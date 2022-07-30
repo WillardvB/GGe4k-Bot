@@ -10,15 +10,18 @@ module.exports = {
         if (errorCode == 96) return; //playercastle is removed from worldmap after being offline for a long time
         parseOwnerInfoArray(params.gaa.OI);
     },
-    parseOwnerInfo(ownerInfo) {
+    parseOwnerInfo(ownerInfo, isGDI = false) {
         let owner = parseOwnerInfo(ownerInfo);
+        if (owner === null) { console.log(owner); return owner; }
         let C2SGetDetailPlayerInfo = {
             params: {
                 PID: owner.playerId,
             },
             getCmdId: "gdi",
         }
-        require('./../../data.js').sendJsonVoSignal({ "commandVO": C2SGetDetailPlayerInfo, "lockConditionVO": null })
+        if (!isGDI) {
+            require('./../../data.js').sendJsonVoSignal({ "commandVO": C2SGetDetailPlayerInfo, "lockConditionVO": null });
+        }
         return owner;
     }
 }

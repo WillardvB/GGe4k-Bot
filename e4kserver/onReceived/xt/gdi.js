@@ -7,7 +7,7 @@ module.exports = {
      */
     execute(errorCode, params) {
         if (errorCode == 21) return; //player not found.
-        require("./wsp").parseOwnerInfo(params.O);
+        require("./wsp").parseOwnerInfo(params.O, true);
         console.log(JSON.stringify(params));
         /**
          var _loc2_:CastleListVO = new CastleListVO();
