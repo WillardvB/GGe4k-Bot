@@ -93,15 +93,15 @@ function parseCastleList(paramObject) {
     if (!paramObject) {
         return _loc3_;
     }
-    console.log('castles')
+    console.log('castles');
     for(var _loc7_ in paramObject["C"])
     {
-        console.log(paramObject["C"])
-        console.log("KID: " + paramObject["C"][_loc7_]["KID"]);
+        let __obj = paramObject["C"][_loc7_];
         let _loc5_ = [];
-        for(var _loc4_ in _loc7_["AI"])
+        for (var _loc4_ in paramObject["C"][_loc7_]["AI"])
         {
-            console.log(_loc4_);
+            let _obj = __obj["AI"][_loc4_];
+            console.log(_obj);
             //_loc6_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc4_["AI"]);
             if (_loc4_["OGT"]) {
                 _loc6_.remainingOpenGateTime = _loc4_["OGT"];
@@ -120,7 +120,7 @@ function parseCastleList(paramObject) {
             }
             //_loc5_.push(_loc6_);
         }
-        _loc3_[_loc7_["KID"]] = _loc5_;
+        _loc3_[__obj["KID"]] = _loc5_;
     }
     return _loc3_;
 }
