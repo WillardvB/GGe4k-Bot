@@ -1,3 +1,6 @@
+const villages = require('./../../../ingame_data/villages.json');
+const buildings = require('./../../../ingame_data/buildings.json');
+
 module.exports = {
     name: "gdi",
     /**
@@ -9,8 +12,8 @@ module.exports = {
         if (errorCode == 21) return; //player not found.
         let player = require("./wsp").parseOwnerInfo(params.O, true);
         if (player === null) return;
-        player.castles = parseCastleList(params.gcl);
-        if (player.playerName.toLowerCase() === "denas") {
+        player["castles"] = parseCastleList(params.gcl);
+        if (player.playerName.toLowerCase() === "Denas" || player.playerName.toLowerCase() === "Aura") {
             player.villages = {
                 public: parsePublicVillageList(params.kgv),
                 private: parsePrivateVillageList(params.kgv),
@@ -19,7 +22,9 @@ module.exports = {
             player.monuments = parseMonumentList(params.gml);
             player.allianceTowers = parseAllianceTowerList(params.tie);
         }
-        require("../../data").players[player.playerId] = player;
+        let tmpPlayers = require("../../data").players;
+        tmpPlayers[player.playerId] = player;
+        require("../../data").players = tmpPlayers;
     },
 }
 
@@ -83,26 +88,50 @@ function parseCastleList(paramObject) {
  * @param {object} paramObject
  */
 function parsePublicVillageList(paramObject) {
-    var _loc4_ = null;
-    var _loc7_ = null;
-    var _loc5_ = null;
-    var _loc8_ = null;
     var _loc3_ = [];
     if (!paramObject) {
         return _loc3_;
     }
     console.log('Public villages');
+    console.log(JSON.stringify(paramObject));
     for(var _loc6_ in paramObject["VI"])
     {
-        let _obj = paramObject["VI"][_loc6_];
-        console.log(_obj);
-        _loc4_ = _obj[0];
+        let __obj = paramObject["VI"][_loc6_];
+        console.log(__obj);
+        let _obj = __obj[0];
+        let villageMapObjectVO = {
+            areaType: _obj[0],
+            posX: _obj[1],
+            posY: _obj[2],
+            objectId: _obj[3],
+            villageType: _obj[5],
+            kingdomId: _obj[6],
+            customName: _obj[8],
+            keepLevel: 0,
+            wallLevel: 0,
+            gateLevel: 0,
+            moatLevel: 0,
+        }
+        const _villageData = villages[_objAI[6]];
+        if (_villageData.keepWodId !== -1) {
+            villageMapObjectVO.keepLevel = buildings[Object.keys(buildings).find(x => x.wodID === _villageData.keepWodId)].level;
+        }
+        if (_villageData.wallWodId !== -1) {
+            villageMapObjectVO.wallLevel = buildings[Object.keys(buildings).find(x => x.wodID === _villageData.wallWodId)].level;
+        }
+        if (_villageData.gateWodId !== -1) {
+            villageMapObjectVO.gateLevel = buildings[Object.keys(buildings).find(x => x.wodID === _villageData.gateWodId)].level;
+        }
+        if (_villageData.moatWodId !== -1) {
+            villageMapObjectVO.moatLevel = buildings[Object.keys(buildings).find(x => x.wodID === _villageData.moatWodId)].level;
+        }
         //(_loc7_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc4_)/* as VillageMapobjectVO*/).ownerInfo = ownerInfo;
-        if ((_loc5_ = _obj[1]) && _loc5_.length > 0) {
-        //    _loc8_ = castleInventoryParser.parseUnitsInventory(_loc5_);
+        if ((_obj = __obj[1]) && _obj.length > 0) {
+        //    _loc8_ = castleInventoryParser.parseUnitsInventory(_obj);
         //    _loc7_.setUnits(_loc8_);
         }
-        //_loc3_.push(_loc7_);
+        console.log(JSON.stringify(villageMapObjectVO, null, 2));
+        //_loc3_.push(villageMapObjectVO);
     }
     return _loc3_;
 }
