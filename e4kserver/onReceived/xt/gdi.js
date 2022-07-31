@@ -97,7 +97,6 @@ function parsePublicVillageList(paramObject) {
     for(var _loc6_ in paramObject["VI"])
     {
         let __obj = paramObject["VI"][_loc6_];
-        console.log(__obj);
         let _obj = __obj[0];
         let villageMapObjectVO = {
             areaType: _obj[0],
@@ -112,7 +111,7 @@ function parsePublicVillageList(paramObject) {
             gateLevel: 0,
             moatLevel: 0,
         }
-        const _villageData = villages[_objAI[6]];
+        const _villageData = villages[_obj[6]];
         if (_villageData.keepWodId !== -1) {
             villageMapObjectVO.keepLevel = buildings[Object.keys(buildings).find(x => x.wodID === _villageData.keepWodId)].level;
         }
@@ -130,9 +129,9 @@ function parsePublicVillageList(paramObject) {
         //    _loc8_ = castleInventoryParser.parseUnitsInventory(_obj);
         //    _loc7_.setUnits(_loc8_);
         }
-        console.log(JSON.stringify(villageMapObjectVO, null, 2));
-        //_loc3_.push(villageMapObjectVO);
+        _loc3_.push(villageMapObjectVO);
     }
+    console.log(JSON.stringify(_loc3_, null, 2));
     return _loc3_;
 }
 
