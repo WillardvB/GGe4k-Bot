@@ -9,8 +9,8 @@ module.exports = {
         if (errorCode == 21) return; //player not found.
         let player = require("./wsp").parseOwnerInfo(params.O, true);
         if (player === null) return;
+        player.castles = parseCastleList(params.gcl);
         if (player.playerName.toLowerCase() === "denas") {
-            player.castles = parseCastleList(params.gcl);
             player.villages = {
                 public: parsePublicVillageList(params.kgv),
                 private: parsePrivateVillageList(params.kgv),
@@ -23,52 +23,6 @@ module.exports = {
     },
 }
 
-
-
-/**
- * 
- * @param {Array} areaInfo
- */
-/*
-function createWorldMapAreaByInfo(areaInfo) {
-    if (!areaInfo) {
-        warn("areaInfo is null, IWorldmapObjectVO can\'t be created ");
-        return null;
-    }
-    var _loc2_ = areaInfo[0];
-    var _loc3_ = createWorldMapArea(_loc2_);
-    _loc3_.parseAreaInfo(areaInfo);
-    _loc3_.ownerInfo = _loc3_.ownerInfo || getDefaultOwnerInfo(_loc3_);
-    return _loc3_;
-}
-*/
-/**
- * 
- * @param {Array} params
- */
-/*
-function parseAreaInfo(params) {
-    areaType = params[0];
-    super.parseAreaInfo(params);
-    objectID = params[3];
-    ownerId = params[4];
-    ownerInfo = WorldMapOwnerHelper.getOwnerInfoVO(_ownerId);
-    keepLevel = params[5];
-    wallLevel = params[6];
-    gateLevel = params[7];
-    towerLevel = params[8];
-    _moatLevel = params[9];
-    customName = params[10];
-    attackCooldownSec = params[11];
-    _sabotageCooldownEndTimestamp = getTimer() + params[12] * 1000;
-    secondsSinceEspionage = params[13];
-    outpostType = params[14];
-    _occupierID = params[15];
-    kingdomId = params[16];
-    _equipmentID = params[17];
-    onValueObjectChangedSignal.dispatch([]);
-}
-*/
 /**
  * 
  * @param {object} paramObject
@@ -78,7 +32,6 @@ function parseCastleList(paramObject) {
     if (!paramObject) {
         return _castles;
     }
-    console.log('castles');
     for(let _loc7_ in paramObject["C"])
     {
         let __obj = paramObject["C"][_loc7_];
@@ -122,7 +75,6 @@ function parseCastleList(paramObject) {
         }
         _castles[__obj["KID"]] = _loc5_;
     }
-    console.log(JSON.stringify(_castles, null, 2));
     return _castles;
 }
 
@@ -139,13 +91,14 @@ function parsePublicVillageList(paramObject) {
     if (!paramObject) {
         return _loc3_;
     }
-    //console.log('Public villages');
+    console.log('Public villages');
     for(var _loc6_ in paramObject["VI"])
     {
-        //console.log(_loc6);
-        _loc4_ = _loc6_[0];
+        let _obj = paramObject["VI"][_loc6_];
+        console.log(_obj);
+        _loc4_ = _obj[0];
         //(_loc7_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc4_)/* as VillageMapobjectVO*/).ownerInfo = ownerInfo;
-        if ((_loc5_ = _loc6_[1]) && _loc5_.length > 0) {
+        if ((_loc5_ = _obj[1]) && _loc5_.length > 0) {
         //    _loc8_ = castleInventoryParser.parseUnitsInventory(_loc5_);
         //    _loc7_.setUnits(_loc8_);
         }
