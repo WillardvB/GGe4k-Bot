@@ -88,21 +88,39 @@ function parseAreaInfo(params) {
  * @param {object} paramObject
  */
 function parseCastleList(paramObject) {
-    var _loc6_ = null;
-    var _loc3_ = {};
+    let _loc6_ = null;
+    let _loc3_ = {};
     if (!paramObject) {
         return _loc3_;
     }
     console.log('castles');
-    for(var _loc7_ in paramObject["C"])
+    for(let _loc7_ in paramObject["C"])
     {
         let __obj = paramObject["C"][_loc7_];
         let _loc5_ = [];
-        for (var _loc4_ in paramObject["C"][_loc7_]["AI"])
+        for (let _loc4_ in paramObject["C"][_loc7_]["AI"])
         {
             let _obj = __obj["AI"][_loc4_];
-            console.log(_obj);
-            //_loc6_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc4_["AI"]);
+            let _objAI = _obj.AI
+            _loc6_ = {
+                areaType: _objAI[0],
+                posX: _objAI[1],
+                posY: _objAI[2],
+                objectId: _objAI[3],
+                keepLevel: _objAI[5],
+                wallLevel: _objAI[6],
+                gateLevel: _objAI[7],
+                towerLevel: _objAI[8],
+                moatLevel: _objAI[9],
+                customName: _objAI[10],
+                outpostType: _objAI[14],
+                occupierID: _objAI[15],
+                kingdomId: _objAI[16],
+                equipmentID: _objAI[17],
+            }
+            console.log(_loc6_);
+            break;
+            _loc6_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc4_["AI"]);
             if (_loc4_["OGT"]) {
                 _loc6_.remainingOpenGateTime = _loc4_["OGT"];
             }
