@@ -88,9 +88,9 @@ function parseCastleList(paramObject) {
  * @param {object} paramObject
  */
 function parsePublicVillageList(paramObject) {
-    var _loc3_ = [];
+    let _publicVillages = [];
     if (!paramObject) {
-        return _loc3_;
+        return _publicVillages;
     }
     console.log('Public villages');
     console.log(JSON.stringify(paramObject));
@@ -113,26 +113,30 @@ function parsePublicVillageList(paramObject) {
         }
         const _villageData = villages[_obj[6]];
         if (_villageData.keepWodId !== -1) {
-            villageMapObjectVO.keepLevel = buildings[Object.keys(buildings).find(x => x.wodID === _villageData.keepWodId)].level;
+            let _keys = Object.keys(buildings);
+            let _keyCount = _keys.length;
+            console.log("_keyCount: " + _keyCount);
+            console.log("find => " + _keys.find(x => buildings[x].wodID === _villageData.keepWodId));
+            console.log("building: " + buildings[_keys.find(x => buildings[x].wodID === _villageData.keepWodId)]);
+            villageMapObjectVO.keepLevel = buildings[Object.keys(buildings).find(x => buildings[x].wodID === _villageData.keepWodId)].level;
         }
         if (_villageData.wallWodId !== -1) {
-            villageMapObjectVO.wallLevel = buildings[Object.keys(buildings).find(x => x.wodID === _villageData.wallWodId)].level;
+            villageMapObjectVO.wallLevel = buildings[Object.keys(buildings).find(x => buildings[x].wodID === _villageData.wallWodId)].level;
         }
         if (_villageData.gateWodId !== -1) {
-            villageMapObjectVO.gateLevel = buildings[Object.keys(buildings).find(x => x.wodID === _villageData.gateWodId)].level;
+            villageMapObjectVO.gateLevel = buildings[Object.keys(buildings).find(x => buildings[x].wodID === _villageData.gateWodId)].level;
         }
         if (_villageData.moatWodId !== -1) {
-            villageMapObjectVO.moatLevel = buildings[Object.keys(buildings).find(x => x.wodID === _villageData.moatWodId)].level;
+            villageMapObjectVO.moatLevel = buildings[Object.keys(buildings).find(x => buildings[x].wodID === _villageData.moatWodId)].level;
         }
-        //(_loc7_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc4_)/* as VillageMapobjectVO*/).ownerInfo = ownerInfo;
         if ((_obj = __obj[1]) && _obj.length > 0) {
         //    _loc8_ = castleInventoryParser.parseUnitsInventory(_obj);
         //    _loc7_.setUnits(_loc8_);
         }
-        _loc3_.push(villageMapObjectVO);
+        _publicVillages.push(villageMapObjectVO);
     }
-    console.log(JSON.stringify(_loc3_, null, 2));
-    return _loc3_;
+    console.log(JSON.stringify(_publicVillages, null, 2));
+    return _publicVillages;
 }
 
 /**
