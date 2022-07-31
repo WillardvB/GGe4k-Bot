@@ -19,20 +19,6 @@ module.exports = {
             player.monuments = parseMonumentList(params.gml);
             player.allianceTowers = parseAllianceTowerList(params.tie);
         }
-        /**
-         var _loc2_:CastleListVO = new CastleListVO();
-         _loc2_.ownerID = _loc4_.playerID;
-         _loc2_.castles = castleListParser.parseCastleList(paramObj.gcl,_loc4_);
-         _loc2_.publicVillages = castleListParser.parsePublicVillageList(paramObj.kgv,_loc4_);
-         _loc2_.privateVillages = castleListParser.parsePrivateVillageList(paramObj.kgv,_loc4_);
-         _loc2_.kingsTowers = castleListParser.parseKingsTowerList(paramObj.gkl);
-         _loc2_.monuments = castleListParser.parseMonumentList(paramObj.gml);
-         _loc2_.allianceTowers = new Vector.<AllianceTowerMapobjectVO>(0);
-         var _loc3_:TIEParser = parserFactory.getParser("tie") as TIEParser;
-         _loc3_.setParsePayload(_loc2_.allianceTowers);
-         _loc3_.parse(paramObj["tie"]);
-         detailPlayerInfoLoadedSignal.dispatch(_loc2_);
-         */
         require("../../data").players[player.playerId] = player;
     },
 }
@@ -88,23 +74,20 @@ function parseAreaInfo(params) {
  * @param {object} paramObject
  */
 function parseCastleList(paramObject) {
-    let _loc6_ = null;
-    let _loc3_ = {};
+    let _castles = {};
     if (!paramObject) {
-        return _loc3_;
+        return _castles;
     }
     console.log('castles');
     for(let _loc7_ in paramObject["C"])
     {
         let __obj = paramObject["C"][_loc7_];
         let _loc5_ = [];
-        console.log("length: " + __obj["AI"].length);
         for (let i = 0; i < __obj["AI"].length; i++)
         {
-            console.log("i: " + i);
             let _obj = __obj["AI"][i];
             let _objAI = _obj.AI;
-            _loc6_ = {
+            let _loc6_ = {
                 areaType: _objAI[0],
                 posX: _objAI[1],
                 posY: _objAI[2],
@@ -120,9 +103,6 @@ function parseCastleList(paramObject) {
                 kingdomId: _objAI[16],
                 equipmentID: _objAI[17],
             }
-            console.log(_loc6_);
-            break;
-            _loc6_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc4_["AI"]);
             if (_loc4_["OGT"]) {
                 _loc6_.remainingOpenGateTime = _loc4_["OGT"];
             }
@@ -138,11 +118,12 @@ function parseCastleList(paramObject) {
             if (_loc4_["CAT"]) {
                 _loc6_.remainingCancelAbandonTime = _loc4_["CAT"];
             }
-            //_loc5_.push(_loc6_);
+            _loc5_.push(_loc6_);
         }
-        _loc3_[__obj["KID"]] = _loc5_;
+        _castles[__obj["KID"]] = _loc5_;
     }
-    return _loc3_;
+    console.log(JSON.stringify(_castles, null, 2));
+    return _castles;
 }
 
 /**
