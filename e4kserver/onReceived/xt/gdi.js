@@ -103,20 +103,20 @@ function parseCastleList(paramObject) {
                 kingdomId: _objAI[16],
                 equipmentID: _objAI[17],
             }
-            if (_loc4_["OGT"]) {
-                _loc6_.remainingOpenGateTime = _loc4_["OGT"];
+            if (_obj["OGT"]) {
+                _loc6_.remainingOpenGateTime = _obj["OGT"];
             }
-            if (_loc4_["OGC"]) {
-                _loc6_.openGateCounter = _loc4_["OGC"];
+            if (_obj["OGC"]) {
+                _loc6_.openGateCounter = _obj["OGC"];
             }
-            if (_loc4_["AOT"]) {
-                _loc6_.remainingAbandonOutpostTime = _loc4_["AOT"];
+            if (_obj["AOT"]) {
+                _loc6_.remainingAbandonOutpostTime = _obj["AOT"];
             }
-            if (_loc4_["TA"]) {
-                _loc6_.remainingCooldownAbandonOutpostTime = _loc4_["TA"];
+            if (_obj["TA"]) {
+                _loc6_.remainingCooldownAbandonOutpostTime = _obj["TA"];
             }
-            if (_loc4_["CAT"]) {
-                _loc6_.remainingCancelAbandonTime = _loc4_["CAT"];
+            if (_obj["CAT"]) {
+                _loc6_.remainingCancelAbandonTime = _obj["CAT"];
             }
             _loc5_.push(_loc6_);
         }
