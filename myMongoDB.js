@@ -226,7 +226,9 @@ function updateMany(obj, dbName, collectionName, idCompare) {
                     let result = await collection.updateOne(filter, updateDoc);
                     modifiedCount += result.modifiedCount;
                 }
-                console.log("Number of documents updated: " + modifiedCount);
+                if (modifiedCount !== 0) {
+                    console.log("Number of documents updated: " + modifiedCount);
+                }
                 await client.close();
                 return resolve("Number of documents updated: " + modifiedCount);
             }
