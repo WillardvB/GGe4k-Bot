@@ -112,13 +112,16 @@ function parsePublicVillageList(paramObject) {
             moatLevel: 0,
         }
         const _villageData = villages[_obj[6]];
+        const _buildingKeys = Object.keys(buildings);
         if (_villageData.keepWodId !== -1) {
+            let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.keepWodId);
             let _keys = Object.keys(buildings);
             let _keyCount = _keys.length;
             console.log("_keyCount: " + _keyCount);
             console.log("find => " + _keys.find(x => buildings[x].wodID === _villageData.keepWodId));
-            console.log("building: " + buildings[_keys.find(x => buildings[x].wodID === _villageData.keepWodId)]);
-            villageMapObjectVO.keepLevel = buildings[Object.keys(buildings).find(x => buildings[x].wodID === _villageData.keepWodId)].level;
+            console.log("building1: " + JSON.stringify(buildings[_keys.find(x => buildings[x].wodID === _villageData.keepWodId)]));
+            console.log("building2: " + JSON.stringify(buildings[key]));
+            villageMapObjectVO.keepLevel = buildings[key].level;
         }
         if (_villageData.wallWodId !== -1) {
             villageMapObjectVO.wallLevel = buildings[Object.keys(buildings).find(x => buildings[x].wodID === _villageData.wallWodId)].level;
