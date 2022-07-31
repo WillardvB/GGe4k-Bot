@@ -25,7 +25,6 @@ module.exports = {
         let tmpPlayers = require("../../data").players;
         tmpPlayers[player.playerId] = player;
         require("../../data").players = tmpPlayers;
-        console.log(require("../../data").players[player.playerId].castles);
     },
 }
 
