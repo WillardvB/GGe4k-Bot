@@ -94,15 +94,14 @@ function parseCastleList(paramObject) {
         return _loc3_;
     }
     console.log('castles');
+    console.log(JSON.stringify(paramObject));
     for(let _loc7_ in paramObject["C"])
     {
         let __obj = paramObject["C"][_loc7_];
-        console.log(__obj);
         let _loc5_ = [];
         for (let _loc4_ in __obj["AI"])
         {
             let _obj = __obj["AI"][_loc4_];
-            console.log(_obj);
             let _objAI = _obj.AI;
             _loc6_ = {
                 areaType: _objAI[0],
