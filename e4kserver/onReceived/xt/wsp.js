@@ -213,7 +213,10 @@ function parseOwnerInfo(ownerInfo) {
     }
     else {
         tmpPlayers = require('./../../data.js').players;
-        _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(tmpPlayers[playerId], ownerInfo);
+        let _newWorldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(tmpPlayers[playerId], ownerInfo);
+        for (let __key in _newWorldMapOwnerInfoVO) {
+            _worldMapOwnerInfoVO[__key] = _newWorldMapOwnerInfoVO[__key];
+        }
         tmpPlayers[playerId] = _worldMapOwnerInfoVO;
         require('./../../data.js').players = tmpPlayers;
     }

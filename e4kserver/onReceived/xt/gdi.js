@@ -13,7 +13,7 @@ module.exports = {
         let player = require("./wsp").parseOwnerInfo(params.O, true);
         if (player === null) return;
         player["castles"] = parseCastleList(params.gcl);
-        if (player.playerName.toLowerCase() === "Denas" || player.playerName.toLowerCase() === "Aura") {
+        if (player.playerName === "Denas" || player.playerName.toLowerCase() === "aura") {
             player.villages = {
                 public: parsePublicVillageList(params.kgv),
                 private: parsePrivateVillageList(params.kgv),
@@ -25,6 +25,7 @@ module.exports = {
         let tmpPlayers = require("../../data").players;
         tmpPlayers[player.playerId] = player;
         require("../../data").players = tmpPlayers;
+        console.log(require("../../data").players[player.playerId].castles);
     },
 }
 
