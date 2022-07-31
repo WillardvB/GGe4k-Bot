@@ -97,11 +97,13 @@ function parseCastleList(paramObject) {
     for(let _loc7_ in paramObject["C"])
     {
         let __obj = paramObject["C"][_loc7_];
+        console.log(__obj);
         let _loc5_ = [];
-        for (let _loc4_ in paramObject["C"][_loc7_]["AI"])
+        for (let _loc4_ in __obj["AI"])
         {
             let _obj = __obj["AI"][_loc4_];
-            let _objAI = _obj.AI
+            console.log(_obj);
+            let _objAI = _obj.AI;
             _loc6_ = {
                 areaType: _objAI[0],
                 posX: _objAI[1],
@@ -156,10 +158,10 @@ function parsePublicVillageList(paramObject) {
     if (!paramObject) {
         return _loc3_;
     }
-    console.log('Public villages');
+    //console.log('Public villages');
     for(var _loc6_ in paramObject["VI"])
     {
-        console.log(_loc6);
+        //console.log(_loc6);
         _loc4_ = _loc6_[0];
         //(_loc7_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc4_)/* as VillageMapobjectVO*/).ownerInfo = ownerInfo;
         if ((_loc5_ = _loc6_[1]) && _loc5_.length > 0) {
@@ -182,10 +184,10 @@ function parsePrivateVillageList(paramObject) {
     if (!paramObject) {
         return _loc3_;
     }
-    console.log('Private villages');
+    //console.log('Private villages');
     for(var _loc4_ in paramObject["PV"])
     {
-        console.log(_loc4_);
+        //console.log(_loc4_);
         //if (_loc5_ = resourceVillageStaticData.getPrivateVillageStaticVOById(_loc4_["XID"])) {
         //    (_loc6_ = new PrivateVillageVO(_loc5_)).uniqueId = _loc4_["VID"];
         //    _loc3_.push(_loc6_);
@@ -205,10 +207,10 @@ function parseKingsTowerList(paramObject) {
     if (!paramObject) {
         return _loc2_;
     }
-    console.log('KingsTowers');
+    //console.log('KingsTowers');
     for(var _loc5_ in paramObject["AI"])
     {
-        console.log(_loc5_);
+        //console.log(_loc5_);
         _loc3_ = _loc5_[0];
         //_loc4_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc3_);// as KingstowerMapobjectVO;
         if (_loc5_[1] && _loc5_[1].length > 0) {
@@ -230,10 +232,10 @@ function parseMonumentList(paramObject) {
     if (!paramObject) {
         return _loc2_;
     }
-    console.log('Monuments');
+    //console.log('Monuments');
     for(var _loc4_ in paramObject["AI"])
     {
-        console.log(_loc4_);
+        //console.log(_loc4_);
         _loc3_ = _loc4_[0];
         //_loc5_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc3_);// as MonumentMapobjectVO;
         if (_loc4_[1] && _loc4_[1].length > 0) {
@@ -257,11 +259,11 @@ function parseAllianceTowerList(paramObj) {
     {
         _loc2_ = paramObj["T"];
     }
-    console.log('Alliance towers');
+    //console.log('Alliance towers');
     var _loc3_ = _loc2_.length;
     _loc4_ = 0;
     while (_loc4_ < _loc3_) {
-        console.log(_loc2_[_loc4_]);
+        //console.log(_loc2_[_loc4_]);
         //(_loc5_ = worldmapObjectFactory.createWorldMapArea(41)/* as AllianceTowerMapobjectVO*/).parseAreaInfo(_loc2_[_loc4_]);
         //allianceTowers.push(_loc5_);
         _loc4_++;
