@@ -96,7 +96,8 @@ function parseCastleList(paramObject) {
     console.log('castles')
     for(var _loc7_ in paramObject["C"])
     {
-        console.log("KID: " + _loc7_["KID"]);
+        console.log(paramObject["C"])
+        console.log("KID: " + paramObject["C"][_loc7_]["KID"]);
         let _loc5_ = [];
         for(var _loc4_ in _loc7_["AI"])
         {
