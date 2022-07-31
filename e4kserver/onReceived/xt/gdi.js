@@ -113,24 +113,21 @@ function parsePublicVillageList(paramObject) {
         }
         const _villageData = villages[_obj[6]];
         const _buildingKeys = Object.keys(buildings);
-        if (_villageData.keepWodId !== -1) {
+        if (_villageData.keepWodId !== "-1") {
             let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.keepWodId);
-            let _keys = Object.keys(buildings);
-            let _keyCount = _keys.length;
-            console.log("_keyCount: " + _keyCount);
-            console.log("find => " + _keys.find(x => buildings[x].wodID === _villageData.keepWodId));
-            console.log("building1: " + JSON.stringify(buildings[_keys.find(x => buildings[x].wodID === _villageData.keepWodId)]));
-            console.log("building2: " + JSON.stringify(buildings[key]));
             villageMapObjectVO.keepLevel = buildings[key].level;
         }
-        if (_villageData.wallWodId !== -1) {
-            villageMapObjectVO.wallLevel = buildings[Object.keys(buildings).find(x => buildings[x].wodID === _villageData.wallWodId)].level;
+        if (_villageData.wallWodId !== "-1") {
+            let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.wallWodId);
+            villageMapObjectVO.wallLevel = buildings[key].level;
         }
-        if (_villageData.gateWodId !== -1) {
-            villageMapObjectVO.gateLevel = buildings[Object.keys(buildings).find(x => buildings[x].wodID === _villageData.gateWodId)].level;
+        if (_villageData.gateWodId !== "-1") {
+            let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.gateWodId);
+            villageMapObjectVO.gateLevel = buildings[key].level;
         }
-        if (_villageData.moatWodId !== -1) {
-            villageMapObjectVO.moatLevel = buildings[Object.keys(buildings).find(x => buildings[x].wodID === _villageData.moatWodId)].level;
+        if (_villageData.moatWodId !== "-1") {
+            let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.moatWodId);
+            villageMapObjectVO.moatLevel = buildings[key].level;
         }
         if ((_obj = __obj[1]) && _obj.length > 0) {
         //    _loc8_ = castleInventoryParser.parseUnitsInventory(_obj);
