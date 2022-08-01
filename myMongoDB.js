@@ -55,8 +55,10 @@ module.exports = {
                 if (collection === DATA.E4K.PLAYERS) {
                     oldData = playerData;
                     idCompare = "playerId";
-                    console.log("comparing PlayerData!");
-                    console.log(oldData.length + " VS " + newData.length);
+                    if (finishedGettingData) {
+                        console.log("comparing PlayerData!");
+                        console.log(oldData.length + " VS " + newData.length);
+                    }
                 }
                 else if (collection === DATA.E4K.ALLIANCES) {
                     oldData = allianceData;
@@ -91,9 +93,7 @@ module.exports = {
                 if (dataToUpdate.length !== 0) {
                     await updateMany(dataToUpdate, dbName, collName, idCompare);
                 }
-                if (dataToUpdate.length !== 0 || dataToInsert.length !== 0) {
-                    await RefreshData();
-                }
+                await RefreshData();
                 finishedGettingData = true;
                 await client.close();
                 return resolve("finished database");
@@ -150,22 +150,27 @@ function GetData(db_collection) {
             const collection = client.db(dbName).collection(collectionName);
             if (collection !== null && collection.dbName === dbName) {
                 collection.find({}).toArray(function (err, result) {
-                    if (err) throw err;
-                    let output = [];
-                    for (let i = 0; i < result.length; i++) {
-                        let data = result[i];
-                        delete data['_id'];
-                        output.push(data);
+                    try {
+                        if (err) throw err;
+                        let output = [];
+                        for (let i = 0; i < result.length; i++) {
+                            let data = result[i];
+                            delete data['_id'];
+                            output.push(data);
+                        }
+                        if (dbName + '_' + collectionName === DATA.E4K.PLAYERS)
+                            playerData = output;
+                        if (dbName + '_' + collectionName === DATA.E4K.ALLIANCES)
+                            allianceData = output;
+                        if (dbName + '_' + collectionName === DATA.DC.USERS)
+                            dcUserData = output;
+                        if (dbName + '_' + collectionName === DATA.DC.CHANNELS)
+                            channelData = output;
+                        return resolve(output);
                     }
-                    if (dbName + '_' + collectionName === DATA.E4K.PLAYERS)
-                        playerData = output;
-                    if (dbName + '_' + collectionName === DATA.E4K.ALLIANCES)
-                        allianceData = output;
-                    if (dbName + '_' + collectionName === DATA.DC.USERS)
-                        dcUserData = output;
-                    if (dbName + '_' + collectionName === DATA.DC.CHANNELS)
-                        channelData = output;
-                    return resolve(output);
+                    catch (e) {
+                        reject(e);
+                    }
                 });
             }
             else {
