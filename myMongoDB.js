@@ -144,7 +144,7 @@ async function RefreshData() {
  * @param {string} collectionName
  */
 function GetData(db_collection) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         try {
             let dbName = db_collection.split('_')[0];
             let collectionName = db_collection.split('_')[1];
