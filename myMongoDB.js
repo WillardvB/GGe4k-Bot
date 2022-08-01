@@ -47,6 +47,7 @@ module.exports = {
     async compareData(newData, collection) {
         if (client === null) return;
         return new Promise(async (resolve, reject) => {
+            let refreshing = false;
             try {
                 await client.connect();
                 let dbName = collection.split('_')[0];
@@ -94,14 +95,21 @@ module.exports = {
                 if (dataToUpdate.length !== 0) {
                     await updateMany(dataToUpdate, dbName, collName, idCompare);
                 }
-                await RefreshData();
-                finishedGettingData = true;
-                await client.close();
+                if (dataToUpdate.length !== 0 || dataToInsert.length !== 0) {
+                    refreshing = true;
+                    await RefreshData();
+                    finishedGettingData = true;
+                }
+                else {
+                    await client.close();
+                }
                 return resolve("finished database");
             }
             catch (err) {
                 finishedGettingData = true;
-                await client.close();
+                if (!refreshing) {
+                    await client.close();
+                }
                 return reject(err);
             }
         })
