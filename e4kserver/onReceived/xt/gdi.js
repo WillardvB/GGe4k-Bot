@@ -283,8 +283,8 @@ function parseMonumentList(paramObject) {
                 }
             }
             const _monumentsKeys = Object.keys(monuments);
-            const _key = _monumentsKeys.find(x => Math.max(monuments[x].level, 1) === monumentMapobjectVO.level);
-            const _monumentData = monuments[_key];
+            const _key2 = _monumentsKeys.find(x => Math.max(monuments[x].level, 1) === monumentMapobjectVO.level);
+            const _monumentData = monuments[_key2];
             monumentMapobjectVO["fameBoost"] = _monumentData.fameBoost;
             monumentMapobjectVO["requiredPoints"] = _monumentData.requiredPoints;
             console.log(monumentMapobjectVO);
