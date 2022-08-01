@@ -20,7 +20,7 @@ module.exports = {
     },
     /**
      * 
-     * @param {string} msg
+     * @param {any} msg
      */
     logError(msg) {
         return new Promise(async (resolve) => {

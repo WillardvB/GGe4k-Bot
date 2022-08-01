@@ -32,11 +32,12 @@ module.exports = {
         client = mongoClient;
         try {
             await RefreshData();
+            finishedGettingData = true;
         }
         catch (e) {
             Logger.logError(e);
+            this.execute(client);
         }
-        finishedGettingData = true;
     },
     /**
      * @returns {Promise} promise
@@ -130,7 +131,6 @@ async function RefreshData() {
         }
         catch (e) {
             await client.close();
-            Logger.logError(e);
             reject(e);
         }
     })
