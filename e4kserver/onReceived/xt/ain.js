@@ -36,7 +36,6 @@ async function onError() {
             for (let ___i in tmpPlayers) {
                 _playersArray.push(tmpPlayers[___i]);
             }
-            console.log("playersArray.length: "+_playersArray.length);
             await myMongoDB.compareData(_playersArray, myMongoDB.Collection.E4K.PLAYERS);
             allAlliancesInJSON = true;
             waitAndNextCheck();

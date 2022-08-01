@@ -161,11 +161,9 @@ function parsePrivateVillageList(paramObject) {
     {
         let _obj = paramObject["PV"][item];
         console.log(_obj);
+        const _villageId = _obj.XID.toString();
         const _villageKeys = Object.keys(privateVillages);
-        const _key = _villageKeys.find(x => {
-            console.log(privateVillages[x].villageID + " ?== " + _obj.XID);
-            privateVillages[x].villageID === _obj.XID;
-        });
+        const _key = _villageKeys.find(x => privateVillages[x].villageID === _villageId);
         console.log(_key);
         if (_key !== undefined) {
             const _villageData = privateVillages[_key];
