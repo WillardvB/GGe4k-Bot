@@ -1,6 +1,8 @@
 const villages = require('./../../../ingame_data/villages.json');
 const buildings = require('./../../../ingame_data/buildings.json');
 
+let _tmp_player = null;
+
 module.exports = {
     name: "gdi",
     /**
@@ -11,6 +13,7 @@ module.exports = {
     execute(errorCode, params) {
         if (errorCode == 21) return; //player not found.
         let player = require("./wsp").parseOwnerInfo(params.O, true);
+        _tmp_player = player;
         if (player === null) return;
         player["castles"] = parseCastleList(params.gcl);
         player["villages"] = {
@@ -149,15 +152,16 @@ function parsePrivateVillageList(paramObject) {
     if (!paramObject) {
         return _loc3_;
     }
-    if (player.playerName !== "Denas" && player.playerName.toLowerCase() !== "aura") {
+    if (_tmp_player.playerName !== "Denas" && _tmp_player.playerName.toLowerCase() !== "aura") {
         return [];
     }
-    //console.log('Private villages');
-    for(var _loc4_ in paramObject["PV"])
+    console.log('Private villages');
+    for(let item in paramObject["PV"])
     {
-        //console.log(_loc4_);
-        //if (_loc5_ = resourceVillageStaticData.getPrivateVillageStaticVOById(_loc4_["XID"])) {
-        //    (_loc6_ = new PrivateVillageVO(_loc5_)).uniqueId = _loc4_["VID"];
+        let _obj = paramObject["PV"][item];
+        console.log(_obj);
+        //if (_loc5_ = resourceVillageStaticData.getPrivateVillageStaticVOById(_obj["XID"])) {
+        //    (_loc6_ = new PrivateVillageVO(_loc5_)).uniqueId = _obj["VID"];
         //    _loc3_.push(_loc6_);
         //}
     }
