@@ -15,8 +15,8 @@ module.exports = {
         if (errorCode == 21) return; //player not found.
         let player = require("./wsp").parseOwnerInfo(params.O, true);
         if (player === null) return;
+        if (player.playerName === "Backpacker35") console.log(JSON.stringify(params.gcl, null, 2));
         player["castles"] = parseCastleList(params.gcl);
-        if (player.playerName.toLowerCase() === "aura") console.log(JSON.stringify(player.castles, null, 2));
         player["villages"] = {
             public: parsePublicVillageList(params.kgv),
             private: parsePrivateVillageList(params.kgv),
