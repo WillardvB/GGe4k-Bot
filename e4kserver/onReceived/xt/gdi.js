@@ -13,11 +13,9 @@ module.exports = {
         let player = require("./wsp").parseOwnerInfo(params.O, true);
         if (player === null) return;
         player["castles"] = parseCastleList(params.gcl);
+        player["villages"]["public"] = parsePublicVillageList(params.kgv);
         if (player.playerName === "Denas" || player.playerName.toLowerCase() === "aura") {
-            player.villages = {
-                public: parsePublicVillageList(params.kgv),
-                private: parsePrivateVillageList(params.kgv),
-            }
+            player.villages["private"] = parsePrivateVillageList(params.kgv);
             player.kingsTowers = parseKingsTowerList(params.gkl);
             player.monuments = parseMonumentList(params.gml);
             player.allianceTowers = parseAllianceTowerList(params.tie);
@@ -112,22 +110,24 @@ function parsePublicVillageList(paramObject) {
             moatLevel: 0,
         }
         const _villageData = villages[_obj[6]];
-        const _buildingKeys = Object.keys(buildings);
-        if (_villageData.keepWodId !== "-1") {
-            let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.keepWodId);
-            villageMapObjectVO.keepLevel = buildings[key].level;
-        }
-        if (_villageData.wallWodId !== "-1") {
-            let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.wallWodId);
-            villageMapObjectVO.wallLevel = buildings[key].level;
-        }
-        if (_villageData.gateWodId !== "-1") {
-            let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.gateWodId);
-            villageMapObjectVO.gateLevel = buildings[key].level;
-        }
-        if (_villageData.moatWodId !== "-1") {
-            let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.moatWodId);
-            villageMapObjectVO.moatLevel = buildings[key].level;
+        if (_villageData !== undefined) {
+            const _buildingKeys = Object.keys(buildings);
+            if (_villageData.keepWodId !== "-1") {
+                let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.keepWodId);
+                villageMapObjectVO.keepLevel = buildings[key].level;
+            }
+            if (_villageData.wallWodId !== "-1") {
+                let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.wallWodId);
+                villageMapObjectVO.wallLevel = buildings[key].level;
+            }
+            if (_villageData.gateWodId !== "-1") {
+                let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.gateWodId);
+                villageMapObjectVO.gateLevel = buildings[key].level;
+            }
+            if (_villageData.moatWodId !== "-1") {
+                let key = _buildingKeys.find(x => buildings[x].wodID === _villageData.moatWodId);
+                villageMapObjectVO.moatLevel = buildings[key].level;
+            }
         }
         if ((_obj = __obj[1]) && _obj.length > 0) {
         //    _loc8_ = castleInventoryParser.parseUnitsInventory(_obj);

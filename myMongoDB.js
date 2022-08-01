@@ -55,6 +55,8 @@ module.exports = {
                 if (collection === DATA.E4K.PLAYERS) {
                     oldData = playerData;
                     idCompare = "playerId";
+                    console.log("comparing PlayerData!");
+                    console.log(oldData.length + " VS " + newData.length);
                 }
                 else if (collection === DATA.E4K.ALLIANCES) {
                     oldData = allianceData;
@@ -83,13 +85,13 @@ module.exports = {
                         }
                     }
                 }
-                if (dataToInsert.length != 0) {
+                if (dataToInsert.length !== 0) {
                     await insertMany(dataToInsert, dbName, collName);
                 }
-                if (dataToUpdate.length != 0) {
+                if (dataToUpdate.length !== 0) {
                     await updateMany(dataToUpdate, dbName, collName, idCompare);
                 }
-                if (dataToUpdate.length != 0 || dataToInsert.length != 0) {
+                if (dataToUpdate.length !== 0 || dataToInsert.length !== 0) {
                     await RefreshData();
                 }
                 finishedGettingData = true;
@@ -228,6 +230,10 @@ function updateMany(obj, dbName, collectionName, idCompare) {
                 }
                 if (modifiedCount !== 0) {
                     console.log("Number of documents updated: " + modifiedCount);
+                } else {
+                    if (collectionName === "Players") {
+                        console.log("items to update in Player collection: " + obj.length);
+                    }
                 }
                 await client.close();
                 return resolve("Number of documents updated: " + modifiedCount);
