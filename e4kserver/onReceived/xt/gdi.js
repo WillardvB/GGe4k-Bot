@@ -1,5 +1,6 @@
 const villages = require('./../../../ingame_data/villages.json');
 const privateVillages = require('./../../../ingame_data/privateVillages.json');
+const monuments = require('./../../../ingame_data/monuments.json');
 const emptyAreas = require('./../../../ingame_data/emptyAreas.json');
 const buildings = require('./../../../ingame_data/buildings.json');
 
@@ -136,10 +137,6 @@ function parsePublicVillageList(paramObject) {
                 villageMapObjectVO.moatLevel = buildings[key].level;
             }
         }
-        if ((_obj = __obj[1]) && _obj.length > 0) {
-        //    _loc8_ = castleInventoryParser.parseUnitsInventory(_obj);
-        //    _loc7_.setUnits(_loc8_);
-        }
         _publicVillages.push(villageMapObjectVO);
     }
     return _publicVillages;
@@ -182,19 +179,14 @@ function parsePrivateVillageList(paramObject) {
  * @param {object} paramObject
  */
 function parseKingsTowerList(paramObject) {
-    var _loc3_ = null;
-    var _loc4_ = null;
     var _loc2_ = [];
     if (!paramObject) {
         return _loc2_;
     }
-    console.log('KingsTowers');
-    console.log(paramObject);
     for(let item in paramObject["AI"])
     {
         let kingstowerMapobjectVO = null;
         let __obj = paramObject["AI"][item];
-        console.log(__obj);
         let _obj = __obj[0];
         if (_obj.length > 0) {
             kingstowerMapobjectVO = {
@@ -231,12 +223,7 @@ function parseKingsTowerList(paramObject) {
                 }
             }
         }
-        _obj = __obj[1];
-        if (_obj && _obj.length > 0) {
-        //    castleInventoryParser.parseUnitsInventory(_obj[1], _loc4_.unitInventory);
-        }
         if (kingstowerMapobjectVO !== null) {
-            console.log(kingstowerMapobjectVO);
             _loc2_.push(kingstowerMapobjectVO);
         }
     }
@@ -248,22 +235,61 @@ function parseKingsTowerList(paramObject) {
  * @param {object} paramObject
  */
 function parseMonumentList(paramObject) {
-    var _loc3_ = null;
-    var _loc5_ = null;
     var _loc2_ = [];
     if (!paramObject) {
         return _loc2_;
     }
-    //console.log('Monuments');
-    for(var _loc4_ in paramObject["AI"])
-    {
-        //console.log(_loc4_);
-        _loc3_ = _loc4_[0];
-        //_loc5_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc3_);// as MonumentMapobjectVO;
-        if (_loc4_[1] && _loc4_[1].length > 0) {
-        //    _loc5_.parseUnits(_loc4_[1]);
+    console.log("Monuments");
+    console.log(paramObject);
+    for (let item in paramObject["AI"]) {
+        let monumentMapobjectVO = null;
+        let __obj = paramObject["AI"][item];
+        console.log(__obj);
+        let _obj = __obj[0];
+        if (_obj.length > 0) {
+            monumentMapobjectVO = {
+                areaType: _obj[0],
+                posX: _obj[1],
+                posY: _obj[2],
+                objectId: _obj[3],
+                occupierID: _obj[4],
+                monumentType: _obj[5],
+                level: _obj[6],
+                kingdomId: _obj[7],
+                customName: _obj[9],
+                keepLevel: 0,
+                wallLevel: 0,
+                gateLevel: 0,
+                moatLevel: 0,
+            }
+            const _emptyAreasKeys = Object.keys(emptyAreas);
+            const _key = _emptyAreasKeys.find(x => {
+                emptyAreas[x].areaType === monumentMapobjectVO.areaType && emptyAreas[x].isBattleground === "0"
+            });
+            const _emptyAreaData = emptyAreas[_key];
+            if (_emptyAreaData !== undefined) {
+                const _buildingKeys = Object.keys(buildings);
+                if (_emptyAreaData.keepWodId !== "-1") {
+                    let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.keepWodId);
+                    monumentMapobjectVO.keepLevel = buildings[key].level;
+                }
+                if (_emptyAreaData.wallWodId !== "-1") {
+                    let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.wallWodId);
+                    monumentMapobjectVO.wallLevel = buildings[key].level;
+                }
+                if (_emptyAreaData.gateWodId !== "-1") {
+                    let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.gateWodId);
+                    monumentMapobjectVO.gateLevel = buildings[key].level;
+                }
+            }
+            const _monumentsKeys = Object.keys(monuments);
+            const _key = _monumentsKeys.find(x => Math.max(monuments[x].level, 1) === monumentMapobjectVO.level);
+            const _monumentData = monuments[_key];
+            monumentMapobjectVO["fameBoost"] = _monumentData.fameBoost;
+            monumentMapobjectVO["requiredPoints"] = _monumentData.requiredPoints;
+            console.log(monumentMapobjectVO);
+            //_loc2_.push(monumentMapobjectVO);
         }
-        //_loc2_.push(_loc5_);
     }
     return _loc2_;
 }
