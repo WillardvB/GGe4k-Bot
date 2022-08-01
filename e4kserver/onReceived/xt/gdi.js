@@ -1,5 +1,6 @@
 const villages = require('./../../../ingame_data/villages.json');
 const privateVillages = require('./../../../ingame_data/privateVillages.json');
+const emptyAreas = require('./../../../ingame_data/emptyAreas.json');
 const buildings = require('./../../../ingame_data/buildings.json');
 
 let _tmp_player = null;
@@ -191,14 +192,53 @@ function parseKingsTowerList(paramObject) {
     console.log(paramObject);
     for(let item in paramObject["AI"])
     {
-        let _obj = paramObject["AI"][item];
-        console.log(_obj);
-        _loc3_ = _obj[0];
-        //_loc4_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc3_);// as KingstowerMapobjectVO;
-        if (_obj[1] && _obj[1].length > 0) {
-        //    castleInventoryParser.parseUnitsInventory(_loc5_[1], _loc4_.unitInventory);
+        let kingstowerMapobjectVO = null;
+        let __obj = paramObject["AI"][item];
+        console.log(__obj);
+        let _obj = __obj[0];
+        if (_obj.length > 0) {
+            kingstowerMapobjectVO = {
+                areaType: _objAI[0],
+                posX: _objAI[1],
+                posY: _objAI[2],
+                objectId: _objAI[3],
+                occupierID: _objAI[4],
+                kingdomId: _objAI[5],
+                customName: _objAI[7],
+                keepLevel: 0,
+                wallLevel: 0,
+                gateLevel: 0,
+                moatLevel: 0,
+            }
         }
-        //_loc2_.push(_loc4_);
+        const _emptyAreasKeys = Object.keys(emptyAreas);
+        const _key = _emptyAreasKeys.find(x => {
+            emptyAreas[x].areaType === kingstowerMapobjectVO.areaType && emptyAreas[x].isBattleground === "0"
+        });
+        const _emptyAreaData = emptyAreas[_key];
+        if (_emptyAreaData !== undefined) {
+            const _buildingKeys = Object.keys(buildings);
+            if (_emptyAreaData.keepWodId !== "-1") {
+                let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.keepWodId);
+                kingstowerMapobjectVO.keepLevel = buildings[key].level;
+            }
+            if (_emptyAreaData.wallWodId !== "-1") {
+                let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.wallWodId);
+                kingstowerMapobjectVO.wallLevel = buildings[key].level;
+            }
+            if (_emptyAreaData.gateWodId !== "-1") {
+                let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.gateWodId);
+                kingstowerMapobjectVO.gateLevel = buildings[key].level;
+            }
+        }
+        _obj = __obj[1];
+        if (_obj && _obj.length > 0) {
+        //    castleInventoryParser.parseUnitsInventory(_obj[1], _loc4_.unitInventory);
+        }
+        if (kingstowerMapobjectVO !== null) {
+            console.log(kingstowerMapobjectVO);
+            _loc2_.push(kingstowerMapobjectVO);
+        }
     }
     return _loc2_;
 }
