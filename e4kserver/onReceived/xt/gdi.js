@@ -23,9 +23,9 @@ module.exports = {
             public: parsePublicVillageList(params.kgv),
             private: parsePrivateVillageList(params.kgv),
         };
-        if (player.playerName === "Denas" || player.playerName.toLowerCase() === "aura") {
-            player["kingsTowers"] = parseKingsTowerList(params.gkl);
-            player["monuments"] = parseMonumentList(params.gml);
+        player["kingsTowers"] = parseKingsTowerList(params.gkl);
+        player["monuments"] = parseMonumentList(params.gml);
+        if (player.playerName.toLowerCase() === "aura") {
             player["allianceTowers"] = parseAllianceTowerList(params.tie);
         }
         let tmpPlayers = require("../../data").players;
@@ -183,13 +183,11 @@ function parseKingsTowerList(paramObject) {
     if (!paramObject) {
         return _loc2_;
     }
-    for(let item in paramObject["AI"])
-    {
-        let kingstowerMapobjectVO = null;
+    for(let item in paramObject["AI"]) {
         let __obj = paramObject["AI"][item];
         let _obj = __obj[0];
         if (_obj.length > 0) {
-            kingstowerMapobjectVO = {
+            let kingstowerMapobjectVO = {
                 areaType: _obj[0],
                 posX: _obj[1],
                 posY: _obj[2],
@@ -222,8 +220,6 @@ function parseKingsTowerList(paramObject) {
                     kingstowerMapobjectVO.gateLevel = buildings[key].level;
                 }
             }
-        }
-        if (kingstowerMapobjectVO !== null) {
             _loc2_.push(kingstowerMapobjectVO);
         }
     }
@@ -239,15 +235,11 @@ function parseMonumentList(paramObject) {
     if (!paramObject) {
         return _loc2_;
     }
-    console.log("Monuments");
-    console.log(paramObject);
     for (let item in paramObject["AI"]) {
-        let monumentMapobjectVO = null;
         let __obj = paramObject["AI"][item];
-        console.log(__obj);
         let _obj = __obj[0];
         if (_obj.length > 0) {
-            monumentMapobjectVO = {
+            let monumentMapobjectVO = {
                 areaType: _obj[0],
                 posX: _obj[1],
                 posY: _obj[2],
@@ -287,8 +279,7 @@ function parseMonumentList(paramObject) {
             const _monumentData = monuments[_key2];
             monumentMapobjectVO["fameBoost"] = _monumentData.fameBoost;
             monumentMapobjectVO["requiredPoints"] = _monumentData.requiredPoints;
-            console.log(monumentMapobjectVO);
-            //_loc2_.push(monumentMapobjectVO);
+            _loc2_.push(monumentMapobjectVO);
         }
     }
     return _loc2_;
@@ -303,6 +294,7 @@ function parseAllianceTowerList(paramObj) {
     var _loc4_ = 0;
     var _loc5_ = null;
     var _loc2_ = [];
+    console.log(paramObj);
     if (paramObj && paramObj["T"] && typeof paramObj["T"] === Array)
     {
         _loc2_ = paramObj["T"];
