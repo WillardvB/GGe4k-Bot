@@ -22,9 +22,9 @@ module.exports = {
             private: parsePrivateVillageList(params.kgv),
         };
         if (player.playerName === "Denas" || player.playerName.toLowerCase() === "aura") {
-            player.kingsTowers = parseKingsTowerList(params.gkl);
-            player.monuments = parseMonumentList(params.gml);
-            player.allianceTowers = parseAllianceTowerList(params.tie);
+            player["kingsTowers"] = parseKingsTowerList(params.gkl);
+            player["monuments"] = parseMonumentList(params.gml);
+            player["allianceTowers"] = parseAllianceTowerList(params.tie);
         }
         let tmpPlayers = require("../../data").players;
         tmpPlayers[player.playerId] = player;
@@ -159,19 +159,17 @@ function parsePrivateVillageList(paramObject) {
     console.log('Private villages');
     for(let item in paramObject["PV"])
     {
-        console.log(item);
         let _obj = paramObject["PV"][item];
         console.log(_obj);
         const _villageKeys = Object.keys(privateVillages);
-        console.log(_villageKeys);
         const _key = _villageKeys.find(x => {
-            console.log(x);
+            console.log(privateVillages[x].villageID + " ?== " + _obj.XID);
             privateVillages[x].villageID === _obj.XID;
         });
         console.log(_key);
-        const _villageData = privateVillages[_key];
-        console.log(_villageData);
-        if (_villageData !== undefined) {
+        if (_key !== undefined) {
+            const _villageData = privateVillages[_key];
+            console.log(_villageData);
             let privateVillageVO = {
                 uniqueId: _obj.VID,
                 villageID: _villageData.villageID,
