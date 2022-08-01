@@ -247,27 +247,21 @@ function updateMany(obj, dbName, collectionName, idCompare) {
  * @description Returns true if the json keys and values are the same, otherwise false
  */
 function CompareJSON(json1, json2) {
-    let differences = [];
     const keys2 = Object.keys(json2);
     for (let i = 0; i < keys2.length; i++) {
         let key = keys2[i];
-
         if (json1[key] !== json2[key] && (typeof json1[key] !== "object" || typeof json2[key] !== "object")) { //values are not the same
-            differences.push(key);
+            return false;
         }
         else if (typeof json1[key] === "object" || typeof json2[key] === "object") {
             if (json1[key] === null && json2[key] === null) { }
             else if (json1[key] === null || json2[key] === null || typeof json1[key] !== typeof json2[key]) {
-                differences.push(key);
+                return false;
             }
             else if (!CompareJSON(json1[key], json2[key])) {
-                differences.push(key);
+                return false;
             }
         }
     }
-    if (differences.length >= 1) {
-        return false;
-    }
-    else
-        return true;
+    return true;
 }

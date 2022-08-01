@@ -15,7 +15,6 @@ module.exports = {
         if (errorCode == 21) return; //player not found.
         let player = require("./wsp").parseOwnerInfo(params.O, true);
         if (player === null) return;
-        if (player.playerName === "Backpacker35") console.log(JSON.stringify(params.gcl, null, 2));
         player["castles"] = parseCastleList(params.gcl);
         player["villages"] = {
             public: parsePublicVillageList(params.kgv),
@@ -46,21 +45,42 @@ function parseCastleList(paramObject) {
         {
             let _obj = __obj["AI"][i];
             let _objAI = _obj.AI;
-            let _loc6_ = {
-                areaType: _objAI[0],
-                posX: _objAI[1],
-                posY: _objAI[2],
-                objectId: _objAI[3],
-                keepLevel: _objAI[5],
-                wallLevel: _objAI[6],
-                gateLevel: _objAI[7],
-                towerLevel: _objAI[8],
-                moatLevel: _objAI[9],
-                customName: _objAI[10],
-                outpostType: _objAI[14],
-                occupierID: _objAI[15],
-                kingdomId: _objAI[16],
-                equipmentID: _objAI[17],
+            let _loc6_ = null;
+            if (_objAI[0] === 3 || _objAI[0] === 22) {
+                _loc6_ = {
+                    areaType: _objAI[0],
+                    posX: _objAI[1],
+                    posY: _objAI[2],
+                    objectId: _objAI[3],
+                    keepLevel: _objAI[5],
+                    wallLevel: _objAI[6],
+                    gateLevel: _objAI[7],
+                    towerLevel: _objAI[8],
+                    moatLevel: _objAI[9],
+                    customName: _objAI[10],
+                    occupierID: _objAI[14],
+                    equipmentID: _objAI[15],
+                    kingdomId: _objAI[16],
+                    depletionTime: _objAI[17],
+                    influencePoints: _objAI[18],
+                }
+            } else {
+                _loc6_ = {
+                    areaType: _objAI[0],
+                    posX: _objAI[1],
+                    posY: _objAI[2],
+                    objectId: _objAI[3],
+                    keepLevel: _objAI[5],
+                    wallLevel: _objAI[6],
+                    gateLevel: _objAI[7],
+                    towerLevel: _objAI[8],
+                    moatLevel: _objAI[9],
+                    customName: _objAI[10],
+                    outpostType: _objAI[14],
+                    occupierID: _objAI[15],
+                    kingdomId: _objAI[16],
+                    equipmentID: _objAI[17],
+                }
             }
             if (_obj["OGT"]) {
                 _loc6_["remainingOpenGateTime"] = _obj["OGT"];
