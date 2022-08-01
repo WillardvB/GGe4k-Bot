@@ -1,4 +1,5 @@
 const villages = require('./../../../ingame_data/villages.json');
+const privateVillages = require('./../../../ingame_data/privateVillages.json');
 const buildings = require('./../../../ingame_data/buildings.json');
 
 let _tmp_player = null;
@@ -112,7 +113,8 @@ function parsePublicVillageList(paramObject) {
             gateLevel: 0,
             moatLevel: 0,
         }
-        const _villageData = villages[_obj[6]];
+        const _villageKeys = Object.keys(villages);
+        const _villageData = villages[_villageKeys.find(x => villages[x].kID === villageMapObjectVO.kingdomId)];
         if (_villageData !== undefined) {
             const _buildingKeys = Object.keys(buildings);
             if (_villageData.keepWodId !== "-1") {
@@ -146,8 +148,6 @@ function parsePublicVillageList(paramObject) {
  * @param {object} paramObject
  */
 function parsePrivateVillageList(paramObject) {
-    var _loc5_ = null;
-    var _loc6_ = null;
     var _loc3_ = [];
     if (!paramObject) {
         return _loc3_;
@@ -159,11 +159,21 @@ function parsePrivateVillageList(paramObject) {
     for(let item in paramObject["PV"])
     {
         let _obj = paramObject["PV"][item];
-        console.log(_obj);
-        //if (_loc5_ = resourceVillageStaticData.getPrivateVillageStaticVOById(_obj["XID"])) {
-        //    (_loc6_ = new PrivateVillageVO(_loc5_)).uniqueId = _obj["VID"];
-        //    _loc3_.push(_loc6_);
-        //}
+        const _villageKeys = Object.keys(privateVillages);
+        const _villageData = privateVillages[_villageKeys.find(x => privateVillages[x].villageID === _obj.XID)];
+        if (_villageData !== undefined) {
+            let privateVillageVO = {
+                uniqueId: _obj.VID,
+                villageID: _villageData.villageID,
+                type: _villageData.type,
+                villageLevel: _villageData.villageLevel,
+                kID: _villageData.kID,
+                costResourceVillageToken: _villageData.costResourceVillageToken,
+                effects: _villageData.effects,
+            }
+            _loc3_.push(privateVillageVO);
+        }
+        console.log(privateVillageVO);
     }
     return _loc3_;
 }

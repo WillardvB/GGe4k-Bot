@@ -57,6 +57,7 @@ module.exports = {
                 let idCompare = "id";
                 let oldData;
                 if (collection === DATA.E4K.PLAYERS) {
+                    console.log("Collection: " + DATA.E4K.PLAYERS);
                     oldData = playerData;
                     idCompare = "playerId";
                     if (finishedGettingData) {
@@ -97,6 +98,8 @@ module.exports = {
                 if (dataToUpdate.length !== 0) {
                     await updateMany(dataToUpdate, dbName, collName, idCompare);
                 }
+                await client.close();
+                await client.connect();
                 if (dataToUpdate.length !== 0 || dataToInsert.length !== 0) {
                     await RefreshData();
                     finishedGettingData = true;
