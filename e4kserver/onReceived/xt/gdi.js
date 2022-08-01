@@ -13,9 +13,11 @@ module.exports = {
         let player = require("./wsp").parseOwnerInfo(params.O, true);
         if (player === null) return;
         player["castles"] = parseCastleList(params.gcl);
-        player["villages"]["public"] = parsePublicVillageList(params.kgv);
+        player["villages"] = {
+            public: parsePublicVillageList(params.kgv),
+            private: parsePrivateVillageList(params.kgv),
+        };
         if (player.playerName === "Denas" || player.playerName.toLowerCase() === "aura") {
-            player.villages["private"] = parsePrivateVillageList(params.kgv);
             player.kingsTowers = parseKingsTowerList(params.gkl);
             player.monuments = parseMonumentList(params.gml);
             player.allianceTowers = parseAllianceTowerList(params.tie);
@@ -146,6 +148,9 @@ function parsePrivateVillageList(paramObject) {
     var _loc3_ = [];
     if (!paramObject) {
         return _loc3_;
+    }
+    if (player.playerName !== "Denas" && player.playerName.toLowerCase() !== "aura") {
+        return [];
     }
     //console.log('Private villages');
     for(var _loc4_ in paramObject["PV"])
