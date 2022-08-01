@@ -63,19 +63,19 @@ function parseCastleList(paramObject) {
                 equipmentID: _objAI[17],
             }
             if (_obj["OGT"]) {
-                _loc6_.remainingOpenGateTime = _obj["OGT"];
+                _loc6_["remainingOpenGateTime"] = _obj["OGT"];
             }
             if (_obj["OGC"]) {
-                _loc6_.openGateCounter = _obj["OGC"];
+                _loc6_["openGateCounter"] = _obj["OGC"];
             }
             if (_obj["AOT"]) {
-                _loc6_.remainingAbandonOutpostTime = _obj["AOT"];
+                _loc6_["remainingAbandonOutpostTime"] = _obj["AOT"];
             }
             if (_obj["TA"]) {
-                _loc6_.remainingCooldownAbandonOutpostTime = _obj["TA"];
+                _loc6_["remainingCooldownAbandonOutpostTime"] = _obj["TA"];
             }
             if (_obj["CAT"]) {
-                _loc6_.remainingCancelAbandonTime = _obj["CAT"];
+                _loc6_["remainingCancelAbandonTime"] = _obj["CAT"];
             }
             _loc5_.push(_loc6_);
         }
