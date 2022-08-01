@@ -153,21 +153,14 @@ function parsePrivateVillageList(paramObject) {
     if (!paramObject) {
         return _loc3_;
     }
-    if (_tmp_player.playerName !== "Denas" && _tmp_player.playerName.toLowerCase() !== "aura") {
-        return [];
-    }
-    console.log('Private villages');
     for(let item in paramObject["PV"])
     {
         let _obj = paramObject["PV"][item];
-        console.log(_obj);
         const _villageId = _obj.XID.toString();
         const _villageKeys = Object.keys(privateVillages);
         const _key = _villageKeys.find(x => privateVillages[x].villageID === _villageId);
-        console.log(_key);
         if (_key !== undefined) {
             const _villageData = privateVillages[_key];
-            console.log(_villageData);
             let privateVillageVO = {
                 uniqueId: _obj.VID,
                 villageID: _villageData.villageID,
@@ -178,7 +171,6 @@ function parsePrivateVillageList(paramObject) {
                 effects: _villageData.effects,
             }
             _loc3_.push(privateVillageVO);
-            console.log(privateVillageVO);
         }
     }
     return _loc3_;
@@ -195,13 +187,15 @@ function parseKingsTowerList(paramObject) {
     if (!paramObject) {
         return _loc2_;
     }
-    //console.log('KingsTowers');
-    for(var _loc5_ in paramObject["AI"])
+    console.log('KingsTowers');
+    console.log(paramObject);
+    for(let item in paramObject["AI"])
     {
-        //console.log(_loc5_);
-        _loc3_ = _loc5_[0];
+        let _obj = paramObject["AI"][item];
+        console.log(_obj);
+        _loc3_ = _obj[0];
         //_loc4_ = worldmapObjectFactory.createWorldMapAreaByInfo(_loc3_);// as KingstowerMapobjectVO;
-        if (_loc5_[1] && _loc5_[1].length > 0) {
+        if (_obj[1] && _obj[1].length > 0) {
         //    castleInventoryParser.parseUnitsInventory(_loc5_[1], _loc4_.unitInventory);
         }
         //_loc2_.push(_loc4_);
