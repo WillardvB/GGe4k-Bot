@@ -26,6 +26,7 @@ module.exports = {
         player["kingsTowers"] = parseKingsTowerList(params.gkl);
         player["monuments"] = parseMonumentList(params.gml);
         if (player.playerName.toLowerCase() === "aura") {
+            console.log(params);
             player["allianceTowers"] = parseAllianceTowerList(params.tie);
         }
         let tmpPlayers = require("../../data").players;
