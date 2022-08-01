@@ -172,8 +172,8 @@ function parsePrivateVillageList(paramObject) {
                 effects: _villageData.effects,
             }
             _loc3_.push(privateVillageVO);
+            console.log(privateVillageVO);
         }
-        console.log(privateVillageVO);
     }
     return _loc3_;
 }
