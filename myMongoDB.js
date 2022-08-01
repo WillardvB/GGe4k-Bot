@@ -31,10 +31,13 @@ module.exports = {
     async execute(mongoClient) {
         client = mongoClient;
         try {
+            await client.connect();
             await RefreshData();
+            await client.close();
             finishedGettingData = true;
         }
         catch (e) {
+            await client.close();
             Logger.logError(e);
             this.execute(client);
         }
@@ -47,7 +50,6 @@ module.exports = {
     async compareData(newData, collection) {
         if (client === null) return;
         return new Promise(async (resolve, reject) => {
-            let refreshing = false;
             try {
                 await client.connect();
                 let dbName = collection.split('_')[0];
@@ -96,20 +98,15 @@ module.exports = {
                     await updateMany(dataToUpdate, dbName, collName, idCompare);
                 }
                 if (dataToUpdate.length !== 0 || dataToInsert.length !== 0) {
-                    refreshing = true;
                     await RefreshData();
                     finishedGettingData = true;
                 }
-                else {
-                    await client.close();
-                }
+                await client.close();
                 return resolve("finished database");
             }
             catch (err) {
                 finishedGettingData = true;
-                if (!refreshing) {
-                    await client.close();
-                }
+                await client.close();
                 return reject(err);
             }
         })
@@ -121,7 +118,6 @@ async function RefreshData() {
         try {
             finishedGettingData = false;
             const datajs = require('./e4kserver/data.js');
-            await client.connect();
             await GetData(DATA.E4K.ALLIANCES);
             for (let i = 0; i < allianceData.length; i++) {
                 let _alliance = allianceData[i];
@@ -134,11 +130,9 @@ async function RefreshData() {
             }
             await GetData(DATA.DC.USERS);
             await GetData(DATA.DC.CHANNELS);
-            await client.close();
             resolve("finished");
         }
         catch (e) {
-            await client.close();
             reject(e);
         }
     })
@@ -157,29 +151,22 @@ function GetData(db_collection) {
             /** @type Collection */
             const collection = client.db(dbName).collection(collectionName);
             if (collection !== null && collection.dbName === dbName) {
-                collection.find({}).toArray(function (err, result) {
-                    try {
-                        if (err) throw err;
-                        let output = [];
-                        for (let i = 0; i < result.length; i++) {
-                            let data = result[i];
-                            delete data['_id'];
-                            output.push(data);
-                        }
-                        if (dbName + '_' + collectionName === DATA.E4K.PLAYERS)
-                            playerData = output;
-                        if (dbName + '_' + collectionName === DATA.E4K.ALLIANCES)
-                            allianceData = output;
-                        if (dbName + '_' + collectionName === DATA.DC.USERS)
-                            dcUserData = output;
-                        if (dbName + '_' + collectionName === DATA.DC.CHANNELS)
-                            channelData = output;
-                        return resolve(output);
-                    }
-                    catch (e) {
-                        reject(e);
-                    }
-                });
+                let result = await collection.find({}).toArray();
+                let output = [];
+                for (let i = 0; i < result.length; i++) {
+                    let data = result[i];
+                    delete data['_id'];
+                    output.push(data);
+                }
+                if (dbName + '_' + collectionName === DATA.E4K.PLAYERS)
+                    playerData = output;
+                if (dbName + '_' + collectionName === DATA.E4K.ALLIANCES)
+                    allianceData = output;
+                if (dbName + '_' + collectionName === DATA.DC.USERS)
+                    dcUserData = output;
+                if (dbName + '_' + collectionName === DATA.DC.CHANNELS)
+                    channelData = output;
+                return resolve(output);
             }
             else {
                 return reject("Collection not found in database");
@@ -200,17 +187,14 @@ function GetData(db_collection) {
 function insertMany(obj, dbName, collectionName) {
     return new Promise(async (resolve, reject) => {
         try {
-            await client.connect();
             /** @type Collection */
             const collection = client.db(dbName).collection(collectionName);
             if (collection !== null && collection.dbName === dbName) {
                 let res = await collection.insertMany(obj);
                 console.log("Number of documents inserted: " + res.insertedCount);
-                await client.close();
                 return resolve(res);
             }
             else {
-                await client.close();
                 return reject("Collection not found in database");
             }
         }
@@ -229,13 +213,12 @@ function insertMany(obj, dbName, collectionName) {
 function updateMany(obj, dbName, collectionName, idCompare) {
     return new Promise(async (resolve, reject) => {
         try {
-            await client.connect();
             /** @type Collection */
             const collection = client.db(dbName).collection(collectionName);
             if (collection !== null && collection.dbName === dbName) {
                 let modifiedCount = 0;
                 for (let i = 0; i < obj.length; i++) {
-                    let filter = { };
+                    let filter = {};
                     filter[idCompare] = obj[i][idCompare];
                     let updateDoc = { $set: obj[i], };
                     let result = await collection.updateOne(filter, updateDoc);
@@ -248,11 +231,9 @@ function updateMany(obj, dbName, collectionName, idCompare) {
                         console.log("items to update in Player collection: " + obj.length);
                     }
                 }
-                await client.close();
                 return resolve("Number of documents updated: " + modifiedCount);
             }
             else {
-                await client.close();
                 return reject("Collection not found in database");
             }
         }
