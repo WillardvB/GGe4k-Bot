@@ -90,8 +90,6 @@ function parsePublicVillageList(paramObject) {
     if (!paramObject) {
         return _publicVillages;
     }
-    console.log('Public villages');
-    console.log(JSON.stringify(paramObject));
     for(var _loc6_ in paramObject["VI"])
     {
         let __obj = paramObject["VI"][_loc6_];
@@ -135,7 +133,6 @@ function parsePublicVillageList(paramObject) {
         }
         _publicVillages.push(villageMapObjectVO);
     }
-    console.log(JSON.stringify(_publicVillages, null, 2));
     return _publicVillages;
 }
 
