@@ -57,13 +57,8 @@ module.exports = {
                 let idCompare = "id";
                 let oldData;
                 if (collection === DATA.E4K.PLAYERS) {
-                    console.log("Collection: " + DATA.E4K.PLAYERS);
                     oldData = playerData;
                     idCompare = "playerId";
-                    if (finishedGettingData) {
-                        console.log("comparing PlayerData!");
-                        console.log(oldData.length + " VS " + newData.length);
-                    }
                 }
                 else if (collection === DATA.E4K.ALLIANCES) {
                     oldData = allianceData;
@@ -229,10 +224,6 @@ function updateMany(obj, dbName, collectionName, idCompare) {
                 }
                 if (modifiedCount !== 0) {
                     console.log("Number of documents updated: " + modifiedCount);
-                } else {
-                    if (collectionName === "Players") {
-                        console.log("items to update in Player collection: " + obj.length);
-                    }
                 }
                 return resolve("Number of documents updated: " + modifiedCount);
             }

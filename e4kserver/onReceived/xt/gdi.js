@@ -114,7 +114,8 @@ function parsePublicVillageList(paramObject) {
             moatLevel: 0,
         }
         const _villageKeys = Object.keys(villages);
-        const _villageData = villages[_villageKeys.find(x => villages[x].kID === villageMapObjectVO.kingdomId)];
+        const _key = _villageKeys.find(x => villages[x].kID === villageMapObjectVO.kingdomId);
+        const _villageData = villages[_key];
         if (_villageData !== undefined) {
             const _buildingKeys = Object.keys(buildings);
             if (_villageData.keepWodId !== "-1") {
@@ -158,9 +159,18 @@ function parsePrivateVillageList(paramObject) {
     console.log('Private villages');
     for(let item in paramObject["PV"])
     {
+        console.log(item);
         let _obj = paramObject["PV"][item];
+        console.log(_obj);
         const _villageKeys = Object.keys(privateVillages);
-        const _villageData = privateVillages[_villageKeys.find(x => privateVillages[x].villageID === _obj.XID)];
+        console.log(_villageKeys);
+        const _key = _villageKeys.find(x => {
+            console.log(x);
+            privateVillages[x].villageID === _obj.XID;
+        });
+        console.log(_key);
+        const _villageData = privateVillages[_key];
+        console.log(_villageData);
         if (_villageData !== undefined) {
             let privateVillageVO = {
                 uniqueId: _obj.VID,
