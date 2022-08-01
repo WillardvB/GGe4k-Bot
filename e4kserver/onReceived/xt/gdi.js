@@ -198,37 +198,37 @@ function parseKingsTowerList(paramObject) {
         let _obj = __obj[0];
         if (_obj.length > 0) {
             kingstowerMapobjectVO = {
-                areaType: _objAI[0],
-                posX: _objAI[1],
-                posY: _objAI[2],
-                objectId: _objAI[3],
-                occupierID: _objAI[4],
-                kingdomId: _objAI[5],
-                customName: _objAI[7],
+                areaType: _obj[0],
+                posX: _obj[1],
+                posY: _obj[2],
+                objectId: _obj[3],
+                occupierID: _obj[4],
+                kingdomId: _obj[5],
+                customName: _obj[7],
                 keepLevel: 0,
                 wallLevel: 0,
                 gateLevel: 0,
                 moatLevel: 0,
             }
-        }
-        const _emptyAreasKeys = Object.keys(emptyAreas);
-        const _key = _emptyAreasKeys.find(x => {
-            emptyAreas[x].areaType === kingstowerMapobjectVO.areaType && emptyAreas[x].isBattleground === "0"
-        });
-        const _emptyAreaData = emptyAreas[_key];
-        if (_emptyAreaData !== undefined) {
-            const _buildingKeys = Object.keys(buildings);
-            if (_emptyAreaData.keepWodId !== "-1") {
-                let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.keepWodId);
-                kingstowerMapobjectVO.keepLevel = buildings[key].level;
-            }
-            if (_emptyAreaData.wallWodId !== "-1") {
-                let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.wallWodId);
-                kingstowerMapobjectVO.wallLevel = buildings[key].level;
-            }
-            if (_emptyAreaData.gateWodId !== "-1") {
-                let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.gateWodId);
-                kingstowerMapobjectVO.gateLevel = buildings[key].level;
+            const _emptyAreasKeys = Object.keys(emptyAreas);
+            const _key = _emptyAreasKeys.find(x => {
+                emptyAreas[x].areaType === kingstowerMapobjectVO.areaType && emptyAreas[x].isBattleground === "0"
+            });
+            const _emptyAreaData = emptyAreas[_key];
+            if (_emptyAreaData !== undefined) {
+                const _buildingKeys = Object.keys(buildings);
+                if (_emptyAreaData.keepWodId !== "-1") {
+                    let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.keepWodId);
+                    kingstowerMapobjectVO.keepLevel = buildings[key].level;
+                }
+                if (_emptyAreaData.wallWodId !== "-1") {
+                    let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.wallWodId);
+                    kingstowerMapobjectVO.wallLevel = buildings[key].level;
+                }
+                if (_emptyAreaData.gateWodId !== "-1") {
+                    let key = _buildingKeys.find(x => buildings[x].wodID === _emptyAreaData.gateWodId);
+                    kingstowerMapobjectVO.gateLevel = buildings[key].level;
+                }
             }
         }
         _obj = __obj[1];
