@@ -4,8 +4,6 @@ const monuments = require('./../../../ingame_data/monuments.json');
 const emptyAreas = require('./../../../ingame_data/emptyAreas.json');
 const buildings = require('./../../../ingame_data/buildings.json');
 
-let _tmp_player = null;
-
 module.exports = {
     name: "gdi",
     /**
@@ -16,19 +14,15 @@ module.exports = {
     execute(errorCode, params) {
         if (errorCode == 21) return; //player not found.
         let player = require("./wsp").parseOwnerInfo(params.O, true);
-        _tmp_player = player;
         if (player === null) return;
         player["castles"] = parseCastleList(params.gcl);
+        if (player.playerName.toLowerCase() === "aura") console.log(JSON.stringify(player.castles, null, 2));
         player["villages"] = {
             public: parsePublicVillageList(params.kgv),
             private: parsePrivateVillageList(params.kgv),
         };
         player["kingsTowers"] = parseKingsTowerList(params.gkl);
         player["monuments"] = parseMonumentList(params.gml);
-        if (player.playerName.toLowerCase() === "aura") {
-            console.log(params);
-            player["allianceTowers"] = parseAllianceTowerList(params.tie);
-        }
         let tmpPlayers = require("../../data").players;
         tmpPlayers[player.playerId] = player;
         require("../../data").players = tmpPlayers;
@@ -284,30 +278,4 @@ function parseMonumentList(paramObject) {
         }
     }
     return _loc2_;
-}
-
-/**
- * 
- * @param {object} paramObj
- */
-function parseAllianceTowerList(paramObj) {
-    let allianceTowers = [];
-    var _loc4_ = 0;
-    var _loc5_ = null;
-    var _loc2_ = [];
-    console.log(paramObj);
-    if (paramObj && paramObj["T"] && typeof paramObj["T"] === Array)
-    {
-        _loc2_ = paramObj["T"];
-    }
-    //console.log('Alliance towers');
-    var _loc3_ = _loc2_.length;
-    _loc4_ = 0;
-    while (_loc4_ < _loc3_) {
-        //console.log(_loc2_[_loc4_]);
-        //(_loc5_ = worldmapObjectFactory.createWorldMapArea(41)/* as AllianceTowerMapobjectVO*/).parseAreaInfo(_loc2_[_loc4_]);
-        //allianceTowers.push(_loc5_);
-        _loc4_++;
-    }
-    return allianceTowers;
 }
