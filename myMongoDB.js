@@ -76,7 +76,7 @@ module.exports = {
                         let foundData = false;
                         for (let j = 0; j < oldData.length; j++) {
                             if (oldData[j][idCompare] === newData[i][idCompare]) {
-                                if (idCompare === 75684) {
+                                if (oldData[j][idCompare] === 75684) {
                                     console.log("hetzelfde?: " + CompareJSON(oldData[j], newData[i]));
                                     console.log("macht: " + oldData[j].might + " VS " + newData[i].might);
                                 }
