@@ -51,7 +51,6 @@ module.exports = {
         if (client === null) return;
         return new Promise(async (resolve, reject) => {
             try {
-                let _i_i = -1;
                 await client.connect();
                 let dbName = collection.split('_')[0];
                 let collName = collection.split('_')[1];
@@ -77,7 +76,7 @@ module.exports = {
                         let foundData = false;
                         for (let j = 0; j < oldData.length; j++) {
                             if (oldData[j][idCompare] === newData[i][idCompare]) {
-                                if (_i_i !== -1) {
+                                if (idCompare === 75684) {
                                     console.log("hetzelfde?: " + CompareJSON(oldData[j], newData[i]));
                                     console.log("macht: " + oldData[j].might + " VS " + newData[i].might);
                                 }
