@@ -3,6 +3,7 @@ const privateVillages = require('./../../../ingame_data/privateVillages.json');
 const monuments = require('./../../../ingame_data/monuments.json');
 const emptyAreas = require('./../../../ingame_data/emptyAreas.json');
 const buildings = require('./../../../ingame_data/buildings.json');
+const Logger = require('../../../tools/Logger');
 
 module.exports = {
     name: "gdi",
@@ -12,19 +13,34 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
-        if (errorCode == 21) return; //player not found.
-        let player = require("./wsp").parseOwnerInfo(params.O, true);
-        if (player === null) { console.log(params); return; }
-        player["castles"] = parseCastleList(params.gcl);
-        player["villages"] = {
-            public: parsePublicVillageList(params.kgv),
-            private: parsePrivateVillageList(params.kgv),
-        };
-        player["kingsTowers"] = parseKingsTowerList(params.gkl);
-        player["monuments"] = parseMonumentList(params.gml);
-        let tmpPlayers = require("../../data").players;
-        tmpPlayers[player.playerId] = player;
-        require("../../data").players = tmpPlayers;
+        try {
+            if (params?.O?.OID === 75684) {
+                console.log("Macht0: " + require("../../data").players[75684].might);
+            }
+            if (errorCode == 21) return; //player not found.
+            let player = require("./wsp").parseOwnerInfo(params.O, true);
+            if (player === null) return;
+            if (player.playerId === 75684) {
+                console.log("Macht: " + params.O.MP);
+                console.log("Macht2: " + player.might);
+            }
+            player["castles"] = parseCastleList(params.gcl);
+            player["villages"] = {
+                public: parsePublicVillageList(params.kgv),
+                private: parsePrivateVillageList(params.kgv),
+            };
+            player["kingsTowers"] = parseKingsTowerList(params.gkl);
+            player["monuments"] = parseMonumentList(params.gml);
+            let tmpPlayers = require("../../data").players;
+            tmpPlayers[player.playerId] = player;
+            require("../../data").players = tmpPlayers;
+            if (player.playerId === 75684) {
+                console.log("Macht3: " + require("../../data").players[player.playerId].might);
+            }
+        }
+        catch (e) {
+            Logger.logError(e);
+        }
     },
 }
 

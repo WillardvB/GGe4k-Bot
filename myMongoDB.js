@@ -59,7 +59,6 @@ module.exports = {
                 if (collection === DATA.E4K.PLAYERS) {
                     oldData = playerData;
                     idCompare = "playerId";
-                    _i_i = Math.floor(Math.random() * newData.length);
                 }
                 else if (collection === DATA.E4K.ALLIANCES) {
                     oldData = allianceData;

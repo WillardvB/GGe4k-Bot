@@ -46,6 +46,11 @@ module.exports = {
                         unknownSysCommands.push(_cmd);
                     }
                 }
+                else if (msgStr.startsWith("SyntaxError: Unexpected token") && msgStr.includes("in JSON at position")) {
+                    console.log(ErrorText + msgStr);
+                    resolve();
+                    return;
+                }
                 await logChannel.send({ content: "[ERROR] " + msg });
                 console.log(ErrorText + msgStr);
                 resolve();
