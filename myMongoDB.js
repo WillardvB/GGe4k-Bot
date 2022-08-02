@@ -10,8 +10,6 @@ let dcUserData = [];
 let channelData = [];
 
 let finishedGettingData;
-let _currentTimesWithoutRefresh = 0;
-let timesToRefresh = 2;
 
 const DATA = {
     E4K: {
@@ -34,7 +32,7 @@ module.exports = {
         client = mongoClient;
         try {
             await client.connect();
-            await RefreshData();
+            await RefreshData(true);
             await client.close();
             finishedGettingData = true;
         }
@@ -104,13 +102,9 @@ module.exports = {
                 }
                 await client.close();
                 await client.connect();
-                if (_currentTimesWithoutRefresh === timesToRefresh && (dataToUpdate.length !== 0 || dataToInsert.length !== 0)) {
+                if (dataToUpdate.length !== 0 || dataToInsert.length !== 0) {
                     await RefreshData();
                     finishedGettingData = true;
-                    _currentTimesWithoutRefresh = 0;
-                }
-                else {
-                    _currentTimesWithoutRefresh += 1;
                 }
                 await client.close();
                 return resolve("finished database");
@@ -124,23 +118,25 @@ module.exports = {
     }
 }
 
-async function RefreshData() {
+async function RefreshData(startUp = false) {
     return new Promise(async (resolve, reject) => {
         try {
             finishedGettingData = false;
             const datajs = require('./e4kserver/data.js');
             await GetData(DATA.E4K.ALLIANCES);
-            for (let i = 0; i < allianceData.length; i++) {
-                let _alliance = allianceData[i];
-                datajs.alliances[_alliance.allianceId] = _alliance;
-            }
             await GetData(DATA.E4K.PLAYERS);
-            for (let i = 0; i < playerData.length; i++) {
-                let _player = playerData[i];
-                datajs.players[_player.playerId] = _player;
-            }
             await GetData(DATA.DC.USERS);
             await GetData(DATA.DC.CHANNELS);
+            if (startUp) {
+                for (let i = 0; i < allianceData.length; i++) {
+                    let _alliance = allianceData[i];
+                    datajs.alliances[_alliance.allianceId] = _alliance;
+                }
+                for (let i = 0; i < playerData.length; i++) {
+                    let _player = playerData[i];
+                    datajs.players[_player.playerId] = _player;
+                }
+            }
             resolve("finished");
         }
         catch (e) {

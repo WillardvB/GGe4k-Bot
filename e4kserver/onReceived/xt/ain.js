@@ -124,23 +124,13 @@ function allianceInfoFillFromParamObject(paramObject) {
         let _memberList = [];
         let i = 0;
         while (i < memberListArray.length) {
-            if (memberListArray[i]?.OID === 75684) {
-                console.log("Macht4: " + require("../../data").players[75684].might);
-            }
             let member = wsp.parseOwnerInfo(memberListArray[i]);
             if (member === null) continue;
-            if (member.playerId === 75684) {
-                console.log("Macht5: " + memberListArray[i].MP);
-                console.log("Macht6: " + member.might);
-            }
             if (memberListArray[i] && memberListArray[i].OID) {
                 member = {
                     playerId: memberListArray[i].OID,
                     allianceRank: parseInt(memberListArray[i].AR),
                 }
-            }
-            if (member.playerId === 75684) {
-                console.log("Macht7: " + require("../../data").players[member.playerId].might);
             }
             if (member !== null)
                 _memberList.push(member);

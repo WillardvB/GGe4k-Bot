@@ -14,16 +14,9 @@ module.exports = {
      */
     execute(errorCode, params) {
         try {
-            if (params?.O?.OID === 75684) {
-                console.log("Macht0: " + require("../../data").players[75684].might);
-            }
             if (errorCode == 21) return; //player not found.
             let player = require("./wsp").parseOwnerInfo(params.O, true);
             if (player === null) return;
-            if (player.playerId === 75684) {
-                console.log("Macht: " + params.O.MP);
-                console.log("Macht2: " + player.might);
-            }
             player["castles"] = parseCastleList(params.gcl);
             player["villages"] = {
                 public: parsePublicVillageList(params.kgv),
@@ -34,9 +27,6 @@ module.exports = {
             let tmpPlayers = require("../../data").players;
             tmpPlayers[player.playerId] = player;
             require("../../data").players = tmpPlayers;
-            if (player.playerId === 75684) {
-                console.log("Macht3: " + require("../../data").players[player.playerId].might);
-            }
         }
         catch (e) {
             Logger.logError(e);
