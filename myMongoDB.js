@@ -77,17 +77,12 @@ module.exports = {
                         let foundData = false;
                         for (let j = 0; j < oldData.length; j++) {
                             if (oldData[j][idCompare] === newData[i][idCompare]) {
-                                console.log("hetzelfde?: " + oldData[j] === newData[i]);
-                                if (_i_i === i) {
-                                    console.log("OldData!");
-                                    console.log(oldData[j]);
-                                    console.log("NewData!");
-                                    console.log(newData[i]);
-                                    console.log("hetzelfde??");
-                                    console.log(CompareJSON(oldData[j], newData[i]));
+                                if (_i_i !== -1) {
+                                    console.log("hetzelfde?: " + CompareJSON(oldData[j], newData[i]));
+                                    console.log("macht: " + oldData[j].might + " VS " + newData[i].might);
                                 }
                                 foundData = true;
-                                if (oldData[j] !== newData[i]) {//!CompareJSON(oldData[j], newData[i])) {
+                                if (!CompareJSON(oldData[j], newData[i])) {
                                     dataToUpdate.push(newData[i]);
                                 }
                                 break;
@@ -258,21 +253,23 @@ function updateMany(obj, dbName, collectionName, idCompare) {
  * @description Returns true if the json keys and values are the same, otherwise false
  */
 function CompareJSON(json1, json2) {
+    const keys1 = Object.keys(json1);
     const keys2 = Object.keys(json2);
-    for (let i = 0; i < keys2.length; i++) {
-        let key = keys2[i];
+    const keys = keys1.concat(keys2.filter((item) => keys1.indexOf(item) < 0));
+    for (let i = 0; i < keys.length; i++) {
+        let key = keys[i];
         if (json1[key] !== json2[key]) {// && (typeof json1[key] !== "object" || typeof json2[key] !== "object")) { //values are not the same
             return false;
         }
-        else if (typeof json1[key] === "object" || typeof json2[key] === "object") {
-            if (json1[key] === null && json2[key] === null) { }
-            else if (json1[key] === null || json2[key] === null || typeof json1[key] !== typeof json2[key]) {
-                return false;
-            }
-            else if (!CompareJSON(json1[key], json2[key])) {
-                return false;
-            }
-        }
+        //else if (typeof json1[key] === "object" || typeof json2[key] === "object") {
+        //    if (json1[key] === null && json2[key] === null) { }
+        //    else if (json1[key] === null || json2[key] === null || typeof json1[key] !== typeof json2[key]) {
+        //        return false;
+        //    }
+        //    else if (!CompareJSON(json1[key], json2[key])) {
+        //        return false;
+        //    }
+        //}
     }
     return true;
 }
