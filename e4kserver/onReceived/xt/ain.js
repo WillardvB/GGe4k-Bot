@@ -14,35 +14,7 @@ async function onError() {
         require('./../../commands/searchAllianceById.js').execute(allianceId);
     }
     else {
-        try {
-            let tmpAlliances = require('./../../data.js').alliances;
-            let _tmpAllianceCount = Object.keys(tmpAlliances).length;
-            if (_tmpAllianceCount !== _alliancesInJson) {
-                _alliancesInJson = _tmpAllianceCount;
-                await logger.log("alliances in data json: " + _tmpAllianceCount);
-            }
-            let _alliancesArray = [];
-            for (let ___i in tmpAlliances) {
-                _alliancesArray.push(tmpAlliances[___i]);
-            }
-            await myMongoDB.compareData(_alliancesArray, myMongoDB.Collection.E4K.ALLIANCES);
-            let tmpPlayers = require('./../../data.js').players;
-            let _tmpPlayerCount = Object.keys(tmpPlayers).length;
-            if (_tmpPlayerCount !== _playersInJson) {
-                _playersInJson = _tmpPlayerCount;
-                await logger.log("players in data json: " + _tmpPlayerCount);
-            }
-            let _playersArray = [];
-            for (let ___i in tmpPlayers) {
-                _playersArray.push(tmpPlayers[___i]);
-            }
-            await myMongoDB.compareData(_playersArray, myMongoDB.Collection.E4K.PLAYERS);
-            allAlliancesInJSON = true;
-            waitAndNextCheck();
-        }
-        catch (e) {
-            logger.logError(e);
-        }
+        finishedAllianceSearch();
     }
 }
 
@@ -61,19 +33,40 @@ async function onSuccess(params) {
             require('./../../commands/searchAllianceById.js').execute(allianceId);
         }
         else {
-            let _tmpAllianceCount = Object.keys(tmpAlliances).length;
-            if (_tmpAllianceCount != _alliancesInJson) {
-                _alliancesInJson = _tmpAllianceCount;
-                await logger.log("alliances in data json: " + _tmpAllianceCount);
-            }
-            let _alliancesArray = [];
-            for (let ___i in tmpAlliances) {
-                _alliancesArray.push(tmpAlliances[___i]);
-            }
-            await myMongoDB.compareData(tmpAlliances, myMongoDB.Collection.E4K.ALLIANCES);
-            allAlliancesInJSON = true;
-            waitAndNextCheck();
+            finishedAllianceSearch();
         }
+    }
+    catch (e) {
+        logger.logError(e);
+    }
+}
+
+function finishedAllianceSearch() {
+    try {
+        let tmpAlliances = require('./../../data.js').alliances;
+        let _tmpAllianceCount = Object.keys(tmpAlliances).length;
+        if (_tmpAllianceCount !== _alliancesInJson) {
+            _alliancesInJson = _tmpAllianceCount;
+            await logger.log("alliances in data json: " + _tmpAllianceCount);
+        }
+        let _alliancesArray = [];
+        for (let ___i in tmpAlliances) {
+            _alliancesArray.push(tmpAlliances[___i]);
+        }
+        await myMongoDB.compareData(_alliancesArray, myMongoDB.Collection.E4K.ALLIANCES);
+        let tmpPlayers = require('./../../data.js').players;
+        let _tmpPlayerCount = Object.keys(tmpPlayers).length;
+        if (_tmpPlayerCount !== _playersInJson) {
+            _playersInJson = _tmpPlayerCount;
+            await logger.log("players in data json: " + _tmpPlayerCount);
+        }
+        let _playersArray = [];
+        for (let ___i in tmpPlayers) {
+            _playersArray.push(tmpPlayers[___i]);
+        }
+        await myMongoDB.compareData(_playersArray, myMongoDB.Collection.E4K.PLAYERS);
+        allAlliancesInJSON = true;
+        waitAndNextCheck();
     }
     catch (e) {
         logger.logError(e);

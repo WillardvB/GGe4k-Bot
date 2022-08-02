@@ -51,6 +51,7 @@ module.exports = {
         if (client === null) return;
         return new Promise(async (resolve, reject) => {
             try {
+                let _i_i = -1;
                 await client.connect();
                 let dbName = collection.split('_')[0];
                 let collName = collection.split('_')[1];
@@ -59,6 +60,7 @@ module.exports = {
                 if (collection === DATA.E4K.PLAYERS) {
                     oldData = playerData;
                     idCompare = "playerId";
+                    _i_i = Math.floor(Math.random() * newData.length);
                 }
                 else if (collection === DATA.E4K.ALLIANCES) {
                     oldData = allianceData;
@@ -75,6 +77,14 @@ module.exports = {
                         let foundData = false;
                         for (let j = 0; j < oldData.length; j++) {
                             if (oldData[j][idCompare] === newData[i][idCompare]) {
+                                if (_i_i === i) {
+                                    console.log("OldData!");
+                                    console.log(oldData[j]);
+                                    console.log("NewData!");
+                                    console.log(newData[i]);
+                                    console.log("hetzelfde??");
+                                    console.log(CompareJSON(oldData[j], newData[i]));
+                                }
                                 foundData = true;
                                 if (!CompareJSON(oldData[j], newData[i])) {
                                     dataToUpdate.push(newData[i]);
