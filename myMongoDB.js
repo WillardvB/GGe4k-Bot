@@ -77,6 +77,7 @@ module.exports = {
                         let foundData = false;
                         for (let j = 0; j < oldData.length; j++) {
                             if (oldData[j][idCompare] === newData[i][idCompare]) {
+                                console.log("hetzelfde?: " + oldData[j] === newData[i]);
                                 if (_i_i === i) {
                                     console.log("OldData!");
                                     console.log(oldData[j]);
@@ -86,7 +87,7 @@ module.exports = {
                                     console.log(CompareJSON(oldData[j], newData[i]));
                                 }
                                 foundData = true;
-                                if (!CompareJSON(oldData[j], newData[i])) {
+                                if (oldData[j] !== newData[i]) {//!CompareJSON(oldData[j], newData[i])) {
                                     dataToUpdate.push(newData[i]);
                                 }
                                 break;
@@ -260,7 +261,7 @@ function CompareJSON(json1, json2) {
     const keys2 = Object.keys(json2);
     for (let i = 0; i < keys2.length; i++) {
         let key = keys2[i];
-        if (json1[key] !== json2[key] && (typeof json1[key] !== "object" || typeof json2[key] !== "object")) { //values are not the same
+        if (json1[key] !== json2[key]) {// && (typeof json1[key] !== "object" || typeof json2[key] !== "object")) { //values are not the same
             return false;
         }
         else if (typeof json1[key] === "object" || typeof json2[key] === "object") {
