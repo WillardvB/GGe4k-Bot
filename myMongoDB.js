@@ -10,6 +10,8 @@ let dcUserData = [];
 let channelData = [];
 
 let finishedGettingData;
+let _currentTimesWithoutRefresh = 0;
+let timesToRefresh = 2;
 
 const DATA = {
     E4K: {
@@ -102,9 +104,13 @@ module.exports = {
                 }
                 await client.close();
                 await client.connect();
-                if (dataToUpdate.length !== 0 || dataToInsert.length !== 0) {
+                if (_currentTimesWithoutRefresh === timesToRefresh && (dataToUpdate.length !== 0 || dataToInsert.length !== 0)) {
                     await RefreshData();
                     finishedGettingData = true;
+                    _currentTimesWithoutRefresh = 0;
+                }
+                else {
+                    _currentTimesWithoutRefresh += 1;
                 }
                 await client.close();
                 return resolve("finished database");

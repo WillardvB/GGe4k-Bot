@@ -51,14 +51,14 @@ module.exports = {
                     resolve();
                     return;
                 }
-                await logChannel.send({ content: "[ERROR] " + msg });
+                await logChannel.send({ content: "[ERROR] " + msgStr.substring(0, 1990) });
                 console.log(ErrorText + msgStr);
                 resolve();
             }
             catch (e) {
                 try {
-                    await logChannel.send({ content: "[ERROR] There was an error when trying to log: " + e });
-                    console.log(ErrorText + "There was an error when trying to log: " + e)
+                    await logChannel.send({ content: "[ERROR] There was an error when trying to log: " + e.toString().substring(0, 1950) });
+                    console.log(ErrorText + "There was an error when trying to log: " + e);
                     resolve();
                 }
                 catch (e) {
