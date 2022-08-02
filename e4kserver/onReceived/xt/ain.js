@@ -41,7 +41,7 @@ async function onSuccess(params) {
     }
 }
 
-function finishedAllianceSearch() {
+async function finishedAllianceSearch() {
     try {
         let tmpAlliances = require('./../../data.js').alliances;
         let _tmpAllianceCount = Object.keys(tmpAlliances).length;
