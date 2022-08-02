@@ -12,8 +12,7 @@ module.exports = {
     },
     parseOwnerInfo(ownerInfo, isGDI = false) {
         let owner = parseOwnerInfo(ownerInfo);
-        if (owner === null) return owner;
-        if (!isGDI) {
+        if (owner !== null && !isGDI) {
             let C2SGetDetailPlayerInfo = {
                 params: {
                     PID: owner.playerId,
