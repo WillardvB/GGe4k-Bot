@@ -1,5 +1,6 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
 const Logger = require("../../../tools/Logger");
+const num = require("../../../tools/number");
 const translationData = require('./../../../ingame_translations/nl.json');
 
 let allianceInfoVO = {
@@ -45,9 +46,9 @@ module.exports = {
                 return;
             }
             let info = "Leden aantal: " + allianceInfoVO.memberList.length + "\n" +
-                "Roempunten: " + allianceInfoVO.allianceFamePoints + "\n" +
+                "Roempunten: " + num.formatNum(allianceInfoVO.allianceFamePoints) + "\n" +
                 "Level: " + allianceInfoVO.memberLevel + "\n" +
-                "Macht: " + allianceInfoVO.might + "\n" +
+                "Macht: " + num.formatNum(allianceInfoVO.might) + "\n" +
                 "Taal: " + allianceInfoVO.languageId + "\n" +
                 "Is open BG: " + allianceInfoVO.isOpenAlliance + "\n" +
                 "*id: " + allianceInfoVO.allianceId + "*";

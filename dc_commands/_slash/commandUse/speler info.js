@@ -1,5 +1,6 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
 const Logger = require("../../../tools/Logger");
+const num = require("../../../tools/number");
 const translationData = require('./../../../ingame_translations/nl.json');
 
 let playerVO = {
@@ -112,10 +113,10 @@ async function _execute(interaction, retried = false) {
         let castleListString = "";
         let castleKeys = Object.keys(playerVO.castles);
         for (let i = 0; i < castleKeys.length; i++) {
-            let _key = castleKeys[i];
+            let _key = parseInt(castleKeys[i]);
             /** @type Array */
             let _castlesInKId = playerVO.castles[_key];
-            if (i === 0) _castlesInKId = _castlesInKId.concat(playerVO.kingsTowers).concat(playerVO.monuments);
+            if (i === 0) _castlesInKId = _castlesInKId.concat(playerVO.kingsTowers, playerVO.monuments);
             _castlesInKId.sort((x, y) => { return x.customName.localeCompare(y.customName); });
             _castlesInKId.sort((x, y) => {
                 if (x.areaType === y.areaType) return 0;
@@ -178,9 +179,9 @@ async function _execute(interaction, retried = false) {
         let description = "Level: " + (playerVO.playerLevel == 70 ? playerVO.playerLevel + "-" + playerVO.paragonLevel : playerVO.playerLevel) + "\n" +
             "BG: " + bgInfo + "\n" +
             "*id: " + playerVO.playerId + "*";
-        let punten = translationData.dialogs.dialog_fame_fame + ": " + playerVO.famePoints + "\n" +
-            translationData.generic.honorPoints + ": " + playerVO.honor + "\n" +
-            translationData.dialogs.mightPoints + ": " + playerVO.might;
+        let punten = translationData.dialogs.dialog_fame_fame + ": " + num.formatNum(playerVO.famePoints) + "\n" +
+            translationData.generic.honorPoints + ": " + num.formatNum(playerVO.honor) + "\n" +
+            translationData.dialogs.mightPoints + ": " + num.formatNum(playerVO.might);
         let embed = new MessageEmbed()
             .setTimestamp()
             .setColor("#000000")
