@@ -75,10 +75,6 @@ module.exports = {
                         let foundData = false;
                         for (let j = 0; j < oldData.length; j++) {
                             if (oldData[j][idCompare] === newData[i][idCompare]) {
-                                if (oldData[j][idCompare] === 75684) {
-                                    console.log("hetzelfde?: " + CompareJSON(oldData[j], newData[i]));
-                                    console.log("macht: " + oldData[j].might + " VS " + newData[i].might);
-                                }
                                 foundData = true;
                                 if (!CompareJSON(oldData[j], newData[i])) {
                                     dataToUpdate.push(newData[i]);
@@ -258,18 +254,18 @@ function CompareJSON(json1, json2) {
     const keys = keys1.concat(keys2.filter((item) => keys1.indexOf(item) < 0));
     for (let i = 0; i < keys.length; i++) {
         let key = keys[i];
-        if (json1[key] !== json2[key]) {// && (typeof json1[key] !== "object" || typeof json2[key] !== "object")) { //values are not the same
+        if (json1[key] !== json2[key] && (typeof json1[key] !== "object" || typeof json2[key] !== "object")) { //values are not the same
             return false;
         }
-        //else if (typeof json1[key] === "object" || typeof json2[key] === "object") {
-        //    if (json1[key] === null && json2[key] === null) { }
-        //    else if (json1[key] === null || json2[key] === null || typeof json1[key] !== typeof json2[key]) {
-        //        return false;
-        //    }
-        //    else if (!CompareJSON(json1[key], json2[key])) {
-        //        return false;
-        //    }
-        //}
+        else if (typeof json1[key] === "object" || typeof json2[key] === "object") {
+            if (json1[key] === null && json2[key] === null) { }
+            else if (json1[key] === null || json2[key] === null || typeof json1[key] !== typeof json2[key]) {
+                return false;
+            }
+            else if (!CompareJSON(json1[key], json2[key])) {
+                return false;
+            }
+        }
     }
     return true;
 }

@@ -70,7 +70,9 @@ async function finishedAllianceSearch() {
         waitAndNextCheck();
     }
     catch (e) {
-        logger.logError(e);
+        await logger.logError(e);
+        allAlliancesInJSON = true;
+        waitAndNextCheck();
     }
 }
 
