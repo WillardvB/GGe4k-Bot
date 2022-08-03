@@ -1,5 +1,6 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
 const logger = require("../../../tools/Logger");
+const translationData = require('./../../../ingame_translations/nl.json');
 
 let memberVO = {
     userData: {},
