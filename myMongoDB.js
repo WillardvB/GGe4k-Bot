@@ -87,9 +87,6 @@ module.exports = {
                         }
                     }
                 }
-                if (idCompare === "playerId") {
-                    console.log("dataToInsert: " + dataToInsert.length + ", dataToUpdate: " + dataToUpdate.length);
-                }
                 if (dataToInsert.length !== 0) {
                     await insertMany(dataToInsert, dbName, collName);
                 }

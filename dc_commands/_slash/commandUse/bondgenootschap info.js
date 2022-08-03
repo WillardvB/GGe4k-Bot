@@ -1,5 +1,6 @@
-const { CommandInteraction } = require("discord.js");
+const { CommandInteraction, MessageEmbed } = require("discord.js");
 const Logger = require("../../../tools/Logger");
+const translationData = require('./../../../ingame_translations/nl.json');
 
 let allianceInfoVO = {
     allianceId: "",
@@ -43,18 +44,20 @@ module.exports = {
                 await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!" });
                 return;
             }
-            interaction.followUp({
-                content:
-                    "Naam: " + allianceInfoVO.allianceName + "\n" +
-                    "Omschrijving:```\n" + allianceInfoVO.allianceDescription + "```" +
-                    "Leden aantal: " + allianceInfoVO.memberList.length + "\n" +
-                    "Roempunten: " + allianceInfoVO.allianceFamePoints + "\n" +
-                    "Level: " + allianceInfoVO.memberLevel + "\n" +
-                    "Macht: " + allianceInfoVO.might + "\n" +
-                    "Taal: " + allianceInfoVO.languageId + "\n" +
-                    "Is open BG: " + allianceInfoVO.isOpenAlliance + "\n" +
-                    "*id: " + allianceInfoVO.allianceId + "*"
-            })
+            let info = "Leden aantal: " + allianceInfoVO.memberList.length + "\n" +
+                "Roempunten: " + allianceInfoVO.allianceFamePoints + "\n" +
+                "Level: " + allianceInfoVO.memberLevel + "\n" +
+                "Macht: " + allianceInfoVO.might + "\n" +
+                "Taal: " + allianceInfoVO.languageId + "\n" +
+                "Is open BG: " + allianceInfoVO.isOpenAlliance + "\n" +
+                "*id: " + allianceInfoVO.allianceId + "*";
+            let embed = new MessageEmbed()
+                .setTimestamp()
+                .setColor("#000000")
+                .setTitle(`**${allianceInfoVO.allianceName}**`)
+                .setDescription("```\n" + allianceInfoVO.allianceDescription + "```")
+                .addField(translationData.generic.ringmenu_info, info);
+            await interaction.followUp({ embeds: [embed] });
         }
         catch (e) {
             Logger.logError(e);

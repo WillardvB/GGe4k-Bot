@@ -111,11 +111,7 @@ module.exports = {
                     _allianceRank = allianceRanks[_rank];
                 }
             }
-            interaction.followUp({
-                embeds: [embed]
-            }).catch(e => {
-                logger.logError(e);
-            })
+            await interaction.followUp({ embeds: [embed] });
         }
         catch (e) {
             logger.logError(e);

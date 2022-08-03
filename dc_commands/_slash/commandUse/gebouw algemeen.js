@@ -215,7 +215,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                         case "4": _value += translationData.generic.outpost; break;
                         case "12": _value += translationData.generic.kingdomCastle_name; break;
                         case "22": _value += translationData.generic.metropol; break;
-                        default: _value += "-";
+                        case "23": _value += translationData.generic.kingstower; break;
+                        case "26": _value += translationData.generic.monument; break;
+                        default: _value += _valueArray[i].trim();
                     }
                 }
                 constructionValues += `**Toegestane kastelen**: ${_value}\n`;

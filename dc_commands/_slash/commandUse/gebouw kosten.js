@@ -9,7 +9,6 @@ const Logger = require('../../../tools/Logger.js');
 const buildingTranslations = translationData.buildings_and_decorations;
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
-const kostenSoort = ["Hout", "Steen", "Houtskool", "Olijfolie", "Glas", "IJzererts", "Bouwmunt", "Upgrademunt", "Aquamarijn", "Robijnen", "Tijd"];
 
 const _name = "gebouw kosten";
 module.exports = {
