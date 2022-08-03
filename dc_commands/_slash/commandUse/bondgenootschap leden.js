@@ -88,8 +88,11 @@ module.exports = {
                 let _rank = memberVO.allianceRank;
                 if (rank == -1 || rank == _rank) {
                     if (memberList !== "" && _allianceRank !== translationData.dialogs["dialog_alliance_rank" + _rank]) {
-                        embed.addField(_allianceRank, memberList);
+                        let __allianceRank = _allianceRank
+                        if (isSecondField) __allianceRank += 2;
+                        embed.addField(__allianceRank, memberList, true);
                         memberList = "";
+                        isSecondField = false;
                     }
                     _allianceRank = translationData.dialogs["dialog_alliance_rank" + _rank];
                     if ((memberList + `__${fixNameString(memberVO.playerName)}__, level: ${memberVO.playerLevel}\n`).length > 1020) {
@@ -100,7 +103,7 @@ module.exports = {
                     }
                     memberList += `__${fixNameString(memberVO.playerName)}__, level: ${memberVO.playerLevel}\n`;
                 }
-                if (memberList != "" && (_allianceRank != translationData.dialogs["dialog_alliance_rank" + _rank] || i == allianceInfoVO.memberList.length - 1)) {
+                if (memberList !== "" && (_allianceRank !== translationData.dialogs["dialog_alliance_rank" + _rank] || i === allianceInfoVO.memberList.length - 1)) {
                     let __allianceRank = _allianceRank
                     if (isSecondField) __allianceRank += 2;
                     embed.addField(__allianceRank, memberList, true);
