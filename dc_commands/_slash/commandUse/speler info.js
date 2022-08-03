@@ -116,7 +116,9 @@ async function _execute(interaction, retried = false) {
             let _key = parseInt(castleKeys[i]);
             /** @type Array */
             let _castlesInKId = playerVO.castles[_key];
+            console.log(_castlesInKId.length);
             if (i === 0) _castlesInKId = _castlesInKId.concat(playerVO.kingsTowers, playerVO.monuments);
+            console.log(_castlesInKId.length);
             _castlesInKId.sort((x, y) => { return x.customName.localeCompare(y.customName); });
             _castlesInKId.sort((x, y) => {
                 if (x.areaType === y.areaType) return 0;
@@ -148,6 +150,7 @@ async function _execute(interaction, retried = false) {
                 }
                 return -1;
             })
+            console.log(_castlesInKId.length);
             if (i !== 0) castleListString += "\n";
             let kingdom = "_";
             switch (_key) {
@@ -159,20 +162,22 @@ async function _execute(interaction, retried = false) {
                 case 10: kingdom = translationData.generic.event_kingdom_berimond; break;
             }
             let castles = "";
+            console.log(_castlesInKId.length);
             for (let i = 0; i < _castlesInKId.length; i++) {
                 let _castle = _castlesInKId[i];
+                console.log(_castle.customName);
                 let _castleType = "_";
-                switch (_castle.areaType) {
-                    case "1": _castleType += "Hoofdkasteel"; break;
-                    case "3": _castleType += translationData.generic.capital; break;
-                    case "4": _castleType += translationData.generic.outpost; break;
-                    case "12": _castleType += translationData.generic.kingdomCastle_name; break;
-                    case "22": _castleType += translationData.generic.metropol; break;
-                    case "23": _castleType += translationData.generic.kingstower; break;
-                    case "26": _castleType += translationData.generic.monument; break;
+                switch (parseInt(_castle.areaType)) {
+                    case 1: _castleType += "Hoofdkasteel"; break;
+                    case 3: _castleType += translationData.generic.capital; break;
+                    case 4: _castleType += translationData.generic.outpost; break;
+                    case 12: _castleType += translationData.generic.kingdomCastle_name; break;
+                    case 22: _castleType += translationData.generic.metropol; break;
+                    case 23: _castleType += translationData.generic.kingstower; break;
+                    case 26: _castleType += translationData.generic.monument; break;
                     default: _castleType += _castle.areaType;
                 }
-                castles = `\n${_castle.customName} (${_castle.posX}/${_castle.posY}) (${_castleType})`;
+                castles += `\n${_castle.customName} (${_castle.posX}/${_castle.posY}) (${_castleType})`;
             }
             castleListString += `**${kingdom}:**${castles}`;
         }
