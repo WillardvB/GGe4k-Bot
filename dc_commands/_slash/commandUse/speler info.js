@@ -53,19 +53,6 @@ let playerVO = {
     monuments: [],
 };
 
-let allianceRanks = {
-    0: "Leider",
-    1: "Substituut",
-    2: "Veldmaarschalk",
-    3: "Schatbewaarder",
-    4: "Diplomaat",
-    5: "Ronselaar",
-    6: "Generaal",
-    7: "Sergeant",
-    8: "Lid",
-    9: "Novice",
-}
-
 module.exports = {
     name: 'speler info',
     description: 'Toont informatie over het bondgenootschap!',
@@ -109,48 +96,44 @@ async function _execute(interaction, retried = false) {
             }
             return;
         }
-        let bgInfo = playerVO.allianceName == "" ? "" : playerVO.allianceName + " (" + allianceRanks[playerVO.allianceRank] + ")";
+        let bgInfo = playerVO.allianceName == "" ? "" : playerVO.allianceName + " (" + translationData.dialogs["dialog_alliance_rank"+playerVO.allianceRank] + ")";
         let castleListString = "";
         let castleKeys = Object.keys(playerVO.castles);
         for (let i = 0; i < castleKeys.length; i++) {
             let _key = parseInt(castleKeys[i]);
             /** @type Array */
             let _castlesInKId = playerVO.castles[_key];
-            console.log(_castlesInKId.length);
             if (i === 0) _castlesInKId = _castlesInKId.concat(playerVO.kingsTowers, playerVO.monuments);
-            console.log(_castlesInKId.length);
             _castlesInKId.sort((x, y) => { return x.customName.localeCompare(y.customName); });
             _castlesInKId.sort((x, y) => {
                 if (x.areaType === y.areaType) return 0;
-                if (x.areaType === 1) return 1;
+                if (x.areaType === 1) return -1;
                 if (x.areaType === 3) {
                     if (y.areaType === 1 || y.areaType === 4) {
-                        return -1;
+                        return 1;
                     }
-                    else return 1;
+                    else return -1;
                 }
                 if (x.areaType === 4) {
                     if (y.areaType === 1) {
-                        return -1;
+                        return 1;
                     }
-                    else return 1;
+                    else return -1;
                 }
                 if (x.areaType === 22) {
                     if (y.areaType === 1 || y.areaType === 3 || y.areaType === 4) {
-                        return -1;
+                        return 1;
                     }
-                    else return 1;
+                    else return -1;
                 }
-                return -1;
                 if (x.areaType === 23) {
                     if (y.areaType === 1 || y.areaType === 3 || y.areaType === 4 || y.areaType === 22) {
-                        return -1;
+                        return 1;
                     }
-                    else return 1;
+                    else return -1;
                 }
-                return -1;
+                return 1;
             })
-            console.log(_castlesInKId.length);
             if (i !== 0) castleListString += "\n";
             let kingdom = "_";
             switch (_key) {
@@ -162,20 +145,18 @@ async function _execute(interaction, retried = false) {
                 case 10: kingdom = translationData.generic.event_kingdom_berimond; break;
             }
             let castles = "";
-            console.log(_castlesInKId.length);
             for (let i = 0; i < _castlesInKId.length; i++) {
                 let _castle = _castlesInKId[i];
-                console.log(_castle.customName);
                 let _castleType = "_";
                 switch (parseInt(_castle.areaType)) {
-                    case 1: _castleType += "Hoofdkasteel"; break;
-                    case 3: _castleType += translationData.generic.capital; break;
-                    case 4: _castleType += translationData.generic.outpost; break;
-                    case 12: _castleType += translationData.generic.kingdomCastle_name; break;
-                    case 22: _castleType += translationData.generic.metropol; break;
-                    case 23: _castleType += translationData.generic.kingstower; break;
-                    case 26: _castleType += translationData.generic.monument; break;
-                    default: _castleType += _castle.areaType;
+                    case 1: _castleType = "Hoofdkasteel"; break;
+                    case 3: _castleType = translationData.generic.capital; break;
+                    case 4: _castleType = translationData.generic.outpost; break;
+                    case 12: _castleType = translationData.generic.kingdomCastle_name; break;
+                    case 22: _castleType = translationData.generic.metropol; break;
+                    case 23: _castleType = translationData.generic.kingstower; break;
+                    case 26: _castleType = translationData.generic.monument; break;
+                    default: _castleType = _castle.areaType;
                 }
                 castles += `\n${_castle.customName} (${_castle.posX}/${_castle.posY}) (${_castleType})`;
             }
