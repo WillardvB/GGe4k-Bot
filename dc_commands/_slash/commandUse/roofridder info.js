@@ -33,6 +33,8 @@ module.exports = {
      * @param {Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.followUp({ content: "Sorry, dit command werkt nog niet!" });
+        return;
         let wereld;
         let level;
         let winsTotUp;

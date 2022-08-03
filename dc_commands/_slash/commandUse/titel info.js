@@ -14,6 +14,8 @@ module.exports = {
      * @param {Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.followUp({ content: "Sorry, dit command werkt nog niet!" });
+        return;
         let titel;
         if (interaction.options) {
             titel = interaction.options.getString('titel');
