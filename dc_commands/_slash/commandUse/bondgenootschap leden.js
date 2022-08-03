@@ -1,19 +1,6 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
 const logger = require("../../../tools/Logger");
 
-let allianceRanks = {
-    0: "Leider",
-    1: "Substituut",
-    2: "Veldmaarschalk",
-    3: "Schatbewaarder",
-    4: "Diplomaat",
-    5: "Ronselaar",
-    6: "Generaal",
-    7: "Sergeant",
-    8: "Lid",
-    9: "Novice",
-}
-
 let memberVO = {
     userData: {},
     playerInfoModel: {},
@@ -93,22 +80,32 @@ module.exports = {
             let tmpPlayers = require('./../../../e4kserver/data').players;
             let memberList = "";
             let _allianceRank = "Leider";
+            let isSecondField = false;
             for (let i = 0; i < allianceInfoVO.memberList.length; i++) {
                 let memberId = allianceInfoVO.memberList[i];
                 memberVO = tmpPlayers[memberId];
                 let _rank = memberVO.allianceRank;
                 if (rank == -1 || rank == _rank) {
-                    if (memberList != "" && _allianceRank != allianceRanks[_rank]) {
+                    if (memberList !== "" && _allianceRank !== translationData.dialogs["dialog_alliance_rank" + _rank]) {
                         embed.addField(_allianceRank, memberList);
                         memberList = "";
                     }
-                    _allianceRank = allianceRanks[_rank];
+                    _allianceRank = translationData.dialogs["dialog_alliance_rank" + _rank];
+                    if ((memberList + `__${fixNameString(memberVO.playerName)}__, level: ${memberVO.playerLevel}\n`).length > 1020) {
+                        embed.addField(_allianceRank, memberList, true);
+                        memberList = "";
+                        _allianceRank = translationData.dialogs["dialog_alliance_rank" + _rank];
+                        isSecondField = true;
+                    }
                     memberList += `__${fixNameString(memberVO.playerName)}__, level: ${memberVO.playerLevel}\n`;
                 }
-                if (memberList != "" && (_allianceRank != allianceRanks[_rank] || i == allianceInfoVO.memberList.length - 1)) {
-                    embed.addField(_allianceRank, memberList, true);
+                if (memberList != "" && (_allianceRank != translationData.dialogs["dialog_alliance_rank" + _rank] || i == allianceInfoVO.memberList.length - 1)) {
+                    let __allianceRank = _allianceRank
+                    if (isSecondField) __allianceRank += 2;
+                    embed.addField(__allianceRank, memberList, true);
                     memberList = "";
-                    _allianceRank = allianceRanks[_rank];
+                    _allianceRank = translationData.dialogs["dialog_alliance_rank" + _rank];
+                    isSecondField = false;
                 }
             }
             await interaction.followUp({ embeds: [embed] });

@@ -96,7 +96,7 @@ async function _execute(interaction, retried = false) {
             }
             return;
         }
-        let bgInfo = playerVO.allianceName == "" ? "" : playerVO.allianceName + " (" + translationData.dialogs["dialog_alliance_rank"+playerVO.allianceRank] + ")";
+        let bgInfo = playerVO.allianceName == "" ? "" : playerVO.allianceName + " (" + translationData.dialogs["dialog_alliance_rank" + playerVO.allianceRank] + ")";
         let castleListString = "";
         let castleKeys = Object.keys(playerVO.castles);
         for (let i = 0; i < castleKeys.length; i++) {
@@ -160,7 +160,8 @@ async function _execute(interaction, retried = false) {
                 }
                 castles += `\n${_castle.customName} (${_castle.posX}/${_castle.posY}) (${_castleType})`;
             }
-            castleListString += `**${kingdom}:**${castles}`;
+            if(castles.trim() !== "")
+                castleListString += `**${kingdom}:**${castles}`;
         }
         let description = "Level: " + (playerVO.playerLevel == 70 ? playerVO.playerLevel + "-" + playerVO.paragonLevel : playerVO.playerLevel) + "\n" +
             "BG: " + bgInfo + "\n" +
