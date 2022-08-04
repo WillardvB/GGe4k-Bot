@@ -49,7 +49,7 @@ module.exports = {
                 "Roempunten: " + num.formatNum(allianceInfoVO.allianceFamePoints) + "\n" +
                 "Level: " + allianceInfoVO.memberLevel + "\n" +
                 "Macht: " + num.formatNum(allianceInfoVO.might) + "\n" +
-                "Taal: " + translationData.languages["generic_language_" + allianceInfoVO.languageId] + "\n" +
+                "Taal: " +"\n"+//+ translationData.languages["generic_language_" + allianceInfoVO.languageId] + "\n" +
                 "Is open BG: " + allianceInfoVO.isOpenAlliance + "\n" +
                 "*id: " + allianceInfoVO.allianceId + "*";
             let embed = new MessageEmbed()
