@@ -29,7 +29,6 @@ module.exports = {
             else if (interaction.customId) {
                 var string = interaction.customId.split(' ');
                 level = parseInt(string[2]);
-                Logger.log(level);
                 gebouwnaam = string[3];
                 for (i = 4; i < string.length; i++) {
                     gebouwnaam += " " + string[i];
@@ -119,11 +118,10 @@ module.exports = {
 
 function naarOutput(interaction, data, minLevel, maxLevel) {
     try {
-        let level = data.level;
-        Logger.log(`level: ${level}`);
+        let level = parseInt(data.level);
         let gebouwNaam = getBuildingName(data);
         let description = getBuildingDescription(data);
-        let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : level == 0 ? " (totaal alle levels)" : ` (level ${level})`}`;
+        let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : level === 0 ? " (totaal alle levels)" : ` (level ${level})`}`;
         let image = getBuildingImage(data);
 
         let embed = new MessageEmbed()
@@ -399,7 +397,6 @@ function getBuildingLevelData(buildingNameParts, level) {
         let _dataLevel = parseInt(_data.level);
         if (buildingNameParts.length == 1) {
             if (_dataName === buildingNameParts[0]) {
-                Logger.log(`_data.level: ${_data.level}`);
                 if (level === 0) data = sumDataCostObjects(data, _data);
                 else if (_dataLevel === level) { data = _data; break; }
             }

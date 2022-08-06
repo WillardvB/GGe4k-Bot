@@ -26,7 +26,7 @@ module.exports = {
             }
             else if (interaction.customId) {
                 var string = interaction.customId.split(' ');
-                level = string[2];
+                level = parseInt(string[2]);
                 gebouwnaam = string[3];
                 for (i = 4; i < string.length; i++) {
                     gebouwnaam += " " + string[i];
