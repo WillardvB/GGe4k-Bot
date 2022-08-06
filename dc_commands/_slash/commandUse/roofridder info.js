@@ -1,6 +1,5 @@
-const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
+const dungeons = require('./../../../ingame_data/dungeons.json');
 const formatNumber = require('./../../../tools/number.js');
-const formatDuration = require('./../../../tools/time.js');
 const klingThumb = "https://media.discordapp.net/attachments/884049583313928202/886594500972126298/icon_events_seaqueen_enter.png";
 const klingImg = "https://media.discordapp.net/attachments/884049583313928202/886598611713015828/teaser_seaqueen_splash.png";
 const klingKleur = "#00008B";
@@ -26,8 +25,9 @@ const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 
+const _name = "roofridder info "
 module.exports = {
-    name: 'roofridder info',
+    name: name,
     /**
      * 
      * @param {Interaction} interaction
@@ -49,39 +49,41 @@ module.exports = {
             level = string[3];
             winsTotUp = string[4];
         }
-        const rows = await googleSheetsData.rrData();
-        if (rows.length) {
-            const kID = wereld * 1;
-            let minLvlRRvanRijk = krijgMinimumVanRijk(kID);
-            let maxLvlRRvanRijk = krijgMaximumVanRijk(kID);
-            level = Math.max(Math.min(level, maxLvlRRvanRijk), minLvlRRvanRijk);
-            if (level == maxLvlRRvanRijk) {
-                winsTotUp = 0;
-            }
-            else {
-                const vict = krijgVictories(kID, level, winsTotUp);
-                level = victToLvlArray(vict, kID)[0];
-                winsTotUp = victToLvlArray(vict, kID)[1];
-            }
-            if (level <= minLvlRRvanRijk) {
-                level = minLvlRRvanRijk;
-                winsTotUp = 1;
-            }
-            const victories = krijgVictories(kID, level, winsTotUp);
-            rows.map(row => {
-                if (row[0] == victories) {
-                    if (row[1] == kID) {
-                        rrGevonden = true;
-                        naarOutput(interaction, row, kID, level, winsTotUp, victories);
-                        return;
-                    }
+        const kID = parseInt(wereld);
+        let minLvlRRvanRijk = krijgMinimumVanRijk(kID);
+        let maxLvlRRvanRijk = krijgMaximumVanRijk(kID);
+        level = Math.max(Math.min(level, maxLvlRRvanRijk), minLvlRRvanRijk);
+        if (level == maxLvlRRvanRijk) {
+            winsTotUp = 0;
+        }
+        else {
+            const vict = krijgVictories(kID, level, winsTotUp);
+            level = victToLvlArray(vict, kID)[0];
+            winsTotUp = victToLvlArray(vict, kID)[1];
+        }
+        if (level <= minLvlRRvanRijk) {
+            level = minLvlRRvanRijk;
+            winsTotUp = 1;
+        }
+        const victories = krijgVictories(kID, level, winsTotUp);
+        for (let item in dungeons) {
+            let dungeon = dungeons[item];
+            if (parseInt(dungeon.countVictories) === victories) {
+                if (dungeon.kID === kID) {
+                    naarOutput(interaction, dungeon, kID, level, winsTotUp, victories);
                 }
-            })
+            }
         }
     },
 };
 
-function naarOutput(interaction, row, kID, level, winsTotUp, victories) {
+function naarOutput(interaction, dungeon, kID, level, winsTotUp, victories) {
+    console.log(dungeon);
+    //
+    //
+    return;
+
+
     let afbeelding = "";
     let thumbnail = "";
     let kleur = "";
@@ -95,16 +97,16 @@ function naarOutput(interaction, row, kID, level, winsTotUp, victories) {
         case "10": afbeelding = beriImg; thumbnail = beriThumb; kleur = beriKleur; break;
         default: break;
     }
-    let soldatenLinks = krijgSolsEnTools(row, 85, 11);
-    let soldatenMidden = krijgSolsEnTools(row, 74, 11);
-    let soldatenRechts = krijgSolsEnTools(row, 96, 11);
-    let toolsLinks = krijgSolsEnTools(row, 107, 6);
-    let toolsMidden = krijgSolsEnTools(row, 113, 6);
-    let toolsRechts = krijgSolsEnTools(row, 119, 6);
-    let soldatenBP = krijgSolsEnTools(row, 125, 11);
+    let soldatenLinks = krijgSolsEnTools(dungeon, 85, 11);
+    let soldatenMidden = krijgSolsEnTools(dungeon, 74, 11);
+    let soldatenRechts = krijgSolsEnTools(dungeon, 96, 11);
+    let toolsLinks = krijgSolsEnTools(dungeon, 107, 6);
+    let toolsMidden = krijgSolsEnTools(dungeon, 113, 6);
+    let toolsRechts = krijgSolsEnTools(dungeon, 119, 6);
+    let soldatenBP = krijgSolsEnTools(dungeon, 125, 11);
     let levelString = "Roofridder level "
     let winsTotUpString = " (nog " + winsTotUp + "x voor volgend level)"
-    if (row[0] == "-1") {
+    if (dungeon[0] == "-1") {
         levelString = "";
         winsTotUpString = "";
     }
@@ -122,8 +124,7 @@ function naarOutput(interaction, row, kID, level, winsTotUp, victories) {
             .addField("**Rechts**", soldatenRechts + "\n" + toolsRechts, true)
             .addField("**Binnenplaats**", soldatenBP, true)
         if (kID >= 0 && kID <= 3) {
-            embed.addField("**Aanbevolen aanvalstactiek**", attTactiek, true)
-                .addField("**Te halen buit**", krijgBuit(level), true);
+            embed.addField("**Te halen buit**", krijgBuit(level), true);
         }
         const messRow = new MessageActionRow();
         if (level > krijgMinimumVanRijk(kID)) {
@@ -132,7 +133,7 @@ function naarOutput(interaction, row, kID, level, winsTotUp, victories) {
                 new MessageButton()
                     .setLabel('lvl ' + tempLvlArray[0] + '.' + tempLvlArray[1])
                     .setStyle('PRIMARY')
-                    .setCustomId('roofridder info ' + kID + " " + tempLvlArray[0] + ' ' + tempLvlArray[1])
+                    .setCustomId(_name + ' ' + kID + " " + tempLvlArray[0] + ' ' + tempLvlArray[1])
             )
         }
         if (level < krijgMaximumVanRijk(kID)) {
@@ -141,13 +142,13 @@ function naarOutput(interaction, row, kID, level, winsTotUp, victories) {
                 new MessageButton()
                     .setLabel('lvl ' + tempLvlArray[0] + '.' + tempLvlArray[1])
                     .setStyle('PRIMARY')
-                    .setCustomId('roofridder info ' + kID + " " + tempLvlArray[0] + ' ' + tempLvlArray[1])
+                    .setCustomId(_name + ' ' + kID + " " + tempLvlArray[0] + ' ' + tempLvlArray[1])
             )
         }
         if (interaction.options) {
-            interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
+            interaction.followUp({ embeds: [embed], components: [messRow] });
         } else {
-            interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
+            interaction.editReply({ embeds: [embed], components: [messRow] });
         }
     })
 }
@@ -208,19 +209,6 @@ function krijgMaximumVanRijk(kID) {
         default: break;
     }
     return maxLvlRRvanRijk;
-}
-
-function krijgAttTactiek(kID, victories) {
-    return new Promise(async function (resolve, reject) {
-        const tactieken = await googleSheetsData.rrAttData(kID);
-        if (tactieken.length) {
-            const rij = tactieken[victories];
-            const midden = rij[5] != null ? rij[5] : "";
-            const rechts = rij[8] != null ? rij[8] : "";
-            const tactiek = `Links: ${rij[2]}\nMidden: ${midden}\nRechts: ${rechts}`;
-            resolve(tactiek);
-        }
-    })
 }
 
 function krijgBuit(lvl) {

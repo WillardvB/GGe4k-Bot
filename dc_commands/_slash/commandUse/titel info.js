@@ -76,9 +76,9 @@ function naarOutput(interaction, row) {
         embed.addField('**Beloning**', '*' + row[28] + '*');
     }
     if (interaction.options) {
-        interaction.followUp({ embeds: [embed], components: [], ephemeral: true });
+        interaction.followUp({ embeds: [embed], components: [] });
     } else {
-        interaction.editReply({ embeds: [embed], components: [], ephemeral: true });
+        interaction.editReply({ embeds: [embed], components: [] });
     }
 }
 

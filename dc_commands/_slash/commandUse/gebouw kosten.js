@@ -6,6 +6,7 @@ const formatNumber = require('./../../../tools/number.js');
 const formatDuration = require('./../../../tools/time.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const Logger = require('../../../tools/Logger.js');
+const gebouwAlgemeen = require("./gebouw algemeen");
 const buildingTranslations = translationData.buildings_and_decorations;
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
@@ -102,14 +103,12 @@ module.exports = {
             let buildingNameParts = foundBuildingName.split('_');
             let minMaxLevel = getLevelMinMax(buildingNameParts);
             let minLevel = minMaxLevel[0];
-            console.log("minlevel 1: " + minLevel);
             let maxLevel = minMaxLevel[1];
             if (level !== 0) {
                 level = Math.min(Math.max(level, minLevel), maxLevel);
             }
             let data = getBuildingLevelData(buildingNameParts, level);
             if (data === null) return;
-            console.log("minlevel 2: " + minLevel);
             naarOutput(interaction, data, minLevel, maxLevel);
         }
         catch (e) {
@@ -120,7 +119,6 @@ module.exports = {
 
 function naarOutput(interaction, data, minLevel, maxLevel) {
     try {
-        console.log("minlevel 3: " + minLevel);
         let level = parseInt(data.level);
         let gebouwNaam = getBuildingName(data);
         let description = getBuildingDescription(data);
@@ -173,7 +171,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                             _tmpKey = translationData.generic[`currency_name_${_key.substring(4)}`];
                         }
                     }
-                    normalCostValues += `**${_tmpKey}**: ${formatNumber.formatNum(_value)}\n`;
+                    tmpServerCostValues += `**${_tmpKey}**: ${formatNumber.formatNum(_value)}\n`;
                     continue;
                 }
                 if (_keyLowCase === "time") {
@@ -190,8 +188,6 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         if (tmpServerCostValues !== "") {
             embed.addField("_" + translationData.dialogs.temp_server_name + " " + translationData.generic.costs.toLowerCase() + "_", tmpServerCostValues.trim(), true);
         }
-        console.log("minlevel 4: " + minLevel);
-        console.log("maxlevel 4: " + maxLevel);
         let components = [];
         const messRow = new MessageActionRow();
         if (level !== 0 && minLevel !== maxLevel) {
@@ -233,6 +229,16 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                     .setCustomId(`${_name} ${maxLevel} ${gebouwNaam}`)
             )
             components = [messRow];
+        }
+        if (level !== 0) {
+            const _messageActionRow2 = new MessageActionRow();
+            _messageActionRow2.addComponents(
+                new MessageButton()
+                    .setLabel("Algemene informatie")
+                    .setStyle('PRIMARY')
+                    .setCustomId(`${gebouwAlgemeen.name} ${level} ${gebouwNaam}`)
+            );
+            components.push(_messageActionRow2);
         }
         if (interaction.options) {
             interaction.followUp({ embeds: [embed], components: components });

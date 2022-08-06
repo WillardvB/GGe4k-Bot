@@ -66,9 +66,9 @@ module.exports = {
                         ]),
                 );
             if (interaction.options) {
-                interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
+                interaction.followUp({ embeds: [embed], components: [messRow] });
             } else {
-                interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
+                interaction.editReply({ embeds: [embed], components: [messRow] });
             }
         }
     },

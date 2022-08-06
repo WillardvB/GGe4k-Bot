@@ -5,6 +5,7 @@ const imagesData = require('./../../../ingame_images/x768.json');
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const Logger = require("../../../tools/Logger.js");
+const gebouwKosten = require("./gebouw kosten");
 const buildingTranslations = translationData.buildings_and_decorations;
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
@@ -244,6 +245,12 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 rewardValues += `**${_keyLowCase}**: ${_value}\n`;
                 continue;
             }
+            if (_keyLowCase === "kingdomfameboost") {
+                _keyLowCase = translationData.dialogs.dialog_fame_title;
+                _value = `+${_value}%`;
+                rewardValues += `**${_keyLowCase}**: ${_value}\n`;
+                continue;
+            }
             if (_keyLowCase === "decopoints") {
                 _keyLowCase = translationData.generic.publicOrder;
                 rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
@@ -327,7 +334,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             embed.addField(`**Constructie**`, constructionValues.trim(), true);
         }
         if (requirementsValues !== "") {
-            requirementsValues += "**Kosten**: zie `/gebouw kosten`";
+            requirementsValues += `**${translationData.generic.costs}**: zie 'kosten knop' onderaan`;
             embed.addField(`**Benodigdheden**`, requirementsValues.trim(), true);
         }
         if (rewardValues !== "") {
@@ -373,6 +380,14 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 )
             }
             components = [_messageActionRow];
+            const _messageActionRow2 = new MessageActionRow();
+            _messageActionRow2.addComponents(
+                new MessageButton()
+                    .setLabel(translationData.generic.costs)
+                    .setStyle('PRIMARY')
+                    .setCustomId(`${gebouwKosten.name} ${level} ${gebouwNaam}`)
+            );
+            components.push(_messageActionRow2);
         }
         if (interaction.options) {
             interaction.followUp({ embeds: [embed], components: components });
