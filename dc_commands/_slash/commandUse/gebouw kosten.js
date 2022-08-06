@@ -402,24 +402,24 @@ function getBuildingLevelData(buildingNameParts, level) {
         let _dataLevel = parseInt(_data.level);
         if (buildingNameParts.length == 1) {
             if (_dataName === buildingNameParts[0]) {
-                if (level === 0) data = sumDataCostObjects(data, _data);
-                else if (_dataLevel === level) { data = _data; break; }
+                if (level === 0) data = JSON.parse(JSON.stringify(sumDataCostObjects(data, _data)));
+                else if (_dataLevel === level) { data = JSON.parse(JSON.stringify(_data)); break; }
             }
             else if (_dataGroup === buildingNameParts[0]) {
-                if (level === 0) data = sumDataCostObjects(data, _data);
-                else if (_dataLevel === level) { data = _data; break; }
+                if (level === 0) data = JSON.parse(JSON.stringify(sumDataCostObjects(data, _data)));
+                else if (_dataLevel === level) { data = JSON.parse(JSON.stringify(_data)); break; }
             }
         }
         else if (buildingNameParts.length == 2) {
             if (_dataName === buildingNameParts[0] &&
                 _dataType === buildingNameParts[1]) {
-                if (level === 0) data = sumDataCostObjects(data, _data);
-                else if (_dataLevel === level) { data = _data; break; }
+                if (level === 0) data = JSON.parse(JSON.stringify(sumDataCostObjects(data, _data)));
+                else if (_dataLevel === level) { data = JSON.parse(JSON.stringify(_data)); break; }
             }
             else if (_dataName === buildingNameParts[0] &&
                 _dataGroup === buildingNameParts[1]) {
-                if (level === 0) data = sumDataCostObjects(data, _data);
-                else if (_dataLevel === level) { data = _data; break; }
+                if (level === 0) data = JSON.parse(JSON.stringify(sumDataCostObjects(data, _data)));
+                else if (_dataLevel === level) { data = JSON.parse(JSON.stringify(_data)); break; }
             }
         }
     }
@@ -456,7 +456,7 @@ function getBuildingImage(data) {
  */
 function sumDataCostObjects(dataOutput, dataInput) {
     try {
-        if (dataOutput === null) return dataInput;
+        if (dataOutput === null) return JSON.parse(JSON.stringify(dataInput));
         const _keys = Object.keys(dataInput);
         for (let _i = 0; _i < _keys.length; _i++) {
             let _key = _keys[_i];
@@ -482,10 +482,11 @@ function sumDataCostObjects(dataOutput, dataInput) {
                 }
             }
         }
-        if (dataInput.level * 1 >= dataOutput.level * 1) {
+        if (parseInt(dataInput.level) > parseInt(dataOutput.level)) {
             dataOutput.name = dataInput.name;
             dataOutput.type = dataInput.type;
             dataOutput.group = dataInput.group;
+            dataOutput.level = dataInput.level;
         }
         return dataOutput;
     }
