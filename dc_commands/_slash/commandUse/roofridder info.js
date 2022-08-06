@@ -27,14 +27,12 @@ const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.j
 
 const _name = "roofridder info "
 module.exports = {
-    name: name,
+    name: _name,
     /**
      * 
      * @param {Interaction} interaction
      */
     async execute(interaction) {
-        await interaction.followUp({ content: "Sorry, dit command werkt nog niet!" });
-        return;
         let wereld;
         let level;
         let winsTotUp;
@@ -81,6 +79,7 @@ function naarOutput(interaction, dungeon, kID, level, winsTotUp, victories) {
     console.log(dungeon);
     //
     //
+    await interaction.followUp({ content: "Sorry, dit command werkt nog niet!" });
     return;
 
 
