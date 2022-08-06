@@ -75,7 +75,7 @@ module.exports = {
     },
 };
 
-function naarOutput(interaction, dungeon, kID, level, winsTotUp, victories) {
+async function naarOutput(interaction, dungeon, kID, level, winsTotUp, victories) {
     console.log(dungeon);
     //
     //
