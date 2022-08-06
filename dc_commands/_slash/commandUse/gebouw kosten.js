@@ -102,12 +102,14 @@ module.exports = {
             let buildingNameParts = foundBuildingName.split('_');
             let minMaxLevel = getLevelMinMax(buildingNameParts);
             let minLevel = minMaxLevel[0];
+            console.log("minlevel 1: " + minLevel);
             let maxLevel = minMaxLevel[1];
             if (level !== 0) {
                 level = Math.min(Math.max(level, minLevel), maxLevel);
             }
             let data = getBuildingLevelData(buildingNameParts, level);
             if (data === null) return;
+            console.log("minlevel 2: " + minLevel);
             naarOutput(interaction, data, minLevel, maxLevel);
         }
         catch (e) {
@@ -118,6 +120,7 @@ module.exports = {
 
 function naarOutput(interaction, data, minLevel, maxLevel) {
     try {
+        console.log("minlevel 3: " + minLevel);
         let level = parseInt(data.level);
         let gebouwNaam = getBuildingName(data);
         let description = getBuildingDescription(data);
@@ -187,6 +190,8 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         if (tmpServerCostValues !== "") {
             embed.addField("_" + translationData.dialogs.temp_server_name + " " + translationData.generic.costs.toLowerCase() + "_", tmpServerCostValues.trim(), true);
         }
+        console.log("minlevel 4: " + minLevel);
+        console.log("maxlevel 4: " + maxLevel);
         let components = [];
         const messRow = new MessageActionRow();
         if (level !== 0 && minLevel !== maxLevel) {
