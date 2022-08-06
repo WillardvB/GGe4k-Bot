@@ -6,7 +6,6 @@ const formatNumber = require('./../../../tools/number.js');
 const formatDuration = require('./../../../tools/time.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const Logger = require('../../../tools/Logger.js');
-const gebouwAlgemeen = require("./gebouw algemeen");
 const buildingTranslations = translationData.buildings_and_decorations;
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
@@ -236,7 +235,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 new MessageButton()
                     .setLabel("Algemene informatie")
                     .setStyle('PRIMARY')
-                    .setCustomId(`${gebouwAlgemeen.name} ${level} ${gebouwNaam}`)
+                    .setCustomId(`gebouw algemeen ${level} ${gebouwNaam}`)
             );
             components.push(_messageActionRow2);
         }

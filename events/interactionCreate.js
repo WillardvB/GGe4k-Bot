@@ -10,7 +10,7 @@ module.exports = {
         else if (interaction.isButton() || interaction.isSelectMenu()) {
             await interaction.deferUpdate();
             const bCommand = interaction.customId.split(' ');
-            client.slashCommands.get(bCommand[0] + ' ' + bCommand[1]).execute(interaction);
+            client.slashCommands.get(bCommand[0] + ' ' + bCommand[1])?.execute(interaction);
         }
     }
 }

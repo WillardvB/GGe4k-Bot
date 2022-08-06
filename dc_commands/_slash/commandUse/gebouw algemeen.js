@@ -5,7 +5,6 @@ const imagesData = require('./../../../ingame_images/x768.json');
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const Logger = require("../../../tools/Logger.js");
-const gebouwKosten = require("./gebouw kosten");
 const buildingTranslations = translationData.buildings_and_decorations;
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
@@ -385,7 +384,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 new MessageButton()
                     .setLabel(translationData.generic.costs)
                     .setStyle('PRIMARY')
-                    .setCustomId(`${gebouwKosten.name} ${level} ${gebouwNaam}`)
+                    .setCustomId(`gebouw kosten ${level} ${gebouwNaam}`)
             );
             components.push(_messageActionRow2);
         }
