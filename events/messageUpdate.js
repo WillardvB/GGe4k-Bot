@@ -8,6 +8,7 @@ module.exports = {
     name: 'messageUpdate',
     description: 'Regelt messageUpdate event',
     execute(client, oud, nieuw) {
+        return;
         if (
             oud.guild == null ||
             oud.author.bot ||

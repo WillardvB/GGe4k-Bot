@@ -13,6 +13,7 @@ module.exports = {
      * @param {Message} message
      */
     execute(client, message) {
+        return;
         if (
             message.guild == null ||
             message.author.bot ||
