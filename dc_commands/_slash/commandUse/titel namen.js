@@ -1,4 +1,3 @@
-const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const { MessageEmbed, MessageActionRow, MessageSelectMenu, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';

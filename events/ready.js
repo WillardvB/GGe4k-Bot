@@ -1,5 +1,4 @@
 const { nlserver } = require('./../data/kanalen.json');
-const googleSheet = require('./../data/googleSpreadSheetData.js');
 const embedEditor = require('./../tools/embedEditor.js');
 const { Client } = require('discord.js');
 let client1;
