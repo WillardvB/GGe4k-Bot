@@ -1,5 +1,4 @@
 const { nlserver } = require('./../data/kanalen.json');
-const googleSheet = require('./../data/googleSpreadSheetData.js');
 const embedEditor = require('./../tools/embedEditor.js');
 const { Client } = require('discord.js');
 let client1;
@@ -34,10 +33,6 @@ async function weerOnline(client) {
     ik.send({ content: 'Hey, ik ben weer online! 🙂' }).catch(e => console.log(e));
     client.user.setActivity({ type: "PLAYING", name: `Goodgame Empire (Four Kingdoms)` });
     console.log('Ready!');
-    //await googleSheet.gebouwData(client);
-    //await googleSheet.titelData(client);
-    //await googleSheet.rrData(client);
-    //await googleSheet.rrAttData(client);
     
     //embedEditor.stuurRegelsBericht(client);
     //embedEditor.stuurReactieRollenBericht(client);

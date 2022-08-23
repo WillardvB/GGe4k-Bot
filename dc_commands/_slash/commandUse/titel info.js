@@ -1,4 +1,3 @@
-const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
@@ -14,6 +13,8 @@ module.exports = {
      * @param {Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.followUp({ content: "Sorry, dit command werkt nog niet!" });
+        return;
         let titel;
         if (interaction.options) {
             titel = interaction.options.getString('titel');
@@ -74,9 +75,9 @@ function naarOutput(interaction, row) {
         embed.addField('**Beloning**', '*' + row[28] + '*');
     }
     if (interaction.options) {
-        interaction.followUp({ embeds: [embed], components: [], ephemeral: true });
+        interaction.followUp({ embeds: [embed], components: [] });
     } else {
-        interaction.editReply({ embeds: [embed], components: [], ephemeral: true });
+        interaction.editReply({ embeds: [embed], components: [] });
     }
 }
 

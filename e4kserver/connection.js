@@ -46,6 +46,7 @@ module.exports = {
     onSuccessfulLogin() {
         require('./commands/pingpong.js').execute();
         require('./commands/searchAllianceById.js').execute(0);
+        //onSendMessage("-ares-", "test bericht!", "1i2ndadfhkjwe9");
     },
     socket: _socket,
     connected: connected,
@@ -65,4 +66,40 @@ function login(zone, name, pass) {
     let header = { "t": "sys" };
     let msg = "<login z=\'" + zone + "\'><nick><![CDATA[" + name + "]]></nick><pword><![CDATA[" + pass + "]]></pword></login>";
     require('./commands/handlers/xml.js').sendAction(header, "login", 0, msg);
+}
+
+function onSendMessage(receiver, subject, copy) {
+    let _subject = getValideSmartFoxJSONMailMessage(subject);
+    var msg = getValideSmartFoxJSONMailMessage(copy);
+    if (msg && msg != "") {
+        let C2SSendMessageVO = {
+            params: {
+                RN: receiver,
+                MH: _subject,
+                TXT: msg,
+            },
+            getCmdId: "sms"
+        }
+        //btnSend.lock();
+        e4kServerData.sendJsonVoSignal({ "commandVO": C2SSendMessageVO, "lockConditionVO": "new DefaultLockConditionVO()" });
+    }
+    else {
+        logger.logError("Missing msg in onSendMessage()");
+        //openDialogSignal.dispatch(new OpenDialogVO("StandardOkWithCharacterDialog", new OkWithCharDialogProperties(Localize.text("generic_alert_watchout"), Localize.text("dialog_newMessage_missingText")), 4));
+    }
+}
+
+function getValideSmartFoxJSONMailMessage(value) {
+    for (var _loc9_ in ["\\+", "#", "<", ">", "\"", "\\$"])
+    {
+        let _loc10_ = new RegExp("\\" + _loc9_, "gs");
+        value = value.replace(_loc10_, "");
+    }
+    value = value.replace(/%/g, "&percnt;");
+    value = value.replace(/'/g, "&#145;");
+    value = value.replace(/"/g, "&quot;");
+    value = value.replace(/\r/g, "<br />");
+    value = value.replace(/\\/g, "%5C");
+    value = value.replace(/\n/g, "<br />");
+    return value.replace(/\t/g, " ");
 }

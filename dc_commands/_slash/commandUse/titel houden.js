@@ -1,4 +1,3 @@
-const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const formatNumber = require('./../../../tools/number.js');
 const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
 const titelInfo = require('./titel info.js');
@@ -15,6 +14,8 @@ module.exports = {
      * @param {Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.followUp({ content: "Sorry, dit command werkt nog niet!" });
+        return;
         let titel;
         let dagen;
         if (interaction.options) {
@@ -105,9 +106,9 @@ function naarOutput(interaction, row, dagen, soort) {
             .setCustomId('titel houden ' + (dagen + 1) + " " + row[0])
     )
     if (interaction.options) {
-        interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
+        interaction.followUp({ embeds: [embed], components: [messRow] });
     } else {
-        interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
+        interaction.editReply({ embeds: [embed], components: [messRow] });
     }
 }
 

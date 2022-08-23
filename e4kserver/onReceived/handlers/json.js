@@ -19,7 +19,6 @@ module.exports = {
             }
         } catch (e) {
             Logger.logError(e);
-            Logger.log(msg);
         };
     }
 }

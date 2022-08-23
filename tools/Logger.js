@@ -20,13 +20,14 @@ module.exports = {
     },
     /**
      * 
-     * @param {string} msg
+     * @param {any} msg
      */
     logError(msg) {
         return new Promise(async (resolve) => {
             try {
-                if (msg.startsWith("Unknown xt command: ")) {
-                    let _cmd = msg.substring(20).trim();
+                let msgStr = msg.toString();
+                if (msgStr.startsWith("Unknown xt command: ")) {
+                    let _cmd = msgStr.substring(20).trim();
                     if (unknownXtCommands.includes(_cmd)) {
                         resolve();
                         return;
@@ -35,8 +36,8 @@ module.exports = {
                         unknownXtCommands.push(_cmd);
                     }
                 }
-                else if (msg.startsWith("Unknown sys command: ")) {
-                    let _cmd = msg.substring(21).trim();
+                else if (msgStr.startsWith("Unknown sys command: ")) {
+                    let _cmd = msgStr.substring(21).trim();
                     if (unknownSysCommands.includes(_cmd)) {
                         resolve();
                         return;
@@ -45,14 +46,19 @@ module.exports = {
                         unknownSysCommands.push(_cmd);
                     }
                 }
-                await logChannel.send({ content: "[ERROR] " + msg });
-                console.log(ErrorText + msg);
+                else if (msgStr.startsWith("SyntaxError: Unexpected token") && msgStr.includes("in JSON at position")) {
+                    console.log(ErrorText + msgStr);
+                    resolve();
+                    return;
+                }
+                await logChannel.send({ content: "[ERROR] " + msgStr.substring(0, 1990) });
+                console.log(ErrorText + msgStr);
                 resolve();
             }
             catch (e) {
                 try {
-                    await logChannel.send({ content: "[ERROR] There was an error when trying to log: " + e });
-                    console.log(ErrorText + "There was an error when trying to log: " + e)
+                    await logChannel.send({ content: "[ERROR] There was an error when trying to log: " + e.toString().substring(0, 1950) });
+                    console.log(ErrorText + "There was an error when trying to log: " + e);
                     resolve();
                 }
                 catch (e) {

@@ -8,7 +8,7 @@ module.exports = {
 };
 
 function isNumeric(num) {
-    num = "" + num; //coerce num to be a string
+    num = "" + num;
     return !isNaN(num) && !isNaN(parseFloat(num));
 }
 

@@ -1,12 +1,12 @@
-const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const formatNumber = require('./../../../tools/number.js');
-const formatDuration = require('./../../../tools/time.js');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const translationData = require('./../../../ingame_translations/nl.json');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 
+const _name = "roofridder buit";
 module.exports = {
-    name: 'roofridder buit',
+    name: _name,
     async execute(interaction) {
         let level;
         if (interaction.options) {
@@ -21,22 +21,22 @@ module.exports = {
 };
 
 function naarOutput(interaction, level) {
-    let levelString = "Roofridder level ";
+    let levelString = `**${translationData.generic.dungeon_playerName} ${translationData.generic.level.toLowerCase()} ${level}**`;
     let embed = new MessageEmbed()
         .setColor('#808080')
         .setTimestamp()
         .setFooter(footerTekst, footerAfbeelding)
         .setThumbnail(footerAfbeelding)
-        .setTitle("**" + levelString + level + "**")
-        .setDescription("*roofridder buit*")
-        .addField("**Te halen buit**", krijgBuit(level), true);
+        .setTitle(levelString)
+        .setDescription(`*${translationData.dialogs.dialog_battleLog_loot}*`)
+        .addField("**Te behalen buit**", krijgBuit(level), true);
     const messRow = new MessageActionRow();
     if (level > 1) {
         messRow.addComponents(
             new MessageButton()
                 .setLabel('lvl ' + (level - 1))
                 .setStyle('PRIMARY')
-                .setCustomId('roofridder buit ' + (level * 1 - 1))
+                .setCustomId(`${_name} ${(level * 1 - 1)}`)
         )
     }
     if (level < 81) {
@@ -44,13 +44,13 @@ function naarOutput(interaction, level) {
             new MessageButton()
                 .setLabel('lvl ' + (level * 1 + 1))
                 .setStyle('PRIMARY')
-                .setCustomId('roofridder buit ' + (level * 1 + 1))
+                .setCustomId(`${_name} ${(level * 1 + 1)}`)
         )
     }
     if (interaction.options) {
-        interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
+        interaction.followUp({ embeds: [embed], components: [messRow] });
     } else {
-        interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
+        interaction.editReply({ embeds: [embed], components: [messRow] });
     }
 }
 
@@ -74,6 +74,6 @@ function krijgBuit(lvl) {
     } else {
         robs = robsMin + '-' + robsMax;
     }
-    const output = `BS: ${formatNumber.formatNum(bs)}\nMunten: ${formatNumber.formatNum(munt)}\nRobijnen: ${robs}`;
+    const output = `${translationData.generic.goods}: ${formatNumber.formatNum(bs)}\n${translationData.generic.cash}: ${formatNumber.formatNum(munt)}\n${translationData.generic.gold}: ${robs}`;
     return output;
 }

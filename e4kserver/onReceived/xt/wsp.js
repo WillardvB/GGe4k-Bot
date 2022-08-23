@@ -6,11 +6,22 @@ module.exports = {
      * @param {object} params
      */
     execute(errorCode, params) {
-        if (errorCode == 21) return;
+        if (errorCode == 21) return; //player not found.
+        if (errorCode == 96) return; //playercastle is removed from worldmap after being offline for a long time
         parseOwnerInfoArray(params.gaa.OI);
     },
-    parseOwnerInfo(ownerInfo) {
-        return parseOwnerInfo(ownerInfo);
+    parseOwnerInfo(ownerInfo, isGDI = false) {
+        let owner = parseOwnerInfo(ownerInfo);
+        if (owner !== null && !isGDI) {
+            let C2SGetDetailPlayerInfo = {
+                params: {
+                    PID: owner.playerId,
+                },
+                getCmdId: "gdi",
+            }
+            require('./../../data.js').sendJsonVoSignal({ "commandVO": C2SGetDetailPlayerInfo, "lockConditionVO": null });
+        }
+        return owner;
     }
 }
 
@@ -23,7 +34,14 @@ function parseOwnerInfoArray(ownerInfoArray) {
         return;
     }
     for (let ownerInfo in ownerInfoArray) {
-        parseOwnerInfo(ownerInfoArray[ownerInfo]);
+        let owner = parseOwnerInfo(ownerInfoArray[ownerInfo]);
+        let C2SGetDetailPlayerInfo = {
+            params: {
+                PID: owner.playerId,
+            },
+            getCmdId: "gdi",
+        }
+        require('./../../data.js').sendJsonVoSignal({ "commandVO": C2SGetDetailPlayerInfo, "lockConditionVO": null });
     }
 }
 
@@ -194,7 +212,10 @@ function parseOwnerInfo(ownerInfo) {
     }
     else {
         tmpPlayers = require('./../../data.js').players;
-        _worldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(tmpPlayers[playerId], ownerInfo);
+        let _newWorldMapOwnerInfoVO = worldMapOwnerFillFromParamObject(tmpPlayers[playerId], ownerInfo);
+        for (let __key in _newWorldMapOwnerInfoVO) {
+            _worldMapOwnerInfoVO[__key] = _newWorldMapOwnerInfoVO[__key];
+        }
         tmpPlayers[playerId] = _worldMapOwnerInfoVO;
         require('./../../data.js').players = tmpPlayers;
     }

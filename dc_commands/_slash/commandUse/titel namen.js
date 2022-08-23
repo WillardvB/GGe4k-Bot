@@ -1,4 +1,3 @@
-const googleSheetsData = require('./../../../data/googleSpreadSheetData.js');
 const { MessageEmbed, MessageActionRow, MessageSelectMenu, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
@@ -11,6 +10,8 @@ module.exports = {
      * @param {Interaction} interaction
      */
     async execute(interaction) {
+        await interaction.followUp({ content: "Sorry, dit command werkt nog niet!" });
+        return;
         let soort;
         if (interaction.options) {
             soort = interaction.options.getString('soort');
@@ -64,9 +65,9 @@ module.exports = {
                         ]),
                 );
             if (interaction.options) {
-                interaction.followUp({ embeds: [embed], components: [messRow], ephemeral: true });
+                interaction.followUp({ embeds: [embed], components: [messRow] });
             } else {
-                interaction.editReply({ embeds: [embed], components: [messRow], ephemeral: true });
+                interaction.editReply({ embeds: [embed], components: [messRow] });
             }
         }
     },
