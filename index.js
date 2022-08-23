@@ -22,6 +22,13 @@ require('./myMongoDB.js').execute(mongoClient);
 
 client.login(process.env.dcToken);
 
+client.events = new Collection();
+const eventFiles = fs.readdirSync(__dirname + '/events').filter(file => file.endsWith('.js'));
+for (const file of eventFiles) {
+	const command = require(`./events/${file}`);
+	client.events.set(command.name, command);
+}
+
 client.once('ready', () => {
 	client.events.get('ready').execute(client);
 	require('./setSlashCommands.js').execute(client);
