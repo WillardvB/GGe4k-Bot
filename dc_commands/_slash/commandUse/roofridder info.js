@@ -25,7 +25,7 @@ const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 
-const _name = "roofridder info "
+const _name = "roofridder info"
 module.exports = {
     name: _name,
     /**
