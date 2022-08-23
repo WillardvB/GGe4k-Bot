@@ -1,5 +1,4 @@
 const { nlserver } = require('./../data/kanalen.json');
-const embedEditor = require('./../tools/embedEditor.js');
 const { Client } = require('discord.js');
 let client1;
 
@@ -11,12 +10,7 @@ module.exports = {
         require('./../e4kserver/connection').execute();
         client1 = client;
         weerOnline(client);
-        setInterval(elkeXSec, 1000);
     }
-}
-
-function elkeXSec() {
-    client1.commands.get("plan").execute(client1);
 }
 
 /**
@@ -26,7 +20,7 @@ function elkeXSec() {
 async function weerOnline(client) {
     const server = client.guilds.cache.find(guild => guild.id == nlserver.id);
     await server.members.fetch();
-    await server.channels.cache.forEach(channel => {
+    server.channels.cache.forEach(channel => {
         fetchMessagesFrom(client, channel.id, 5);
     });
     const ik = server.members.cache.find(member => member.id == "346015807496781825");
@@ -34,8 +28,8 @@ async function weerOnline(client) {
     client.user.setActivity({ type: "PLAYING", name: `Goodgame Empire (Four Kingdoms)` });
     console.log('Ready!');
     
-    //embedEditor.stuurRegelsBericht(client);
-    //embedEditor.stuurReactieRollenBericht(client);
+    //require('./../tools/embedEditor.js').stuurRegelsBericht(client);
+    //require('./../tools/embedEditor.js').stuurReactieRollenBericht(client);
 }
 
 async function fetchMessagesFrom(client, kanaalID, aantalMsgX100) {
