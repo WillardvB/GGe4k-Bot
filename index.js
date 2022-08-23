@@ -1,4 +1,4 @@
-const { Client, Intents } = require('discord.js');
+const { Client, Intents, Collection } = require('discord.js');
 const client = new Client({
 	intents: [
 		Intents.FLAGS.GUILDS,
@@ -21,6 +21,7 @@ const mongoClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopo
 require('./myMongoDB.js').execute(mongoClient);
 
 client.login(process.env.dcToken);
+
 
 client.events = new Collection();
 const eventFiles = fs.readdirSync(__dirname + '/events').filter(file => file.endsWith('.js'));
