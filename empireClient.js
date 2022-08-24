@@ -1,5 +1,5 @@
 const { Client: EmpireClient } = require("empirejs");
-const empireClient = new EmpireClient("e4k-nl", process.env.empirePassword);
+const empireClient = new EmpireClient("e4k-nl", process.env.empirePassword, true);
 
 async function connect(){
     await empireClient.connect();

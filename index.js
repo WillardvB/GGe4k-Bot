@@ -16,10 +16,14 @@ const client = new Client({
 	]
 });
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.mongoDBuri;
-const mongoClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-require('./myMongoDB.js').execute(mongoClient);
+client.once('ready', () => {
+	client.events.get('ready').execute(client);
+	require('./setSlashCommands.js').execute(client);
+});
+
+client.on('interactionCreate', interaction => {
+	client.events.get('interactionCreate').execute(client, interaction);
+});
 
 client.login(process.env.dcToken);
 
@@ -35,12 +39,3 @@ for (const file of slashCommandFiles) {
 	const command = require(`./dc_commands/_slash/commandUse/${file}`);
 	client.slashCommands.set(command.name, command);
 }
-
-client.once('ready', () => {
-	client.events.get('ready').execute(client);
-	require('./setSlashCommands.js').execute(client);
-});
-
-client.on('interactionCreate', interaction => {
-	client.events.get('interactionCreate').execute(client, interaction);
-});
