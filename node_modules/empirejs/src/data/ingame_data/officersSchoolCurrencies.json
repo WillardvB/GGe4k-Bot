@@ -1,0 +1,14 @@
+{
+  "1": {
+    "id": "1",
+    "currency": "KhanTablet"
+  },
+  "2": {
+    "id": "2",
+    "currency": "SamuraiToken"
+  },
+  "3": {
+    "id": "3",
+    "currency": "KhanMedal"
+  }
+}

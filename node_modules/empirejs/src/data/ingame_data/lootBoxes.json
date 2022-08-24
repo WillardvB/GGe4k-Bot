@@ -1,0 +1,72 @@
+{
+  "1": {
+    "lootBoxID": "1",
+    "lootBoxTypeID": "1",
+    "name": "MysteryBoxBronze",
+    "rarity": "1",
+    "lootBoxTombolaID": "1",
+    "draws": "1",
+    "lootBoxKeyTombolaID": "1",
+    "sortOrder": "1"
+  },
+  "2": {
+    "lootBoxID": "5",
+    "lootBoxTypeID": "1",
+    "name": "MysteryBoxSilver",
+    "rarity": "1",
+    "lootBoxTombolaID": "2",
+    "draws": "1",
+    "lootBoxKeyTombolaID": "2",
+    "sortOrder": "5"
+  },
+  "3": {
+    "lootBoxID": "9",
+    "lootBoxTypeID": "1",
+    "name": "MysteryBoxGold",
+    "rarity": "1",
+    "lootBoxTombolaID": "3",
+    "draws": "1",
+    "lootBoxKeyTombolaID": "3",
+    "sortOrder": "9"
+  },
+  "4": {
+    "lootBoxID": "13",
+    "lootBoxTypeID": "1",
+    "name": "SummerBox2022",
+    "rarity": "1",
+    "lootBoxTombolaID": "4",
+    "draws": "1",
+    "lootBoxKeyTombolaID": "4",
+    "sortOrder": "13"
+  },
+  "5": {
+    "lootBoxID": "14",
+    "lootBoxTypeID": "1",
+    "name": "SummerBox2022",
+    "rarity": "2",
+    "lootBoxTombolaID": "4",
+    "draws": "2",
+    "lootBoxKeyTombolaID": "4",
+    "sortOrder": "14"
+  },
+  "6": {
+    "lootBoxID": "15",
+    "lootBoxTypeID": "1",
+    "name": "SummerBox2022",
+    "rarity": "3",
+    "lootBoxTombolaID": "4",
+    "draws": "3",
+    "lootBoxKeyTombolaID": "4",
+    "sortOrder": "15"
+  },
+  "7": {
+    "lootBoxID": "16",
+    "lootBoxTypeID": "1",
+    "name": "SummerBox2022",
+    "rarity": "4",
+    "lootBoxTombolaID": "4",
+    "draws": "4",
+    "lootBoxKeyTombolaID": "4",
+    "sortOrder": "16"
+  }
+}

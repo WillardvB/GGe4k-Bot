@@ -1,0 +1,658 @@
+{
+  "1": {
+    "effectTypeID": "0",
+    "name": "fameDefenseBonus"
+  },
+  "2": {
+    "effectTypeID": "1",
+    "name": "conquerSpeedBonus"
+  },
+  "3": {
+    "effectTypeID": "2",
+    "name": "lootReduction"
+  },
+  "4": {
+    "effectTypeID": "3",
+    "name": "perceptionBonus"
+  },
+  "5": {
+    "effectTypeID": "4",
+    "name": "fireBrigadeBoost"
+  },
+  "6": {
+    "effectTypeID": "5",
+    "name": "occupationTimeReduction"
+  },
+  "7": {
+    "effectTypeID": "6",
+    "name": "wallBonus"
+  },
+  "8": {
+    "effectTypeID": "7",
+    "name": "gateBonus"
+  },
+  "9": {
+    "effectTypeID": "8",
+    "name": "moatBonus"
+  },
+  "10": {
+    "effectTypeID": "9",
+    "name": "meleeBonus"
+  },
+  "11": {
+    "effectTypeID": "10",
+    "name": "rangeBonus"
+  },
+  "12": {
+    "effectTypeID": "11",
+    "name": "npcDefenseBonus"
+  },
+  "13": {
+    "effectTypeID": "12",
+    "name": "defenseUnitAmountWall"
+  },
+  "14": {
+    "effectTypeID": "47",
+    "name": "DefenseSupportUnits"
+  },
+  "15": {
+    "effectTypeID": "13",
+    "name": "fameOffenseBonus"
+  },
+  "16": {
+    "effectTypeID": "14",
+    "name": "honorBonus"
+  },
+  "17": {
+    "effectTypeID": "15",
+    "name": "speedBonus"
+  },
+  "18": {
+    "effectTypeID": "16",
+    "name": "lootBonus"
+  },
+  "19": {
+    "effectTypeID": "17",
+    "name": "stealthBonus"
+  },
+  "20": {
+    "effectTypeID": "18",
+    "name": "fireBoost"
+  },
+  "21": {
+    "effectTypeID": "19",
+    "name": "wallReduction"
+  },
+  "22": {
+    "effectTypeID": "20",
+    "name": "gateReduction"
+  },
+  "23": {
+    "effectTypeID": "21",
+    "name": "moatReduction"
+  },
+  "24": {
+    "effectTypeID": "22",
+    "name": "magicFindBonus"
+  },
+  "25": {
+    "effectTypeID": "23",
+    "name": "offensiveMeleeBonus"
+  },
+  "26": {
+    "effectTypeID": "24",
+    "name": "offensiveRangeBonus"
+  },
+  "27": {
+    "effectTypeID": "25",
+    "name": "smashChance"
+  },
+  "28": {
+    "effectTypeID": "26",
+    "name": "travelCostReduction"
+  },
+  "29": {
+    "effectTypeID": "27",
+    "name": "cooldownReduction"
+  },
+  "30": {
+    "effectTypeID": "28",
+    "name": "attackUnitAmountFlank"
+  },
+  "31": {
+    "effectTypeID": "29",
+    "name": "skin"
+  },
+  "32": {
+    "effectTypeID": "30",
+    "name": "skinBaron"
+  },
+  "33": {
+    "effectTypeID": "31",
+    "name": "defenseBonus"
+  },
+  "34": {
+    "effectTypeID": "49",
+    "name": "DefenseBoostFront"
+  },
+  "35": {
+    "effectTypeID": "50",
+    "name": "DefenseBoostFlank"
+  },
+  "36": {
+    "effectTypeID": "32",
+    "name": "defenseBoostYard"
+  },
+  "37": {
+    "effectTypeID": "33",
+    "name": "attackBoostYard"
+  },
+  "38": {
+    "effectTypeID": "53",
+    "name": "AttackBoostFront"
+  },
+  "39": {
+    "effectTypeID": "54",
+    "name": "AttackBoostFlank"
+  },
+  "40": {
+    "effectTypeID": "34",
+    "name": "attackUnitAmountFront"
+  },
+  "41": {
+    "effectTypeID": "51",
+    "name": "AttackSupportUnits"
+  },
+  "42": {
+    "effectTypeID": "35",
+    "name": "hideoutCapacity"
+  },
+  "43": {
+    "effectTypeID": "36",
+    "name": "attackBonus"
+  },
+  "44": {
+    "effectTypeID": "37",
+    "name": "lootCapacity"
+  },
+  "45": {
+    "effectTypeID": "38",
+    "name": "returnTravelBoost"
+  },
+  "46": {
+    "effectTypeID": "39",
+    "name": "supportSpeedBonus"
+  },
+  "47": {
+    "effectTypeID": "40",
+    "name": "stationingSpeedBonus"
+  },
+  "48": {
+    "effectTypeID": "41",
+    "name": "stationingTravelCostReduction"
+  },
+  "49": {
+    "effectTypeID": "42",
+    "name": "supportTravelCostReduction"
+  },
+  "50": {
+    "effectTypeID": "43",
+    "name": "travelCostReductionPVP"
+  },
+  "51": {
+    "effectTypeID": "44",
+    "name": "speedBonusPVP"
+  },
+  "52": {
+    "effectTypeID": "45",
+    "name": "returnTravelBoostPVP"
+  },
+  "53": {
+    "effectTypeID": "46",
+    "name": "defenseUnitAmountWallPVP"
+  },
+  "54": {
+    "effectTypeID": "48",
+    "name": "marketSpeedBonus"
+  },
+  "55": {
+    "effectTypeID": "52",
+    "name": "resourceDepositBoost"
+  },
+  "56": {
+    "effectTypeID": "55",
+    "name": "lootBonusPvP"
+  },
+  "57": {
+    "effectTypeID": "56",
+    "name": "memberCount"
+  },
+  "58": {
+    "effectTypeID": "69",
+    "name": "foodProductionBonus"
+  },
+  "59": {
+    "effectTypeID": "70",
+    "name": "recruitmentCostDecrease"
+  },
+  "60": {
+    "effectTypeID": "71",
+    "name": "recuitmentSpeedBoost"
+  },
+  "61": {
+    "effectTypeID": "72",
+    "name": "toolProductionSpeedBoost"
+  },
+  "62": {
+    "effectTypeID": "73",
+    "name": "spyCountBoost"
+  },
+  "63": {
+    "effectTypeID": "74",
+    "name": "publicOrderBoost"
+  },
+  "64": {
+    "effectTypeID": "75",
+    "name": "coinLootBoost"
+  },
+  "65": {
+    "effectTypeID": "76",
+    "name": "factionPointGainBoost"
+  },
+  "66": {
+    "effectTypeID": "77",
+    "name": "allianceFameGainBoost"
+  },
+  "67": {
+    "effectTypeID": "78",
+    "name": "auxiliaryCapacityBoost"
+  },
+  "68": {
+    "effectTypeID": "79",
+    "name": "enableUnits"
+  },
+  "69": {
+    "effectTypeID": "57",
+    "name": "enableBuildings"
+  },
+  "70": {
+    "effectTypeID": "80",
+    "name": "foodProductionBoost"
+  },
+  "71": {
+    "effectTypeID": "81",
+    "name": "islandKing"
+  },
+  "72": {
+    "effectTypeID": "82",
+    "name": "moraleBoost"
+  },
+  "73": {
+    "effectTypeID": "83",
+    "name": "enemyFameBoost"
+  },
+  "74": {
+    "effectTypeID": "84",
+    "name": "enemyLootBoost"
+  },
+  "75": {
+    "effectTypeID": "85",
+    "name": "recruitmentCostDecreaseAll"
+  },
+  "76": {
+    "effectTypeID": "86",
+    "name": "recuitmentSpeedBoostAll"
+  },
+  "77": {
+    "effectTypeID": "87",
+    "name": "unlockSkinIDs"
+  },
+  "78": {
+    "effectTypeID": "88",
+    "name": "battleXPBoost"
+  },
+  "79": {
+    "effectTypeID": "89",
+    "name": "buildingXPBoost"
+  },
+  "80": {
+    "effectTypeID": "90",
+    "name": "disableUnits"
+  },
+  "81": {
+    "effectTypeID": "91",
+    "name": "espionageSpeedBoost"
+  },
+  "82": {
+    "effectTypeID": "92",
+    "name": "woodProductionBoost"
+  },
+  "83": {
+    "effectTypeID": "93",
+    "name": "stoneProductionBoost"
+  },
+  "84": {
+    "effectTypeID": "94",
+    "name": "taxCollectorBoost"
+  },
+  "85": {
+    "effectTypeID": "95",
+    "name": "taxCollectorNoRubies"
+  },
+  "86": {
+    "effectTypeID": "96",
+    "name": "marketCarriageCapacityBoost"
+  },
+  "87": {
+    "effectTypeID": "97",
+    "name": "amountGuardsBoost"
+  },
+  "88": {
+    "effectTypeID": "98",
+    "name": "amountSpiesBonus"
+  },
+  "89": {
+    "effectTypeID": "99",
+    "name": "amountPeasantBoost"
+  },
+  "90": {
+    "effectTypeID": "100",
+    "name": "amountPopulationBoost"
+  },
+  "91": {
+    "effectTypeID": "101",
+    "name": "amountPopulationBonus"
+  },
+  "92": {
+    "effectTypeID": "102",
+    "name": "unitSpeedBoost"
+  },
+  "93": {
+    "effectTypeID": "103",
+    "name": "travelKingdomTroopTimeBoost"
+  },
+  "94": {
+    "effectTypeID": "104",
+    "name": "travelKingdomMarketTimeBoost"
+  },
+  "95": {
+    "effectTypeID": "105",
+    "name": "fameBoost"
+  },
+  "96": {
+    "effectTypeID": "106",
+    "name": "hospitalSlotBonus"
+  },
+  "97": {
+    "effectTypeID": "107",
+    "name": "researchBoost"
+  },
+  "98": {
+    "effectTypeID": "108",
+    "name": "researchBonus"
+  },
+  "99": {
+    "effectTypeID": "109",
+    "name": "forgeCostBoost"
+  },
+  "100": {
+    "effectTypeID": "110",
+    "name": "recruitmentTimeBonus"
+  },
+  "101": {
+    "effectTypeID": "111",
+    "name": "toolProductionTimeBonus"
+  },
+  "102": {
+    "effectTypeID": "112",
+    "name": "woodProductionBonus"
+  },
+  "103": {
+    "effectTypeID": "113",
+    "name": "stoneProductionBonus"
+  },
+  "104": {
+    "effectTypeID": "114",
+    "name": "lootCapacityBoost"
+  },
+  "105": {
+    "effectTypeID": "115",
+    "name": "battleXPBonus"
+  },
+  "106": {
+    "effectTypeID": "116",
+    "name": "enableConstructionItemRecipes"
+  },
+  "107": {
+    "effectTypeID": "117",
+    "name": "toolProductionSpeedBoostAll"
+  },
+  "108": {
+    "effectTypeID": "118",
+    "name": "strongerPeasant"
+  },
+  "109": {
+    "effectTypeID": "119",
+    "name": "hospitalCapacityBonus"
+  },
+  "110": {
+    "effectTypeID": "120",
+    "name": "premiumUnitHealingBoost"
+  },
+  "111": {
+    "effectTypeID": "121",
+    "name": "nonPremiumUnitHealingBoost"
+  },
+  "112": {
+    "effectTypeID": "122",
+    "name": "transportTaxDecreaseBoost"
+  },
+  "113": {
+    "effectTypeID": "123",
+    "name": "publicOrderBonus"
+  },
+  "114": {
+    "effectTypeID": "124",
+    "name": "freeSkipBonus"
+  },
+  "115": {
+    "effectTypeID": "125",
+    "name": "researchCostsBoost"
+  },
+  "116": {
+    "effectTypeID": "126",
+    "name": "baseRecruitmentTimeBoost"
+  },
+  "117": {
+    "effectTypeID": "127",
+    "name": "recruitmentSlotsBonus"
+  },
+  "118": {
+    "effectTypeID": "128",
+    "name": "buildingCostsBoost"
+  },
+  "119": {
+    "effectTypeID": "129",
+    "name": "gloryDecayBoost"
+  },
+  "120": {
+    "effectTypeID": "143",
+    "name": "ironProductionBoost"
+  },
+  "121": {
+    "effectTypeID": "140",
+    "name": "coalProductionBoost"
+  },
+  "122": {
+    "effectTypeID": "141",
+    "name": "oilProductionBoost"
+  },
+  "123": {
+    "effectTypeID": "142",
+    "name": "glassProductionBoost"
+  },
+  "124": {
+    "effectTypeID": "130",
+    "name": "charmBoost"
+  },
+  "125": {
+    "effectTypeID": "131",
+    "name": "nomadTabletBoost"
+  },
+  "126": {
+    "effectTypeID": "132",
+    "name": "reputationPointGainBoost"
+  },
+  "127": {
+    "effectTypeID": "133",
+    "name": "samuraiTokenBoost"
+  },
+  "128": {
+    "effectTypeID": "134",
+    "name": "khanMedalBoost"
+  },
+  "129": {
+    "effectTypeID": "135",
+    "name": "ragePointGainBoost"
+  },
+  "130": {
+    "effectTypeID": "136",
+    "name": "featureAutoSell"
+  },
+  "131": {
+    "effectTypeID": "137",
+    "name": "featureAutoSpy"
+  },
+  "132": {
+    "effectTypeID": "138",
+    "name": "foodCapacityBonus"
+  },
+  "133": {
+    "effectTypeID": "139",
+    "name": "CollectorBoost"
+  },
+  "134": {
+    "effectTypeID": "144",
+    "name": "tempServerCollectorBoost"
+  },
+  "135": {
+    "effectTypeID": "145",
+    "name": "buildSpeedBoost"
+  },
+  "136": {
+    "effectTypeID": "146",
+    "name": "classicResourceProductionBonus"
+  },
+  "137": {
+    "effectTypeID": "147",
+    "name": "kingdomResourceProductionBonus"
+  },
+  "138": {
+    "effectTypeID": "148",
+    "name": "attackBonusUnit"
+  },
+  "139": {
+    "effectTypeID": "149",
+    "name": "speedBoostUnit"
+  },
+  "140": {
+    "effectTypeID": "150",
+    "name": "lootValueBoostUnit"
+  },
+  "141": {
+    "effectTypeID": "151",
+    "name": "marketCarriageCapacityBonus"
+  },
+  "142": {
+    "effectTypeID": "152",
+    "name": "foodConsumptionBoost"
+  },
+  "143": {
+    "effectTypeID": "154",
+    "name": "fameBoostUnit"
+  },
+  "144": {
+    "effectTypeID": "155",
+    "name": "BGCollectorBoost"
+  },
+  "145": {
+    "effectTypeID": "156",
+    "name": "additionalWaves"
+  },
+  "146": {
+    "effectTypeID": "157",
+    "name": "burningChanceBonus"
+  },
+  "147": {
+    "effectTypeID": "158",
+    "name": "tonicBoost"
+  },
+  "148": {
+    "effectTypeID": "160",
+    "name": "MeadProductionIncrease"
+  },
+  "149": {
+    "effectTypeID": "161",
+    "name": "unboostedMeadProduction"
+  },
+  "150": {
+    "effectTypeID": "162",
+    "name": "HoneyProductionIncrease"
+  },
+  "151": {
+    "effectTypeID": "163",
+    "name": "unboostedHoneyProduction"
+  },
+  "152": {
+    "effectTypeID": "164",
+    "name": "meadProductionBoost"
+  },
+  "153": {
+    "effectTypeID": "165",
+    "name": "honeyProductionBoost"
+  },
+  "154": {
+    "effectTypeID": "166",
+    "name": "meadCapacityBonus"
+  },
+  "155": {
+    "effectTypeID": "167",
+    "name": "honeyCapacityBonus"
+  },
+  "156": {
+    "effectTypeID": "168",
+    "name": "currencyLootBoost"
+  },
+  "157": {
+    "effectTypeID": "169",
+    "name": "enableExpansion"
+  },
+  "158": {
+    "effectTypeID": "170",
+    "name": "enableCraftingRecipes"
+  },
+  "159": {
+    "effectTypeID": "172",
+    "name": "killAttackingMeleeTroopsYard"
+  },
+  "160": {
+    "effectTypeID": "173",
+    "name": "killAttackingRangedTroopsYard"
+  },
+  "161": {
+    "effectTypeID": "174",
+    "name": "killAttackingAnyTroopsYard"
+  },
+  "162": {
+    "effectTypeID": "175",
+    "name": "killDefendingMeleeTroopsYard"
+  },
+  "163": {
+    "effectTypeID": "176",
+    "name": "killDefendingRangedTroopsYard"
+  },
+  "164": {
+    "effectTypeID": "177",
+    "name": "killDefendingAnyTroopsYard"
+  }
+}

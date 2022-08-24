@@ -1,26 +1,7 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
-const Logger = require("../../../tools/Logger");
 const num = require("../../../tools/number");
 const translationData = require('./../../../ingame_translations/nl.json');
-
-let allianceInfoVO = {
-    allianceId: "",
-    allianceName: "",
-    allianceDescription: "",
-    languageId: "",
-    memberLevel: 0,
-    memberList: [],
-    allianceStatusToOwnAlliance: null,
-    allianceFamePoints: 0,
-    allianceFamePointsHighestReached: -1,
-    canInvitedForHardPact: false,
-    canInvitedForSoftPact: false,
-    isSearchingMembers: null,
-    landmarks: [],
-    isOpenAlliance: false,
-    freeRenames: 0,
-    might: 0,
-}
+const { empireClient } = require('./../../../empireClient');
 
 module.exports = {
     name: 'bondgenootschap info',
@@ -32,36 +13,25 @@ module.exports = {
     async execute(interaction) {
         try {
             let allianceName = interaction.options.getString('naam').toLowerCase().trim();
-            let _alliances = require("./../../../e4kserver/data").alliances;
-            allianceInfoVO = null;
-            for (let allianceId in _alliances) {
-                let _alliance = _alliances[allianceId];
-                if (_alliance.allianceName.toLowerCase() == allianceName) {
-                    allianceInfoVO = _alliance;
-                    break;
-                }
-            }
-            if (allianceInfoVO == null) {
-                await interaction.followUp({ content: "Sorry, ik heb het bg niet gevonden!" });
-                return;
-            }
-            let info = "Leden aantal: " + allianceInfoVO.memberList.length + "\n" +
-                "Roempunten: " + num.formatNum(allianceInfoVO.allianceFamePoints) + "\n" +
-                "Level: " + allianceInfoVO.memberLevel + "\n" +
-                "Macht: " + num.formatNum(allianceInfoVO.might) + "\n" +
-                "Taal: " + translationData.generic_flash.languages["generic_language_" + allianceInfoVO.languageId] + "\n" +
-                "Is open BG: " + allianceInfoVO.isOpenAlliance + "\n" +
-                "*id: " + allianceInfoVO.allianceId + "*";
+            let alliance = await empireClient.alliances.find(allianceName);
+            let info = "Leden aantal: " + alliance.memberList.length + "\n" +
+                "Roempunten: " + num.formatNum(alliance.allianceFamePoints) + "\n" +
+                "Level: " + alliance.memberLevel + "\n" +
+                "Macht: " + num.formatNum(alliance.might) + "\n" +
+                "Taal: " + translationData.generic_flash.languages["generic_language_" + alliance.languageId] + "\n" +
+                "Is open BG: " + alliance.isOpenAlliance + "\n" +
+                "*id: " + alliance.allianceId + "*";
             let embed = new MessageEmbed()
                 .setTimestamp()
                 .setColor("#000000")
-                .setTitle(`**${allianceInfoVO.allianceName}**`)
-                .setDescription("```\n" + allianceInfoVO.allianceDescription + "```")
+                .setTitle(`**${alliance.allianceName}**`)
+                .setDescription("```\n" + alliance.allianceDescription + "```")
                 .addField(translationData.generic.ringmenu_info, info);
             await interaction.followUp({ embeds: [embed] });
         }
         catch (e) {
-            Logger.logError(e);
+            await interaction.followUp({ content: e });
+            return;
         }
     }
 }

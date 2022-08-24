@@ -1,0 +1,86 @@
+{
+  "1": {
+    "eventAutoScalingLegendID": "1",
+    "eventID": "71",
+    "playerLegendSkillEffect": "attackMeleeBonus",
+    "mappingLegendSkillEffect": "defenseMeleeBonus"
+  },
+  "2": {
+    "eventAutoScalingLegendID": "2",
+    "eventID": "71",
+    "playerLegendSkillEffect": "attackRangeBonus",
+    "mappingLegendSkillEffect": "defenseRangeBonus"
+  },
+  "3": {
+    "eventAutoScalingLegendID": "3",
+    "eventID": "71",
+    "playerLegendSkillEffect": "gateReduction",
+    "mappingLegendSkillEffect": "gateBonus"
+  },
+  "4": {
+    "eventAutoScalingLegendID": "4",
+    "eventID": "71",
+    "playerLegendSkillEffect": "wallReduction",
+    "mappingLegendSkillEffect": "wallBonus"
+  },
+  "5": {
+    "eventAutoScalingLegendID": "5",
+    "eventID": "71",
+    "playerLegendSkillEffect": "attackYardBonus",
+    "mappingLegendSkillEffect": "defenseYardBonus"
+  },
+  "6": {
+    "eventAutoScalingLegendID": "6",
+    "eventID": "71",
+    "playerLegendSkillEffect": "moatReduction",
+    "mappingLegendSkillEffect": "moatBonus"
+  },
+  "7": {
+    "eventAutoScalingLegendID": "7",
+    "eventID": "71",
+    "playerLegendSkillEffect": "attackBonus",
+    "mappingLegendSkillEffect": "defenseBonus"
+  },
+  "8": {
+    "eventAutoScalingLegendID": "8",
+    "eventID": "103",
+    "playerLegendSkillEffect": "attackMeleeBonus",
+    "mappingLegendSkillEffect": "defenseMeleeBonus"
+  },
+  "9": {
+    "eventAutoScalingLegendID": "9",
+    "eventID": "103",
+    "playerLegendSkillEffect": "attackRangeBonus",
+    "mappingLegendSkillEffect": "defenseRangeBonus"
+  },
+  "10": {
+    "eventAutoScalingLegendID": "10",
+    "eventID": "103",
+    "playerLegendSkillEffect": "gateReduction",
+    "mappingLegendSkillEffect": "gateBonus"
+  },
+  "11": {
+    "eventAutoScalingLegendID": "11",
+    "eventID": "103",
+    "playerLegendSkillEffect": "wallReduction",
+    "mappingLegendSkillEffect": "wallBonus"
+  },
+  "12": {
+    "eventAutoScalingLegendID": "12",
+    "eventID": "103",
+    "playerLegendSkillEffect": "attackYardBonus",
+    "mappingLegendSkillEffect": "defenseYardBonus"
+  },
+  "13": {
+    "eventAutoScalingLegendID": "13",
+    "eventID": "103",
+    "playerLegendSkillEffect": "moatReduction",
+    "mappingLegendSkillEffect": "moatBonus"
+  },
+  "14": {
+    "eventAutoScalingLegendID": "14",
+    "eventID": "103",
+    "playerLegendSkillEffect": "attackBonus",
+    "mappingLegendSkillEffect": "defenseBonus"
+  }
+}

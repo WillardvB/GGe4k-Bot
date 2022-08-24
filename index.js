@@ -23,7 +23,6 @@ require('./myMongoDB.js').execute(mongoClient);
 
 client.login(process.env.dcToken);
 
-
 client.events = new Collection();
 client.slashCommands = new Collection();
 const eventFiles = fs.readdirSync(__dirname + '/events').filter(file => file.endsWith('.js'));

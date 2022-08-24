@@ -18,6 +18,7 @@
     "canvas": "^2.9.3",
     "discord-api-types": "^0.24.0",
     "discord.js": "^13.3.1",
+    "empirejs": "github:476f6f6467616d6553747564696f73/empirejs",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "jsdom": "^18.1.1",

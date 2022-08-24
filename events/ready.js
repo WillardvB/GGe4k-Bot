@@ -1,14 +1,12 @@
 const { nlserver } = require('./../data/kanalen.json');
 const { Client } = require('discord.js');
-let client1;
 
 module.exports = {
     name: 'ready',
     description: 'Regelt ready event',
     execute(client) {
         require('./../tools/Logger').execute(client);
-        require('./../e4kserver/connection').execute();
-        client1 = client;
+        require('./../empireClient').connect();
         weerOnline(client);
     }
 }

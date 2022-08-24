@@ -1,0 +1,26 @@
+{
+  "1": {
+    "currencyID": "1",
+    "currencyBoosterName": "khanTabletBooster"
+  },
+  "2": {
+    "currencyID": "7",
+    "currencyBoosterName": "samuraiTokenBooster"
+  },
+  "3": {
+    "currencyID": "10",
+    "currencyBoosterName": "khanMedalBooster"
+  },
+  "4": {
+    "currencyID": "11",
+    "currencyBoosterName": "shapeShifterCharmBooster"
+  },
+  "5": {
+    "currencyID": "12",
+    "currencyBoosterName": "shapeShifterInsigniaBooster"
+  },
+  "6": {
+    "currencyID": "3",
+    "currencyBoosterName": "pearlBooster"
+  }
+}

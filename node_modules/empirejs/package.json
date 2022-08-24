@@ -1,0 +1,34 @@
+{
+  "name": "empirejs",
+  "version": "1.0.0",
+  "description": "A powerful JavaScript library for interacting with the server of Goodgame Empire: Four Kingdoms",
+  "main": "./src/index.js",
+  "types": "./typings/index.d.ts",
+  "scripts": {
+    "test": "node client.js"
+  },
+  "files": [
+    "src",
+    "typings"
+  ],
+  "directories": {
+    "lib": "src"
+  },
+  "keywords": [
+    "Goodgame Studios",
+    "Empire: Four Kingdoms",
+    "empire",
+    "e4k",
+    "node"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/476f6f6467616d6553747564696f73/empirejs.git"
+  },
+  "author": "WillardvB",
+  "license": "ISC",
+  "exports": "./src/index.js",
+  "dependencies": {
+    "node-fetch": "^3.2.10"
+  }
+}

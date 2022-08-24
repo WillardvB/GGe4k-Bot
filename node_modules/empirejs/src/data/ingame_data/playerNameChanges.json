@@ -1,0 +1,74 @@
+{
+  "1": {
+    "nameChangeID": "1",
+    "costC2": "0"
+  },
+  "2": {
+    "nameChangeID": "2",
+    "costC2": "10000"
+  },
+  "3": {
+    "nameChangeID": "3",
+    "costC2": "12500"
+  },
+  "4": {
+    "nameChangeID": "4",
+    "costC2": "15000"
+  },
+  "5": {
+    "nameChangeID": "5",
+    "costC2": "17500"
+  },
+  "6": {
+    "nameChangeID": "6",
+    "costC2": "20000"
+  },
+  "7": {
+    "nameChangeID": "7",
+    "costC2": "22500"
+  },
+  "8": {
+    "nameChangeID": "8",
+    "costC2": "25000"
+  },
+  "9": {
+    "nameChangeID": "9",
+    "costC2": "27500"
+  },
+  "10": {
+    "nameChangeID": "10",
+    "costC2": "30000"
+  },
+  "11": {
+    "nameChangeID": "11",
+    "costC2": "32500"
+  },
+  "12": {
+    "nameChangeID": "12",
+    "costC2": "35000"
+  },
+  "13": {
+    "nameChangeID": "13",
+    "costC2": "37500"
+  },
+  "14": {
+    "nameChangeID": "14",
+    "costC2": "40000"
+  },
+  "15": {
+    "nameChangeID": "15",
+    "costC2": "42500"
+  },
+  "16": {
+    "nameChangeID": "16",
+    "costC2": "45000"
+  },
+  "17": {
+    "nameChangeID": "17",
+    "costC2": "47500"
+  },
+  "18": {
+    "nameChangeID": "18",
+    "costC2": "50000"
+  }
+}

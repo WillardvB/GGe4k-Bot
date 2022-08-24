@@ -1,0 +1,22 @@
+{
+  "1": {
+    "ticketNumber": "1",
+    "ticketPriceC2": "4000"
+  },
+  "2": {
+    "ticketNumber": "2",
+    "ticketPriceC2": "8000"
+  },
+  "3": {
+    "ticketNumber": "3",
+    "ticketPriceC2": "15000"
+  },
+  "4": {
+    "ticketNumber": "4",
+    "ticketPriceC2": "30000"
+  },
+  "5": {
+    "ticketNumber": "5",
+    "ticketPriceC2": "50000"
+  }
+}

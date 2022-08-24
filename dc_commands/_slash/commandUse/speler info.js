@@ -1,57 +1,8 @@
 const { CommandInteraction, MessageEmbed } = require("discord.js");
-const Logger = require("../../../tools/Logger");
+const { empireClient } = require("../../../empireClient");
 const num = require("../../../tools/number");
 const translationData = require('./../../../ingame_translations/nl.json');
-
-let playerVO = {
-    userData: {},
-    playerInfoModel: {},
-    kingdomData: {},
-    playerId: 0,
-    playerName: "",
-    playerLevel: 0,
-    paragonLevel: 0,
-    crest: {},
-    remainingNoobTime: 0,
-    noobTimeOffset: 0,
-    remainingPeaceTime: 0,
-    peaceTimeOffset: 0,
-    honor: 0,
-    famePoints: 0,
-    isRuin: false,
-    allianceID: -1,
-    allianceRank: 0,
-    allianceName: "",
-    allianceFame: 0,
-    isSearchingAlliance: false,
-    isOutpostOwner: false,
-    isNPC: false,
-    castlePosList: [{}],
-    villagePosList: [{}],
-    hasPremiumFlag: false,
-    hasVIPFlag: false,
-    isDummy: false,
-    achievementPoints: 0,
-    relocateDurationEndTimestamp: 0,
-    might: 0,
-    factionID: 0,
-    factionMainCampID: 0,
-    factionProtectionStatus: 0,
-    factionProtectionEndTime: 0,
-    factionNoobProtectionEndTime: 0,
-    factionIsSpectator: false,
-    titleVO: {},
-    gameTickSignal: null,
-    namesFactory: {},
-    nameTextId: "",
-    prefixTitleId: 0,
-    suffixTitleId: 0,
-    staticAreaName: "",
-    castles: {},
-    villages: { public: [], private: [] },
-    kingsTowers: [],
-    monuments: [],
-};
+const kingdoms = [0, 2, 1, 3, 4, 10];
 
 module.exports = {
     name: 'speler info',
@@ -70,46 +21,33 @@ module.exports = {
  * @param {CommandInteraction} interaction
  * @param {boolean} retried
  */
-async function _execute(interaction, retried = false) {
+async function _execute(interaction) {
     try {
         let playerName = interaction.options.getString('naam').trim();
-        playerName = playerName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        let _players = require("./../../../e4kserver/data").players;
-        playerVO = null;
-        for (let playerId in _players) {
-            let _player = _players[playerId];
-            let _playerName = _player.playerName.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            if (_playerName.toLowerCase() == playerName.toLowerCase()) {
-                playerVO = _player;
-                break;
-            }
-        }
-        if (playerVO == null) {
-            if (retried) {
-                await interaction.followUp({ content: "Sorry, ik heb de speler nog niet gevonden!\nCheck of je de naam goed heb gespeld." });
-            }
-            else {
-                require('./../../../e4kserver/commands/searchPlayerByName').execute(playerName);
-                setTimeout(function () {
-                    _execute(interaction, true);
-                }, 2500);
-            }
-            return;
-        }
-        let bgInfo = playerVO.allianceName == "" ? "" : playerVO.allianceName + " (" + translationData.dialogs["dialog_alliance_rank" + playerVO.allianceRank] + ")";
+        const player = await empireClient.players.find(playerName);
+        let bgInfo = player.allianceName === "" ? "" : player.allianceName + " (" + translationData.dialogs["dialog_alliance_rank" + player.allianceRank] + ")";
         let castleListString = "";
-        let castleKeys = Object.keys(playerVO.castles);
-        for (let i = 0; i < castleKeys.length; i++) {
-            let _key = parseInt(castleKeys[i]);
-            /** @type Array */
-            let _castlesInKId = playerVO.castles[_key];
-            if (i === 0) _castlesInKId = _castlesInKId.concat(playerVO.kingsTowers, playerVO.monuments);
+        for (let i in kingdoms) {
+            let _castlesInKId = [];
+            for (let j in player.castles) {
+                if (player.castles[j].kingdomId === kingdoms[i]) {
+                    _castlesInKId.push(player.castles[j]);
+                }
+            }
+            if(kingdoms[i] === 0){
+                for(let j in player.kingstowers){
+                    _castlesInKId.push(player.kingstowers[j].kingstower);
+                }
+                for(let j in player.monuments){
+                    _castlesInKId.push(player.monuments[j].monument);
+                }
+            }
             _castlesInKId.sort((x, y) => { return x.customName.localeCompare(y.customName); });
             _castlesInKId.sort((x, y) => {
                 if (x.areaType === y.areaType) return 0;
-                if (x.areaType === 1) return -1;
+                if (x.areaType === 1 || x.areaType === 12) return -1;
                 if (x.areaType === 3) {
-                    if (y.areaType === 1 || y.areaType === 4) {
+                    if (y.areaType === 1 || y.areaType === 12 || y.areaType === 4) {
                         return 1;
                     }
                     else return -1;
@@ -134,9 +72,9 @@ async function _execute(interaction, retried = false) {
                 }
                 return 1;
             })
-            if (i !== 0) castleListString += "\n";
+            
             let kingdom = "_";
-            switch (_key) {
+            switch (kingdoms[i]) {
                 case 0: kingdom = translationData.generic.kingdomName_Classic; break;
                 case 2: kingdom = translationData.generic.kingdomName_Icecream; break;
                 case 1: kingdom = translationData.generic.kingdomName_Dessert; break;
@@ -144,8 +82,9 @@ async function _execute(interaction, retried = false) {
                 case 4: kingdom = translationData.dialogs.dialog_island_header; break;
                 case 10: kingdom = translationData.generic.event_kingdom_berimond; break;
             }
+
             let castles = "";
-            for (let i = 0; i < _castlesInKId.length; i++) {
+            for (let i in _castlesInKId) {
                 let _castle = _castlesInKId[i];
                 let _castleType = "_";
                 switch (parseInt(_castle.areaType)) {
@@ -158,31 +97,33 @@ async function _execute(interaction, retried = false) {
                     case 26: _castleType = translationData.generic.monument; break;
                     default: _castleType = _castle.areaType;
                 }
-                castles += `\n${_castle.customName} (${_castle.posX}/${_castle.posY}) (${_castleType})`;
+                castles += `\n${_castle.customName} (${_castle.position.X}/${_castle.position.Y}) (${_castleType})`;
             }
-            if(castles.trim() !== "")
+
+            if (i !== 0) castleListString += "\n";
+            if (castles.trim() !== "")
                 castleListString += `**${kingdom}:**${castles}`;
         }
-        let description = "Level: " + (playerVO.playerLevel == 70 ? playerVO.playerLevel + "-" + playerVO.paragonLevel : playerVO.playerLevel) + "\n" +
+        let description = "Level: " + (player.playerLevel == 70 ? player.playerLevel + "-" + player.paragonLevel : player.playerLevel) + "\n" +
             "BG: " + bgInfo + "\n" +
-            "*id: " + playerVO.playerId + "*";
-        let punten = translationData.dialogs.dialog_fame_fame + ": " + num.formatNum(playerVO.famePoints) + "\n" +
-            translationData.generic.honorPoints + ": " + num.formatNum(playerVO.honor) + "\n" +
-            translationData.dialogs.mightPoints + ": " + num.formatNum(playerVO.might);
+            "*id: " + player.playerId + "*";
+        let punten = translationData.dialogs.dialog_fame_fame + ": " + num.formatNum(player.famePoints) + "\n" +
+            translationData.generic.honorPoints + ": " + num.formatNum(player.honor) + "\n" +
+            translationData.dialogs.mightPoints + ": " + num.formatNum(player.might);
         let embed = new MessageEmbed()
             .setTimestamp()
             .setColor("#000000")
-            .setTitle(`**${playerVO.playerName}**`)
+            .setTitle(`**${player.playerName}**`)
             .setDescription(description)
             .addField("Punten", punten)
             .addField("Kasteelposities", castleListString);
-        if (playerVO.villages.private.length !== 0 || playerVO.villages.public.length !== 0) {
+        if (player.villages.private.length !== 0 || player.villages.public.length !== 0) {
             console.log("[Speler info:192] Missing dorp en eiland command!");
             //embed.addField("Dorpen en eilanden", "Zie /speler dorpen voor dorp en eiland informatie");
         }
         await interaction.followUp({ embeds: [embed] });
     }
     catch (e) {
-        Logger.logError(e);
+        await interaction.followUp({ content: e });
     }
 }
