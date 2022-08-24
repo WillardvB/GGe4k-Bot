@@ -29,6 +29,7 @@ module.exports = {
      * @param {MongoClient} mongoClient
      */
     async execute(mongoClient) {
+        return;
         client = mongoClient;
         try {
             await client.connect();
