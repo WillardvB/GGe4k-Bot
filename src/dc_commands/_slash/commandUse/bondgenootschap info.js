@@ -1,7 +1,7 @@
-const { CommandInteraction, MessageEmbed } = require("discord.js");
+const { CommandInteraction, EmbedBuilder } = require("discord.js");
 const num = require("../../../tools/number");
 const translationData = require('./../../../ingame_translations/nl.json');
-const { empireClient } = require('./../../../empireClient');
+const empire = require('./../../../empireClient');
 
 module.exports = {
     name: 'bondgenootschap info',
@@ -13,7 +13,7 @@ module.exports = {
     async execute(interaction) {
         try {
             let allianceName = interaction.options.getString('naam').toLowerCase().trim();
-            let alliance = await empireClient.alliances.find(allianceName);
+            const alliance = await empire.client.alliances.find(allianceName);
             let info = "Leden aantal: " + alliance.memberList.length + "\n" +
                 "Roempunten: " + num.formatNum(alliance.allianceFamePoints) + "\n" +
                 "Level: " + alliance.memberLevel + "\n" +
@@ -21,7 +21,7 @@ module.exports = {
                 "Taal: " + translationData.generic_flash.languages["generic_language_" + alliance.languageId] + "\n" +
                 "Is open BG: " + alliance.isOpenAlliance + "\n" +
                 "*id: " + alliance.allianceId + "*";
-            let embed = new MessageEmbed()
+            let embed = new EmbedBuilder()
                 .setTimestamp()
                 .setColor("#000000")
                 .setTitle(`**${alliance.allianceName}**`)
@@ -32,7 +32,7 @@ module.exports = {
             await interaction.followUp({ embeds: [embed] });
         }
         catch (e) {
-            await interaction.followUp({ content: e });
+            await interaction.followUp({ content: e.toString() });
             return;
         }
     }

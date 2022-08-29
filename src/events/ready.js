@@ -16,43 +16,13 @@ module.exports = {
  * @param {Client} client
  */
 async function weerOnline(client) {
-    const server = client.guilds.cache.find(guild => guild.id == nlserver.id);
-    await server.members.fetch();
-    server.channels.cache.forEach(channel => {
-        fetchMessagesFrom(client, channel.id, 5);
-    });
-    const ik = server.members.cache.find(member => member.id == "346015807496781825");
+    const _server = client.guilds.cache.find(guild => guild.id === nlserver.id);
+    const server = await _server.fetch();
+    let ik = await server.members.fetch('346015807496781825');
     ik.send({ content: 'Hey, ik ben weer online! 🙂' }).catch(e => console.log(e));
     client.user.setActivity({ type: "PLAYING", name: `Goodgame Empire (Four Kingdoms)` });
     console.log('Ready!');
     
     //require('./../tools/embedEditor.js').stuurRegelsBericht(client);
     //require('./../tools/embedEditor.js').stuurReactieRollenBericht(client);
-}
-
-async function fetchMessagesFrom(client, kanaalID, aantalMsgX100) {
-    const kanaal = client.channels.cache.find(channel => channel.id == kanaalID);
-    if (kanaal == null) {
-        return;
-    }
-    let options = { limit: 100 };
-    for (let u = 0; u < aantalMsgX100; u++) {
-        if (u != 0 && laatsteMessageID != null) {
-            options.before = laatsteMessageID;
-        }
-        else if (u != 0 && laatsteMessageID == null) {
-            return;
-        }
-        if (kanaal.messages == null) {
-            return;
-        }
-        await kanaal.messages.fetch(options)
-            .then(msgs => {
-                laatsteMessageID = msgs.last().id;
-            })
-            .catch(e => {
-                u = 10000;
-                return;
-            })
-    }
 }

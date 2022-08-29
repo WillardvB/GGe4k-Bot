@@ -4,7 +4,7 @@ const translationData = require('./../../../ingame_translations/nl.json');
 const imagesData = require('./../../../ingame_images/x768.json');
 const formatNumber = require('./../../../tools/number.js');
 const formatDuration = require('./../../../tools/time.js');
-const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, Interaction, ButtonStyle } = require('discord.js');
 const Logger = require('../../../tools/Logger.js');
 const buildingTranslations = translationData.buildings_and_decorations;
 const footerTekst = '© E4K NL server';
@@ -84,16 +84,16 @@ module.exports = {
                     if (a.rating < b.rating) return 1;
                     return 0;
                 }).slice(0, 5);
-                const _messageActionRow = new MessageActionRow();
+                const _ActionRowBuilder = new ActionRowBuilder();
                 for (let i = 0; i < matches.length; i++) {
-                    _messageActionRow.addComponents(
-                        new MessageButton().setCustomId(`${_name} ${level} ${matches[i].target}`)
-                            .setLabel(matches[i].target).setStyle('PRIMARY')
+                    _ActionRowBuilder.addComponents(
+                        new ButtonBuilder().setCustomId(`${_name} ${level} ${matches[i].target}`)
+                            .setLabel(matches[i].target).setStyle(ButtonStyle.Primary)
                     );
                 }
                 interaction.followUp({
-                    embeds: [new MessageEmbed().setDescription("Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:")],
-                    components: [_messageActionRow]
+                    embeds: [new EmbedBuilder().setDescription("Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:")],
+                    components: [_ActionRowBuilder]
                 });
                 return;
             }
@@ -124,10 +124,10 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : level === 0 ? " (totaal alle levels)" : ` (level ${level})`}`;
         let image = getBuildingImage(data);
 
-        let embed = new MessageEmbed()
+        let embed = new EmbedBuilder()
             .setColor('#996515')
             .setTimestamp()
-            .setFooter(footerTekst, footerAfbeelding)
+            .setFooter({ text: footerTekst, iconURL: footerAfbeelding })
             .setTitle(title)
         if (image !== "") embed.setThumbnail(image);
         if (description !== "") embed.setDescription(description);
@@ -180,64 +180,64 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             }
         }
         if (normalCostValues !== "") {
-            embed.addField(`**${translationData.generic.costs}**`, normalCostValues.trim(), true);
+            embed.addFields({ name: `**${translationData.generic.costs}**`, value: normalCostValues.trim(), inline: true });
         } else {
-            embed.addField(`**${translationData.generic.costs}**`, "Geen", true);
+            embed.addFields({ name: `**${translationData.generic.costs}**`, value: "Geen", inline: true });
         }
         if (tmpServerCostValues !== "") {
-            embed.addField("_" + translationData.dialogs.temp_server_name + " " + translationData.generic.costs.toLowerCase() + "_", tmpServerCostValues.trim(), true);
+            embed.addFields({ name: `_${translationData.dialogs.temp_server_name} ${translationData.generic.costs.toLowerCase()}_`, value: tmpServerCostValues.trim(), inline: true });
         }
         let components = [];
-        const messRow = new MessageActionRow();
+        const messRow = new ActionRowBuilder();
         if (level !== 0 && minLevel !== maxLevel) {
             if (level > minLevel && level <= maxLevel) {
                 messRow.addComponents(
-                    new MessageButton()
+                    new ButtonBuilder()
                         .setLabel('lvl ' + (level * 1 - 1))
-                        .setStyle('PRIMARY')
+                        .setStyle(ButtonStyle.Primary)
                         .setCustomId(`${_name} ${(level * 1 - 1)} ${gebouwNaam}`)
                 )
             }
             if (level < maxLevel && level >= minLevel) {
                 messRow.addComponents(
-                    new MessageButton()
+                    new ButtonBuilder()
                         .setLabel('lvl ' + (level * 1 + 1))
-                        .setStyle('PRIMARY')
+                        .setStyle(ButtonStyle.Primary)
                         .setCustomId(`${_name} ${(level * 1 + 1)} ${gebouwNaam}`)
                 )
             }
             messRow.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setLabel('Totaal alle levels')
-                    .setStyle('PRIMARY')
+                    .setStyle(ButtonStyle.Primary)
                     .setCustomId(`${_name} 0 ${gebouwNaam}`)
             )
             components = [messRow];
         }
         else if (minLevel !== maxLevel) {
             messRow.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setLabel('lvl ' + minLevel)
-                    .setStyle('PRIMARY')
+                    .setStyle(ButtonStyle.Primary)
                     .setCustomId(`${_name} ${minLevel} ${gebouwNaam}`)
             )
             messRow.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setLabel('lvl ' + maxLevel)
-                    .setStyle('PRIMARY')
+                    .setStyle(ButtonStyle.Primary)
                     .setCustomId(`${_name} ${maxLevel} ${gebouwNaam}`)
             )
             components = [messRow];
         }
         if (level !== 0) {
-            const _messageActionRow2 = new MessageActionRow();
-            _messageActionRow2.addComponents(
-                new MessageButton()
+            const _ActionRowBuilder2 = new ActionRowBuilder();
+            _ActionRowBuilder2.addComponents(
+                new ButtonBuilder()
                     .setLabel("Algemene informatie")
-                    .setStyle('PRIMARY')
+                    .setStyle(ButtonStyle.Primary)
                     .setCustomId(`gebouw algemeen ${level} ${gebouwNaam}`)
             );
-            components.push(_messageActionRow2);
+            components.push(_ActionRowBuilder2);
         }
         if (interaction.options) {
             interaction.followUp({ embeds: [embed], components: components });

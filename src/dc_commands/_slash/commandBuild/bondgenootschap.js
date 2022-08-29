@@ -33,17 +33,19 @@ module.exports = {
                             .setName('rang')
                             .setDescription('Toont alleen de spelers die deze rang hebben in het bondgenootschap.')
                             .setRequired(false)
-                            .addChoice("Alle", 0)
-                            .addChoice("Leider", 1)
-                            .addChoice("Substituut", 2)
-                            .addChoice("Veldmaarschalk", 3)
-                            .addChoice("Schatbewaarder", 4)
-                            .addChoice("Diplomaat", 5)
-                            .addChoice("Ronselaar", 6)
-                            .addChoice("Generaal", 7)
-                            .addChoice("Sergeant", 8)
-                            .addChoice("Lid", 9)
-                            .addChoice("Novice", 10)
+                            .addChoices(
+                                { name: "Alle", value: 0 },
+                                { name: "Leider", value: 1 },
+                                { name: "Substituut", value: 2 },
+                                { name: "Veldmaarschalk", value: 3 },
+                                { name: "Schatbewaarder", value: 4 },
+                                { name: "Diplomaat", value: 5 },
+                                { name: "Ronselaar", value: 6 },
+                                { name: "Generaal", value: 7 },
+                                { name: "Sergeant", value: 8 },
+                                { name: "Lid", value: 9 },
+                                { name: "Novice", value: 10 },
+                            )
                     )
             )
 }

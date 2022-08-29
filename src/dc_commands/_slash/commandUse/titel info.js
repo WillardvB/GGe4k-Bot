@@ -1,5 +1,5 @@
 const formatNumber = require('./../../../tools/number.js');
-const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 const afbeelding = "https://i.pinimg.com/originals/a4/99/32/a49932ed0a33b50f3f2c25f38ba10572.jpg";
@@ -63,16 +63,16 @@ function naarOutput(interaction, row) {
         afname = row[4];
     }
     let data = `- **Macht:** ${macht}\n${vereisten}\n- **Afname per dag:** ${afname}%\n- **Weergave-info:** ${displayType}`;
-    let embed = new MessageEmbed()
+    let embed = new EmbedBuilder()
         .setColor('#FFD700')
         .setTimestamp()
-        .setFooter(footerTekst, footerAfbeelding)
+        .setFooter({ text: footerTekst, iconURL: footerAfbeelding })
         .setTitle("**" + row[0] + "**")
         .setDescription("*Informatie*")
         .setThumbnail(afbeelding)
-        .addField("**Data**", data);
+        .addFields({ name: "**Data**", value: data });
     if (row[28] != 'komt nog') {
-        embed.addField('**Beloning**', '*' + row[28] + '*');
+        embed.addFields({ name: '**Beloning**', value: '*' + row[28] + '*' });
     }
     if (interaction.options) {
         interaction.followUp({ embeds: [embed], components: [] });

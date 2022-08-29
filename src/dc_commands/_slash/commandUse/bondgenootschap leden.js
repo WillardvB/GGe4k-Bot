@@ -1,5 +1,5 @@
-const { CommandInteraction, MessageEmbed } = require("discord.js");
-const { empireClient } = require("../../../empireClient");
+const { CommandInteraction, EmbedBuilder } = require("discord.js");
+const empire = require("../../../empireClient");
 const translationData = require('./../../../ingame_translations/nl.json');
 
 module.exports = {
@@ -14,12 +14,12 @@ module.exports = {
             let allianceName = interaction.options.getString('naam').toLowerCase().trim();
             let rank = interaction.options.getInteger('rang');
             if (rank == null) rank = -1; else rank -= 1;
-            let embed = new MessageEmbed()
+            const alliance = await empire.client.alliances.find(allianceName);
+            let embed = new EmbedBuilder()
                 .setDescription("leden")
                 .setTimestamp()
                 .setColor("#000000")
-                .setTitle(alliance.allianceName);
-            const alliance = await empireClient.alliances.find(allianceName);
+                .setTitle(`**${alliance.allianceName}**`)
             let _allianceRank = translationData.dialogs["dialog_alliance_rank" + 0];
             let memberList = "";
             let isSecondField = false;
@@ -29,9 +29,9 @@ module.exports = {
                 if (rank == -1 || rank == _rank) {
                     if (memberList !== "" && _allianceRank !== translationData.dialogs["dialog_alliance_rank" + _rank]) {
                         let __allianceRank = _allianceRank
-                        if (isSecondField) __allianceRank += 2;
+                        if (isSecondField) __allianceRank += " 2";
                         embed.addFields({
-                            name: _allianceRank, value: memberList, inline: true
+                            name: __allianceRank, value: memberList, inline: true
                         });
                         memberList = "";
                         isSecondField = false;
@@ -49,9 +49,9 @@ module.exports = {
                 }
                 if (memberList !== "" && (_allianceRank !== translationData.dialogs["dialog_alliance_rank" + _rank] || i === alliance.memberList.length - 1)) {
                     let __allianceRank = _allianceRank
-                    if (isSecondField) __allianceRank += 2;
+                    if (isSecondField) __allianceRank += " 2";
                     embed.addFields({
-                        name: _allianceRank, value: memberList, inline: true
+                        name: __allianceRank, value: memberList, inline: true
                     });
                     memberList = "";
                     _allianceRank = translationData.dialogs["dialog_alliance_rank" + _rank];
@@ -61,7 +61,7 @@ module.exports = {
             await interaction.followUp({ embeds: [embed] });
         }
         catch (e) {
-            await interaction.followUp({ content: e });
+            await interaction.followUp({ content: e.toString() });
             return;
         }
     }

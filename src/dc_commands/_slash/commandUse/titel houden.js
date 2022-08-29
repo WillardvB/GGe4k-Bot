@@ -1,5 +1,5 @@
 const formatNumber = require('./../../../tools/number.js');
-const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, Interaction, ButtonStyle } = require('discord.js');
 const titelInfo = require('./titel info.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
@@ -75,34 +75,34 @@ function naarOutput(interaction, row, dagen, soort) {
     }
     dagen = formatNumber.formatNum(dagen);
     benodigdeWaarde = formatNumber.formatNum(benodigdeWaarde);
-    var embed = new MessageEmbed()
+    var embed = new EmbedBuilder()
         .setColor('#FFD700')
         .setTimestamp()
-        .setFooter(footerTekst, footerAfbeelding)
+        .setFooter({ text: footerTekst, iconURL: footerAfbeelding })
         .setTitle("**" + row[0] + "**")
         .setDescription("*Titel behouden*")
         .setThumbnail(afbeelding)
-        .addField("Aantal dagen", dagen.toString())
-        .addField("Benodigde " + soort, benodigdeWaarde.toString());
-    const messRow = new MessageActionRow();
+        .addFields({ name: "Aantal dagen", value: dagen.toString() })
+        .addFields({ name: "Benodigde " + soort, value: benodigdeWaarde.toString() });
+    const messRow = new ActionRowBuilder();
     if (dagen > 1) {
         messRow.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel((dagen - 1) + ' dagen houden')
-                .setStyle('PRIMARY')
+                .setStyle(ButtonStyle.Primary)
                 .setCustomId('titel houden ' + (dagen - 1) + " " + row[0])
         )
     }
     messRow.addComponents(
-        new MessageButton()
+        new ButtonBuilder()
             .setLabel('Titel info')
-            .setStyle('PRIMARY')
+            .setStyle(ButtonStyle.Primary)
             .setCustomId('titel info ' + row[0])
     )
     messRow.addComponents(
-        new MessageButton()
+        new ButtonBuilder()
             .setLabel((dagen + 1) + ' dagen houden')
-            .setStyle('PRIMARY')
+            .setStyle(ButtonStyle.Primary)
             .setCustomId('titel houden ' + (dagen + 1) + " " + row[0])
     )
     if (interaction.options) {

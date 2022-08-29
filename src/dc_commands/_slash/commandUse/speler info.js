@@ -1,5 +1,5 @@
-const { CommandInteraction, MessageEmbed } = require("discord.js");
-const { empireClient } = require("../../../empireClient");
+const { CommandInteraction, EmbedBuilder } = require("discord.js");
+const empire = require("../../../empireClient");
 const num = require("../../../tools/number");
 const translationData = require('./../../../ingame_translations/nl.json');
 const kingdoms = [0, 2, 1, 3, 4, 10];
@@ -24,7 +24,7 @@ module.exports = {
 async function _execute(interaction) {
     try {
         let playerName = interaction.options.getString('naam').trim();
-        const player = await empireClient.players.find(playerName);
+        const player = await empire.client.players.find(playerName);
         let bgInfo = player.allianceName === "" ? "" : player.allianceName + " (" + translationData.dialogs["dialog_alliance_rank" + player.allianceRank] + ")";
         let castleListString = "";
         for (let i in kingdoms) {
@@ -34,11 +34,11 @@ async function _execute(interaction) {
                     _castlesInKId.push(player.castles[j]);
                 }
             }
-            if(kingdoms[i] === 0){
-                for(let j in player.kingstowers){
+            if (kingdoms[i] === 0) {
+                for (let j in player.kingstowers) {
                     _castlesInKId.push(player.kingstowers[j].kingstower);
                 }
-                for(let j in player.monuments){
+                for (let j in player.monuments) {
                     _castlesInKId.push(player.monuments[j].monument);
                 }
             }
@@ -72,7 +72,7 @@ async function _execute(interaction) {
                 }
                 return 1;
             })
-            
+
             let kingdom = "_";
             switch (kingdoms[i]) {
                 case 0: kingdom = translationData.generic.kingdomName_Classic; break;
@@ -110,20 +110,22 @@ async function _execute(interaction) {
         let punten = translationData.dialogs.dialog_fame_fame + ": " + num.formatNum(player.famePoints) + "\n" +
             translationData.generic.honorPoints + ": " + num.formatNum(player.honor) + "\n" +
             translationData.dialogs.mightPoints + ": " + num.formatNum(player.might);
-        let embed = new MessageEmbed()
+        let embed = new EmbedBuilder()
             .setTimestamp()
             .setColor("#000000")
             .setTitle(`**${player.playerName}**`)
             .setDescription(description)
-            .addField("Punten", punten)
-            .addField("Kasteelposities", castleListString);
+            .addFields(
+                { name: "Punten", value: punten },
+                { name: "Kasteelposities", value: castleListString }
+            );
         if (player.villages.private.length !== 0 || player.villages.public.length !== 0) {
             console.log("[Speler info:192] Missing dorp en eiland command!");
-            //embed.addField("Dorpen en eilanden", "Zie /speler dorpen voor dorp en eiland informatie");
+            //embed.addFields({ name: "Dorpen en eilanden", value: "Zie /speler dorpen voor dorp en eiland informatie"});
         }
         await interaction.followUp({ embeds: [embed] });
     }
     catch (e) {
-        await interaction.followUp({ content: e });
+        await interaction.followUp({ content: e.toString() });
     }
 }

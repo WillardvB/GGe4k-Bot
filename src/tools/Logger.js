@@ -1,5 +1,6 @@
 const { Client, User } = require("discord.js");
 const ErrorText = '\x1b[31m[ERROR]\x1b[0m ';
+const { nlserver } = require('./../data/kanalen.json');
 
 /** @type User */
 let logChannel;
@@ -14,9 +15,11 @@ module.exports = {
      * 
      * @param {Client} _client
      */
-    execute(_client) {
+    async execute(_client) {
         client = _client;
-        logChannel = client.users.cache.get("346015807496781825");
+        const _server = client.guilds.cache.find(guild => guild.id === nlserver.id);
+        const server = await _server.fetch();
+        logChannel = await server.members.fetch('346015807496781825');
     },
     /**
      * 

@@ -1,4 +1,4 @@
-const { MessageEmbed, MessageActionRow, MessageSelectMenu, Interaction } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, Interaction } = require('discord.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 const afbeelding = "https://i.pinimg.com/originals/a4/99/32/a49932ed0a33b50f3f2c25f38ba10572.jpg";
@@ -33,16 +33,16 @@ module.exports = {
                     stormTitels = stormTitels + '`' + row[1] + "`. " + row[0] + '\n';
                 }
             });
-            var embed = new MessageEmbed()
+            var embed = new EmbedBuilder()
                 .setColor('#FFD700')
                 .setTimestamp()
-                .setFooter(footerTekst, footerAfbeelding)
+                .setFooter({ text: footerTekst, iconURL: footerAfbeelding })
                 .setDescription("*De titelnummers en -namen*")
                 .setThumbnail(afbeelding)
             embed = voegVeldenToe(embed, soort, roemTitels, beriTitels, stormTitels);
-            const messRow = new MessageActionRow()
+            const messRow = new ActionRowBuilder()
                 .addComponents(
-                    new MessageSelectMenu()
+                    new SelectMenuBuilder()
                         .setCustomId('titel namen')
                         .setPlaceholder('Nothing selected')
                         .addOptions([
@@ -77,24 +77,24 @@ function voegVeldenToe(embed, soort, roemTitels, beriTitels, stormTitels) {
     if (soort == "roem") {
         embed
             .setTitle('**Alle roemtitels**')
-            .addField('**Roemtitels**: ', roemTitels);
+            .addFields({ name: '**Roemtitels**: ', value: roemTitels });
     }
     else if (soort == "beri") {
         embed
             .setTitle('**Alle berimondtitels**')
-            .addField('**Berimondtitels**: ', beriTitels);
+            .addFields({ name: '**Berimondtitels**: ', value: beriTitels });
     }
     else if (soort == "storm") {
         embed
             .setTitle('**Alle stormtitels**')
-            .addField('**Stormtitels**: ', stormTitels);
+            .addFields({ name: '**Stormtitels**: ', value: stormTitels });
     }
     else {
         embed
             .setTitle('**Alle titels**')
-            .addField('**Roemtitels**: ', roemTitels, true)
-            .addField('**Berimondtitels**: ', beriTitels, true)
-            .addField('**Stormtitels**: ', stormTitels, true);
+            .addFields({ name: '**Roemtitels**: ', value: roemTitels, inline: true })
+            .addFields({ name: '**Berimondtitels**: ', value: beriTitels, inline: true })
+            .addFields({ name: '**Stormtitels**: ', value: stormTitels, inline: true });
     }
     return embed;
 }

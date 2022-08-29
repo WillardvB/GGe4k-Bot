@@ -21,7 +21,7 @@ const stormKleur = "#ADD8E6";
 const beriThumb = "https://media.discordapp.net/attachments/884049583313928202/886594500762423329/icon_events_berimond_enter.png";
 const beriImg = "https://media.discordapp.net/attachments/884049583313928202/886598084958752808/teaser_berimond_splash.png";
 const beriKleur = "#FF00FF";
-const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, Interaction, ButtonStyle } = require('discord.js');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 
@@ -64,10 +64,11 @@ module.exports = {
             winsTotUp = 1;
         }
         const victories = krijgVictories(kID, level, winsTotUp);
+        console.log(victories);
         for (let item in dungeons) {
             let dungeon = dungeons[item];
             if (parseInt(dungeon.countVictories) === victories) {
-                if (dungeon.kID === kID) {
+                if (parseInt(dungeon.kID) === kID) {
                     naarOutput(interaction, dungeon, kID, level, winsTotUp, victories);
                 }
             }
@@ -110,37 +111,37 @@ async function naarOutput(interaction, dungeon, kID, level, winsTotUp, victories
         winsTotUpString = "";
     }
     krijgAttTactiek(kID, victories).then(attTactiek => {
-        let embed = new MessageEmbed()
+        let embed = new EmbedBuilder()
             .setColor(kleur)
             .setTimestamp()
-            .setFooter(footerTekst, footerAfbeelding)
+            .setFooter({ text: footerTekst, iconURL: footerAfbeelding })
             .setTitle("**" + levelString + level + winsTotUpString + "**")
             .setDescription("*roofridder data*")
             .setThumbnail(thumbnail)
             .setImage(afbeelding)
-            .addField("**Links**", soldatenLinks + "\n" + toolsLinks, true)
-            .addField("**Midden**", soldatenMidden + "\n" + toolsMidden, true)
-            .addField("**Rechts**", soldatenRechts + "\n" + toolsRechts, true)
-            .addField("**Binnenplaats**", soldatenBP, true)
+            .addFields({ name: "**Links**", value: soldatenLinks + "\n" + toolsLinks, inline: true })
+            .addFields({ name: "**Midden**", value: soldatenMidden + "\n" + toolsMidden, inline: true })
+            .addFields({ name: "**Rechts**", value: soldatenRechts + "\n" + toolsRechts, inline: true })
+            .addFields({ name: "**Binnenplaats**", value: soldatenBP, inline: true })
         if (kID >= 0 && kID <= 3) {
-            embed.addField("**Te halen buit**", krijgBuit(level), true);
+            embed.addFields({ name: "**Te halen buit**", value: krijgBuit(level), inline: true });
         }
-        const messRow = new MessageActionRow();
+        const messRow = new ActionRowBuilder();
         if (level > krijgMinimumVanRijk(kID)) {
             var tempLvlArray = victToLvlArray(victories - 1, kID);
             messRow.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setLabel('lvl ' + tempLvlArray[0] + '.' + tempLvlArray[1])
-                    .setStyle('PRIMARY')
+                    .setStyle(ButtonStyle.Primary)
                     .setCustomId(_name + ' ' + kID + " " + tempLvlArray[0] + ' ' + tempLvlArray[1])
             )
         }
         if (level < krijgMaximumVanRijk(kID)) {
             var tempLvlArray = victToLvlArray(victories + 1, kID);
             messRow.addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setLabel('lvl ' + tempLvlArray[0] + '.' + tempLvlArray[1])
-                    .setStyle('PRIMARY')
+                    .setStyle(ButtonStyle.Primary)
                     .setCustomId(_name + ' ' + kID + " " + tempLvlArray[0] + ' ' + tempLvlArray[1])
             )
         }
@@ -159,7 +160,7 @@ function krijgVictories(kID, level, winsTotUp) {
         return -999;
     }
     if (level == "draak" || level == "d" || level == "woestijnfort" || level == "wf" || level == "barbarenfort" || level == "bf") {
-        return "-1";
+        return -1;
     }
     if (kID == 4) {
         return level - winsTotUp + 2;

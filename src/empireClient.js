@@ -1,11 +1,14 @@
 const { Client: EmpireClient } = require("ggejs");
-const empireClient = new EmpireClient("e4k-nl", process.env.empirePassword, true);
+let _empireClient = new EmpireClient("", "");
 
-async function connect(){
-    await empireClient.connect();
+async function _connect() {
+    _empireClient = new EmpireClient("e4k-nl", process.env.empirePassword, true);
+    await _empireClient.connect();
 }
 
 module.exports = {
-    empireClient: empireClient,
-    connect,
+    get client() { return _empireClient },
+    connect() {
+        _connect();
+    }
 }

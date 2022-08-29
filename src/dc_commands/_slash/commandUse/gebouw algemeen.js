@@ -3,7 +3,7 @@ const buildingData = require('./../../../ingame_data/buildings.json');
 const translationData = require('./../../../ingame_translations/nl.json');
 const imagesData = require('./../../../ingame_images/x768.json');
 const formatNumber = require('./../../../tools/number.js');
-const { MessageEmbed, MessageActionRow, MessageButton, Interaction } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, Interaction, ButtonStyle } = require('discord.js');
 const Logger = require("../../../tools/Logger.js");
 const buildingTranslations = translationData.buildings_and_decorations;
 const footerTekst = '© E4K NL server';
@@ -82,16 +82,16 @@ module.exports = {
                     if (a.rating < b.rating) return 1;
                     return 0;
                 }).slice(0, 5);
-                const _messageActionRow = new MessageActionRow();
+                const _ActionRowBuilder = new ActionRowBuilder();
                 for (let i = 0; i < matches.length; i++) {
-                    _messageActionRow.addComponents(
-                        new MessageButton().setCustomId(`${_name} ${level} ${matches[i].target}`)
-                            .setLabel(matches[i].target).setStyle('PRIMARY')
+                    _ActionRowBuilder.addComponents(
+                        new ButtonBuilder().setCustomId(`${_name} ${level} ${matches[i].target}`)
+                            .setLabel(matches[i].target).setStyle(ButtonStyle.Primary)
                     );
                 }
                 interaction.followUp({
-                    embeds: [new MessageEmbed().setDescription("Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:")],
-                    components: [_messageActionRow]
+                    embeds: [new EmbedBuilder().setDescription("Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:")],
+                    components: [_ActionRowBuilder]
                 });
                 return;
             }
@@ -127,10 +127,10 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : ` (level ${level})`}`;
         let image = getBuildingImage(data);
 
-        let embed = new MessageEmbed()
+        let embed = new EmbedBuilder()
             .setColor('#996515')
             .setTimestamp()
-            .setFooter(footerTekst, footerAfbeelding)
+            .setFooter({ text: footerTekst, iconURL: footerAfbeelding })
             .setTitle(title)
         if (image !== "") embed.setThumbnail(image);
         if (description !== "") embed.setDescription(description);
@@ -171,17 +171,17 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 continue;
             }
             if (_keyLowCase.startsWith("required")) {
-                _keyLowCase = _keyLowCase.substring(8,9) + _key.substring(9);
+                _keyLowCase = _keyLowCase.substring(8, 9) + _key.substring(9);
                 requirementsValues += `**${translationData.generic[_keyLowCase]}**: ${_value}\n`;
                 continue;
             }
             if (_keyLowCase === "sceatskilllocked") {
-                _value = parseInt(_value) > 0 ? "Ja" : "Nee"; 
+                _value = parseInt(_value) > 0 ? "Ja" : "Nee";
                 requirementsValues += `**Zaal vaardigheid nodig**: ${_value}\n`;
                 continue;
             }
             if (_keyLowCase.startsWith("sell")) {
-                if (_key.length === 6) _key = _key.replace("sellC","sellcurrency");
+                if (_key.length === 6) _key = _key.replace("sellC", "sellcurrency");
                 sellValues += `**${translationData.dialogs[`currency_name_${_key.substring(4)}`]}**: ${_value}\n`;
                 continue;
             }
@@ -278,8 +278,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 rewardValues += `**${_keyLowCase}**: ${_value}\n`;
                 continue;
             }
-            if (_keyLowCase.endsWith("storage"))
-            {
+            if (_keyLowCase.endsWith("storage")) {
                 storageValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 7)]}**: ${formatNumber.formatNum(data[_key])}\n`;
                 continue;
             }
@@ -331,66 +330,66 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         }
         if (constructionValues !== "") {
             embed.addFields({
-                name:`**Constructie**`,
+                name: `**Constructie**`,
                 value: constructionValues.trim(),
                 inline: true,
             })
         }
         if (requirementsValues !== "") {
             requirementsValues += `**${translationData.generic.costs}**: zie 'kosten knop' onderaan`;
-            embed.addField(`**Benodigdheden**`, requirementsValues.trim(), true);
+            embed.addFields({ name: `**Benodigdheden**`, value: requirementsValues.trim(), inline: true });
         }
         if (rewardValues !== "") {
-            embed.addField(`**Voordelen**`, rewardValues.trim(), true);
+            embed.addFields({ name: `**Voordelen**`, value: rewardValues.trim(), inline: true });
         }
         if (storageValues !== "") {
-            embed.addField(`**${translationData.buildings_and_decorations.storehouse_name}**`, storageValues.trim(), true);
+            embed.addFields({ name: `**${translationData.buildings_and_decorations.storehouse_name}**`, value: storageValues.trim(), inline: true });
         }
         if (productionValues !== "") {
-            embed.addField(`**${translationData.generic.produce}**`, productionValues.trim(), true);
+            embed.addFields({ name: `**${translationData.generic.produce}**`, value: productionValues.trim(), inline: true });
         }
         if (protectionValues !== "") {
-            embed.addField(`**${translationData.generic.protection}**`, protectionValues.trim(), true);
+            embed.addFields({ name: `**${translationData.generic.protection}**`, value: protectionValues.trim(), inline: true });
         }
         if (sellValues !== "") {
-            embed.addField(`**${translationData.generic.sellPrice}**`, sellValues.trim(), true);
+            embed.addFields({ name: `**${translationData.generic.sellPrice}**`, value: sellValues.trim(), inline: true });
         }
         if (destructionValues !== "") {
-            embed.addField(`**Afbreekbaarheid**`, destructionValues.trim(), true);
+            embed.addFields({ name: `**Afbreekbaarheid**`, value: destructionValues.trim(), inline: true });
         }
         if (values.trim() !== "") {
             values = values.substring(0, 1000);
-            embed.addField("**Overige informatie**", values.trim(), true);
+            embed.addFields({ name: "**Overige informatie**", value: values.trim(), inline: true });
         }
-        
+
         let components = [];
         if (minLevel != maxLevel) {
-            const _messageActionRow = new MessageActionRow();
+            const _ActionRowBuilder = new ActionRowBuilder();
             if (level > minLevel) {
-                _messageActionRow.addComponents(
-                    new MessageButton()
+                _ActionRowBuilder.addComponents(
+                    new ButtonBuilder()
                         .setLabel('lvl ' + (level * 1 - 1))
-                        .setStyle('PRIMARY')
+                        .setStyle(ButtonStyle.Primary)
                         .setCustomId(`${_name} ${(level * 1 - 1)} ${gebouwNaam}`)
                 )
             }
             if (level < maxLevel) {
-                _messageActionRow.addComponents(
-                    new MessageButton()
+                _ActionRowBuilder.addComponents(
+                    new ButtonBuilder()
                         .setLabel('lvl ' + (level * 1 + 1))
-                        .setStyle('PRIMARY')
+                        .setStyle(ButtonStyle.Primary)
                         .setCustomId(`${_name} ${(level * 1 + 1)} ${gebouwNaam}`)
                 )
             }
-            components = [_messageActionRow];
-            const _messageActionRow2 = new MessageActionRow();
-            _messageActionRow2.addComponents(
-                new MessageButton()
+            components = [_ActionRowBuilder];
+            const _ActionRowBuilder2 = new ActionRowBuilder();
+            _ActionRowBuilder2.addComponents(
+                new ButtonBuilder()
                     .setLabel(translationData.generic.costs)
-                    .setStyle('PRIMARY')
+                    .setStyle(ButtonStyle.Primary)
                     .setCustomId(`gebouw kosten ${level} ${gebouwNaam}`)
             );
-            components.push(_messageActionRow2);
+            components.push(_ActionRowBuilder2);
         }
         if (interaction.options) {
             interaction.followUp({ embeds: [embed], components: components });

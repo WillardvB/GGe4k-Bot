@@ -1,5 +1,5 @@
 const formatNumber = require('./../../../tools/number.js');
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const translationData = require('./../../../ingame_translations/nl.json');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
@@ -22,28 +22,28 @@ module.exports = {
 
 function naarOutput(interaction, level) {
     let levelString = `**${translationData.generic.dungeon_playerName} ${translationData.generic.level.toLowerCase()} ${level}**`;
-    let embed = new MessageEmbed()
+    let embed = new EmbedBuilder()
         .setColor('#808080')
         .setTimestamp()
-        .setFooter(footerTekst, footerAfbeelding)
+        .setFooter({ text: footerTekst, iconURL: footerAfbeelding })
         .setThumbnail(footerAfbeelding)
         .setTitle(levelString)
         .setDescription(`*${translationData.dialogs.dialog_battleLog_loot}*`)
-        .addField("**Te behalen buit**", krijgBuit(level), true);
-    const messRow = new MessageActionRow();
+        .addFields({ name: "**Te behalen buit**", value: krijgBuit(level), inline: true });
+    const messRow = new ActionRowBuilder();
     if (level > 1) {
         messRow.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel('lvl ' + (level - 1))
-                .setStyle('PRIMARY')
+                .setStyle(ButtonStyle.Primary)
                 .setCustomId(`${_name} ${(level * 1 - 1)}`)
         )
     }
     if (level < 81) {
         messRow.addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setLabel('lvl ' + (level * 1 + 1))
-                .setStyle('PRIMARY')
+                .setStyle(ButtonStyle.Primary)
                 .setCustomId(`${_name} ${(level * 1 + 1)}`)
         )
     }

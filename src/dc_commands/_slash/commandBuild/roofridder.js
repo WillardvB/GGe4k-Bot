@@ -15,13 +15,15 @@ module.exports = {
                         .setName('wereld')
                         .setDescription('De wereld van de roofridder')
                         .setRequired(true)
-                        .addChoice('Grote rijk', '0')
-                        .addChoice('IJs', '2')
-                        .addChoice('Zand', '1')
-                        .addChoice('Vuur', '3')
-                        .addChoice('Storm', '4')
-                        .addChoice('Berimond', '10')
-                        .addChoice('Klingkust', '-1')
+                        .addChoices(
+                            { name: 'Grote rijk', value: '0' },
+                            { name: 'IJs', value: '2' },
+                            { name: 'Zand', value: '1' },
+                            { name: 'Vuur', value: '3' },
+                            { name: 'Storm', value: '4' },
+                            { name: 'Berimond', value: '10' },
+                            { name: 'Klingkust', value: '-1' }
+                        )
                 )
                 .addIntegerOption(option =>
                     option

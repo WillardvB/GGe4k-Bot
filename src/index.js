@@ -1,6 +1,25 @@
-const { Client, Collection } = require('discord.js');
+const { Client, Collection, IntentsBitField } = require('discord.js');
 const fs = require('fs');
-const client = new Client({ intents: 3243773 });
+let _intents = new IntentsBitField(
+	IntentsBitField.Flags.DirectMessageReactions,
+	IntentsBitField.Flags.DirectMessageTyping,
+	IntentsBitField.Flags.DirectMessages,
+	IntentsBitField.Flags.GuildBans,
+	IntentsBitField.Flags.GuildEmojisAndStickers,
+	IntentsBitField.Flags.GuildIntegrations,
+	IntentsBitField.Flags.GuildInvites,
+	IntentsBitField.Flags.GuildMembers,
+	IntentsBitField.Flags.GuildMessageReactions,
+	IntentsBitField.Flags.GuildMessageTyping,
+	IntentsBitField.Flags.GuildMessages,
+	IntentsBitField.Flags.GuildPresences,
+	IntentsBitField.Flags.GuildScheduledEvents,
+	IntentsBitField.Flags.GuildVoiceStates,
+	IntentsBitField.Flags.GuildWebhooks,
+	//IntentsBitField.Flags.Guilds,
+	IntentsBitField.Flags.MessageContent,
+)
+const client = new Client({ intents: _intents });
 
 client.once('ready', () => {
 	client.events.get('ready').execute(client);

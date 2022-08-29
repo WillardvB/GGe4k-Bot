@@ -43,9 +43,11 @@ module.exports = {
                         .setName('soort')
                         .setDescription('De titelsoort')
                         .setRequired(false)
-                        .addChoice('Roem', 'roem')
-                        .addChoice('Berimond', 'beri')
-                        .addChoice('Storm', 'storm')
+                        .addChoices(
+                            { name: 'Roem', value: 'roem' },
+                            { name: 'Berimond', value: 'beri' },
+                            { name: 'Storm', value: 'storm' }
+                        )
                 )
         )
 }
