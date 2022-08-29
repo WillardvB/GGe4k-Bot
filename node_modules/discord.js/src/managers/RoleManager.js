@@ -1,12 +1,14 @@
 'use strict';
 
+const process = require('node:process');
 const { Collection } = require('@discordjs/collection');
 const CachedManager = require('./CachedManager');
 const { TypeError } = require('../errors');
-const Role = require('../structures/Role');
+const { Role } = require('../structures/Role');
 const DataResolver = require('../util/DataResolver');
 const Permissions = require('../util/Permissions');
-const { resolveColor, setPosition } = require('../util/Util');
+const { resolveColor } = require('../util/Util');
+const Util = require('../util/Util');
 
 let cacheWarningEmitted = false;
 
@@ -158,7 +160,7 @@ class RoleManager extends CachedManager {
       guild_id: this.guild.id,
       role: data,
     });
-    if (position) return role.setPosition(position, reason);
+    if (position) return this.setPosition(role, position, { reason });
     return role;
   }
 
@@ -178,21 +180,7 @@ class RoleManager extends CachedManager {
     role = this.resolve(role);
     if (!role) throw new TypeError('INVALID_TYPE', 'role', 'RoleResolvable');
 
-    if (typeof data.position === 'number') {
-      const updatedRoles = await setPosition(
-        role,
-        data.position,
-        false,
-        this.guild._sortedRoles(),
-        this.client.api.guilds(this.guild.id).roles,
-        reason,
-      );
-
-      this.client.actions.GuildRolesPositionUpdate.handle({
-        guild_id: this.guild.id,
-        roles: updatedRoles,
-      });
-    }
+    if (typeof data.position === 'number') await this.setPosition(role, data.position, { reason });
 
     let icon = data.icon;
     if (icon) {
@@ -219,6 +207,61 @@ class RoleManager extends CachedManager {
   }
 
   /**
+   * Deletes a role.
+   * @param {RoleResolvable} role The role to delete
+   * @param {string} [reason] Reason for deleting the role
+   * @returns {Promise<void>}
+   * @example
+   * // Delete a role
+   * guild.roles.delete('222079219327434752', 'The role needed to go')
+   *   .then(() => console.log('Deleted the role.'))
+   *   .catch(console.error);
+   */
+  async delete(role, reason) {
+    const id = this.resolveId(role);
+    await this.client.api.guilds[this.guild.id].roles[id].delete({ reason });
+    this.client.actions.GuildRoleDelete.handle({ guild_id: this.guild.id, role_id: id });
+  }
+
+  /**
+   * Sets the new position of the role.
+   * @param {RoleResolvable} role The role to change the position of
+   * @param {number} position The new position for the role
+   * @param {SetRolePositionOptions} [options] Options for setting the position
+   * @returns {Promise<Role>}
+   * @example
+   * // Set the position of the role
+   * guild.roles.setPosition('222197033908436994', 1)
+   *   .then(updated => console.log(`Role position: ${updated.position}`))
+   *   .catch(console.error);
+   */
+  async setPosition(role, position, { relative, reason } = {}) {
+    role = this.resolve(role);
+    if (!role) throw new TypeError('INVALID_TYPE', 'role', 'RoleResolvable');
+    const updatedRoles = await Util.setPosition(
+      role,
+      position,
+      relative,
+      this.guild._sortedRoles(),
+      this.client.api.guilds(this.guild.id).roles,
+      reason,
+    );
+
+    this.client.actions.GuildRolesPositionUpdate.handle({
+      guild_id: this.guild.id,
+      roles: updatedRoles,
+    });
+    return role;
+  }
+
+  /**
+   * The data needed for updating a guild role's position
+   * @typedef {Object} GuildRolePosition
+   * @property {RoleResolvable} role The role's id
+   * @property {number} position The position to update
+   */
+
+  /**
    * Batch-updates the guild's role positions
    * @param {GuildRolePosition[]} rolePositions Role positions to update
    * @returns {Promise<Guild>}
@@ -242,6 +285,25 @@ class RoleManager extends CachedManager {
       guild_id: this.guild.id,
       roles: rolePositions,
     }).guild;
+  }
+
+  /**
+   * Compares the positions of two roles.
+   * @param {RoleResolvable} role1 First role to compare
+   * @param {RoleResolvable} role2 Second role to compare
+   * @returns {number} Negative number if the first role's position is lower (second role's is higher),
+   * positive number if the first's is higher (second's is lower), 0 if equal
+   */
+  comparePositions(role1, role2) {
+    const resolvedRole1 = this.resolve(role1);
+    const resolvedRole2 = this.resolve(role2);
+    if (!resolvedRole1 || !resolvedRole2) throw new TypeError('INVALID_TYPE', 'role', 'Role nor a Snowflake');
+
+    if (resolvedRole1.position === resolvedRole2.position) {
+      return Number(BigInt(resolvedRole2.id) - BigInt(resolvedRole1.id));
+    }
+
+    return resolvedRole1.position - resolvedRole2.position;
   }
 
   /**

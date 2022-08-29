@@ -1,13 +1,14 @@
 'use strict';
 
 const EventEmitter = require('node:events');
+const { setImmediate } = require('node:timers');
+const { setTimeout: sleep } = require('node:timers/promises');
 const { Collection } = require('@discordjs/collection');
 const { RPCErrorCodes } = require('discord-api-types/v9');
 const WebSocketShard = require('./WebSocketShard');
 const PacketHandlers = require('./handlers');
 const { Error } = require('../../errors');
 const { Events, ShardEvents, Status, WSCodes, WSEvents } = require('../../util/Constants');
-const Util = require('../../util/Util');
 
 const BeforeReadyWhitelist = [
   WSEvents.READY,
@@ -19,7 +20,7 @@ const BeforeReadyWhitelist = [
   WSEvents.GUILD_MEMBER_REMOVE,
 ];
 
-const UNRECOVERABLE_CLOSE_CODES = Object.keys(WSCodes).slice(1).map(Number);
+const UNRECOVERABLE_CLOSE_CODES = Object.keys(WSCodes).slice(2).map(Number);
 const UNRESUMABLE_CLOSE_CODES = [
   RPCErrorCodes.UnknownError,
   RPCErrorCodes.InvalidPermissions,
@@ -215,13 +216,8 @@ class WebSocketManager extends EventEmitter {
 
         this.shardQueue.add(shard);
 
-        if (shard.sessionId) {
-          this.debug(`Session id is present, attempting an immediate reconnect...`, shard);
-          this.reconnect();
-        } else {
-          shard.destroy({ reset: true, emit: false, log: false });
-          this.reconnect();
-        }
+        if (shard.sessionId) this.debug(`Session id is present, attempting an immediate reconnect...`, shard);
+        this.reconnect();
       });
 
       shard.on(ShardEvents.INVALID_SESSION, () => {
@@ -258,7 +254,7 @@ class WebSocketManager extends EventEmitter {
     // If we have more shards, add a 5s delay
     if (this.shardQueue.size) {
       this.debug(`Shard Queue Size: ${this.shardQueue.size}; continuing in 5 seconds...`);
-      await Util.delayFor(5_000);
+      await sleep(5_000);
       return this.createShards();
     }
 
@@ -279,7 +275,7 @@ class WebSocketManager extends EventEmitter {
       this.debug(`Couldn't reconnect or fetch information about the gateway. ${error}`);
       if (error.httpStatus !== 401) {
         this.debug(`Possible network error occurred. Retrying in 5s...`);
-        await Util.delayFor(5_000);
+        await sleep(5_000);
         this.reconnecting = false;
         return this.reconnect();
       }

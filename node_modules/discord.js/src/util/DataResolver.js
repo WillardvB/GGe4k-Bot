@@ -1,5 +1,6 @@
 'use strict';
 
+const { Buffer } = require('node:buffer');
 const fs = require('node:fs');
 const path = require('node:path');
 const stream = require('node:stream');
@@ -33,7 +34,7 @@ class DataResolver extends null {
    * @returns {string}
    */
   static resolveCode(data, regex) {
-    return data.matchAll(regex).next().value?.[1] ?? data;
+    return new RegExp(regex.source).exec(data)?.[1] ?? data;
   }
 
   /**

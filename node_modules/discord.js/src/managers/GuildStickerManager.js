@@ -4,7 +4,7 @@ const { Collection } = require('@discordjs/collection');
 const CachedManager = require('./CachedManager');
 const { TypeError } = require('../errors');
 const MessagePayload = require('../structures/MessagePayload');
-const Sticker = require('../structures/Sticker');
+const { Sticker } = require('../structures/Sticker');
 
 /**
  * Manages API methods for Guild Stickers and stores their cache.
@@ -47,12 +47,12 @@ class GuildStickerManager extends CachedManager {
    * @returns {Promise<Sticker>} The created sticker
    * @example
    * // Create a new sticker from a URL
-   * guild.stickers.create('https://i.imgur.com/w3duR07.png', 'rip', '🪦')
+   * guild.stickers.create('https://i.imgur.com/w3duR07.png', 'rip', 'headstone')
    *   .then(sticker => console.log(`Created new sticker with name ${sticker.name}!`))
    *   .catch(console.error);
    * @example
    * // Create a new sticker from a file on your computer
-   * guild.stickers.create('./memes/banana.png', 'banana', '🍌')
+   * guild.stickers.create('./memes/banana.png', 'banana', 'banana')
    *   .then(sticker => console.log(`Created new sticker with name ${sticker.name}!`))
    *   .catch(console.error);
    */
@@ -160,6 +160,19 @@ class GuildStickerManager extends CachedManager {
 
     const data = await this.client.api.guilds(this.guild.id).stickers.get();
     return new Collection(data.map(sticker => [sticker.id, this._add(sticker, cache)]));
+  }
+
+  /**
+   * Fetches the user who uploaded this sticker, if this is a guild sticker.
+   * @param {StickerResolvable} sticker The sticker to fetch the user for
+   * @returns {Promise<?User>}
+   */
+  async fetchUser(sticker) {
+    sticker = this.resolve(sticker);
+    if (!sticker) throw new TypeError('INVALID_TYPE', 'sticker', 'StickerResolvable');
+    const data = await this.client.api.guilds(this.guild.id).stickers(sticker.id).get();
+    sticker._patch(data);
+    return sticker.user;
   }
 }
 

@@ -1,14 +1,16 @@
 'use strict';
 
+const process = require('node:process');
+const { setTimeout } = require('node:timers');
 const { Collection } = require('@discordjs/collection');
 const CachedManager = require('./CachedManager');
-const Guild = require('../structures/Guild');
+const { Guild } = require('../structures/Guild');
 const GuildChannel = require('../structures/GuildChannel');
 const GuildEmoji = require('../structures/GuildEmoji');
-const GuildMember = require('../structures/GuildMember');
+const { GuildMember } = require('../structures/GuildMember');
 const Invite = require('../structures/Invite');
 const OAuth2Guild = require('../structures/OAuth2Guild');
-const Role = require('../structures/Role');
+const { Role } = require('../structures/Role');
 const {
   ChannelTypes,
   Events,
@@ -16,6 +18,7 @@ const {
   VerificationLevels,
   DefaultMessageNotificationLevels,
   ExplicitContentFilterLevels,
+  VideoQualityModes,
 } = require('../util/Constants');
 const DataResolver = require('../util/DataResolver');
 const Permissions = require('../util/Permissions');
@@ -92,6 +95,7 @@ class GuildManager extends CachedManager {
    * @property {number} [bitrate] The bitrate of the voice channel
    * @property {number} [userLimit] The user limit of the channel
    * @property {?string} [rtcRegion] The RTC region of the channel
+   * @property {VideoQualityMode|number} [videoQualityMode] The camera video quality mode of the channel
    * @property {PartialOverwriteData[]} [permissionOverwrites]
    * Overwrites of the channel
    * @property {number} [rateLimitPerUser] The rate limit per user (slowmode) of the channel in seconds
@@ -198,6 +202,11 @@ class GuildManager extends CachedManager {
       delete channel.rateLimitPerUser;
       channel.rtc_region = channel.rtcRegion;
       delete channel.rtcRegion;
+      channel.video_quality_mode =
+        typeof channel.videoQualityMode === 'string'
+          ? VideoQualityModes[channel.videoQualityMode]
+          : channel.videoQualityMode;
+      delete channel.videoQualityMode;
 
       if (!channel.permissionOverwrites) continue;
       for (const overwrite of channel.permissionOverwrites) {

@@ -1,10 +1,11 @@
 'use strict';
 
+const process = require('node:process');
 const { Collection } = require('@discordjs/collection');
 const CachedManager = require('./CachedManager');
 const { TypeError } = require('../errors');
 const PermissionOverwrites = require('../structures/PermissionOverwrites');
-const Role = require('../structures/Role');
+const { Role } = require('../structures/Role');
 const { OverwriteTypes } = require('../util/Constants');
 
 let cacheWarningEmitted = false;
@@ -141,8 +142,9 @@ class PermissionOverwriteManager extends CachedManager {
    *   .catch(console.error);
    */
   edit(userOrRole, options, overwriteOptions) {
-    userOrRole = this.channel.guild.roles.resolveId(userOrRole) ?? this.client.users.resolveId(userOrRole);
-    const existing = this.cache.get(userOrRole);
+    const existing = this.cache.get(
+      this.channel.guild.roles.resolveId(userOrRole) ?? this.client.users.resolveId(userOrRole),
+    );
     return this.upsert(userOrRole, options, overwriteOptions, existing);
   }
 
