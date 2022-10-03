@@ -1,14 +1,36 @@
-const { Client: EmpireClient } = require("ggejs");
-let _empireClient = new EmpireClient("", "");
+const { Client } = require("ggejs");
+let _empireClient = new Client("", "");
 
-async function _connect() {
-    _empireClient = new EmpireClient("e4k-nl", process.env.empirePassword, true);
-    await _empireClient.connect();
+function _connect() {
+    return new Promise(async (res, rej) =>{
+        try{
+            _empireClient = new Client("e4k-nl", process.env.empirePassword, 300);
+            await _empireClient.connect();
+            res(_empireClient);
+        }catch (e){
+            rej(e);
+        }
+    })
 }
 
 module.exports = {
+    /**
+     *
+     * @returns {Client}
+     */
     get client() { return _empireClient },
+    /**
+     *
+     * @returns {Promise<Client>}
+     */
     connect() {
-        _connect();
+        return new Promise(async (res, rej) =>{
+            try{
+                await _connect();
+                res(_empireClient);
+            }catch (e){
+                rej(e);
+            }
+        })
     }
 }

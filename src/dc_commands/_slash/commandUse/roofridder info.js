@@ -33,21 +33,20 @@ module.exports = {
      * @param {Interaction} interaction
      */
     async execute(interaction) {
-        let wereld;
+        let kID;
         let level;
         let winsTotUp;
         if (interaction.options) {
-            wereld = interaction.options.getString('wereld');
+            kID = interaction.options.getInteger('wereld');
             level = interaction.options.getInteger('level');
             winsTotUp = interaction.options.getInteger('totlvlup');
         }
         else if (interaction.customId) {
             var string = interaction.customId.split(' ');
-            wereld = string[2];
-            level = string[3];
-            winsTotUp = string[4];
+            kID = parseInt(string[2]);
+            level = parseInt(string[3]);
+            winsTotUp = parseInt(string[4]);
         }
-        const kID = parseInt(wereld);
         let minLvlRRvanRijk = krijgMinimumVanRijk(kID);
         let maxLvlRRvanRijk = krijgMaximumVanRijk(kID);
         level = Math.max(Math.min(level, maxLvlRRvanRijk), minLvlRRvanRijk);

@@ -3,7 +3,7 @@ const buildingData = require('./../../../ingame_data/buildings.json');
 const translationData = require('./../../../ingame_translations/nl.json');
 const imagesData = require('./../../../ingame_images/x768.json');
 const formatNumber = require('./../../../tools/number.js');
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, Interaction, ButtonStyle } = require('discord.js');
+const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, Interaction, ButtonStyle} = require('discord.js');
 const Logger = require("../../../tools/Logger.js");
 const buildingTranslations = translationData.buildings_and_decorations;
 const footerTekst = '© E4K NL server';
@@ -13,8 +13,8 @@ const _name = "gebouw algemeen";
 module.exports = {
     name: _name,
     /**
-     * 
-     * @param {Interaction} interaction
+     *
+     * @param {CommandInteraction | ButtonInteraction} interaction
      */
     async execute(interaction) {
         try {
@@ -23,12 +23,11 @@ module.exports = {
             if (interaction.options) {
                 level = interaction.options.getInteger('level');
                 gebouwnaam = interaction.options.getString('naam');
-            }
-            else if (interaction.customId) {
-                var string = interaction.customId.split(' ');
+            } else if (interaction.customId) {
+                let string = interaction.customId.split(' ');
                 level = parseInt(string[2]);
                 gebouwnaam = string[3];
-                for (i = 4; i < string.length; i++) {
+                for (let i = 4; i < string.length; i++) {
                     gebouwnaam += " " + string[i];
                 }
             }
@@ -40,8 +39,7 @@ module.exports = {
                     if (_intern_buildingName.endsWith('_name') && buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
                         foundBuildingName = _intern_buildingName;
                         break;
-                    }
-                    else if (_intern_buildingName.endsWith('_name') && !_intern_buildingName.startsWith('merchantItem_ci')) {
+                    } else if (_intern_buildingName.endsWith('_name') && !_intern_buildingName.startsWith('merchantItem_ci')) {
                         let _mogelijkGebouwNaam = buildingTranslations[_intern_buildingName];
                         if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam) && _mogelijkGebouwNaam !== "village_name" && _mogelijkGebouwNaam !== "barrel_name" && _mogelijkeGebouwnamen !== "deco_thornskull_name")
                             _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
@@ -53,8 +51,7 @@ module.exports = {
                     if (_intern_dialog.endsWith('_name') && translationData.dialogs[_intern_dialog].toLowerCase().trim() === gebouwnaam) {
                         foundBuildingName = _intern_dialog;
                         break;
-                    }
-                    else if (_intern_dialog.endsWith('_name') && (_intern_dialog.startsWith('deco_') || _intern_dialog === 'OfficersSchool_name' || _intern_dialog === 'TradeDistrict_name' || _intern_dialog === 'dialog_legendtemple_name')) {
+                    } else if (_intern_dialog.endsWith('_name') && (_intern_dialog.startsWith('deco_') || _intern_dialog === 'OfficersSchool_name' || _intern_dialog === 'TradeDistrict_name' || _intern_dialog === 'dialog_legendtemple_name')) {
                         let _mogelijkGebouwNaam = translationData.dialogs[_intern_dialog];
                         if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
                             _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
@@ -66,8 +63,7 @@ module.exports = {
                     if (_intern_generic.endsWith('_name') && translationData.generic[_intern_generic].toLowerCase().trim() === gebouwnaam) {
                         foundBuildingName = _intern_generic;
                         break;
-                    }
-                    else if (_intern_generic.endsWith('_name') && (_intern_generic === 'MayaPalace_name' || _intern_generic === 'MilitaryDistrict_name')) {
+                    } else if (_intern_generic.endsWith('_name') && (_intern_generic === 'MayaPalace_name' || _intern_generic === 'MilitaryDistrict_name')) {
                         let _mogelijkGebouwNaam = translationData.generic[_intern_generic];
                         if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
                             _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
@@ -105,16 +101,15 @@ module.exports = {
             let data = getBuildingLevelData(buildingNameParts, level);
             if (data === null) return;
             naarOutput(interaction, data, minLevel, maxLevel);
-        }
-        catch (e) {
-            Logger.logError(e);
+        } catch (e) {
+            await Logger.logError(e);
         }
     },
 };
 
 /**
- * 
- * @param {Interaction} interaction
+ *
+ * @param {CommandInteraction | ButtonInteraction} interaction
  * @param {object} data
  * @param {number} minLevel
  * @param {number} maxLevel
@@ -130,7 +125,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         let embed = new EmbedBuilder()
             .setColor('#996515')
             .setTimestamp()
-            .setFooter({ text: footerTekst, iconURL: footerAfbeelding })
+            .setFooter({text: footerTekst, iconURL: footerAfbeelding})
             .setTitle(title)
         if (image !== "") embed.setThumbnail(image);
         if (description !== "") embed.setDescription(description);
@@ -156,7 +151,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 _keyLowCase.endsWith("wodid") || _keyLowCase.endsWith("sortorder") || _keyLowCase === "effectlocked" ||
                 _keyLowCase.startsWith("earlyunlock") || _keyLowCase === "eventIDs" || _keyLowCase === "slumlevelneeded" ||
                 _keyLowCase === "requiredprivateoffer" || _keyLowCase === "canbeprimesaleoffer" ||
-                _keyLowCase === "isdistrict" || _keyLowCase == "movable") continue;
+                _keyLowCase === "isdistrict" || _keyLowCase === "movable") continue;
             if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
             /** @type string */
             let _value = data[_key];
@@ -166,7 +161,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 continue;
             }
             if (_keyLowCase === "storeable") {
-                _value = _value = data[_key] == "1" ? "Ja" : "Nee";
+                _value = _value = data[_key] === "1" ? "Ja" : "Nee";
                 constructionValues += `**Opslaanbaar**: ${_value}\n`;
                 continue;
             }
@@ -191,14 +186,27 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 for (let i = 0; i < _valueArray.length; i++) {
                     if (i > 0) _value += ", ";
                     switch (_valueArray[i].trim()) {
-                        case "0": _value += translationData.generic.kingdomName_Classic; break;
-                        case "1": _value += translationData.generic.kingdomName_Dessert; break;
-                        case "2": _value += translationData.generic.kingdomName_Icecream; break;
-                        case "3": _value += translationData.generic.kingdomName_Volcano; break;
-                        case "4": _value += translationData.generic.kingdomName_Island; break;
-                        case "10": _value += translationData.generic.kingdomName_Faction; break;
+                        case "0":
+                            _value += translationData.generic.kingdomName_Classic;
+                            break;
+                        case "1":
+                            _value += translationData.generic.kingdomName_Dessert;
+                            break;
+                        case "2":
+                            _value += translationData.generic.kingdomName_Icecream;
+                            break;
+                        case "3":
+                            _value += translationData.generic.kingdomName_Volcano;
+                            break;
+                        case "4":
+                            _value += translationData.generic.kingdomName_Island;
+                            break;
+                        case "10":
+                            _value += translationData.generic.kingdomName_Faction;
+                            break;
                         //case "ehm": _value += translationData.generic.kingdomName_Classic_Maya; break;
-                        default: _value += "-";
+                        default:
+                            _value += "-";
                     }
                 }
                 constructionValues += `**Toegestane koninkrijken**: ${_value}\n`;
@@ -210,14 +218,29 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 for (let i = 0; i < _valueArray.length; i++) {
                     if (i > 0) _value += ", ";
                     switch (_valueArray[i].trim()) {
-                        case "1": _value += "Hoofdkasteel"; break;
-                        case "3": _value += translationData.generic.capital; break;
-                        case "4": _value += translationData.generic.outpost; break;
-                        case "12": _value += translationData.generic.kingdomCastle_name; break;
-                        case "22": _value += translationData.generic.metropol; break;
-                        case "23": _value += translationData.generic.kingstower; break;
-                        case "26": _value += translationData.generic.monument; break;
-                        default: _value += _valueArray[i].trim();
+                        case "1":
+                            _value += "Hoofdkasteel";
+                            break;
+                        case "3":
+                            _value += translationData.generic.capital;
+                            break;
+                        case "4":
+                            _value += translationData.generic.outpost;
+                            break;
+                        case "12":
+                            _value += translationData.generic.kingdomCastle_name;
+                            break;
+                        case "22":
+                            _value += translationData.generic.metropol;
+                            break;
+                        case "23":
+                            _value += translationData.generic.kingstower;
+                            break;
+                        case "26":
+                            _value += translationData.generic.monument;
+                            break;
+                        default:
+                            _value += _valueArray[i].trim();
                     }
                 }
                 constructionValues += `**Toegestane kastelen**: ${_value}\n`;
@@ -303,7 +326,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
                 continue;
             }
             if (_keyLowCase.endsWith("burnable") || _keyLowCase.endsWith("destructable") || _keyLowCase.endsWith("smashable")) {
-                _value = data[_key] == "1" ? "Ja" : "Nee";
+                _value = data[_key] === "1" ? "Ja" : "Nee";
                 if (_keyLowCase.endsWith("burnable")) _keyLowCase = _keyLowCase.replace("burnable", "brandbaar");
                 else if (_keyLowCase.endsWith("destructable")) _keyLowCase = _keyLowCase.replace("destructable", "afbreekbaar");
                 else if (_keyLowCase.endsWith("smashable")) _keyLowCase = _keyLowCase.replace("smashable", "verwoestbaar");
@@ -317,10 +340,17 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             if (_keyLowCase === "districttypeid") {
                 _keyLowCase = "Kan in district";
                 switch (_value) {
-                    case "1": _value = translationData.generic.MilitaryDistrict_name; break;
-                    case "3": _value = translationData.buildings_and_decorations.InnerDistrict_name; break;
-                    case "4": _value = translationData.dialogs.TradeDistrict_name; break;
-                    default: _value = "-";
+                    case "1":
+                        _value = translationData.generic.MilitaryDistrict_name;
+                        break;
+                    case "3":
+                        _value = translationData.buildings_and_decorations.InnerDistrict_name;
+                        break;
+                    case "4":
+                        _value = translationData.dialogs.TradeDistrict_name;
+                        break;
+                    default:
+                        _value = "-";
                 }
             }
 
@@ -337,33 +367,45 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
         }
         if (requirementsValues !== "") {
             requirementsValues += `**${translationData.generic.costs}**: zie 'kosten knop' onderaan`;
-            embed.addFields({ name: `**Benodigdheden**`, value: requirementsValues.trim(), inline: true });
+            embed.addFields({name: `**Benodigdheden**`, value: requirementsValues.trim(), inline: true});
         }
         if (rewardValues !== "") {
-            embed.addFields({ name: `**Voordelen**`, value: rewardValues.trim(), inline: true });
+            embed.addFields({name: `**Voordelen**`, value: rewardValues.trim(), inline: true});
         }
         if (storageValues !== "") {
-            embed.addFields({ name: `**${translationData.buildings_and_decorations.storehouse_name}**`, value: storageValues.trim(), inline: true });
+            embed.addFields({
+                name: `**${translationData.buildings_and_decorations.storehouse_name}**`,
+                value: storageValues.trim(),
+                inline: true
+            });
         }
         if (productionValues !== "") {
-            embed.addFields({ name: `**${translationData.generic.produce}**`, value: productionValues.trim(), inline: true });
+            embed.addFields({
+                name: `**${translationData.generic.produce}**`,
+                value: productionValues.trim(),
+                inline: true
+            });
         }
         if (protectionValues !== "") {
-            embed.addFields({ name: `**${translationData.generic.protection}**`, value: protectionValues.trim(), inline: true });
+            embed.addFields({
+                name: `**${translationData.generic.protection}**`,
+                value: protectionValues.trim(),
+                inline: true
+            });
         }
         if (sellValues !== "") {
-            embed.addFields({ name: `**${translationData.generic.sellPrice}**`, value: sellValues.trim(), inline: true });
+            embed.addFields({name: `**${translationData.generic.sellPrice}**`, value: sellValues.trim(), inline: true});
         }
         if (destructionValues !== "") {
-            embed.addFields({ name: `**Afbreekbaarheid**`, value: destructionValues.trim(), inline: true });
+            embed.addFields({name: `**Afbreekbaarheid**`, value: destructionValues.trim(), inline: true});
         }
         if (values.trim() !== "") {
             values = values.substring(0, 1000);
-            embed.addFields({ name: "**Overige informatie**", value: values.trim(), inline: true });
+            embed.addFields({name: "**Overige informatie**", value: values.trim(), inline: true});
         }
 
         let components = [];
-        if (minLevel != maxLevel) {
+        if (minLevel !== maxLevel) {
             const _ActionRowBuilder = new ActionRowBuilder();
             if (level > minLevel) {
                 _ActionRowBuilder.addComponents(
@@ -392,10 +434,9 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             components.push(_ActionRowBuilder2);
         }
         if (interaction.options) {
-            interaction.followUp({ embeds: [embed], components: components });
-        }
-        else {
-            interaction.editReply({ embeds: [embed], components: components });
+            interaction.followUp({embeds: [embed], components: components});
+        } else {
+            interaction.editReply({embeds: [embed], components: components});
         }
         return;
     } catch (e) {
@@ -404,7 +445,7 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
 }
 
 /**
- * 
+ *
  * @param {object} data
  */
 function getBuildingName(data) {
@@ -413,20 +454,17 @@ function getBuildingName(data) {
     let dataGroup = data.group?.toLowerCase();
     if (dataName === "legendtemple") {
         return translationData.dialogs.dialog_legendtemple_name;
-    }
-    else {
+    } else {
         let _keys = Object.keys(buildingTranslations);
         let _key = _keys.find(_item => {
-            if (_item.toLowerCase() === `${dataName}_name`) return true;
-            if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
-            if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
-            if (_item.toLowerCase() === `${dataGroup}_name`) return true;
-            return false;
+            return _item.toLowerCase() === `${dataName}_name` ||
+                _item.toLowerCase() === `${dataName}_${dataType}_name` ||
+                _item.toLowerCase() === `${dataName}_${dataGroup}_name` ||
+                _item.toLowerCase() === `${dataGroup}_name`;
         })
         if (_key !== undefined) {
             return buildingTranslations[_key];
-        }
-        else {
+        } else {
             if (_key === undefined) {
                 _keys = Object.keys(translationData.generic);
                 _key = _keys.find(_item => {
@@ -440,8 +478,7 @@ function getBuildingName(data) {
         }
         if (_key !== undefined) {
             return translationData.generic[_key];
-        }
-        else {
+        } else {
             if (_key === undefined) {
                 _keys = Object.keys(translationData.dialogs);
                 _key = _keys.find(_item => {
@@ -462,7 +499,7 @@ function getBuildingName(data) {
 }
 
 /**
- * 
+ *
  * @param {object} data
  */
 function getBuildingDescription(data) {
@@ -471,8 +508,7 @@ function getBuildingDescription(data) {
     let dataGroup = data.group?.toLowerCase();
     if (dataName === "legendtemple") {
         return translationData.dialogs.dialog_legendtemple_shortInfo;
-    }
-    else {
+    } else {
         let _keys = Object.keys(buildingTranslations);
         let _key = _keys.find(_item => {
             if (_item.toLowerCase() === `${dataName}_short_info`) return true;
@@ -482,8 +518,7 @@ function getBuildingDescription(data) {
         })
         if (_key !== undefined) {
             return buildingTranslations[_key];
-        }
-        else {
+        } else {
             _keys = Object.keys(translationData.generic);
             _key = _keys.find(_item => {
                 if (_item.toLowerCase() === `${dataName}_short_info`) return true;
@@ -495,8 +530,7 @@ function getBuildingDescription(data) {
         }
         if (_key !== undefined) {
             return translationData.generic[_key];
-        }
-        else {
+        } else {
             _keys = Object.keys(translationData.dialogs);
             _key = _keys.find(_item => {
                 if (_item.toLowerCase() === `${dataName}_short_info`) return true;
@@ -515,7 +549,7 @@ function getBuildingDescription(data) {
 }
 
 /**
- * 
+ *
  * @param {Array} buildingNameParts
  */
 function getLevelMinMax(buildingNameParts) {
@@ -531,19 +565,16 @@ function getLevelMinMax(buildingNameParts) {
             if (_dataName === buildingNameParts[0]) {
                 if (_dataLevel < minLevel) minLevel = _dataLevel;
                 if (_dataLevel > maxLevel) maxLevel = _dataLevel;
-            }
-            else if (_dataGroup === buildingNameParts[0]) {
+            } else if (_dataGroup === buildingNameParts[0]) {
                 if (_dataLevel < minLevel) minLevel = _dataLevel;
                 if (_dataLevel > maxLevel) maxLevel = _dataLevel;
             }
-        }
-        else if (buildingNameParts.length === 2) {
+        } else if (buildingNameParts.length === 2) {
             if (_dataName === buildingNameParts[0] &&
                 _dataType === buildingNameParts[1]) {
                 if (_dataLevel < minLevel) minLevel = _dataLevel;
                 if (_dataLevel > maxLevel) maxLevel = _dataLevel;
-            }
-            else if (_dataName === buildingNameParts[0] &&
+            } else if (_dataName === buildingNameParts[0] &&
                 _dataGroup === buildingNameParts[1]) {
                 if (_dataLevel < minLevel) minLevel = _dataLevel;
                 if (_dataLevel > maxLevel) maxLevel = _dataLevel;
@@ -554,7 +585,7 @@ function getLevelMinMax(buildingNameParts) {
 }
 
 /**
- * 
+ *
  * @param {Array} buildingNameParts
  * @param {number} level
  */
@@ -566,20 +597,17 @@ function getBuildingLevelData(buildingNameParts, level) {
         let _dataType = _data.type.toLowerCase();
         let _dataGroup = _data.group.toLowerCase();
         let _dataLevel = parseInt(_data.level);
-        if (buildingNameParts.length == 1) {
+        if (buildingNameParts.length === 1) {
             if (_dataName === buildingNameParts[0]) {
                 if (_dataLevel === level) data = _data;
-            }
-            else if (_dataGroup === buildingNameParts[0]) {
+            } else if (_dataGroup === buildingNameParts[0]) {
                 if (_dataLevel === level) data = _data;
             }
-        }
-        else if (buildingNameParts.length == 2) {
+        } else if (buildingNameParts.length === 2) {
             if (_dataName === buildingNameParts[0] &&
                 _dataType === buildingNameParts[1]) {
                 if (_dataLevel === level) data = _data;
-            }
-            else if (_dataName === buildingNameParts[0] &&
+            } else if (_dataName === buildingNameParts[0] &&
                 _dataGroup === buildingNameParts[1]) {
                 if (_dataLevel === level) data = _data;
             }
@@ -589,7 +617,7 @@ function getBuildingLevelData(buildingNameParts, level) {
 }
 
 /**
- * 
+ *
  * @param {object} data
  */
 function getBuildingImage(data) {
@@ -599,9 +627,9 @@ function getBuildingImage(data) {
 
     let _keys = Object.keys(imagesData);
     let _key = _keys.find(_item => {
-        if (_item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}`) return true;
-        if (_item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}_full`) return true;
-        return false;
+        return _item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}` ||
+            _item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}_full`;
+
     })
     if (_key !== undefined) {
         let imgData = imagesData[_key];

@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const {SlashCommandBuilder} = require('@discordjs/builders');
 
 module.exports = {
     name: 'titel',
@@ -44,9 +44,9 @@ module.exports = {
                         .setDescription('De titelsoort')
                         .setRequired(false)
                         .addChoices(
-                            { name: 'Roem', value: 'roem' },
-                            { name: 'Berimond', value: 'beri' },
-                            { name: 'Storm', value: 'storm' }
+                            {name: 'Roem', value: 'roem'},
+                            {name: 'Berimond', value: 'beri'},
+                            {name: 'Storm', value: 'storm'},
                         )
                 )
         )

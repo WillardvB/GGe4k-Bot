@@ -2,27 +2,27 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     name: 'roofridder',
-    description: 'Toont al je gewenste roofridderdata!',
+    description: 'Toont al je gewenste roofridder data!',
     data: new SlashCommandBuilder()
         .setName('roofridder')
-        .setDescription('Toont al je gewenste roofridderdata!')
+        .setDescription('Toont al je gewenste roofridder data!')
         .addSubcommand(subcommand =>
             subcommand
                 .setName('info')
                 .setDescription('Geeft alle info over de roofridder')
-                .addStringOption(option =>
+                .addIntegerOption(option =>
                     option
                         .setName('wereld')
                         .setDescription('De wereld van de roofridder')
                         .setRequired(true)
                         .addChoices(
-                            { name: 'Grote rijk', value: '0' },
-                            { name: 'IJs', value: '2' },
-                            { name: 'Zand', value: '1' },
-                            { name: 'Vuur', value: '3' },
-                            { name: 'Storm', value: '4' },
-                            { name: 'Berimond', value: '10' },
-                            { name: 'Klingkust', value: '-1' }
+                            { name: 'Grote rijk', value: 0 },
+                            { name: 'IJs', value: 2 },
+                            { name: 'Zand', value: 1 },
+                            { name: 'Vuur', value: 3 },
+                            { name: 'Storm', value: 4 },
+                            { name: 'Berimond', value: 10 },
+                            { name: 'Klingkust', value: -1},
                         )
                 )
                 .addIntegerOption(option =>
@@ -34,7 +34,7 @@ module.exports = {
                 .addIntegerOption(option =>
                     option
                         .setName('totlvlup')
-                        .setDescription('Hoeveel x verslaan tot volgend level?')
+                        .setDescription('Hoeveel keer verslaan tot volgend level?')
                         .setRequired(true)
                 )
         )
