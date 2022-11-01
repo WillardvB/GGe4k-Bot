@@ -26,7 +26,7 @@ module.exports = {
                 _filledInCode = interaction.fields.getTextInputValue('verificationCode');
                 if (accountLinks["linkCodes"][player_id.toString()].code === _filledInCode) {
                     accountLinks["linkAccounts"][interaction.user.id.toString()] = player_id.toString();
-                    fs.writeFileSync(path.join(__dirname,'./../../../data/accountlinks.json'), JSON.stringify(accountLinks, null, 2));
+                    fs.writeFileSync(path.join(__dirname, './../../../data/accountlinks.json'), JSON.stringify(accountLinks, null, 2));
                     const __messRow = new ActionRowBuilder();
                     __messRow.addComponents(
                         new ButtonBuilder()
@@ -41,12 +41,12 @@ module.exports = {
                     let _player = await empire.client.players.getById(player_id);
                     let _roles = await interaction.guild.roles.fetch();
                     /** @type {Role}*/
-                    let _role = _roles.find(x=>x.name === _player.allianceName);
-                    if(_role === undefined){
-                        _role = await interaction.guild.roles.create({name:_player.allianceName})
+                    let _role = _roles.find(x => x.name === _player.allianceName);
+                    if (_role === undefined) {
+                        _role = await interaction.guild.roles.create({name: _player.allianceName})
                     }
-                    let __role = interaction.member.roles.cache.find(x=>x.name === _role.name);
-                    if(__role === undefined) {
+                    let __role = interaction.member.roles.cache.find(x => x.name === _role.name);
+                    if (__role === undefined) {
                         await interaction.member.roles.add(_role, "Account linking");
                     }
                     await interaction.reply({
@@ -64,9 +64,9 @@ module.exports = {
                     code: code,
                     date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).getTime()
                 };
-                fs.writeFileSync(path.join(__dirname,'./../../../data/accountlinks.json'), JSON.stringify(accountLinks, null, 2));
+                fs.writeFileSync(path.join(__dirname, './../../../data/accountlinks.json'), JSON.stringify(accountLinks, null, 2));
                 let bericht = `${interaction.user.username}:${interaction.user.discriminator} heeft een verificatiecode aangevraagd voor het koppelen van het empire account aan zijn discord account. Deze koppeling maakt het gebruik van Commands op Discord makkelijker. Er komt hierbij géén extra (privé) informatie vrij.\n` +
-                `De code is:\n\n${code}\n\nDeze code is een week geldig en er is geen maximum op het aantal gebruiken.`;
+                    `De code is:\n\n${code}\n\nDeze code is een week geldig en er is geen maximum op het aantal gebruiken.`;
                 empire.client.sendMail(player.playerName, "Link account code", bericht);
                 let _components = [];
                 const _messRow = new ActionRowBuilder();
@@ -85,7 +85,7 @@ module.exports = {
                 });
             } else if (accountLinks["linkCodes"][player_id.toString()].date > Date.now()) {
                 if (!interaction.isModalSubmit()) {
-                    if(interaction.deferred || interaction.replied){
+                    if (interaction.deferred || interaction.replied) {
                         let _components = [];
                         const _messRow = new ActionRowBuilder();
                         _messRow.addComponents(

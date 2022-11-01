@@ -1,11 +1,7 @@
-const stringSimilarity = require("string-similarity");
-const buildingData = require('./../../../ingame_data/buildings.json');
 const translationData = require('./../../../ingame_translations/nl.json');
-const imagesData = require('./../../../ingame_images/x768.json');
 const formatNumber = require('./../../../tools/number.js');
-const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, Interaction, ButtonStyle} = require('discord.js');
-const Logger = require("../../../tools/Logger.js");
-const buildingTranslations = translationData.buildings_and_decorations;
+const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
+const buildingCommandHelper = require('./../commandHelpers/gebouw');
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 
@@ -31,78 +27,15 @@ module.exports = {
                     gebouwnaam += " " + string[i];
                 }
             }
-            gebouwnaam = gebouwnaam.trim().toLowerCase();
-            let foundBuildingName = "<Not found>";
-            let _mogelijkeGebouwnamen = [];
-            if (foundBuildingName === "<Not found>") {
-                for (let _intern_buildingName in buildingTranslations) {
-                    if (_intern_buildingName.endsWith('_name') && buildingTranslations[_intern_buildingName].toLowerCase().trim() === gebouwnaam) {
-                        foundBuildingName = _intern_buildingName;
-                        break;
-                    } else if (_intern_buildingName.endsWith('_name') && !_intern_buildingName.startsWith('merchantItem_ci')) {
-                        let _mogelijkGebouwNaam = buildingTranslations[_intern_buildingName];
-                        if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam) && _mogelijkGebouwNaam !== "village_name" && _mogelijkGebouwNaam !== "barrel_name" && _mogelijkeGebouwnamen !== "deco_thornskull_name")
-                            _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
-                    }
-                }
-            }
-            if (foundBuildingName === "<Not found>") {
-                for (let _intern_dialog in translationData.dialogs) {
-                    if (_intern_dialog.endsWith('_name') && translationData.dialogs[_intern_dialog].toLowerCase().trim() === gebouwnaam) {
-                        foundBuildingName = _intern_dialog;
-                        break;
-                    } else if (_intern_dialog.endsWith('_name') && (_intern_dialog.startsWith('deco_') || _intern_dialog === 'OfficersSchool_name' || _intern_dialog === 'TradeDistrict_name' || _intern_dialog === 'dialog_legendtemple_name')) {
-                        let _mogelijkGebouwNaam = translationData.dialogs[_intern_dialog];
-                        if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
-                            _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
-                    }
-                }
-            }
-            if (foundBuildingName === "<Not found>") {
-                for (let _intern_generic in translationData.generic) {
-                    if (_intern_generic.endsWith('_name') && translationData.generic[_intern_generic].toLowerCase().trim() === gebouwnaam) {
-                        foundBuildingName = _intern_generic;
-                        break;
-                    } else if (_intern_generic.endsWith('_name') && (_intern_generic === 'MayaPalace_name' || _intern_generic === 'MilitaryDistrict_name')) {
-                        let _mogelijkGebouwNaam = translationData.generic[_intern_generic];
-                        if (!_mogelijkeGebouwnamen.includes(_mogelijkGebouwNaam))
-                            _mogelijkeGebouwnamen.push(_mogelijkGebouwNaam);
-                    }
-                }
-            }
-            if (foundBuildingName === "<Not found>") {
-                _mogelijkeGebouwnamen.sort();
-                let matches = stringSimilarity.findBestMatch(gebouwnaam, _mogelijkeGebouwnamen).ratings;
-                matches = matches.sort((a, b) => {
-                    if (a.rating > b.rating) return -1;
-                    if (a.rating < b.rating) return 1;
-                    return 0;
-                }).slice(0, 5);
-                const _ActionRowBuilder = new ActionRowBuilder();
-                for (let i = 0; i < matches.length; i++) {
-                    _ActionRowBuilder.addComponents(
-                        new ButtonBuilder().setCustomId(`${_name} ${level} ${matches[i].target}`)
-                            .setLabel(matches[i].target).setStyle(ButtonStyle.Primary)
-                    );
-                }
-                interaction.followUp({
-                    embeds: [new EmbedBuilder().setDescription("Ik kan het gebouw met de opgegeven naam niet vinden!\n\nBedoelde je:")],
-                    components: [_ActionRowBuilder]
-                });
-                return;
-            }
-            foundBuildingName = foundBuildingName.split('_name')[0].toLowerCase();
-            if (foundBuildingName.startsWith('dialog_')) foundBuildingName = foundBuildingName.substring(7);
+            let foundBuildingName = await buildingCommandHelper.getSuggestions(gebouwnaam, interaction, _name, level);
+            if (foundBuildingName === "<Not found>") return;
             let buildingNameParts = foundBuildingName.split('_');
-            let minMaxLevel = getLevelMinMax(buildingNameParts);
-            let minLevel = minMaxLevel[0];
-            let maxLevel = minMaxLevel[1];
-            level = Math.min(Math.max(level, minLevel), maxLevel);
-            let data = getBuildingLevelData(buildingNameParts, level);
+            let _rawData = buildingCommandHelper.getRawData(buildingNameParts, level);
+            let data = _rawData.data;
             if (data === null) return;
-            naarOutput(interaction, data, minLevel, maxLevel);
+            await naarOutput(interaction, data, _rawData.minLevel, _rawData.maxLevel);
         } catch (e) {
-            await Logger.logError(e);
+            await interaction.followUp({content: e.toString()});
         }
     },
 };
@@ -114,21 +47,20 @@ module.exports = {
  * @param {number} minLevel
  * @param {number} maxLevel
  */
-function naarOutput(interaction, data, minLevel, maxLevel) {
+async function naarOutput(interaction, data, minLevel, maxLevel) {
     try {
-        let level = data.level;
-        let gebouwNaam = getBuildingName(data);
-        let description = getBuildingDescription(data);
-        let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : ` (level ${level})`}`;
-        let image = getBuildingImage(data);
-
+        let level = parseInt(data.level);
+        let gebouwNaam = buildingCommandHelper.getName(data);
+        let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : ` (${translationData.generic.level} ${level})`}`;
         let embed = new EmbedBuilder()
             .setColor('#996515')
             .setTimestamp()
             .setFooter({text: footerTekst, iconURL: footerAfbeelding})
-            .setTitle(title)
-        if (image !== "") embed.setThumbnail(image);
+            .setTitle(title);
+        let description = buildingCommandHelper.getDescription(data);
         if (description !== "") embed.setDescription(description);
+        let image = buildingCommandHelper.getImage(data);
+        if (image !== "") embed.setThumbnail(image);
 
         let values = "";
         let constructionValues = "";
@@ -359,14 +291,10 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             values += `**${_key}**: ${_value}\n`;
         }
         if (constructionValues !== "") {
-            embed.addFields({
-                name: `**Constructie**`,
-                value: constructionValues.trim(),
-                inline: true,
-            })
+            embed.addFields({name: `**Constructie**`, value: constructionValues.trim(), inline: true,});
         }
         if (requirementsValues !== "") {
-            requirementsValues += `**${translationData.generic.costs}**: zie 'kosten knop' onderaan`;
+            requirementsValues += `**${translationData.generic.costs}**: zie '${translationData.generic.costs}'-knop onderaan`;
             embed.addFields({name: `**Benodigdheden**`, value: requirementsValues.trim(), inline: true});
         }
         if (rewardValues !== "") {
@@ -410,230 +338,35 @@ function naarOutput(interaction, data, minLevel, maxLevel) {
             if (level > minLevel) {
                 _ActionRowBuilder.addComponents(
                     new ButtonBuilder()
-                        .setLabel('lvl ' + (level * 1 - 1))
+                        .setLabel(`${translationData.generic.level} ${level - 1}`)
                         .setStyle(ButtonStyle.Primary)
-                        .setCustomId(`${_name} ${(level * 1 - 1)} ${gebouwNaam}`)
+                        .setCustomId(`${_name} ${(level - 1)} ${gebouwNaam}`)
                 )
             }
             if (level < maxLevel) {
                 _ActionRowBuilder.addComponents(
                     new ButtonBuilder()
-                        .setLabel('lvl ' + (level * 1 + 1))
+                        .setLabel(`${translationData.generic.level} ${level + 1}`)
                         .setStyle(ButtonStyle.Primary)
-                        .setCustomId(`${_name} ${(level * 1 + 1)} ${gebouwNaam}`)
+                        .setCustomId(`${_name} ${(level + 1)} ${gebouwNaam}`)
                 )
             }
             components = [_ActionRowBuilder];
-            const _ActionRowBuilder2 = new ActionRowBuilder();
-            _ActionRowBuilder2.addComponents(
-                new ButtonBuilder()
-                    .setLabel(translationData.generic.costs)
-                    .setStyle(ButtonStyle.Primary)
-                    .setCustomId(`gebouw kosten ${level} ${gebouwNaam}`)
-            );
-            components.push(_ActionRowBuilder2);
         }
+        const _ActionRowBuilder2 = new ActionRowBuilder();
+        _ActionRowBuilder2.addComponents(
+            new ButtonBuilder()
+                .setLabel(translationData.generic.costs)
+                .setStyle(ButtonStyle.Primary)
+                .setCustomId(`gebouw kosten ${level} ${gebouwNaam}`)
+        );
+        components.push(_ActionRowBuilder2);
         if (interaction.options) {
-            interaction.followUp({embeds: [embed], components: components});
+            await interaction.followUp({embeds: [embed], components: components});
         } else {
-            interaction.editReply({embeds: [embed], components: components});
+            await interaction.editReply({embeds: [embed], components: components});
         }
-        return;
     } catch (e) {
-        Logger.logError(e);
+        await interaction.followUp({content: e.toString()});
     }
-}
-
-/**
- *
- * @param {object} data
- */
-function getBuildingName(data) {
-    let dataName = data.name.toLowerCase();
-    let dataType = data.type?.toLowerCase();
-    let dataGroup = data.group?.toLowerCase();
-    if (dataName === "legendtemple") {
-        return translationData.dialogs.dialog_legendtemple_name;
-    } else {
-        let _keys = Object.keys(buildingTranslations);
-        let _key = _keys.find(_item => {
-            return _item.toLowerCase() === `${dataName}_name` ||
-                _item.toLowerCase() === `${dataName}_${dataType}_name` ||
-                _item.toLowerCase() === `${dataName}_${dataGroup}_name` ||
-                _item.toLowerCase() === `${dataGroup}_name`;
-        })
-        if (_key !== undefined) {
-            return buildingTranslations[_key];
-        } else {
-            if (_key === undefined) {
-                _keys = Object.keys(translationData.generic);
-                _key = _keys.find(_item => {
-                    if (_item.toLowerCase() === `${dataName}_name`) return true;
-                    if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
-                    if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
-                    if (_item.toLowerCase() === `${dataGroup}_name`) return true;
-                    return false;
-                })
-            }
-        }
-        if (_key !== undefined) {
-            return translationData.generic[_key];
-        } else {
-            if (_key === undefined) {
-                _keys = Object.keys(translationData.dialogs);
-                _key = _keys.find(_item => {
-                    if (_item.toLowerCase() === `${dataName}_name`) return true;
-                    if (_item.toLowerCase() === `${dataName}_${dataType}_name`) return true;
-                    if (_item.toLowerCase() === `${dataName}_${dataGroup}_name`) return true;
-                    if (_item.toLowerCase() === `${dataGroup}_name`) return true;
-                    if (_item.toLowerCase() === `dialog_${dataName}_name`) return true;
-                    return false;
-                })
-            }
-        }
-        if (_key !== undefined) {
-            return translationData.dialogs[_key];
-        }
-    }
-    return data.name;
-}
-
-/**
- *
- * @param {object} data
- */
-function getBuildingDescription(data) {
-    let dataName = data.name.toLowerCase();
-    let dataType = data.type?.toLowerCase();
-    let dataGroup = data.group?.toLowerCase();
-    if (dataName === "legendtemple") {
-        return translationData.dialogs.dialog_legendtemple_shortInfo;
-    } else {
-        let _keys = Object.keys(buildingTranslations);
-        let _key = _keys.find(_item => {
-            if (_item.toLowerCase() === `${dataName}_short_info`) return true;
-            if (_item.toLowerCase() === `${dataName}_${dataType}_short_info`) return true;
-            if (_item.toLowerCase() === `${dataName}_${dataGroup}_short_info`) return true;
-            return false;
-        })
-        if (_key !== undefined) {
-            return buildingTranslations[_key];
-        } else {
-            _keys = Object.keys(translationData.generic);
-            _key = _keys.find(_item => {
-                if (_item.toLowerCase() === `${dataName}_short_info`) return true;
-                if (_item.toLowerCase() === `${dataName}_${dataType}_short_info`) return true;
-                if (_item.toLowerCase() === `${dataName}_${dataGroup}_short_info`) return true;
-                if (_item.toLowerCase() === `${dataGroup}_short_info`) return true;
-                return false;
-            })
-        }
-        if (_key !== undefined) {
-            return translationData.generic[_key];
-        } else {
-            _keys = Object.keys(translationData.dialogs);
-            _key = _keys.find(_item => {
-                if (_item.toLowerCase() === `${dataName}_short_info`) return true;
-                if (_item.toLowerCase() === `${dataName}_${dataType}_short_info`) return true;
-                if (_item.toLowerCase() === `${dataName}_${dataGroup}_short_info`) return true;
-                if (_item.toLowerCase() === `${dataGroup}_short_info`) return true;
-                if (_item.toLowerCase() === `dialog_${dataName}_short_info`) return true;
-                return false;
-            })
-        }
-        if (_key !== undefined) {
-            return translationData.dialogs[_key];
-        }
-    }
-    return "";
-}
-
-/**
- *
- * @param {Array} buildingNameParts
- */
-function getLevelMinMax(buildingNameParts) {
-    let minLevel = 1000;
-    let maxLevel = 0;
-    for (let _building in buildingData) {
-        let _data = buildingData[_building];
-        let _dataName = _data.name.toLowerCase();
-        let _dataType = _data.type.toLowerCase();
-        let _dataGroup = _data.group.toLowerCase();
-        let _dataLevel = parseInt(_data.level);
-        if (buildingNameParts.length === 1) {
-            if (_dataName === buildingNameParts[0]) {
-                if (_dataLevel < minLevel) minLevel = _dataLevel;
-                if (_dataLevel > maxLevel) maxLevel = _dataLevel;
-            } else if (_dataGroup === buildingNameParts[0]) {
-                if (_dataLevel < minLevel) minLevel = _dataLevel;
-                if (_dataLevel > maxLevel) maxLevel = _dataLevel;
-            }
-        } else if (buildingNameParts.length === 2) {
-            if (_dataName === buildingNameParts[0] &&
-                _dataType === buildingNameParts[1]) {
-                if (_dataLevel < minLevel) minLevel = _dataLevel;
-                if (_dataLevel > maxLevel) maxLevel = _dataLevel;
-            } else if (_dataName === buildingNameParts[0] &&
-                _dataGroup === buildingNameParts[1]) {
-                if (_dataLevel < minLevel) minLevel = _dataLevel;
-                if (_dataLevel > maxLevel) maxLevel = _dataLevel;
-            }
-        }
-    }
-    return [minLevel, maxLevel];
-}
-
-/**
- *
- * @param {Array} buildingNameParts
- * @param {number} level
- */
-function getBuildingLevelData(buildingNameParts, level) {
-    let data = null;
-    for (let _building in buildingData) {
-        let _data = buildingData[_building];
-        let _dataName = _data.name.toLowerCase();
-        let _dataType = _data.type.toLowerCase();
-        let _dataGroup = _data.group.toLowerCase();
-        let _dataLevel = parseInt(_data.level);
-        if (buildingNameParts.length === 1) {
-            if (_dataName === buildingNameParts[0]) {
-                if (_dataLevel === level) data = _data;
-            } else if (_dataGroup === buildingNameParts[0]) {
-                if (_dataLevel === level) data = _data;
-            }
-        } else if (buildingNameParts.length === 2) {
-            if (_dataName === buildingNameParts[0] &&
-                _dataType === buildingNameParts[1]) {
-                if (_dataLevel === level) data = _data;
-            } else if (_dataName === buildingNameParts[0] &&
-                _dataGroup === buildingNameParts[1]) {
-                if (_dataLevel === level) data = _data;
-            }
-        }
-    }
-    return data;
-}
-
-/**
- *
- * @param {object} data
- */
-function getBuildingImage(data) {
-    let dataName = data.name.toLowerCase();
-    let dataType = data.type?.toLowerCase();
-    let dataGroup = data.group?.toLowerCase();
-
-    let _keys = Object.keys(imagesData);
-    let _key = _keys.find(_item => {
-        return _item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}` ||
-            _item.toLowerCase() === `${dataName}_${dataGroup}_${dataType}_full`;
-
-    })
-    if (_key !== undefined) {
-        let imgData = imagesData[_key];
-        return "https://github.com/WillardvB/GGe4k-Bot/raw/master/ingame_images/" + imgData.url;
-    }
-    return "";
 }
