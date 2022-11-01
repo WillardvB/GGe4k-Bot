@@ -1,16 +1,10 @@
-const {
-    EmbedBuilder,
-    ActionRowBuilder,
-    ButtonBuilder,
-    ButtonStyle,
-    SelectMenuBuilder,
-    SelectMenuOptionBuilder
-} = require("discord.js");
+const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, SelectMenuBuilder} = require("discord.js");
 const empire = require("../../../empireClient");
 const translationData = require('./../../../ingame_translations/nl.json');
 
+const _name = 'bondgenootschap leden';
 module.exports = {
-    name: 'bondgenootschap leden',
+    name: _name,
     /**
      *
      * @param {CommandInteraction | ButtonInteraction | SelectMenuInteraction} interaction
@@ -42,7 +36,7 @@ module.exports = {
             if (rank == null) rank = -1; else rank -= 1;
             const alliance = await empire.client.alliances.find(allianceName);
             let embed = new EmbedBuilder()
-                .setDescription("leden")
+                .setDescription(rank === -1 ? "Alle leden" : "Leden met rang: " + translationData.dialogs["dialog_alliance_rank" + rank])
                 .setTimestamp()
                 .setColor("#000000")
                 .setTitle(`**${alliance.allianceName}**`)
@@ -84,11 +78,14 @@ module.exports = {
                     isSecondField = false;
                 }
             }
-            let __allianceRank = _allianceRank
-            if (isSecondField) __allianceRank += " 2";
-            await embed.addFields({
-                name: __allianceRank, value: memberList, inline: true
-            });
+            if (memberList.trim() !== "") {
+                let __allianceRank = _allianceRank
+                if (isSecondField) __allianceRank += " 2";
+                if (memberList !== "")
+                    await embed.addFields({
+                        name: __allianceRank, value: memberList, inline: true
+                    });
+            }
             const messRow = new ActionRowBuilder();
             let _options = [];
             if (rank !== -1) _options.push({
@@ -99,7 +96,7 @@ module.exports = {
             for (let i = 0; i <= 9; i++) {
                 if (rank === i) continue;
                 let ___description = translationData.dialogs["dialog_alliance_rankinfo" + i].split('.')[0] + ".";
-                if(___description.length > 100) ___description = ___description.substring(0, 97).trim() + "...";
+                if (___description.length > 100) ___description = ___description.substring(0, 97).trim() + "...";
                 _options.push({
                     label: translationData.dialogs["dialog_alliance_rank" + i],
                     description: ___description,
@@ -111,17 +108,21 @@ module.exports = {
                     .setOptions(_options)
                     .setMaxValues(1)
                     .setPlaceholder('Filter leden')
-                    .setCustomId(`bondgenootschap leden ${allianceName}`)
+                    .setCustomId(`${_name} ${allianceName}`)
             )
             const messRow2 = new ActionRowBuilder();
             messRow2.addComponents(
                 new ButtonBuilder()
                     .setLabel(translationData.dialogs.dialog_alliance_info)
                     .setStyle(ButtonStyle.Primary)
-                    .setCustomId(`bondgenootschap info ${allianceName}`)
+                    .setCustomId(`bondgenootschap info ${allianceName}`),
+                new ButtonBuilder()
+                    .setLabel(translationData.generic.worldMap)
+                    .setStyle(ButtonStyle.Primary)
+                    .setCustomId(`worldmap alliance ${alliance.allianceId} 0 1 1 0 0`)
             )
             if (interaction.options) {
-                if(interaction.isSelectMenu())
+                if (interaction.isSelectMenu())
                     await interaction.update({embeds: [embed], components: [messRow, messRow2]});
                 else
                     await interaction.followUp({embeds: [embed], components: [messRow, messRow2]});
@@ -130,7 +131,6 @@ module.exports = {
             }
         } catch (e) {
             await interaction.followUp({content: e.toString()});
-            console.log(e);
         }
     }
 }
