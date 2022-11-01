@@ -9076,7 +9076,6 @@
     "addRareGlue": "630",
     "addEpicCobblestone": "250",
     "addLegendaryFabric": "10",
-    "Meadproduction": "70",
     "effects": "295&amp;70"
   },
   "518": {
@@ -9097,7 +9096,6 @@
     "addRareGlue": "1450",
     "addEpicCobblestone": "425",
     "addLegendaryFabric": "17",
-    "Meadproduction": "90",
     "effects": "295&amp;90"
   },
   "519": {
@@ -9118,7 +9116,6 @@
     "addRareGlue": "2270",
     "addEpicCobblestone": "600",
     "addLegendaryFabric": "24",
-    "Meadproduction": "110",
     "effects": "295&amp;110"
   },
   "520": {
@@ -9139,7 +9136,6 @@
     "addRareGlue": "3090",
     "addEpicCobblestone": "775",
     "addLegendaryFabric": "31",
-    "Meadproduction": "130",
     "effects": "295&amp;130"
   },
   "521": {
@@ -9160,7 +9156,6 @@
     "addRareGlue": "3910",
     "addEpicCobblestone": "950",
     "addLegendaryFabric": "38",
-    "Meadproduction": "150",
     "effects": "295&amp;150"
   },
   "522": {
@@ -9181,7 +9176,6 @@
     "addRareGlue": "4730",
     "addEpicCobblestone": "1125",
     "addLegendaryFabric": "45",
-    "Meadproduction": "170",
     "effects": "295&amp;170"
   },
   "523": {
@@ -9202,7 +9196,6 @@
     "addRareGlue": "5550",
     "addEpicCobblestone": "1300",
     "addLegendaryFabric": "52",
-    "Meadproduction": "190",
     "effects": "295&amp;190"
   },
   "524": {
@@ -9223,7 +9216,6 @@
     "addRareGlue": "6370",
     "addEpicCobblestone": "1475",
     "addLegendaryFabric": "59",
-    "Meadproduction": "250",
     "effects": "295&amp;250"
   },
   "525": {
@@ -9244,7 +9236,6 @@
     "addRareGlue": "7190",
     "addEpicCobblestone": "1650",
     "addLegendaryFabric": "66",
-    "Meadproduction": "300",
     "effects": "295&amp;300"
   },
   "526": {
@@ -9265,7 +9256,6 @@
     "addRareGlue": "8010",
     "addEpicCobblestone": "1825",
     "addLegendaryFabric": "73",
-    "Meadproduction": "350",
     "effects": "295&amp;350"
   },
   "527": {
@@ -9286,7 +9276,6 @@
     "addRareGlue": "8830",
     "addEpicCobblestone": "2000",
     "addLegendaryFabric": "80",
-    "Meadproduction": "400",
     "effects": "295&amp;400"
   },
   "528": {
@@ -9307,7 +9296,6 @@
     "addRareGlue": "9650",
     "addEpicCobblestone": "2175",
     "addLegendaryFabric": "87",
-    "Meadproduction": "450",
     "effects": "295&amp;450"
   },
   "529": {
@@ -9328,7 +9316,6 @@
     "addRareGlue": "10470",
     "addEpicCobblestone": "2350",
     "addLegendaryFabric": "94",
-    "Meadproduction": "500",
     "effects": "295&amp;500"
   },
   "530": {
@@ -9349,7 +9336,6 @@
     "addRareGlue": "11290",
     "addEpicCobblestone": "2525",
     "addLegendaryFabric": "101",
-    "Meadproduction": "550",
     "effects": "295&amp;550"
   },
   "531": {
@@ -9370,7 +9356,6 @@
     "addRareGlue": "12110",
     "addEpicCobblestone": "2700",
     "addLegendaryFabric": "108",
-    "Meadproduction": "600",
     "effects": "295&amp;600"
   },
   "532": {
@@ -9391,7 +9376,6 @@
     "addRareGlue": "12930",
     "addEpicCobblestone": "2875",
     "addLegendaryFabric": "115",
-    "Meadproduction": "650",
     "effects": "295&amp;650"
   },
   "533": {
@@ -9412,7 +9396,6 @@
     "addRareGlue": "13750",
     "addEpicCobblestone": "3050",
     "addLegendaryFabric": "122",
-    "Meadproduction": "700",
     "effects": "295&amp;700"
   },
   "534": {
@@ -9433,7 +9416,6 @@
     "addRareGlue": "14570",
     "addEpicCobblestone": "3225",
     "addLegendaryFabric": "129",
-    "Meadproduction": "750",
     "effects": "295&amp;750"
   },
   "535": {
@@ -9454,7 +9436,6 @@
     "addRareGlue": "15390",
     "addEpicCobblestone": "3400",
     "addLegendaryFabric": "136",
-    "Meadproduction": "800",
     "effects": "295&amp;800"
   },
   "536": {
@@ -9475,7 +9456,6 @@
     "addRareGlue": "16210",
     "addEpicCobblestone": "3575",
     "addLegendaryFabric": "143",
-    "Meadproduction": "850",
     "effects": "295&amp;850"
   },
   "537": {
@@ -9496,7 +9476,6 @@
     "addRareGlue": "17030",
     "addEpicCobblestone": "3750",
     "addLegendaryFabric": "150",
-    "Meadproduction": "900",
     "effects": "295&amp;900"
   },
   "538": {
@@ -9517,7 +9496,6 @@
     "addRareGlue": "17850",
     "addEpicCobblestone": "3925",
     "addLegendaryFabric": "157",
-    "Meadproduction": "1000",
     "effects": "295&amp;1000"
   },
   "539": {
@@ -9538,7 +9516,6 @@
     "addRareGlue": "18670",
     "addEpicCobblestone": "4100",
     "addLegendaryFabric": "164",
-    "Meadproduction": "1100",
     "effects": "295&amp;1100"
   },
   "540": {
@@ -9559,7 +9536,6 @@
     "addRareGlue": "19490",
     "addEpicCobblestone": "4275",
     "addLegendaryFabric": "171",
-    "Meadproduction": "1200",
     "effects": "295&amp;1200"
   },
   "541": {
@@ -9580,7 +9556,6 @@
     "addRareGlue": "20310",
     "addEpicCobblestone": "4450",
     "addLegendaryFabric": "178",
-    "Meadproduction": "1350",
     "effects": "295&amp;1350"
   },
   "542": {
@@ -9601,7 +9576,6 @@
     "addRareGlue": "630",
     "addEpicCobblestone": "250",
     "addLegendaryFabric": "10",
-    "unboostedMeadProduction": "10200",
     "effects": "296&amp;10200"
   },
   "543": {
@@ -9622,7 +9596,6 @@
     "addRareGlue": "1450",
     "addEpicCobblestone": "425",
     "addLegendaryFabric": "17",
-    "unboostedMeadProduction": "10400",
     "effects": "296&amp;10400"
   },
   "544": {
@@ -9643,7 +9616,6 @@
     "addRareGlue": "2270",
     "addEpicCobblestone": "600",
     "addLegendaryFabric": "24",
-    "unboostedMeadProduction": "10600",
     "effects": "296&amp;10600"
   },
   "545": {
@@ -9664,7 +9636,6 @@
     "addRareGlue": "3090",
     "addEpicCobblestone": "775",
     "addLegendaryFabric": "31",
-    "unboostedMeadProduction": "10800",
     "effects": "296&amp;10800"
   },
   "546": {
@@ -9685,7 +9656,6 @@
     "addRareGlue": "3910",
     "addEpicCobblestone": "950",
     "addLegendaryFabric": "38",
-    "unboostedMeadProduction": "11000",
     "effects": "296&amp;11000"
   },
   "547": {
@@ -9706,7 +9676,6 @@
     "addRareGlue": "4730",
     "addEpicCobblestone": "1125",
     "addLegendaryFabric": "45",
-    "unboostedMeadProduction": "11200",
     "effects": "296&amp;11200"
   },
   "548": {
@@ -9727,7 +9696,6 @@
     "addRareGlue": "5550",
     "addEpicCobblestone": "1300",
     "addLegendaryFabric": "52",
-    "unboostedMeadProduction": "11400",
     "effects": "296&amp;11400"
   },
   "549": {
@@ -9748,7 +9716,6 @@
     "addRareGlue": "6370",
     "addEpicCobblestone": "1475",
     "addLegendaryFabric": "59",
-    "unboostedMeadProduction": "11600",
     "effects": "296&amp;11600"
   },
   "550": {
@@ -9769,7 +9736,6 @@
     "addRareGlue": "7190",
     "addEpicCobblestone": "1650",
     "addLegendaryFabric": "66",
-    "unboostedMeadProduction": "11800",
     "effects": "296&amp;11800"
   },
   "551": {
@@ -9790,7 +9756,6 @@
     "addRareGlue": "8010",
     "addEpicCobblestone": "1825",
     "addLegendaryFabric": "73",
-    "unboostedMeadProduction": "12000",
     "effects": "296&amp;12000"
   },
   "552": {
@@ -9811,7 +9776,6 @@
     "addRareGlue": "8830",
     "addEpicCobblestone": "2000",
     "addLegendaryFabric": "80",
-    "unboostedMeadProduction": "12200",
     "effects": "296&amp;12200"
   },
   "553": {
@@ -9832,7 +9796,6 @@
     "addRareGlue": "9650",
     "addEpicCobblestone": "2175",
     "addLegendaryFabric": "87",
-    "unboostedMeadProduction": "12400",
     "effects": "296&amp;12400"
   },
   "554": {
@@ -9853,7 +9816,6 @@
     "addRareGlue": "10470",
     "addEpicCobblestone": "2350",
     "addLegendaryFabric": "94",
-    "unboostedMeadProduction": "12600",
     "effects": "296&amp;12600"
   },
   "555": {
@@ -9874,7 +9836,6 @@
     "addRareGlue": "11290",
     "addEpicCobblestone": "2525",
     "addLegendaryFabric": "101",
-    "unboostedMeadProduction": "12800",
     "effects": "296&amp;12800"
   },
   "556": {
@@ -9895,7 +9856,6 @@
     "addRareGlue": "12110",
     "addEpicCobblestone": "2700",
     "addLegendaryFabric": "108",
-    "unboostedMeadProduction": "13000",
     "effects": "296&amp;13000"
   },
   "557": {
@@ -9916,7 +9876,6 @@
     "addRareGlue": "12930",
     "addEpicCobblestone": "2875",
     "addLegendaryFabric": "115",
-    "unboostedMeadProduction": "13200",
     "effects": "296&amp;13200"
   },
   "558": {
@@ -9937,7 +9896,6 @@
     "addRareGlue": "13750",
     "addEpicCobblestone": "3050",
     "addLegendaryFabric": "122",
-    "unboostedMeadProduction": "13400",
     "effects": "296&amp;13400"
   },
   "559": {
@@ -9958,7 +9916,6 @@
     "addRareGlue": "14570",
     "addEpicCobblestone": "3225",
     "addLegendaryFabric": "129",
-    "unboostedMeadProduction": "13600",
     "effects": "296&amp;13600"
   },
   "560": {
@@ -9979,7 +9936,6 @@
     "addRareGlue": "15390",
     "addEpicCobblestone": "3400",
     "addLegendaryFabric": "136",
-    "unboostedMeadProduction": "13800",
     "effects": "296&amp;13800"
   },
   "561": {
@@ -10000,7 +9956,6 @@
     "addRareGlue": "16210",
     "addEpicCobblestone": "3575",
     "addLegendaryFabric": "143",
-    "unboostedMeadProduction": "14000",
     "effects": "296&amp;14000"
   },
   "562": {
@@ -10021,7 +9976,6 @@
     "addRareGlue": "50",
     "addEpicCobblestone": "25",
     "addLegendaryFabric": "5",
-    "Honeyproduction": "30",
     "effects": "297&amp;30"
   },
   "563": {
@@ -10042,7 +9996,6 @@
     "addRareGlue": "100",
     "addEpicCobblestone": "50",
     "addLegendaryFabric": "10",
-    "Honeyproduction": "40",
     "effects": "297&amp;40"
   },
   "564": {
@@ -10063,7 +10016,6 @@
     "addRareGlue": "150",
     "addEpicCobblestone": "75",
     "addLegendaryFabric": "15",
-    "Honeyproduction": "50",
     "effects": "297&amp;50"
   },
   "565": {
@@ -10084,7 +10036,6 @@
     "addRareGlue": "200",
     "addEpicCobblestone": "100",
     "addLegendaryFabric": "20",
-    "Honeyproduction": "60",
     "effects": "297&amp;60"
   },
   "566": {
@@ -10105,7 +10056,6 @@
     "addRareGlue": "250",
     "addEpicCobblestone": "125",
     "addLegendaryFabric": "25",
-    "Honeyproduction": "70",
     "effects": "297&amp;70"
   },
   "567": {
@@ -10126,7 +10076,6 @@
     "addRareGlue": "300",
     "addEpicCobblestone": "150",
     "addLegendaryFabric": "30",
-    "Honeyproduction": "80",
     "effects": "297&amp;80"
   },
   "568": {
@@ -10147,7 +10096,6 @@
     "addRareGlue": "350",
     "addEpicCobblestone": "175",
     "addLegendaryFabric": "35",
-    "Honeyproduction": "90",
     "effects": "297&amp;90"
   },
   "569": {
@@ -10168,7 +10116,6 @@
     "addRareGlue": "400",
     "addEpicCobblestone": "200",
     "addLegendaryFabric": "40",
-    "Honeyproduction": "100",
     "effects": "297&amp;100"
   },
   "570": {
@@ -10189,7 +10136,6 @@
     "addRareGlue": "450",
     "addEpicCobblestone": "225",
     "addLegendaryFabric": "45",
-    "Honeyproduction": "114",
     "effects": "297&amp;114"
   },
   "571": {
@@ -10210,7 +10156,6 @@
     "addRareGlue": "500",
     "addEpicCobblestone": "250",
     "addLegendaryFabric": "50",
-    "Honeyproduction": "130",
     "effects": "297&amp;130"
   },
   "572": {
@@ -10231,7 +10176,6 @@
     "addRareGlue": "550",
     "addEpicCobblestone": "275",
     "addLegendaryFabric": "55",
-    "Honeyproduction": "146",
     "effects": "297&amp;146"
   },
   "573": {
@@ -10252,7 +10196,6 @@
     "addRareGlue": "600",
     "addEpicCobblestone": "300",
     "addLegendaryFabric": "60",
-    "Honeyproduction": "162",
     "effects": "297&amp;162"
   },
   "574": {
@@ -10273,7 +10216,6 @@
     "addRareGlue": "650",
     "addEpicCobblestone": "325",
     "addLegendaryFabric": "65",
-    "Honeyproduction": "180",
     "effects": "297&amp;180"
   },
   "575": {
@@ -10294,7 +10236,6 @@
     "addRareGlue": "700",
     "addEpicCobblestone": "350",
     "addLegendaryFabric": "70",
-    "Honeyproduction": "198",
     "effects": "297&amp;198"
   },
   "576": {
@@ -10315,7 +10256,6 @@
     "addRareGlue": "750",
     "addEpicCobblestone": "375",
     "addLegendaryFabric": "75",
-    "Honeyproduction": "216",
     "effects": "297&amp;216"
   },
   "577": {
@@ -10336,7 +10276,6 @@
     "addRareGlue": "800",
     "addEpicCobblestone": "400",
     "addLegendaryFabric": "80",
-    "Honeyproduction": "236",
     "effects": "297&amp;236"
   },
   "578": {
@@ -10357,7 +10296,6 @@
     "addRareGlue": "850",
     "addEpicCobblestone": "425",
     "addLegendaryFabric": "85",
-    "Honeyproduction": "256",
     "effects": "297&amp;256"
   },
   "579": {
@@ -10378,7 +10316,6 @@
     "addRareGlue": "900",
     "addEpicCobblestone": "450",
     "addLegendaryFabric": "90",
-    "Honeyproduction": "276",
     "effects": "297&amp;276"
   },
   "580": {
@@ -10399,7 +10336,6 @@
     "addRareGlue": "950",
     "addEpicCobblestone": "475",
     "addLegendaryFabric": "95",
-    "Honeyproduction": "296",
     "effects": "297&amp;296"
   },
   "581": {
@@ -10420,7 +10356,6 @@
     "addRareGlue": "1000",
     "addEpicCobblestone": "500",
     "addLegendaryFabric": "100",
-    "Honeyproduction": "316",
     "effects": "297&amp;316"
   },
   "582": {
@@ -10441,7 +10376,6 @@
     "addRareGlue": "1050",
     "addEpicCobblestone": "525",
     "addLegendaryFabric": "105",
-    "Honeyproduction": "336",
     "effects": "297&amp;336"
   },
   "583": {
@@ -10462,7 +10396,6 @@
     "addRareGlue": "1100",
     "addEpicCobblestone": "550",
     "addLegendaryFabric": "110",
-    "Honeyproduction": "356",
     "effects": "297&amp;356"
   },
   "584": {
@@ -10483,7 +10416,6 @@
     "addRareGlue": "1150",
     "addEpicCobblestone": "575",
     "addLegendaryFabric": "115",
-    "Honeyproduction": "376",
     "effects": "297&amp;376"
   },
   "585": {
@@ -10504,7 +10436,6 @@
     "addRareGlue": "1200",
     "addEpicCobblestone": "600",
     "addLegendaryFabric": "120",
-    "Honeyproduction": "396",
     "effects": "297&amp;396"
   },
   "586": {
@@ -10525,7 +10456,6 @@
     "addRareGlue": "1250",
     "addEpicCobblestone": "625",
     "addLegendaryFabric": "125",
-    "Honeyproduction": "418",
     "effects": "297&amp;418"
   },
   "587": {
@@ -10546,7 +10476,6 @@
     "addRareGlue": "50",
     "addEpicCobblestone": "25",
     "addLegendaryFabric": "5",
-    "unboostedHoneyProduction": "2200",
     "effects": "298&amp;2200"
   },
   "588": {
@@ -10567,7 +10496,6 @@
     "addRareGlue": "100",
     "addEpicCobblestone": "50",
     "addLegendaryFabric": "10",
-    "unboostedHoneyProduction": "2400",
     "effects": "298&amp;2400"
   },
   "589": {
@@ -10588,7 +10516,6 @@
     "addRareGlue": "150",
     "addEpicCobblestone": "75",
     "addLegendaryFabric": "15",
-    "unboostedHoneyProduction": "2600",
     "effects": "298&amp;2600"
   },
   "590": {
@@ -10609,7 +10536,6 @@
     "addRareGlue": "200",
     "addEpicCobblestone": "100",
     "addLegendaryFabric": "20",
-    "unboostedHoneyProduction": "2800",
     "effects": "298&amp;2800"
   },
   "591": {
@@ -10630,7 +10556,6 @@
     "addRareGlue": "250",
     "addEpicCobblestone": "125",
     "addLegendaryFabric": "25",
-    "unboostedHoneyProduction": "3000",
     "effects": "298&amp;3000"
   },
   "592": {
@@ -10651,7 +10576,6 @@
     "addRareGlue": "300",
     "addEpicCobblestone": "150",
     "addLegendaryFabric": "30",
-    "unboostedHoneyProduction": "3200",
     "effects": "298&amp;3200"
   },
   "593": {
@@ -10672,7 +10596,6 @@
     "addRareGlue": "350",
     "addEpicCobblestone": "175",
     "addLegendaryFabric": "35",
-    "unboostedHoneyProduction": "3400",
     "effects": "298&amp;3400"
   },
   "594": {
@@ -10693,7 +10616,6 @@
     "addRareGlue": "400",
     "addEpicCobblestone": "200",
     "addLegendaryFabric": "40",
-    "unboostedHoneyProduction": "3600",
     "effects": "298&amp;3600"
   },
   "595": {
@@ -10714,7 +10636,6 @@
     "addRareGlue": "450",
     "addEpicCobblestone": "225",
     "addLegendaryFabric": "45",
-    "unboostedHoneyProduction": "3800",
     "effects": "298&amp;3800"
   },
   "596": {
@@ -10735,7 +10656,6 @@
     "addRareGlue": "500",
     "addEpicCobblestone": "250",
     "addLegendaryFabric": "50",
-    "unboostedHoneyProduction": "4000",
     "effects": "298&amp;4000"
   },
   "597": {
@@ -10756,7 +10676,6 @@
     "addRareGlue": "550",
     "addEpicCobblestone": "275",
     "addLegendaryFabric": "55",
-    "unboostedHoneyProduction": "4200",
     "effects": "298&amp;4200"
   },
   "598": {
@@ -10777,7 +10696,6 @@
     "addRareGlue": "600",
     "addEpicCobblestone": "300",
     "addLegendaryFabric": "60",
-    "unboostedHoneyProduction": "4400",
     "effects": "298&amp;4400"
   },
   "599": {
@@ -10798,7 +10716,6 @@
     "addRareGlue": "650",
     "addEpicCobblestone": "325",
     "addLegendaryFabric": "65",
-    "unboostedHoneyProduction": "4600",
     "effects": "298&amp;4600"
   },
   "600": {
@@ -10819,7 +10736,6 @@
     "addRareGlue": "700",
     "addEpicCobblestone": "350",
     "addLegendaryFabric": "70",
-    "unboostedHoneyProduction": "4800",
     "effects": "298&amp;4800"
   },
   "601": {
@@ -10840,7 +10756,6 @@
     "addRareGlue": "750",
     "addEpicCobblestone": "375",
     "addLegendaryFabric": "75",
-    "unboostedHoneyProduction": "5000",
     "effects": "298&amp;5000"
   },
   "602": {
@@ -10861,7 +10776,6 @@
     "addRareGlue": "800",
     "addEpicCobblestone": "400",
     "addLegendaryFabric": "80",
-    "unboostedHoneyProduction": "5200",
     "effects": "298&amp;5200"
   },
   "603": {
@@ -10882,7 +10796,6 @@
     "addRareGlue": "850",
     "addEpicCobblestone": "425",
     "addLegendaryFabric": "85",
-    "unboostedHoneyProduction": "5400",
     "effects": "298&amp;5400"
   },
   "604": {
@@ -10903,7 +10816,6 @@
     "addRareGlue": "900",
     "addEpicCobblestone": "450",
     "addLegendaryFabric": "90",
-    "unboostedHoneyProduction": "5600",
     "effects": "298&amp;5600"
   },
   "605": {
@@ -10924,7 +10836,6 @@
     "addRareGlue": "950",
     "addEpicCobblestone": "475",
     "addLegendaryFabric": "95",
-    "unboostedHoneyProduction": "5800",
     "effects": "298&amp;5800"
   },
   "606": {
@@ -10945,7 +10856,6 @@
     "addRareGlue": "1000",
     "addEpicCobblestone": "500",
     "addLegendaryFabric": "100",
-    "unboostedHoneyProduction": "6000",
     "effects": "298&amp;6000"
   },
   "607": {
@@ -15024,7 +14934,6 @@
     "duration": "345600",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "1",
-    "unboostedMeadProduction": "1500",
     "effects": "296&amp;1500"
   },
   "904": {
@@ -15039,7 +14948,6 @@
     "duration": "345600",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "2",
-    "unboostedMeadProduction": "2000",
     "effects": "296&amp;2000"
   },
   "905": {
@@ -15054,7 +14962,6 @@
     "duration": "345600",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "3",
-    "unboostedMeadProduction": "2500",
     "effects": "296&amp;2500"
   },
   "906": {
@@ -15069,7 +14976,6 @@
     "duration": "345600",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "4",
-    "unboostedMeadProduction": "3000",
     "effects": "296&amp;3000"
   },
   "907": {
@@ -15756,7 +15662,6 @@
     "duration": "345600",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "1",
-    "unboostedMeadProduction": "750",
     "effects": "296&amp;750"
   },
   "956": {
@@ -15771,7 +15676,6 @@
     "duration": "345600",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "2",
-    "unboostedMeadProduction": "1250",
     "effects": "296&amp;1250"
   },
   "957": {
@@ -15786,7 +15690,6 @@
     "duration": "345600",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "3",
-    "unboostedMeadProduction": "1750",
     "effects": "296&amp;1750"
   },
   "958": {
@@ -15801,7 +15704,6 @@
     "duration": "345600",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "4",
-    "unboostedMeadProduction": "2250",
     "effects": "296&amp;2250"
   },
   "959": {
@@ -17886,7 +17788,6 @@
     "duration": "604800",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "1",
-    "unboostedMeadProduction": "6750",
     "effects": "296&amp;6750"
   },
   "1108": {
@@ -17901,7 +17802,6 @@
     "duration": "604800",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "2",
-    "unboostedMeadProduction": "8250",
     "effects": "296&amp;8250"
   },
   "1109": {
@@ -17916,7 +17816,6 @@
     "duration": "604800",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "3",
-    "unboostedMeadProduction": "9750",
     "effects": "296&amp;9750"
   },
   "1110": {
@@ -17931,7 +17830,6 @@
     "duration": "604800",
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "4",
-    "unboostedMeadProduction": "11250",
     "effects": "296&amp;11250"
   },
   "1111": {
@@ -18675,5 +18573,510 @@
     "constructionItemEffectGroupID": "51",
     "disassemblingTombolaID": "4",
     "effects": "66&amp;12"
+  },
+  "1164": {
+    "constructionItemID": "30727",
+    "comment1": "Permanent + Effect",
+    "comment2": "AnniversaryDefensiveWorkshop",
+    "name": "AnniversaryDefensiveWorkshop",
+    "constructionItemGroupID": "3114",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4",
+    "effects": "66&amp;48"
+  },
+  "1165": {
+    "constructionItemID": "30728",
+    "comment1": "Permanent + Effect",
+    "comment2": "AnniversaryDefensiveWorkshop",
+    "name": "AnniversaryDefensiveWorkshop",
+    "constructionItemGroupID": "3114",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4",
+    "effects": "66&amp;36"
+  },
+  "1166": {
+    "constructionItemID": "30729",
+    "comment1": "Temporary",
+    "comment2": "AnniversaryDefensiveWorkshop",
+    "name": "AnniversaryDefensiveWorkshop",
+    "constructionItemGroupID": "3115",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "unitWallCount": "300",
+    "disassemblingTombolaID": "4"
+  },
+  "1167": {
+    "constructionItemID": "30730",
+    "comment1": "Temporary",
+    "comment2": "AnniversaryDefensiveWorkshop",
+    "name": "AnniversaryDefensiveWorkshop",
+    "constructionItemGroupID": "3115",
+    "level": "3",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "unitWallCount": "250",
+    "disassemblingTombolaID": "4"
+  },
+  "1168": {
+    "constructionItemID": "30731",
+    "comment1": "Temporary",
+    "comment2": "AnniversaryDefensiveWorkshop",
+    "name": "AnniversaryDefensiveWorkshop",
+    "constructionItemGroupID": "3115",
+    "level": "2",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "unitWallCount": "200",
+    "disassemblingTombolaID": "4"
+  },
+  "1169": {
+    "constructionItemID": "30732",
+    "comment1": "Temporary",
+    "comment2": "GenericAnniversaryKeep",
+    "name": "GenericAnniversaryKeep",
+    "constructionItemGroupID": "3116",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "501&amp;60"
+  },
+  "1170": {
+    "constructionItemID": "30733",
+    "comment1": "Temporary",
+    "comment2": "GenericAnniversaryKeep",
+    "name": "GenericAnniversaryKeep",
+    "constructionItemGroupID": "3116",
+    "level": "3",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "501&amp;48"
+  },
+  "1171": {
+    "constructionItemID": "30734",
+    "comment1": "Temporary",
+    "comment2": "GenericAnniversaryKeep",
+    "name": "GenericAnniversaryKeep",
+    "constructionItemGroupID": "3116",
+    "level": "2",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "501&amp;36"
+  },
+  "1172": {
+    "constructionItemID": "30735",
+    "comment1": "Temporary",
+    "comment2": "autumnKeepChestnut, reward 870",
+    "name": "autumnKeepChestnut",
+    "constructionItemGroupID": "3063",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "recruitSpeedBoost": "400",
+    "disassemblingTombolaID": "4"
+  },
+  "1173": {
+    "constructionItemID": "30736",
+    "comment1": "Temporary",
+    "comment2": "autumnKeepChestnut, reward 800",
+    "name": "autumnKeepChestnut",
+    "constructionItemGroupID": "3063",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "recruitSpeedBoost": "300",
+    "disassemblingTombolaID": "4"
+  },
+  "1174": {
+    "constructionItemID": "30737",
+    "comment1": "Temporary",
+    "comment2": "autumnWorkshopChestnut, shop 870",
+    "name": "autumnWorkshopChestnut",
+    "constructionItemGroupID": "3064",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "504&amp;48"
+  },
+  "1175": {
+    "constructionItemID": "30738",
+    "comment1": "Temporary",
+    "comment2": "autumnWorkshopChestnut, shop 800",
+    "name": "autumnWorkshopChestnut",
+    "constructionItemGroupID": "3064",
+    "level": "3",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "504&amp;36"
+  },
+  "1176": {
+    "constructionItemID": "30739",
+    "comment1": "Temporary",
+    "comment2": "autumnWorkshopChestnut, shop 70",
+    "name": "autumnWorkshopChestnut",
+    "constructionItemGroupID": "3064",
+    "level": "2",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "504&amp;24"
+  },
+  "1177": {
+    "constructionItemID": "30740",
+    "comment1": "Temporary",
+    "comment2": "autumnBarracks, shop 870",
+    "name": "autumnBarracks",
+    "constructionItemGroupID": "3066",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "unitWallCount": "300",
+    "disassemblingTombolaID": "4"
+  },
+  "1178": {
+    "constructionItemID": "30741",
+    "comment1": "Temporary",
+    "comment2": "autumnBarracks, , shop 800",
+    "name": "autumnBarracks",
+    "constructionItemGroupID": "3066",
+    "level": "3",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "unitWallCount": "250",
+    "disassemblingTombolaID": "4"
+  },
+  "1179": {
+    "constructionItemID": "30742",
+    "comment1": "Temporary",
+    "comment2": "autumnBarracks, shop 70",
+    "name": "autumnBarracks",
+    "constructionItemGroupID": "3066",
+    "level": "2",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "unitWallCount": "200",
+    "disassemblingTombolaID": "4"
+  },
+  "1180": {
+    "constructionItemID": "30743",
+    "comment1": "Temporary",
+    "comment2": "elvenBarrack - UnitAmountWall 350",
+    "name": "elvenBarrack",
+    "constructionItemGroupID": "3014",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "86400",
+    "constructionItemEffectGroupID": "51",
+    "unitWallCount": "350",
+    "disassemblingTombolaID": "4"
+  },
+  "1181": {
+    "constructionItemID": "30744",
+    "comment1": "Temporary",
+    "comment2": "elvenEstate - attackUnitAmountReinforcementBonus 1000",
+    "name": "elvenEstate",
+    "constructionItemGroupID": "3015",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "86400",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "700&amp;1000"
+  },
+  "1182": {
+    "constructionItemID": "30745",
+    "comment1": "Temporary",
+    "comment2": "elvenKeep - defenseUnitAmountYardBonus 1200",
+    "name": "elvenKeep",
+    "constructionItemGroupID": "3018",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "86400",
+    "constructionItemEffectGroupID": "51",
+    "addCommonFinesand": "15",
+    "disassemblingTombolaID": "4",
+    "effects": "702&amp;1200"
+  },
+  "1183": {
+    "constructionItemID": "30748",
+    "comment1": "Temporary",
+    "comment2": "elvenBarrack - defenseUnitAmountYardBonus 1200",
+    "name": "elvenBarrack",
+    "constructionItemGroupID": "3014",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "86400",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "702&amp;1200"
+  },
+  "1184": {
+    "constructionItemID": "30749",
+    "comment1": "Temporary",
+    "comment2": "elvenHospital - defenseUnitAmountYardBonus 1200",
+    "name": "elvenHospital",
+    "constructionItemGroupID": "3017",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "86400",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "702&amp;1200"
+  },
+  "1185": {
+    "constructionItemID": "30750",
+    "comment1": "Temporary",
+    "comment2": "elvenFarm - defenseUnitAmountYardMinorBoost 2",
+    "name": "elvenFarm",
+    "constructionItemGroupID": "3016",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "86400",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "705&amp;2"
+  },
+  "1186": {
+    "constructionItemID": "30751",
+    "comment1": "Temporary",
+    "comment2": "elvenBarrack - attackUnitAmountReinforcementBoost 10",
+    "name": "elvenBarrack",
+    "constructionItemGroupID": "3014",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "86400",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "701&amp;10"
+  },
+  "1187": {
+    "constructionItemID": "30752",
+    "comment1": "Temporary",
+    "comment2": "elvenHospital - attackUnitAmountReinforcementBonus 1000",
+    "name": "elvenHospital",
+    "constructionItemGroupID": "3017",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "86400",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "700&amp;1000"
+  },
+  "1188": {
+    "constructionItemID": "30746",
+    "comment1": "Temporary",
+    "comment2": "Sales MysteryBox 2022",
+    "name": "blackLeagueBarracks",
+    "constructionItemGroupID": "3105",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "21600",
+    "constructionItemEffectGroupID": "51",
+    "recruitSpeedBoost": "500",
+    "disassemblingTombolaID": "4"
+  },
+  "1189": {
+    "constructionItemID": "30747",
+    "comment1": "Temporary",
+    "comment2": "Sales MysteryBox 2022",
+    "name": "blackLeagueBarracks",
+    "constructionItemGroupID": "3105",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "21600",
+    "constructionItemEffectGroupID": "51",
+    "recruitSpeedBoost": "750",
+    "disassemblingTombolaID": "4"
+  },
+  "1190": {
+    "constructionItemID": "31104",
+    "comment1": "Permanent + Effect",
+    "comment2": "SpookyGuardhouse",
+    "name": "SpookyGuardhouse",
+    "constructionItemGroupID": "3117",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "unitWallCount": "250",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  "1191": {
+    "constructionItemID": "31105",
+    "comment1": "Permanent + Effect",
+    "comment2": "SpookyGuardhouse",
+    "name": "SpookyGuardhouse",
+    "constructionItemGroupID": "3117",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "unitWallCount": "200",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  "1192": {
+    "constructionItemID": "31106",
+    "comment1": "Temporary",
+    "comment2": "transylvanianBakery",
+    "name": "transylvanianBakery",
+    "constructionItemGroupID": "3071",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "66&amp;48"
+  },
+  "1193": {
+    "constructionItemID": "31107",
+    "comment1": "Temporary",
+    "comment2": "transylvanianBakery",
+    "name": "transylvanianBakery",
+    "constructionItemGroupID": "3071",
+    "level": "3",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "66&amp;36"
+  },
+  "1194": {
+    "constructionItemID": "31108",
+    "comment1": "Temporary",
+    "comment2": "transylvanianBakery",
+    "name": "transylvanianBakery",
+    "constructionItemGroupID": "3071",
+    "level": "2",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "66&amp;24"
+  },
+  "1195": {
+    "constructionItemID": "31109",
+    "comment1": "Temporary",
+    "comment2": "witchesManor",
+    "name": "witchesManor",
+    "constructionItemGroupID": "2041",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "702&amp;1500"
+  },
+  "1196": {
+    "constructionItemID": "31110",
+    "comment1": "Temporary",
+    "comment2": "witchesManor",
+    "name": "witchesManor",
+    "constructionItemGroupID": "2041",
+    "level": "3",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "702&amp;1350"
+  },
+  "1197": {
+    "constructionItemID": "31111",
+    "comment1": "Temporary",
+    "comment2": "witchesManor",
+    "name": "witchesManor",
+    "constructionItemGroupID": "2041",
+    "level": "2",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "disassemblingTombolaID": "4",
+    "effects": "702&amp;1200"
+  },
+  "1198": {
+    "constructionItemID": "31112",
+    "comment1": "Temporary",
+    "comment2": "spiderStorage",
+    "name": "spiderStorage",
+    "constructionItemGroupID": "2042",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "recruitSpeedBoost": "150",
+    "disassemblingTombolaID": "4"
+  },
+  "1199": {
+    "constructionItemID": "31113",
+    "comment1": "Temporary",
+    "comment2": "spiderStorage",
+    "name": "spiderStorage",
+    "constructionItemGroupID": "2042",
+    "level": "3",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "2419200",
+    "constructionItemEffectGroupID": "51",
+    "recruitSpeedBoost": "100",
+    "disassemblingTombolaID": "4"
   }
 }

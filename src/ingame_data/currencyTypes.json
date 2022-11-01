@@ -33,5 +33,25 @@
     "typeID": "8",
     "typeName": "LootBoxKeys",
     "currencyIDRange": "5000-5999"
+  },
+  "8": {
+    "typeID": "9",
+    "typeName": "GeneralShard",
+    "currencyIDRange": "10000-11000"
+  },
+  "9": {
+    "typeID": "10",
+    "typeName": "GeneralsXPItem",
+    "currencyIDRange": "7000-7100"
+  },
+  "10": {
+    "typeID": "11",
+    "typeName": "Offering",
+    "currencyIDRange": "6000-6100"
+  },
+  "11": {
+    "typeID": "12",
+    "typeName": "RespecToken",
+    "currencyIDRange": "9998-9999"
   }
 }

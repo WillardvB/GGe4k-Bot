@@ -1362,6 +1362,22 @@
     "effectValueKeys": "227"
   },
   "171": {
+    "id": "10119",
+    "effectID": "2115",
+    "minimumValue": "120",
+    "maximumValue": "750",
+    "relicEffectType": "normal",
+    "valueTextType": "relicIncreaseInt"
+  },
+  "172": {
+    "id": "10120",
+    "effectID": "12113",
+    "minimumValue": "120",
+    "maximumValue": "750",
+    "relicEffectType": "normal",
+    "valueTextType": "relicIncreaseInt"
+  },
+  "173": {
     "id": "10201",
     "effectID": "12107",
     "minimumValue": "3.5",
@@ -1369,7 +1385,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "172": {
+  "174": {
     "id": "10202",
     "effectID": "12108",
     "minimumValue": "12.25",
@@ -1377,7 +1393,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "173": {
+  "175": {
     "id": "10203",
     "effectID": "12201",
     "minimumValue": "1.75",
@@ -1385,7 +1401,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "174": {
+  "176": {
     "id": "10204",
     "effectID": "12202",
     "minimumValue": "1.75",
@@ -1393,7 +1409,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "175": {
+  "177": {
     "id": "10205",
     "effectID": "12203",
     "minimumValue": "3.5",
@@ -1401,7 +1417,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "176": {
+  "178": {
     "id": "10206",
     "effectID": "12204",
     "minimumValue": "3.5",
@@ -1409,7 +1425,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "177": {
+  "179": {
     "id": "10207",
     "effectID": "12205",
     "minimumValue": "1.75",
@@ -1417,7 +1433,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "178": {
+  "180": {
     "id": "10208",
     "effectID": "12206",
     "minimumValue": "1.75",
@@ -1425,7 +1441,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "179": {
+  "181": {
     "id": "10209",
     "effectID": "12201",
     "minimumValue": "2",
@@ -1433,7 +1449,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "180": {
+  "182": {
     "id": "10210",
     "effectID": "12202",
     "minimumValue": "2",
@@ -1441,7 +1457,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "181": {
+  "183": {
     "id": "10211",
     "effectID": "12203",
     "minimumValue": "4",
@@ -1449,7 +1465,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "182": {
+  "184": {
     "id": "10212",
     "effectID": "12204",
     "minimumValue": "4",
@@ -1457,7 +1473,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "183": {
+  "185": {
     "id": "10213",
     "effectID": "12205",
     "minimumValue": "2",
@@ -1465,7 +1481,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "184": {
+  "186": {
     "id": "10214",
     "effectID": "12206",
     "minimumValue": "6",
@@ -1473,7 +1489,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "185": {
+  "187": {
     "id": "10215",
     "effectID": "12207",
     "minimumValue": "1",
@@ -1481,7 +1497,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "186": {
+  "188": {
     "id": "10216",
     "effectID": "12208",
     "minimumValue": "1",
@@ -1490,7 +1506,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "1"
   },
-  "187": {
+  "189": {
     "id": "10217",
     "effectID": "12209",
     "minimumValue": "1",
@@ -1499,7 +1515,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "7"
   },
-  "188": {
+  "190": {
     "id": "10218",
     "effectID": "12210",
     "minimumValue": "1",
@@ -1508,7 +1524,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "10"
   },
-  "189": {
+  "191": {
     "id": "10219",
     "effectID": "12211",
     "minimumValue": "1",
@@ -1517,7 +1533,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "13"
   },
-  "190": {
+  "192": {
     "id": "10301",
     "effectID": "12107",
     "minimumValue": "3.5",
@@ -1525,7 +1541,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "191": {
+  "193": {
     "id": "10302",
     "effectID": "12108",
     "minimumValue": "12.25",
@@ -1533,7 +1549,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "192": {
+  "194": {
     "id": "10303",
     "effectID": "12301",
     "minimumValue": "1.75",
@@ -1541,7 +1557,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "193": {
+  "195": {
     "id": "10304",
     "effectID": "12302",
     "minimumValue": "1.75",
@@ -1549,7 +1565,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "194": {
+  "196": {
     "id": "10305",
     "effectID": "12303",
     "minimumValue": "3.5",
@@ -1557,7 +1573,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "195": {
+  "197": {
     "id": "10306",
     "effectID": "12304",
     "minimumValue": "3.5",
@@ -1565,7 +1581,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "196": {
+  "198": {
     "id": "10307",
     "effectID": "12305",
     "minimumValue": "1.75",
@@ -1573,7 +1589,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "197": {
+  "199": {
     "id": "10308",
     "effectID": "12306",
     "minimumValue": "1.75",
@@ -1581,7 +1597,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "198": {
+  "200": {
     "id": "10309",
     "effectID": "12301",
     "minimumValue": "2",
@@ -1589,7 +1605,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "199": {
+  "201": {
     "id": "10310",
     "effectID": "12302",
     "minimumValue": "2",
@@ -1597,7 +1613,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "200": {
+  "202": {
     "id": "10311",
     "effectID": "12303",
     "minimumValue": "4",
@@ -1605,7 +1621,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "201": {
+  "203": {
     "id": "10312",
     "effectID": "12304",
     "minimumValue": "4",
@@ -1613,7 +1629,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "202": {
+  "204": {
     "id": "10313",
     "effectID": "12305",
     "minimumValue": "2",
@@ -1621,7 +1637,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "203": {
+  "205": {
     "id": "10314",
     "effectID": "12306",
     "minimumValue": "6",
@@ -1629,7 +1645,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "204": {
+  "206": {
     "id": "10315",
     "effectID": "12307",
     "minimumValue": "5",
@@ -1637,7 +1653,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "205": {
+  "207": {
     "id": "10316",
     "effectID": "12308",
     "minimumValue": "1",
@@ -1645,7 +1661,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "206": {
+  "208": {
     "id": "10317",
     "effectID": "12309",
     "minimumValue": "2",
@@ -1653,7 +1669,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "207": {
+  "209": {
     "id": "10318",
     "effectID": "12310",
     "minimumValue": "1",
@@ -1661,7 +1677,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "208": {
+  "210": {
     "id": "10401",
     "effectID": "12401",
     "minimumValue": "4.5",
@@ -1669,7 +1685,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "209": {
+  "211": {
     "id": "10402",
     "effectID": "12402",
     "minimumValue": "4.5",
@@ -1677,7 +1693,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "210": {
+  "212": {
     "id": "10403",
     "effectID": "12403",
     "minimumValue": "4.5",
@@ -1685,7 +1701,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "211": {
+  "213": {
     "id": "10404",
     "effectID": "12404",
     "minimumValue": "4.5",
@@ -1693,7 +1709,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "212": {
+  "214": {
     "id": "10405",
     "effectID": "12405",
     "minimumValue": "4.5",
@@ -1701,7 +1717,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "213": {
+  "215": {
     "id": "10406",
     "effectID": "12401",
     "minimumValue": "5",
@@ -1709,7 +1725,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "214": {
+  "216": {
     "id": "10407",
     "effectID": "12402",
     "minimumValue": "5",
@@ -1717,7 +1733,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "215": {
+  "217": {
     "id": "10408",
     "effectID": "12403",
     "minimumValue": "5",
@@ -1725,7 +1741,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "216": {
+  "218": {
     "id": "10409",
     "effectID": "12404",
     "minimumValue": "11",
@@ -1733,7 +1749,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "217": {
+  "219": {
     "id": "10410",
     "effectID": "12405",
     "minimumValue": "11",
@@ -1741,7 +1757,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "218": {
+  "220": {
     "id": "10411",
     "effectID": "12406",
     "minimumValue": "8",
@@ -1749,7 +1765,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "219": {
+  "221": {
     "id": "10412",
     "effectID": "12407",
     "minimumValue": "8",
@@ -1757,7 +1773,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "220": {
+  "222": {
     "id": "10413",
     "effectID": "12408",
     "minimumValue": "5",
@@ -1765,7 +1781,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "221": {
+  "223": {
     "id": "10414",
     "effectID": "12409",
     "minimumValue": "11",
@@ -1773,7 +1789,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "222": {
+  "224": {
     "id": "10415",
     "effectID": "12410",
     "minimumValue": "2",
@@ -1782,7 +1798,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "1"
   },
-  "223": {
+  "225": {
     "id": "10416",
     "effectID": "12411",
     "minimumValue": "2",
@@ -1791,7 +1807,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "7"
   },
-  "224": {
+  "226": {
     "id": "10417",
     "effectID": "12412",
     "minimumValue": "2",
@@ -1800,7 +1816,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "10"
   },
-  "225": {
+  "227": {
     "id": "10418",
     "effectID": "12413",
     "minimumValue": "2",
@@ -1809,7 +1825,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "13"
   },
-  "226": {
+  "228": {
     "id": "10501",
     "effectID": "12501",
     "minimumValue": "4.5",
@@ -1817,7 +1833,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "227": {
+  "229": {
     "id": "10502",
     "effectID": "12502",
     "minimumValue": "4.5",
@@ -1825,7 +1841,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "228": {
+  "230": {
     "id": "10503",
     "effectID": "12503",
     "minimumValue": "75",
@@ -1833,7 +1849,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "229": {
+  "231": {
     "id": "10504",
     "effectID": "12504",
     "minimumValue": "5",
@@ -1841,7 +1857,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "230": {
+  "232": {
     "id": "10505",
     "effectID": "12505",
     "minimumValue": "4.5",
@@ -1849,7 +1865,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "231": {
+  "233": {
     "id": "10506",
     "effectID": "12506",
     "minimumValue": "4.5",
@@ -1857,7 +1873,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "232": {
+  "234": {
     "id": "10507",
     "effectID": "12501",
     "minimumValue": "5",
@@ -1865,7 +1881,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "233": {
+  "235": {
     "id": "10508",
     "effectID": "12502",
     "minimumValue": "5",
@@ -1873,7 +1889,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "234": {
+  "236": {
     "id": "10509",
     "effectID": "12503",
     "minimumValue": "75",
@@ -1881,7 +1897,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "235": {
+  "237": {
     "id": "10510",
     "effectID": "12504",
     "minimumValue": "5",
@@ -1889,7 +1905,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "236": {
+  "238": {
     "id": "10511",
     "effectID": "12505",
     "minimumValue": "11",
@@ -1897,7 +1913,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "237": {
+  "239": {
     "id": "10512",
     "effectID": "12506",
     "minimumValue": "11",
@@ -1905,7 +1921,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "238": {
+  "240": {
     "id": "10513",
     "effectID": "12507",
     "minimumValue": "8",
@@ -1913,7 +1929,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "239": {
+  "241": {
     "id": "10514",
     "effectID": "12508",
     "minimumValue": "8",
@@ -1921,7 +1937,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "240": {
+  "242": {
     "id": "10515",
     "effectID": "12509",
     "minimumValue": "5",
@@ -1929,7 +1945,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "241": {
+  "243": {
     "id": "10516",
     "effectID": "12510",
     "minimumValue": "11",
@@ -1937,7 +1953,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "242": {
+  "244": {
     "id": "10517",
     "effectID": "12511",
     "minimumValue": "4",
@@ -1945,7 +1961,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "243": {
+  "245": {
     "id": "10518",
     "effectID": "12512",
     "minimumValue": "2",
@@ -1953,7 +1969,7 @@
     "relicEffectType": "normal",
     "valueTextType": "relicIncrease"
   },
-  "244": {
+  "246": {
     "id": "20001",
     "effectID": "22001",
     "minimumValue": "4",
@@ -1962,7 +1978,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "672,664,686,687,75,76"
   },
-  "245": {
+  "247": {
     "id": "20002",
     "effectID": "22002",
     "minimumValue": "4",
@@ -1971,7 +1987,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "9,10,714,715,58,59"
   },
-  "246": {
+  "248": {
     "id": "20003",
     "effectID": "22003",
     "minimumValue": "4",
@@ -1980,7 +1996,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "18,19,20,21"
   },
-  "247": {
+  "249": {
     "id": "20004",
     "effectID": "22004",
     "minimumValue": "4",
@@ -1989,7 +2005,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "22,23"
   },
-  "248": {
+  "250": {
     "id": "20005",
     "effectID": "22005",
     "minimumValue": "4",
@@ -1998,7 +2014,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "148,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,150,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,149,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,151,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079"
   },
-  "249": {
+  "251": {
     "id": "20006",
     "effectID": "22006",
     "minimumValue": "30",
@@ -2007,7 +2023,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "620"
   },
-  "250": {
+  "252": {
     "id": "20007",
     "effectID": "22007",
     "minimumValue": "9",
@@ -2016,7 +2032,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "672,664,686,687,75,76"
   },
-  "251": {
+  "253": {
     "id": "20008",
     "effectID": "22008",
     "minimumValue": "9",
@@ -2025,7 +2041,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "9,10,714,715,58,59"
   },
-  "252": {
+  "254": {
     "id": "20009",
     "effectID": "22009",
     "minimumValue": "9",
@@ -2034,7 +2050,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "18,19,20,21"
   },
-  "253": {
+  "255": {
     "id": "20010",
     "effectID": "22010",
     "minimumValue": "9",
@@ -2043,7 +2059,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "22,23"
   },
-  "254": {
+  "256": {
     "id": "20011",
     "effectID": "22011",
     "minimumValue": "9",
@@ -2052,7 +2068,7 @@
     "valueTextType": "relicIncrease",
     "effectValueKeys": "148,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,150,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,149,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,151,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079"
   },
-  "255": {
+  "257": {
     "id": "20012",
     "effectID": "22001",
     "minimumValue": "20",
@@ -2061,7 +2077,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "672,664,686,687,75,76"
   },
-  "256": {
+  "258": {
     "id": "20013",
     "effectID": "22002",
     "minimumValue": "10",
@@ -2070,7 +2086,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "9,10,714,715,58,59"
   },
-  "257": {
+  "259": {
     "id": "20014",
     "effectID": "22003",
     "minimumValue": "20",
@@ -2079,7 +2095,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "18,19,20,21"
   },
-  "258": {
+  "260": {
     "id": "20015",
     "effectID": "22004",
     "minimumValue": "20",
@@ -2088,7 +2104,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "22,23"
   },
-  "259": {
+  "261": {
     "id": "20016",
     "effectID": "22005",
     "minimumValue": "10",
@@ -2097,7 +2113,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "148,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,150,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,149,2060,2061,2062,2063,2064,2065,2066,2067,2068,2069,151,2070,2071,2072,2073,2074,2075,2076,2077,2078,2079"
   },
-  "260": {
+  "262": {
     "id": "20017",
     "effectID": "22012",
     "minimumValue": "5",
@@ -2106,7 +2122,7 @@
     "valueTextType": "relicIncreaseInt",
     "effectValueKeys": "195,196,197,198,199,200,201,202,203,204,215,205,206,207,208,209,210,211,212,213,214,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238"
   },
-  "261": {
+  "263": {
     "id": "20018",
     "effectID": "22013",
     "minimumValue": "1",
@@ -2114,7 +2130,7 @@
     "relicEffectType": "unitTool",
     "valueTextType": "relicIncreaseInt"
   },
-  "262": {
+  "264": {
     "id": "20019",
     "effectID": "22014",
     "minimumValue": "5",
@@ -2122,7 +2138,7 @@
     "relicEffectType": "unitTool",
     "valueTextType": "relicIncrease"
   },
-  "263": {
+  "265": {
     "id": "20020",
     "effectID": "22015",
     "minimumValue": "10",
@@ -2130,7 +2146,7 @@
     "relicEffectType": "unitTool",
     "valueTextType": "relicIncrease"
   },
-  "264": {
+  "266": {
     "id": "30001",
     "effectID": "32001",
     "minimumValue": "60",
@@ -2138,7 +2154,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncrease"
   },
-  "265": {
+  "267": {
     "id": "30002",
     "effectID": "32002",
     "minimumValue": "30",
@@ -2146,7 +2162,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "266": {
+  "268": {
     "id": "30003",
     "effectID": "32003",
     "minimumValue": "15",
@@ -2154,7 +2170,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncrease"
   },
-  "267": {
+  "269": {
     "id": "30004",
     "effectID": "32004",
     "minimumValue": "300",
@@ -2162,7 +2178,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "268": {
+  "270": {
     "id": "30005",
     "effectID": "32005",
     "minimumValue": "150",
@@ -2170,7 +2186,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "269": {
+  "271": {
     "id": "30006",
     "effectID": "32006",
     "minimumValue": "300",
@@ -2178,7 +2194,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "270": {
+  "272": {
     "id": "30007",
     "effectID": "32007",
     "minimumValue": "15",
@@ -2186,7 +2202,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncrease"
   },
-  "271": {
+  "273": {
     "id": "30008",
     "effectID": "32008",
     "minimumValue": "22.5",
@@ -2194,7 +2210,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "272": {
+  "274": {
     "id": "30009",
     "effectID": "32001",
     "minimumValue": "100",
@@ -2202,7 +2218,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncrease"
   },
-  "273": {
+  "275": {
     "id": "30010",
     "effectID": "32002",
     "minimumValue": "60",
@@ -2210,7 +2226,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "274": {
+  "276": {
     "id": "30011",
     "effectID": "32003",
     "minimumValue": "30",
@@ -2218,7 +2234,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncrease"
   },
-  "275": {
+  "277": {
     "id": "30012",
     "effectID": "32004",
     "minimumValue": "600",
@@ -2226,7 +2242,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "276": {
+  "278": {
     "id": "30013",
     "effectID": "32005",
     "minimumValue": "300",
@@ -2234,7 +2250,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "277": {
+  "279": {
     "id": "30014",
     "effectID": "32006",
     "minimumValue": "3000",
@@ -2242,7 +2258,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "278": {
+  "280": {
     "id": "30015",
     "effectID": "32007",
     "minimumValue": "30",
@@ -2250,7 +2266,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncrease"
   },
-  "279": {
+  "281": {
     "id": "30016",
     "effectID": "32008",
     "minimumValue": "50",
@@ -2258,7 +2274,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "280": {
+  "282": {
     "id": "30017",
     "effectID": "32009",
     "minimumValue": "5",
@@ -2266,7 +2282,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncrease"
   },
-  "281": {
+  "283": {
     "id": "30018",
     "effectID": "32010",
     "minimumValue": "5",
@@ -2274,7 +2290,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncrease"
   },
-  "282": {
+  "284": {
     "id": "30019",
     "effectID": "32011",
     "minimumValue": "50000",
@@ -2282,7 +2298,7 @@
     "relicEffectType": "economy",
     "valueTextType": "relicIncreaseInt"
   },
-  "283": {
+  "285": {
     "id": "30020",
     "effectID": "32012",
     "minimumValue": "50000",

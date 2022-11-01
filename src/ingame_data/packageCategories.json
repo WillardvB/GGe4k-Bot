@@ -64,6 +64,14 @@
     "name": "LotusFlowerLTPEToken"
   },
   "17": {
+    "categoryID": "109",
+    "name": "OctoberfestLTPEToken"
+  },
+  "18": {
+    "categoryID": "110",
+    "name": "HalloweenLTPEToken"
+  },
+  "19": {
     "categoryID": "999",
     "name": "Overall"
   }

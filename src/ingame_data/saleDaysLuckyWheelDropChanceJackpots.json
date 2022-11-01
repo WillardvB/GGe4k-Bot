@@ -1,7 +1,7 @@
 {
   "1": {
     "saleDaysLuckyWheelJackpotDropID": "1",
-    "rewardIDs": "7000",
+    "rewardIDs": "7200",
     "Class1Chance": "333",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -14,7 +14,7 @@
   },
   "2": {
     "saleDaysLuckyWheelJackpotDropID": "2",
-    "rewardIDs": "7001",
+    "rewardIDs": "7209",
     "Class1Chance": "667",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -27,7 +27,7 @@
   },
   "3": {
     "saleDaysLuckyWheelJackpotDropID": "3",
-    "rewardIDs": "7002",
+    "rewardIDs": "7218",
     "Class1Chance": "333",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -40,7 +40,7 @@
   },
   "4": {
     "saleDaysLuckyWheelJackpotDropID": "4",
-    "rewardIDs": "7003",
+    "rewardIDs": "7227",
     "Class1Chance": "333",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -53,7 +53,7 @@
   },
   "5": {
     "saleDaysLuckyWheelJackpotDropID": "5",
-    "rewardIDs": "7004",
+    "rewardIDs": "7236",
     "Class1Chance": "667",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -66,7 +66,7 @@
   },
   "6": {
     "saleDaysLuckyWheelJackpotDropID": "6",
-    "rewardIDs": "7005",
+    "rewardIDs": "7245",
     "Class1Chance": "667",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -79,7 +79,7 @@
   },
   "7": {
     "saleDaysLuckyWheelJackpotDropID": "7",
-    "rewardIDs": "7006",
+    "rewardIDs": "7263",
     "Class1Chance": "444",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -92,7 +92,7 @@
   },
   "8": {
     "saleDaysLuckyWheelJackpotDropID": "8",
-    "rewardIDs": "7007",
+    "rewardIDs": "7254",
     "Class1Chance": "444",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -105,7 +105,7 @@
   },
   "9": {
     "saleDaysLuckyWheelJackpotDropID": "9",
-    "rewardIDs": "7008",
+    "rewardIDs": "7272",
     "Class1Chance": "667",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -118,7 +118,7 @@
   },
   "10": {
     "saleDaysLuckyWheelJackpotDropID": "10",
-    "rewardIDs": "7009",
+    "rewardIDs": "7281",
     "Class1Chance": "667",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -131,7 +131,7 @@
   },
   "11": {
     "saleDaysLuckyWheelJackpotDropID": "11",
-    "rewardIDs": "7010",
+    "rewardIDs": "7290",
     "Class1Chance": "333",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -144,7 +144,7 @@
   },
   "12": {
     "saleDaysLuckyWheelJackpotDropID": "12",
-    "rewardIDs": "7011",
+    "rewardIDs": "7299",
     "Class1Chance": "667",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -157,7 +157,7 @@
   },
   "13": {
     "saleDaysLuckyWheelJackpotDropID": "13",
-    "rewardIDs": "7012",
+    "rewardIDs": "7308",
     "Class1Chance": "333",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -170,7 +170,7 @@
   },
   "14": {
     "saleDaysLuckyWheelJackpotDropID": "14",
-    "rewardIDs": "7013",
+    "rewardIDs": "7317",
     "Class1Chance": "333",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -183,7 +183,7 @@
   },
   "15": {
     "saleDaysLuckyWheelJackpotDropID": "15",
-    "rewardIDs": "7014",
+    "rewardIDs": "7326",
     "Class1Chance": "333",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -196,7 +196,7 @@
   },
   "16": {
     "saleDaysLuckyWheelJackpotDropID": "16",
-    "rewardIDs": "7015",
+    "rewardIDs": "7335",
     "Class1Chance": "667",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -209,7 +209,7 @@
   },
   "17": {
     "saleDaysLuckyWheelJackpotDropID": "17",
-    "rewardIDs": "7016",
+    "rewardIDs": "7344",
     "Class1Chance": "333",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -222,7 +222,7 @@
   },
   "18": {
     "saleDaysLuckyWheelJackpotDropID": "18",
-    "rewardIDs": "7017",
+    "rewardIDs": "7353",
     "Class1Chance": "667",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -235,7 +235,7 @@
   },
   "19": {
     "saleDaysLuckyWheelJackpotDropID": "19",
-    "rewardIDs": "7018",
+    "rewardIDs": "7362",
     "Class1Chance": "333",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -248,7 +248,7 @@
   },
   "20": {
     "saleDaysLuckyWheelJackpotDropID": "20",
-    "rewardIDs": "7019",
+    "rewardIDs": "7371",
     "Class1Chance": "667",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -261,7 +261,7 @@
   },
   "21": {
     "saleDaysLuckyWheelJackpotDropID": "21",
-    "rewardIDs": "7020",
+    "rewardIDs": "7380",
     "Class1Chance": "111",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -274,7 +274,7 @@
   },
   "22": {
     "saleDaysLuckyWheelJackpotDropID": "22",
-    "rewardIDs": "7021",
+    "rewardIDs": "7201",
     "Class1Chance": "0",
     "Class2Chance": "333",
     "Class3Chance": "0",
@@ -287,7 +287,7 @@
   },
   "23": {
     "saleDaysLuckyWheelJackpotDropID": "23",
-    "rewardIDs": "7022",
+    "rewardIDs": "7210",
     "Class1Chance": "0",
     "Class2Chance": "667",
     "Class3Chance": "0",
@@ -300,7 +300,7 @@
   },
   "24": {
     "saleDaysLuckyWheelJackpotDropID": "24",
-    "rewardIDs": "7023",
+    "rewardIDs": "7219",
     "Class1Chance": "0",
     "Class2Chance": "333",
     "Class3Chance": "0",
@@ -313,7 +313,7 @@
   },
   "25": {
     "saleDaysLuckyWheelJackpotDropID": "25",
-    "rewardIDs": "7024",
+    "rewardIDs": "7228",
     "Class1Chance": "0",
     "Class2Chance": "333",
     "Class3Chance": "0",
@@ -326,7 +326,7 @@
   },
   "26": {
     "saleDaysLuckyWheelJackpotDropID": "26",
-    "rewardIDs": "7025",
+    "rewardIDs": "7237",
     "Class1Chance": "0",
     "Class2Chance": "667",
     "Class3Chance": "0",
@@ -339,7 +339,7 @@
   },
   "27": {
     "saleDaysLuckyWheelJackpotDropID": "27",
-    "rewardIDs": "7026",
+    "rewardIDs": "7246",
     "Class1Chance": "0",
     "Class2Chance": "667",
     "Class3Chance": "0",
@@ -352,7 +352,7 @@
   },
   "28": {
     "saleDaysLuckyWheelJackpotDropID": "28",
-    "rewardIDs": "7027",
+    "rewardIDs": "7264",
     "Class1Chance": "0",
     "Class2Chance": "444",
     "Class3Chance": "0",
@@ -365,7 +365,7 @@
   },
   "29": {
     "saleDaysLuckyWheelJackpotDropID": "29",
-    "rewardIDs": "7028",
+    "rewardIDs": "7255",
     "Class1Chance": "0",
     "Class2Chance": "444",
     "Class3Chance": "0",
@@ -378,7 +378,7 @@
   },
   "30": {
     "saleDaysLuckyWheelJackpotDropID": "30",
-    "rewardIDs": "7029",
+    "rewardIDs": "7273",
     "Class1Chance": "0",
     "Class2Chance": "667",
     "Class3Chance": "0",
@@ -391,7 +391,7 @@
   },
   "31": {
     "saleDaysLuckyWheelJackpotDropID": "31",
-    "rewardIDs": "7030",
+    "rewardIDs": "7282",
     "Class1Chance": "0",
     "Class2Chance": "667",
     "Class3Chance": "0",
@@ -404,7 +404,7 @@
   },
   "32": {
     "saleDaysLuckyWheelJackpotDropID": "32",
-    "rewardIDs": "7031",
+    "rewardIDs": "7291",
     "Class1Chance": "0",
     "Class2Chance": "333",
     "Class3Chance": "0",
@@ -417,7 +417,7 @@
   },
   "33": {
     "saleDaysLuckyWheelJackpotDropID": "33",
-    "rewardIDs": "7032",
+    "rewardIDs": "7300",
     "Class1Chance": "0",
     "Class2Chance": "667",
     "Class3Chance": "0",
@@ -430,7 +430,7 @@
   },
   "34": {
     "saleDaysLuckyWheelJackpotDropID": "34",
-    "rewardIDs": "7033",
+    "rewardIDs": "7309",
     "Class1Chance": "0",
     "Class2Chance": "333",
     "Class3Chance": "0",
@@ -443,7 +443,7 @@
   },
   "35": {
     "saleDaysLuckyWheelJackpotDropID": "35",
-    "rewardIDs": "7034",
+    "rewardIDs": "7318",
     "Class1Chance": "0",
     "Class2Chance": "333",
     "Class3Chance": "0",
@@ -456,7 +456,7 @@
   },
   "36": {
     "saleDaysLuckyWheelJackpotDropID": "36",
-    "rewardIDs": "7035",
+    "rewardIDs": "7327",
     "Class1Chance": "0",
     "Class2Chance": "333",
     "Class3Chance": "0",
@@ -469,7 +469,7 @@
   },
   "37": {
     "saleDaysLuckyWheelJackpotDropID": "37",
-    "rewardIDs": "7036",
+    "rewardIDs": "7336",
     "Class1Chance": "0",
     "Class2Chance": "667",
     "Class3Chance": "0",
@@ -482,7 +482,7 @@
   },
   "38": {
     "saleDaysLuckyWheelJackpotDropID": "38",
-    "rewardIDs": "7037",
+    "rewardIDs": "7345",
     "Class1Chance": "0",
     "Class2Chance": "333",
     "Class3Chance": "0",
@@ -495,7 +495,7 @@
   },
   "39": {
     "saleDaysLuckyWheelJackpotDropID": "39",
-    "rewardIDs": "7038",
+    "rewardIDs": "7354",
     "Class1Chance": "0",
     "Class2Chance": "667",
     "Class3Chance": "0",
@@ -508,7 +508,7 @@
   },
   "40": {
     "saleDaysLuckyWheelJackpotDropID": "40",
-    "rewardIDs": "7039",
+    "rewardIDs": "7363",
     "Class1Chance": "0",
     "Class2Chance": "333",
     "Class3Chance": "0",
@@ -521,7 +521,7 @@
   },
   "41": {
     "saleDaysLuckyWheelJackpotDropID": "41",
-    "rewardIDs": "7040",
+    "rewardIDs": "7372",
     "Class1Chance": "0",
     "Class2Chance": "667",
     "Class3Chance": "0",
@@ -534,7 +534,7 @@
   },
   "42": {
     "saleDaysLuckyWheelJackpotDropID": "42",
-    "rewardIDs": "7041",
+    "rewardIDs": "7381",
     "Class1Chance": "0",
     "Class2Chance": "111",
     "Class3Chance": "0",
@@ -547,7 +547,7 @@
   },
   "43": {
     "saleDaysLuckyWheelJackpotDropID": "43",
-    "rewardIDs": "7042",
+    "rewardIDs": "7202",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "333",
@@ -560,7 +560,7 @@
   },
   "44": {
     "saleDaysLuckyWheelJackpotDropID": "44",
-    "rewardIDs": "7043",
+    "rewardIDs": "7211",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "667",
@@ -573,7 +573,7 @@
   },
   "45": {
     "saleDaysLuckyWheelJackpotDropID": "45",
-    "rewardIDs": "7044",
+    "rewardIDs": "7220",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "333",
@@ -586,7 +586,7 @@
   },
   "46": {
     "saleDaysLuckyWheelJackpotDropID": "46",
-    "rewardIDs": "7045",
+    "rewardIDs": "7229",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "333",
@@ -599,7 +599,7 @@
   },
   "47": {
     "saleDaysLuckyWheelJackpotDropID": "47",
-    "rewardIDs": "7046",
+    "rewardIDs": "7238",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "667",
@@ -612,7 +612,7 @@
   },
   "48": {
     "saleDaysLuckyWheelJackpotDropID": "48",
-    "rewardIDs": "7047",
+    "rewardIDs": "7247",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "667",
@@ -625,7 +625,7 @@
   },
   "49": {
     "saleDaysLuckyWheelJackpotDropID": "49",
-    "rewardIDs": "7048",
+    "rewardIDs": "7265",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "444",
@@ -638,7 +638,7 @@
   },
   "50": {
     "saleDaysLuckyWheelJackpotDropID": "50",
-    "rewardIDs": "7049",
+    "rewardIDs": "7256",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "444",
@@ -651,7 +651,7 @@
   },
   "51": {
     "saleDaysLuckyWheelJackpotDropID": "51",
-    "rewardIDs": "7050",
+    "rewardIDs": "7274",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "667",
@@ -664,7 +664,7 @@
   },
   "52": {
     "saleDaysLuckyWheelJackpotDropID": "52",
-    "rewardIDs": "7051",
+    "rewardIDs": "7283",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "667",
@@ -677,7 +677,7 @@
   },
   "53": {
     "saleDaysLuckyWheelJackpotDropID": "53",
-    "rewardIDs": "7052",
+    "rewardIDs": "7292",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "333",
@@ -690,7 +690,7 @@
   },
   "54": {
     "saleDaysLuckyWheelJackpotDropID": "54",
-    "rewardIDs": "7053",
+    "rewardIDs": "7301",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "667",
@@ -703,7 +703,7 @@
   },
   "55": {
     "saleDaysLuckyWheelJackpotDropID": "55",
-    "rewardIDs": "7054",
+    "rewardIDs": "7310",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "333",
@@ -716,7 +716,7 @@
   },
   "56": {
     "saleDaysLuckyWheelJackpotDropID": "56",
-    "rewardIDs": "7055",
+    "rewardIDs": "7319",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "333",
@@ -729,7 +729,7 @@
   },
   "57": {
     "saleDaysLuckyWheelJackpotDropID": "57",
-    "rewardIDs": "7056",
+    "rewardIDs": "7328",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "333",
@@ -742,7 +742,7 @@
   },
   "58": {
     "saleDaysLuckyWheelJackpotDropID": "58",
-    "rewardIDs": "7057",
+    "rewardIDs": "7337",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "667",
@@ -755,7 +755,7 @@
   },
   "59": {
     "saleDaysLuckyWheelJackpotDropID": "59",
-    "rewardIDs": "7058",
+    "rewardIDs": "7346",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "333",
@@ -768,7 +768,7 @@
   },
   "60": {
     "saleDaysLuckyWheelJackpotDropID": "60",
-    "rewardIDs": "7059",
+    "rewardIDs": "7355",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "667",
@@ -781,7 +781,7 @@
   },
   "61": {
     "saleDaysLuckyWheelJackpotDropID": "61",
-    "rewardIDs": "7060",
+    "rewardIDs": "7364",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "333",
@@ -794,7 +794,7 @@
   },
   "62": {
     "saleDaysLuckyWheelJackpotDropID": "62",
-    "rewardIDs": "7061",
+    "rewardIDs": "7373",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "667",
@@ -807,7 +807,7 @@
   },
   "63": {
     "saleDaysLuckyWheelJackpotDropID": "63",
-    "rewardIDs": "7062",
+    "rewardIDs": "7382",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "111",
@@ -820,7 +820,7 @@
   },
   "64": {
     "saleDaysLuckyWheelJackpotDropID": "64",
-    "rewardIDs": "7063",
+    "rewardIDs": "7203",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -833,7 +833,7 @@
   },
   "65": {
     "saleDaysLuckyWheelJackpotDropID": "65",
-    "rewardIDs": "7064",
+    "rewardIDs": "7212",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -846,7 +846,7 @@
   },
   "66": {
     "saleDaysLuckyWheelJackpotDropID": "66",
-    "rewardIDs": "7065",
+    "rewardIDs": "7221",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -859,7 +859,7 @@
   },
   "67": {
     "saleDaysLuckyWheelJackpotDropID": "67",
-    "rewardIDs": "7066",
+    "rewardIDs": "7230",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -872,7 +872,7 @@
   },
   "68": {
     "saleDaysLuckyWheelJackpotDropID": "68",
-    "rewardIDs": "7067",
+    "rewardIDs": "7239",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -885,7 +885,7 @@
   },
   "69": {
     "saleDaysLuckyWheelJackpotDropID": "69",
-    "rewardIDs": "7068",
+    "rewardIDs": "7248",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -898,7 +898,7 @@
   },
   "70": {
     "saleDaysLuckyWheelJackpotDropID": "70",
-    "rewardIDs": "7069",
+    "rewardIDs": "7266",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -911,7 +911,7 @@
   },
   "71": {
     "saleDaysLuckyWheelJackpotDropID": "71",
-    "rewardIDs": "7070",
+    "rewardIDs": "7257",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -924,7 +924,7 @@
   },
   "72": {
     "saleDaysLuckyWheelJackpotDropID": "72",
-    "rewardIDs": "7071",
+    "rewardIDs": "7275",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -937,7 +937,7 @@
   },
   "73": {
     "saleDaysLuckyWheelJackpotDropID": "73",
-    "rewardIDs": "7072",
+    "rewardIDs": "7284",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -950,7 +950,7 @@
   },
   "74": {
     "saleDaysLuckyWheelJackpotDropID": "74",
-    "rewardIDs": "7073",
+    "rewardIDs": "7293",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -963,7 +963,7 @@
   },
   "75": {
     "saleDaysLuckyWheelJackpotDropID": "75",
-    "rewardIDs": "7074",
+    "rewardIDs": "7302",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -976,7 +976,7 @@
   },
   "76": {
     "saleDaysLuckyWheelJackpotDropID": "76",
-    "rewardIDs": "7075",
+    "rewardIDs": "7311",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -989,7 +989,7 @@
   },
   "77": {
     "saleDaysLuckyWheelJackpotDropID": "77",
-    "rewardIDs": "7076",
+    "rewardIDs": "7320",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1002,7 +1002,7 @@
   },
   "78": {
     "saleDaysLuckyWheelJackpotDropID": "78",
-    "rewardIDs": "7077",
+    "rewardIDs": "7329",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1015,7 +1015,7 @@
   },
   "79": {
     "saleDaysLuckyWheelJackpotDropID": "79",
-    "rewardIDs": "7078",
+    "rewardIDs": "7338",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1028,7 +1028,7 @@
   },
   "80": {
     "saleDaysLuckyWheelJackpotDropID": "80",
-    "rewardIDs": "7079",
+    "rewardIDs": "7347",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1041,7 +1041,7 @@
   },
   "81": {
     "saleDaysLuckyWheelJackpotDropID": "81",
-    "rewardIDs": "7080",
+    "rewardIDs": "7356",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1054,7 +1054,7 @@
   },
   "82": {
     "saleDaysLuckyWheelJackpotDropID": "82",
-    "rewardIDs": "7081",
+    "rewardIDs": "7365",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1067,7 +1067,7 @@
   },
   "83": {
     "saleDaysLuckyWheelJackpotDropID": "83",
-    "rewardIDs": "7082",
+    "rewardIDs": "7374",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1080,7 +1080,7 @@
   },
   "84": {
     "saleDaysLuckyWheelJackpotDropID": "84",
-    "rewardIDs": "7083",
+    "rewardIDs": "7383",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1093,7 +1093,7 @@
   },
   "85": {
     "saleDaysLuckyWheelJackpotDropID": "85",
-    "rewardIDs": "7084",
+    "rewardIDs": "7204",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1106,7 +1106,7 @@
   },
   "86": {
     "saleDaysLuckyWheelJackpotDropID": "86",
-    "rewardIDs": "7085",
+    "rewardIDs": "7213",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1119,7 +1119,7 @@
   },
   "87": {
     "saleDaysLuckyWheelJackpotDropID": "87",
-    "rewardIDs": "7086",
+    "rewardIDs": "7222",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1132,7 +1132,7 @@
   },
   "88": {
     "saleDaysLuckyWheelJackpotDropID": "88",
-    "rewardIDs": "7087",
+    "rewardIDs": "7231",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1145,7 +1145,7 @@
   },
   "89": {
     "saleDaysLuckyWheelJackpotDropID": "89",
-    "rewardIDs": "7088",
+    "rewardIDs": "7240",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1158,7 +1158,7 @@
   },
   "90": {
     "saleDaysLuckyWheelJackpotDropID": "90",
-    "rewardIDs": "7089",
+    "rewardIDs": "7249",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1171,7 +1171,7 @@
   },
   "91": {
     "saleDaysLuckyWheelJackpotDropID": "91",
-    "rewardIDs": "7090",
+    "rewardIDs": "7267",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1184,7 +1184,7 @@
   },
   "92": {
     "saleDaysLuckyWheelJackpotDropID": "92",
-    "rewardIDs": "7091",
+    "rewardIDs": "7258",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1197,7 +1197,7 @@
   },
   "93": {
     "saleDaysLuckyWheelJackpotDropID": "93",
-    "rewardIDs": "7092",
+    "rewardIDs": "7276",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1210,7 +1210,7 @@
   },
   "94": {
     "saleDaysLuckyWheelJackpotDropID": "94",
-    "rewardIDs": "7093",
+    "rewardIDs": "7285",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1223,7 +1223,7 @@
   },
   "95": {
     "saleDaysLuckyWheelJackpotDropID": "95",
-    "rewardIDs": "7094",
+    "rewardIDs": "7294",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1236,7 +1236,7 @@
   },
   "96": {
     "saleDaysLuckyWheelJackpotDropID": "96",
-    "rewardIDs": "7095",
+    "rewardIDs": "7303",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1249,7 +1249,7 @@
   },
   "97": {
     "saleDaysLuckyWheelJackpotDropID": "97",
-    "rewardIDs": "7096",
+    "rewardIDs": "7312",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1262,7 +1262,7 @@
   },
   "98": {
     "saleDaysLuckyWheelJackpotDropID": "98",
-    "rewardIDs": "7097",
+    "rewardIDs": "7321",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1275,7 +1275,7 @@
   },
   "99": {
     "saleDaysLuckyWheelJackpotDropID": "99",
-    "rewardIDs": "7098",
+    "rewardIDs": "7330",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1288,7 +1288,7 @@
   },
   "100": {
     "saleDaysLuckyWheelJackpotDropID": "100",
-    "rewardIDs": "7099",
+    "rewardIDs": "7339",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1301,7 +1301,7 @@
   },
   "101": {
     "saleDaysLuckyWheelJackpotDropID": "101",
-    "rewardIDs": "7100",
+    "rewardIDs": "7348",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1314,7 +1314,7 @@
   },
   "102": {
     "saleDaysLuckyWheelJackpotDropID": "102",
-    "rewardIDs": "7101",
+    "rewardIDs": "7357",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1327,7 +1327,7 @@
   },
   "103": {
     "saleDaysLuckyWheelJackpotDropID": "103",
-    "rewardIDs": "7102",
+    "rewardIDs": "7366",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1340,7 +1340,7 @@
   },
   "104": {
     "saleDaysLuckyWheelJackpotDropID": "104",
-    "rewardIDs": "7103",
+    "rewardIDs": "7375",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1353,7 +1353,7 @@
   },
   "105": {
     "saleDaysLuckyWheelJackpotDropID": "105",
-    "rewardIDs": "7104",
+    "rewardIDs": "7384",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1366,7 +1366,7 @@
   },
   "106": {
     "saleDaysLuckyWheelJackpotDropID": "106",
-    "rewardIDs": "7105",
+    "rewardIDs": "7205",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1379,7 +1379,7 @@
   },
   "107": {
     "saleDaysLuckyWheelJackpotDropID": "107",
-    "rewardIDs": "7106",
+    "rewardIDs": "7214",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1392,7 +1392,7 @@
   },
   "108": {
     "saleDaysLuckyWheelJackpotDropID": "108",
-    "rewardIDs": "7107",
+    "rewardIDs": "7223",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1405,7 +1405,7 @@
   },
   "109": {
     "saleDaysLuckyWheelJackpotDropID": "109",
-    "rewardIDs": "7108",
+    "rewardIDs": "7232",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1418,7 +1418,7 @@
   },
   "110": {
     "saleDaysLuckyWheelJackpotDropID": "110",
-    "rewardIDs": "7109",
+    "rewardIDs": "7241",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1431,7 +1431,7 @@
   },
   "111": {
     "saleDaysLuckyWheelJackpotDropID": "111",
-    "rewardIDs": "7110",
+    "rewardIDs": "7250",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1444,7 +1444,7 @@
   },
   "112": {
     "saleDaysLuckyWheelJackpotDropID": "112",
-    "rewardIDs": "7111",
+    "rewardIDs": "7268",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1457,7 +1457,7 @@
   },
   "113": {
     "saleDaysLuckyWheelJackpotDropID": "113",
-    "rewardIDs": "7112",
+    "rewardIDs": "7259",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1470,7 +1470,7 @@
   },
   "114": {
     "saleDaysLuckyWheelJackpotDropID": "114",
-    "rewardIDs": "7113",
+    "rewardIDs": "7277",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1483,7 +1483,7 @@
   },
   "115": {
     "saleDaysLuckyWheelJackpotDropID": "115",
-    "rewardIDs": "7114",
+    "rewardIDs": "7286",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1496,7 +1496,7 @@
   },
   "116": {
     "saleDaysLuckyWheelJackpotDropID": "116",
-    "rewardIDs": "7115",
+    "rewardIDs": "7295",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1509,7 +1509,7 @@
   },
   "117": {
     "saleDaysLuckyWheelJackpotDropID": "117",
-    "rewardIDs": "7116",
+    "rewardIDs": "7304",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1522,7 +1522,7 @@
   },
   "118": {
     "saleDaysLuckyWheelJackpotDropID": "118",
-    "rewardIDs": "7117",
+    "rewardIDs": "7313",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1535,7 +1535,7 @@
   },
   "119": {
     "saleDaysLuckyWheelJackpotDropID": "119",
-    "rewardIDs": "7118",
+    "rewardIDs": "7322",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1548,7 +1548,7 @@
   },
   "120": {
     "saleDaysLuckyWheelJackpotDropID": "120",
-    "rewardIDs": "7119",
+    "rewardIDs": "7331",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1561,7 +1561,7 @@
   },
   "121": {
     "saleDaysLuckyWheelJackpotDropID": "121",
-    "rewardIDs": "7120",
+    "rewardIDs": "7340",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1574,7 +1574,7 @@
   },
   "122": {
     "saleDaysLuckyWheelJackpotDropID": "122",
-    "rewardIDs": "7121",
+    "rewardIDs": "7349",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1587,7 +1587,7 @@
   },
   "123": {
     "saleDaysLuckyWheelJackpotDropID": "123",
-    "rewardIDs": "7122",
+    "rewardIDs": "7358",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1600,7 +1600,7 @@
   },
   "124": {
     "saleDaysLuckyWheelJackpotDropID": "124",
-    "rewardIDs": "7123",
+    "rewardIDs": "7367",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1613,7 +1613,7 @@
   },
   "125": {
     "saleDaysLuckyWheelJackpotDropID": "125",
-    "rewardIDs": "7124",
+    "rewardIDs": "7376",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1626,7 +1626,7 @@
   },
   "126": {
     "saleDaysLuckyWheelJackpotDropID": "126",
-    "rewardIDs": "7125",
+    "rewardIDs": "7385",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1639,7 +1639,7 @@
   },
   "127": {
     "saleDaysLuckyWheelJackpotDropID": "127",
-    "rewardIDs": "7126",
+    "rewardIDs": "7206",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1652,7 +1652,7 @@
   },
   "128": {
     "saleDaysLuckyWheelJackpotDropID": "128",
-    "rewardIDs": "7127",
+    "rewardIDs": "7215",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1665,7 +1665,7 @@
   },
   "129": {
     "saleDaysLuckyWheelJackpotDropID": "129",
-    "rewardIDs": "7128",
+    "rewardIDs": "7224",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1678,7 +1678,7 @@
   },
   "130": {
     "saleDaysLuckyWheelJackpotDropID": "130",
-    "rewardIDs": "7129",
+    "rewardIDs": "7233",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1691,7 +1691,7 @@
   },
   "131": {
     "saleDaysLuckyWheelJackpotDropID": "131",
-    "rewardIDs": "7130",
+    "rewardIDs": "7242",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1704,7 +1704,7 @@
   },
   "132": {
     "saleDaysLuckyWheelJackpotDropID": "132",
-    "rewardIDs": "7131",
+    "rewardIDs": "7251",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1717,7 +1717,7 @@
   },
   "133": {
     "saleDaysLuckyWheelJackpotDropID": "133",
-    "rewardIDs": "7132",
+    "rewardIDs": "7269",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1730,7 +1730,7 @@
   },
   "134": {
     "saleDaysLuckyWheelJackpotDropID": "134",
-    "rewardIDs": "7133",
+    "rewardIDs": "7260",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1743,7 +1743,7 @@
   },
   "135": {
     "saleDaysLuckyWheelJackpotDropID": "135",
-    "rewardIDs": "7134",
+    "rewardIDs": "7278",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1756,7 +1756,7 @@
   },
   "136": {
     "saleDaysLuckyWheelJackpotDropID": "136",
-    "rewardIDs": "7135",
+    "rewardIDs": "7287",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1769,7 +1769,7 @@
   },
   "137": {
     "saleDaysLuckyWheelJackpotDropID": "137",
-    "rewardIDs": "7136",
+    "rewardIDs": "7296",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1782,7 +1782,7 @@
   },
   "138": {
     "saleDaysLuckyWheelJackpotDropID": "138",
-    "rewardIDs": "7137",
+    "rewardIDs": "7305",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1795,7 +1795,7 @@
   },
   "139": {
     "saleDaysLuckyWheelJackpotDropID": "139",
-    "rewardIDs": "7138",
+    "rewardIDs": "7314",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1808,7 +1808,7 @@
   },
   "140": {
     "saleDaysLuckyWheelJackpotDropID": "140",
-    "rewardIDs": "7139",
+    "rewardIDs": "7323",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1821,7 +1821,7 @@
   },
   "141": {
     "saleDaysLuckyWheelJackpotDropID": "141",
-    "rewardIDs": "7140",
+    "rewardIDs": "7332",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1834,7 +1834,7 @@
   },
   "142": {
     "saleDaysLuckyWheelJackpotDropID": "142",
-    "rewardIDs": "7141",
+    "rewardIDs": "7341",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1847,7 +1847,7 @@
   },
   "143": {
     "saleDaysLuckyWheelJackpotDropID": "143",
-    "rewardIDs": "7142",
+    "rewardIDs": "7350",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1860,7 +1860,7 @@
   },
   "144": {
     "saleDaysLuckyWheelJackpotDropID": "144",
-    "rewardIDs": "7143",
+    "rewardIDs": "7359",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1873,7 +1873,7 @@
   },
   "145": {
     "saleDaysLuckyWheelJackpotDropID": "145",
-    "rewardIDs": "7144",
+    "rewardIDs": "7368",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1886,7 +1886,7 @@
   },
   "146": {
     "saleDaysLuckyWheelJackpotDropID": "146",
-    "rewardIDs": "7145",
+    "rewardIDs": "7377",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1899,7 +1899,7 @@
   },
   "147": {
     "saleDaysLuckyWheelJackpotDropID": "147",
-    "rewardIDs": "7146",
+    "rewardIDs": "7386",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1912,7 +1912,7 @@
   },
   "148": {
     "saleDaysLuckyWheelJackpotDropID": "148",
-    "rewardIDs": "7147",
+    "rewardIDs": "7207",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1925,7 +1925,7 @@
   },
   "149": {
     "saleDaysLuckyWheelJackpotDropID": "149",
-    "rewardIDs": "7148",
+    "rewardIDs": "7216",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1938,7 +1938,7 @@
   },
   "150": {
     "saleDaysLuckyWheelJackpotDropID": "150",
-    "rewardIDs": "7149",
+    "rewardIDs": "7225",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1951,7 +1951,7 @@
   },
   "151": {
     "saleDaysLuckyWheelJackpotDropID": "151",
-    "rewardIDs": "7150",
+    "rewardIDs": "7234",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1964,7 +1964,7 @@
   },
   "152": {
     "saleDaysLuckyWheelJackpotDropID": "152",
-    "rewardIDs": "7151",
+    "rewardIDs": "7243",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1977,7 +1977,7 @@
   },
   "153": {
     "saleDaysLuckyWheelJackpotDropID": "153",
-    "rewardIDs": "7152",
+    "rewardIDs": "7252",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -1990,7 +1990,7 @@
   },
   "154": {
     "saleDaysLuckyWheelJackpotDropID": "154",
-    "rewardIDs": "7153",
+    "rewardIDs": "7270",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2003,7 +2003,7 @@
   },
   "155": {
     "saleDaysLuckyWheelJackpotDropID": "155",
-    "rewardIDs": "7154",
+    "rewardIDs": "7261",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2016,7 +2016,7 @@
   },
   "156": {
     "saleDaysLuckyWheelJackpotDropID": "156",
-    "rewardIDs": "7155",
+    "rewardIDs": "7279",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2029,7 +2029,7 @@
   },
   "157": {
     "saleDaysLuckyWheelJackpotDropID": "157",
-    "rewardIDs": "7156",
+    "rewardIDs": "7288",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2042,7 +2042,7 @@
   },
   "158": {
     "saleDaysLuckyWheelJackpotDropID": "158",
-    "rewardIDs": "7157",
+    "rewardIDs": "7297",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2055,7 +2055,7 @@
   },
   "159": {
     "saleDaysLuckyWheelJackpotDropID": "159",
-    "rewardIDs": "7158",
+    "rewardIDs": "7306",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2068,7 +2068,7 @@
   },
   "160": {
     "saleDaysLuckyWheelJackpotDropID": "160",
-    "rewardIDs": "7159",
+    "rewardIDs": "7315",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2081,7 +2081,7 @@
   },
   "161": {
     "saleDaysLuckyWheelJackpotDropID": "161",
-    "rewardIDs": "7160",
+    "rewardIDs": "7324",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2094,7 +2094,7 @@
   },
   "162": {
     "saleDaysLuckyWheelJackpotDropID": "162",
-    "rewardIDs": "7161",
+    "rewardIDs": "7333",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2107,7 +2107,7 @@
   },
   "163": {
     "saleDaysLuckyWheelJackpotDropID": "163",
-    "rewardIDs": "7162",
+    "rewardIDs": "7342",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2120,7 +2120,7 @@
   },
   "164": {
     "saleDaysLuckyWheelJackpotDropID": "164",
-    "rewardIDs": "7163",
+    "rewardIDs": "7351",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2133,7 +2133,7 @@
   },
   "165": {
     "saleDaysLuckyWheelJackpotDropID": "165",
-    "rewardIDs": "7164",
+    "rewardIDs": "7360",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2146,7 +2146,7 @@
   },
   "166": {
     "saleDaysLuckyWheelJackpotDropID": "166",
-    "rewardIDs": "7165",
+    "rewardIDs": "7369",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2159,7 +2159,7 @@
   },
   "167": {
     "saleDaysLuckyWheelJackpotDropID": "167",
-    "rewardIDs": "7166",
+    "rewardIDs": "7378",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2172,7 +2172,7 @@
   },
   "168": {
     "saleDaysLuckyWheelJackpotDropID": "168",
-    "rewardIDs": "7167",
+    "rewardIDs": "7387",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2185,7 +2185,7 @@
   },
   "169": {
     "saleDaysLuckyWheelJackpotDropID": "169",
-    "rewardIDs": "7168",
+    "rewardIDs": "7208",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2198,7 +2198,7 @@
   },
   "170": {
     "saleDaysLuckyWheelJackpotDropID": "170",
-    "rewardIDs": "7169",
+    "rewardIDs": "7217",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2211,7 +2211,7 @@
   },
   "171": {
     "saleDaysLuckyWheelJackpotDropID": "171",
-    "rewardIDs": "7170",
+    "rewardIDs": "7226",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2224,7 +2224,7 @@
   },
   "172": {
     "saleDaysLuckyWheelJackpotDropID": "172",
-    "rewardIDs": "7171",
+    "rewardIDs": "7235",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2237,7 +2237,7 @@
   },
   "173": {
     "saleDaysLuckyWheelJackpotDropID": "173",
-    "rewardIDs": "7172",
+    "rewardIDs": "7244",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2250,7 +2250,7 @@
   },
   "174": {
     "saleDaysLuckyWheelJackpotDropID": "174",
-    "rewardIDs": "7173",
+    "rewardIDs": "7253",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2263,7 +2263,7 @@
   },
   "175": {
     "saleDaysLuckyWheelJackpotDropID": "175",
-    "rewardIDs": "7174",
+    "rewardIDs": "7271",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2276,7 +2276,7 @@
   },
   "176": {
     "saleDaysLuckyWheelJackpotDropID": "176",
-    "rewardIDs": "7175",
+    "rewardIDs": "7262",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2289,7 +2289,7 @@
   },
   "177": {
     "saleDaysLuckyWheelJackpotDropID": "177",
-    "rewardIDs": "7176",
+    "rewardIDs": "7280",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2302,7 +2302,7 @@
   },
   "178": {
     "saleDaysLuckyWheelJackpotDropID": "178",
-    "rewardIDs": "7177",
+    "rewardIDs": "7289",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2315,7 +2315,7 @@
   },
   "179": {
     "saleDaysLuckyWheelJackpotDropID": "179",
-    "rewardIDs": "7178",
+    "rewardIDs": "7298",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2328,7 +2328,7 @@
   },
   "180": {
     "saleDaysLuckyWheelJackpotDropID": "180",
-    "rewardIDs": "7179",
+    "rewardIDs": "7307",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2341,7 +2341,7 @@
   },
   "181": {
     "saleDaysLuckyWheelJackpotDropID": "181",
-    "rewardIDs": "7180",
+    "rewardIDs": "7316",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2354,7 +2354,7 @@
   },
   "182": {
     "saleDaysLuckyWheelJackpotDropID": "182",
-    "rewardIDs": "7181",
+    "rewardIDs": "7325",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2367,7 +2367,7 @@
   },
   "183": {
     "saleDaysLuckyWheelJackpotDropID": "183",
-    "rewardIDs": "7182",
+    "rewardIDs": "7334",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2380,7 +2380,7 @@
   },
   "184": {
     "saleDaysLuckyWheelJackpotDropID": "184",
-    "rewardIDs": "7183",
+    "rewardIDs": "7343",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2393,7 +2393,7 @@
   },
   "185": {
     "saleDaysLuckyWheelJackpotDropID": "185",
-    "rewardIDs": "7184",
+    "rewardIDs": "7352",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2406,7 +2406,7 @@
   },
   "186": {
     "saleDaysLuckyWheelJackpotDropID": "186",
-    "rewardIDs": "7185",
+    "rewardIDs": "7361",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2419,7 +2419,7 @@
   },
   "187": {
     "saleDaysLuckyWheelJackpotDropID": "187",
-    "rewardIDs": "7186",
+    "rewardIDs": "7370",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2432,7 +2432,7 @@
   },
   "188": {
     "saleDaysLuckyWheelJackpotDropID": "188",
-    "rewardIDs": "7187",
+    "rewardIDs": "7379",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",
@@ -2445,7 +2445,7 @@
   },
   "189": {
     "saleDaysLuckyWheelJackpotDropID": "189",
-    "rewardIDs": "7188",
+    "rewardIDs": "7388",
     "Class1Chance": "0",
     "Class2Chance": "0",
     "Class3Chance": "0",

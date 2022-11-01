@@ -1,0 +1,18 @@
+{
+  "1": {
+    "abilityTriggerID": "1",
+    "name": "preCombat"
+  },
+  "2": {
+    "abilityTriggerID": "2",
+    "name": "everyXWaves"
+  },
+  "3": {
+    "abilityTriggerID": "3",
+    "name": "yard"
+  },
+  "4": {
+    "abilityTriggerID": "4",
+    "name": "postCombat"
+  }
+}

@@ -460,580 +460,690 @@
     "JSONKey": "LFT"
   },
   "93": {
+    "currencyID": "55",
+    "Name": "OctoberfestLTPEToken",
+    "JSONKey": "OFT"
+  },
+  "94": {
+    "currencyID": "56",
+    "Name": "HalloweenLTPEToken",
+    "JSONKey": "HWT"
+  },
+  "95": {
+    "currencyID": "6001",
+    "Name": "FatKingToken",
+    "JSONKey": "FKT"
+  },
+  "96": {
+    "currencyID": "6002",
+    "Name": "KnightToken",
+    "JSONKey": "KTK"
+  },
+  "97": {
+    "currencyID": "6003",
+    "Name": "PrincessToken",
+    "JSONKey": "PTK"
+  },
+  "98": {
+    "currencyID": "10000",
+    "Name": "ShardUniversal",
+    "JSONKey": "SUN"
+  },
+  "99": {
+    "currencyID": "10001",
+    "Name": "ShardToril",
+    "JSONKey": "STL"
+  },
+  "100": {
+    "currencyID": "10002",
+    "Name": "ShardLeo",
+    "JSONKey": "SLE"
+  },
+  "101": {
+    "currencyID": "10003",
+    "Name": "ShardAlyssa",
+    "JSONKey": "SAL"
+  },
+  "102": {
+    "currencyID": "10004",
+    "Name": "ShardHoratio",
+    "JSONKey": "SHT"
+  },
+  "103": {
+    "currencyID": "10005",
+    "Name": "ShardSasaki",
+    "JSONKey": "SSK"
+  },
+  "104": {
+    "currencyID": "10006",
+    "Name": "ShardDiana",
+    "JSONKey": "SDN"
+  },
+  "105": {
+    "currencyID": "9999",
+    "Name": "GeneralsSkillsResetToken",
+    "JSONKey": "GRT"
+  },
+  "106": {
+    "currencyID": "7001",
+    "Name": "GenXP250",
+    "JSONKey": "GXP1"
+  },
+  "107": {
+    "currencyID": "7002",
+    "Name": "GenXP500",
+    "JSONKey": "GXP2"
+  },
+  "108": {
+    "currencyID": "7003",
+    "Name": "GenXP1000",
+    "JSONKey": "GXP3"
+  },
+  "109": {
+    "currencyID": "7004",
+    "Name": "GenXP2500",
+    "JSONKey": "GXP4"
+  },
+  "110": {
+    "currencyID": "7005",
+    "Name": "GenXP5000",
+    "JSONKey": "GXP5"
+  },
+  "111": {
+    "currencyID": "7006",
+    "Name": "GenXP7500",
+    "JSONKey": "GXP6"
+  },
+  "112": {
+    "currencyID": "7007",
+    "Name": "GenXP10000",
+    "JSONKey": "GXP7"
+  },
+  "113": {
+    "currencyID": "7008",
+    "Name": "GenXP12500",
+    "JSONKey": "GXP8"
+  },
+  "114": {
+    "currencyID": "7009",
+    "Name": "GenXP15000",
+    "JSONKey": "GXP9"
+  },
+  "115": {
     "currencyID": "8",
     "Name": "CastlePassageToken",
     "JSONKey": "CPT"
   },
-  "94": {
+  "116": {
     "currencyID": "2000",
     "Name": "RareBoosterConsumable",
     "JSONKey": "BC1"
   },
-  "95": {
+  "117": {
     "currencyID": "2001",
     "Name": "EpicBoosterConsumable",
     "JSONKey": "BC2"
   },
-  "96": {
+  "118": {
     "currencyID": "2002",
     "Name": "LegendaryBoosterConsumable",
     "JSONKey": "BC3"
   },
-  "97": {
+  "119": {
     "currencyID": "46",
     "Name": "CargoPoints",
     "JSONKey": "IAP"
   },
-  "98": {
+  "120": {
     "currencyID": "3001",
     "Name": "RefinedLumber",
     "JSONKey": "RL"
   },
-  "99": {
+  "121": {
     "currencyID": "3002",
     "Name": "RefinedStone",
     "JSONKey": "RS"
   },
-  "100": {
+  "122": {
     "currencyID": "3003",
     "Name": "Component1",
     "JSONKey": "CO1"
   },
-  "101": {
+  "123": {
     "currencyID": "3004",
     "Name": "Component2",
     "JSONKey": "CO2"
   },
-  "102": {
+  "124": {
     "currencyID": "3005",
     "Name": "Component3",
     "JSONKey": "CO3"
   },
-  "103": {
+  "125": {
     "currencyID": "3006",
     "Name": "Component4",
     "JSONKey": "CO4"
   },
-  "104": {
+  "126": {
     "currencyID": "3007",
     "Name": "Component5",
     "JSONKey": "CO5"
   },
-  "105": {
+  "127": {
     "currencyID": "3008",
     "Name": "Component6",
     "JSONKey": "CO6"
   },
-  "106": {
+  "128": {
     "currencyID": "3009",
     "Name": "Component7",
     "JSONKey": "CO7"
   },
-  "107": {
+  "129": {
     "currencyID": "3010",
     "Name": "Component8",
     "JSONKey": "CO8"
   },
-  "108": {
+  "130": {
     "currencyID": "5000",
     "Name": "CommonMysteryBoxKey",
     "JSONKey": "CMBK"
   },
-  "109": {
+  "131": {
     "currencyID": "5001",
     "Name": "RareMysteryBoxKey",
     "JSONKey": "RMBK"
   },
-  "110": {
+  "132": {
     "currencyID": "5002",
     "Name": "EpicMysteryBoxKey",
     "JSONKey": "EMBK"
   },
-  "111": {
+  "133": {
     "currencyID": "5003",
     "Name": "LegendaryMysteryBoxKey",
     "JSONKey": "LMBK"
   },
-  "112": {
+  "134": {
     "currencyID": "100000",
     "Name": "DecoDust",
     "JSONKey": "DD"
   },
-  "113": {
+  "135": {
     "currencyID": "100001",
     "Name": "DecoCatalyst1",
     "JSONKey": "DC1",
     "assetName": "DecoCatalyst"
   },
-  "114": {
+  "136": {
     "currencyID": "100002",
     "Name": "DecoCatalyst2",
     "JSONKey": "DC2",
     "assetName": "DecoCatalyst"
   },
-  "115": {
+  "137": {
     "currencyID": "100003",
     "Name": "DecoCatalyst3",
     "JSONKey": "DC3",
     "assetName": "DecoCatalyst"
   },
-  "116": {
+  "138": {
     "currencyID": "100004",
     "Name": "DecoCatalyst4",
     "JSONKey": "DC4",
     "assetName": "DecoCatalyst"
   },
-  "117": {
+  "139": {
     "currencyID": "100005",
     "Name": "DecoCatalyst5",
     "JSONKey": "DC5",
     "assetName": "DecoCatalyst"
   },
-  "118": {
+  "140": {
     "currencyID": "100006",
     "Name": "DecoCatalyst6",
     "JSONKey": "DC6",
     "assetName": "DecoCatalyst"
   },
-  "119": {
+  "141": {
     "currencyID": "100007",
     "Name": "DecoCatalyst7",
     "JSONKey": "DC7",
     "assetName": "DecoCatalyst"
   },
-  "120": {
+  "142": {
     "currencyID": "100008",
     "Name": "DecoCatalyst8",
     "JSONKey": "DC8",
     "assetName": "DecoCatalyst"
   },
-  "121": {
+  "143": {
     "currencyID": "100009",
     "Name": "DecoCatalyst9",
     "JSONKey": "DC9",
     "assetName": "DecoCatalyst"
   },
-  "122": {
+  "144": {
     "currencyID": "100010",
     "Name": "DecoCatalyst10",
     "JSONKey": "DC10",
     "assetName": "DecoCatalyst"
   },
-  "123": {
+  "145": {
     "currencyID": "100011",
     "Name": "DecoCatalyst11",
     "JSONKey": "DC11",
     "assetName": "DecoCatalyst"
   },
-  "124": {
+  "146": {
     "currencyID": "100012",
     "Name": "DecoCatalyst12",
     "JSONKey": "DC12",
     "assetName": "DecoCatalyst"
   },
-  "125": {
+  "147": {
     "currencyID": "100013",
     "Name": "DecoCatalyst13",
     "JSONKey": "DC13",
     "assetName": "DecoCatalyst"
   },
-  "126": {
+  "148": {
     "currencyID": "100014",
     "Name": "DecoCatalyst14",
     "JSONKey": "DC14",
     "assetName": "DecoCatalyst"
   },
-  "127": {
+  "149": {
     "currencyID": "100015",
     "Name": "DecoCatalyst15",
     "JSONKey": "DC15",
     "assetName": "DecoCatalyst"
   },
-  "128": {
+  "150": {
     "currencyID": "100016",
     "Name": "DecoCatalyst16",
     "JSONKey": "DC16",
     "assetName": "DecoCatalyst"
   },
-  "129": {
+  "151": {
     "currencyID": "100017",
     "Name": "DecoCatalyst17",
     "JSONKey": "DC17",
     "assetName": "DecoCatalyst"
   },
-  "130": {
+  "152": {
     "currencyID": "100018",
     "Name": "DecoCatalyst18",
     "JSONKey": "DC18",
     "assetName": "DecoCatalyst"
   },
-  "131": {
+  "153": {
     "currencyID": "100019",
     "Name": "DecoCatalyst19",
     "JSONKey": "DC19",
     "assetName": "DecoCatalyst"
   },
-  "132": {
+  "154": {
     "currencyID": "100020",
     "Name": "DecoCatalyst20",
     "JSONKey": "DC20",
     "assetName": "DecoCatalyst"
   },
-  "133": {
+  "155": {
     "currencyID": "100021",
     "Name": "DecoCatalyst21",
     "JSONKey": "DC21",
     "assetName": "DecoCatalyst"
   },
-  "134": {
+  "156": {
     "currencyID": "100022",
     "Name": "DecoCatalyst22",
     "JSONKey": "DC22",
     "assetName": "DecoCatalyst"
   },
-  "135": {
+  "157": {
     "currencyID": "100023",
     "Name": "DecoCatalyst23",
     "JSONKey": "DC23",
     "assetName": "DecoCatalyst"
   },
-  "136": {
+  "158": {
     "currencyID": "100024",
     "Name": "DecoCatalyst24",
     "JSONKey": "DC24",
     "assetName": "DecoCatalyst"
   },
-  "137": {
+  "159": {
     "currencyID": "100025",
     "Name": "DecoCatalyst25",
     "JSONKey": "DC25",
     "assetName": "DecoCatalyst"
   },
-  "138": {
+  "160": {
     "currencyID": "100026",
     "Name": "DecoCatalyst26",
     "JSONKey": "DC26",
     "assetName": "DecoCatalyst"
   },
-  "139": {
+  "161": {
     "currencyID": "100027",
     "Name": "DecoCatalyst27",
     "JSONKey": "DC27",
     "assetName": "DecoCatalyst"
   },
-  "140": {
+  "162": {
     "currencyID": "100028",
     "Name": "DecoCatalyst28",
     "JSONKey": "DC28",
     "assetName": "DecoCatalyst"
   },
-  "141": {
+  "163": {
     "currencyID": "100029",
     "Name": "DecoCatalyst29",
     "JSONKey": "DC29",
     "assetName": "DecoCatalyst"
   },
-  "142": {
+  "164": {
     "currencyID": "100030",
     "Name": "DecoCatalyst30",
     "JSONKey": "DC30",
     "assetName": "DecoCatalyst"
   },
-  "143": {
+  "165": {
     "currencyID": "100031",
     "Name": "DecoCatalyst31",
     "JSONKey": "DC31",
     "assetName": "DecoCatalyst"
   },
-  "144": {
+  "166": {
     "currencyID": "100032",
     "Name": "DecoCatalyst32",
     "JSONKey": "DC32",
     "assetName": "DecoCatalyst"
   },
-  "145": {
+  "167": {
     "currencyID": "100033",
     "Name": "DecoCatalyst33",
     "JSONKey": "DC33",
     "assetName": "DecoCatalyst"
   },
-  "146": {
+  "168": {
     "currencyID": "100034",
     "Name": "DecoCatalyst34",
     "JSONKey": "DC34",
     "assetName": "DecoCatalyst"
   },
-  "147": {
+  "169": {
     "currencyID": "100035",
     "Name": "DecoCatalyst35",
     "JSONKey": "DC35",
     "assetName": "DecoCatalyst"
   },
-  "148": {
+  "170": {
     "currencyID": "100036",
     "Name": "DecoCatalyst36",
     "JSONKey": "DC36",
     "assetName": "DecoCatalyst"
   },
-  "149": {
+  "171": {
     "currencyID": "100037",
     "Name": "DecoCatalyst37",
     "JSONKey": "DC37",
     "assetName": "DecoCatalyst"
   },
-  "150": {
+  "172": {
     "currencyID": "100038",
     "Name": "DecoCatalyst38",
     "JSONKey": "DC38",
     "assetName": "DecoCatalyst"
   },
-  "151": {
+  "173": {
     "currencyID": "100039",
     "Name": "DecoCatalyst39",
     "JSONKey": "DC39",
     "assetName": "DecoCatalyst"
   },
-  "152": {
+  "174": {
     "currencyID": "100040",
     "Name": "DecoCatalyst40",
     "JSONKey": "DC40",
     "assetName": "DecoCatalyst"
   },
-  "153": {
+  "175": {
     "currencyID": "100041",
     "Name": "DecoCatalyst41",
     "JSONKey": "DC41",
     "assetName": "DecoCatalyst"
   },
-  "154": {
+  "176": {
     "currencyID": "100042",
     "Name": "DecoCatalyst42",
     "JSONKey": "DC42",
     "assetName": "DecoCatalyst"
   },
-  "155": {
+  "177": {
     "currencyID": "100043",
     "Name": "DecoCatalyst43",
     "JSONKey": "DC43",
     "assetName": "DecoCatalyst"
   },
-  "156": {
+  "178": {
     "currencyID": "100044",
     "Name": "DecoCatalyst44",
     "JSONKey": "DC44",
     "assetName": "DecoCatalyst"
   },
-  "157": {
+  "179": {
     "currencyID": "100045",
     "Name": "DecoCatalyst45",
     "JSONKey": "DC45",
     "assetName": "DecoCatalyst"
   },
-  "158": {
+  "180": {
     "currencyID": "100046",
     "Name": "DecoCatalyst46",
     "JSONKey": "DC46",
     "assetName": "DecoCatalyst"
   },
-  "159": {
+  "181": {
     "currencyID": "100047",
     "Name": "DecoCatalyst47",
     "JSONKey": "DC47",
     "assetName": "DecoCatalyst"
   },
-  "160": {
+  "182": {
     "currencyID": "100048",
     "Name": "DecoCatalyst48",
     "JSONKey": "DC48",
     "assetName": "DecoCatalyst"
   },
-  "161": {
+  "183": {
     "currencyID": "100049",
     "Name": "DecoCatalyst49",
     "JSONKey": "DC49",
     "assetName": "DecoCatalyst"
   },
-  "162": {
+  "184": {
     "currencyID": "100050",
     "Name": "DecoCatalyst50",
     "JSONKey": "DC50",
     "assetName": "DecoCatalyst"
   },
-  "163": {
+  "185": {
     "currencyID": "100051",
     "Name": "DecoCatalyst51",
     "JSONKey": "DC51",
     "assetName": "DecoCatalyst"
   },
-  "164": {
+  "186": {
     "currencyID": "100052",
     "Name": "DecoCatalyst52",
     "JSONKey": "DC52",
     "assetName": "DecoCatalyst"
   },
-  "165": {
+  "187": {
     "currencyID": "100053",
     "Name": "DecoCatalyst53",
     "JSONKey": "DC53",
     "assetName": "DecoCatalyst"
   },
-  "166": {
+  "188": {
     "currencyID": "100054",
     "Name": "DecoCatalyst54",
     "JSONKey": "DC54",
     "assetName": "DecoCatalyst"
   },
-  "167": {
+  "189": {
     "currencyID": "100055",
     "Name": "DecoCatalyst55",
     "JSONKey": "DC55",
     "assetName": "DecoCatalyst"
   },
-  "168": {
+  "190": {
     "currencyID": "100056",
     "Name": "DecoCatalyst56",
     "JSONKey": "DC56",
     "assetName": "DecoCatalyst"
   },
-  "169": {
+  "191": {
     "currencyID": "100057",
     "Name": "DecoCatalyst57",
     "JSONKey": "DC57",
     "assetName": "DecoCatalyst"
   },
-  "170": {
+  "192": {
     "currencyID": "100058",
     "Name": "DecoCatalyst58",
     "JSONKey": "DC58",
     "assetName": "DecoCatalyst"
   },
-  "171": {
+  "193": {
     "currencyID": "100059",
     "Name": "DecoCatalyst59",
     "JSONKey": "DC59",
     "assetName": "DecoCatalyst"
   },
-  "172": {
+  "194": {
     "currencyID": "100060",
     "Name": "DecoCatalyst60",
     "JSONKey": "DC60",
     "assetName": "DecoCatalyst"
   },
-  "173": {
+  "195": {
     "currencyID": "100061",
     "Name": "DecoCatalyst61",
     "JSONKey": "DC61",
     "assetName": "DecoCatalyst"
   },
-  "174": {
+  "196": {
     "currencyID": "100062",
     "Name": "DecoCatalyst62",
     "JSONKey": "DC62",
     "assetName": "DecoCatalyst"
   },
-  "175": {
+  "197": {
     "currencyID": "100063",
     "Name": "DecoCatalyst63",
     "JSONKey": "DC63",
     "assetName": "DecoCatalyst"
   },
-  "176": {
+  "198": {
     "currencyID": "100064",
     "Name": "DecoCatalyst64",
     "JSONKey": "DC64",
     "assetName": "DecoCatalyst"
   },
-  "177": {
+  "199": {
     "currencyID": "100065",
     "Name": "DecoCatalyst65",
     "JSONKey": "DC65",
     "assetName": "DecoCatalyst"
   },
-  "178": {
+  "200": {
     "currencyID": "100066",
     "Name": "DecoCatalyst66",
     "JSONKey": "DC66",
     "assetName": "DecoCatalyst"
   },
-  "179": {
+  "201": {
     "currencyID": "100067",
     "Name": "DecoCatalyst67",
     "JSONKey": "DC67",
     "assetName": "DecoCatalyst"
   },
-  "180": {
+  "202": {
     "currencyID": "100068",
     "Name": "DecoCatalyst68",
     "JSONKey": "DC68",
     "assetName": "DecoCatalyst"
   },
-  "181": {
+  "203": {
     "currencyID": "100069",
     "Name": "DecoCatalyst69",
     "JSONKey": "DC69",
     "assetName": "DecoCatalyst"
   },
-  "182": {
+  "204": {
     "currencyID": "100070",
     "Name": "DecoCatalyst70",
     "JSONKey": "DC70",
     "assetName": "DecoCatalyst"
   },
-  "183": {
+  "205": {
     "currencyID": "100071",
     "Name": "DecoCatalyst71",
     "JSONKey": "DC71",
     "assetName": "DecoCatalyst"
   },
-  "184": {
+  "206": {
     "currencyID": "100072",
     "Name": "DecoCatalyst72",
     "JSONKey": "DC72",
     "assetName": "DecoCatalyst"
   },
-  "185": {
+  "207": {
     "currencyID": "100073",
     "Name": "DecoCatalyst73",
     "JSONKey": "DC73",
     "assetName": "DecoCatalyst"
   },
-  "186": {
+  "208": {
     "currencyID": "100074",
     "Name": "DecoCatalyst74",
     "JSONKey": "DC74",
     "assetName": "DecoCatalyst"
   },
-  "187": {
+  "209": {
     "currencyID": "100075",
     "Name": "DecoCatalyst75",
     "JSONKey": "DC75",
     "assetName": "DecoCatalyst"
   },
-  "188": {
+  "210": {
     "currencyID": "100076",
     "Name": "DecoCatalyst76",
     "JSONKey": "DC76",
     "assetName": "DecoCatalyst"
   },
-  "189": {
+  "211": {
     "currencyID": "100077",
     "Name": "DecoCatalyst77",
     "JSONKey": "DC77",
     "assetName": "DecoCatalyst"
   },
-  "190": {
+  "212": {
     "currencyID": "100078",
     "Name": "DecoCatalyst78",
     "JSONKey": "DC78",
     "assetName": "DecoCatalyst"
   },
-  "191": {
+  "213": {
     "currencyID": "100079",
     "Name": "DecoCatalyst79",
     "JSONKey": "DC79",
     "assetName": "DecoCatalyst"
   },
-  "192": {
+  "214": {
     "currencyID": "100080",
     "Name": "DecoCatalyst80",
     "JSONKey": "DC80",

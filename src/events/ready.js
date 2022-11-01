@@ -13,21 +13,20 @@ module.exports = {
      */
     async execute(client) {
         await require('./../tools/Logger').execute(client);
-        await require('./../empireClient').connect();
-        empire.client.on('serverShutdown', () => {
+        await empire.connect();
+        empire.client.on('serverShutdown', async () => {
             /** @type {Guild}*/
             let guild = client.guilds.cache.find(guild => guild.id === nlserver.id);
-            /** @type {TextBasedChannel}*/
-            let channel = guild.channels.cache.get('882702761756598312');
-            channel.send({content: translationData.generic_flash.alert.generic_alert_connection_lost_description})
+            let channel = await guild.channels.fetch('882702761756598312');
+            await channel.send({content: translationData.generic_flash.alert.generic_alert_connection_lost_description});
         })
-        empire.client.on('serverShutdownEnd', () => {
+        empire.client.on('serverShutdownEnd', async () => {
             /** @type {Guild}*/
             let guild = client.guilds.cache.find(guild => guild.id === nlserver.id);
-            /** @type {TextBasedChannel}*/
-            let channel = guild.channels.cache.get('882702761756598312');
-            channel.send({content: "Onderhoud is voorbij. De server is weer bereikbaar."})
+            let channel = await guild.channels.fetch('882702761756598312');
+            await channel.send({content: "Onderhoud is voorbij. De server is weer bereikbaar."})
         })
+        await require('./../dc_commands/_slash/commandHelpers/worldmap').loadImages();
         await weerOnline(client);
     }
 }

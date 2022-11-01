@@ -62,8 +62,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "3",
-    "maxValue": "5"
+    "minValue": "9",
+    "maxValue": "15"
   },
   "7": {
     "eventAutoScalingLordEffectID": "7",
@@ -150,8 +150,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "5",
-    "maxValue": "10"
+    "minValue": "15",
+    "maxValue": "30"
   },
   "15": {
     "eventAutoScalingLordEffectID": "15",
@@ -238,8 +238,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "8",
-    "maxValue": "15"
+    "minValue": "24",
+    "maxValue": "45"
   },
   "23": {
     "eventAutoScalingLordEffectID": "23",
@@ -326,8 +326,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "10",
-    "maxValue": "20"
+    "minValue": "30",
+    "maxValue": "60"
   },
   "31": {
     "eventAutoScalingLordEffectID": "31",
@@ -414,8 +414,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "20",
-    "maxValue": "30"
+    "minValue": "60",
+    "maxValue": "90"
   },
   "39": {
     "eventAutoScalingLordEffectID": "39",
@@ -502,8 +502,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "30",
-    "maxValue": "40"
+    "minValue": "90",
+    "maxValue": "120"
   },
   "47": {
     "eventAutoScalingLordEffectID": "47",
@@ -590,8 +590,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "40",
-    "maxValue": "52"
+    "minValue": "120",
+    "maxValue": "156"
   },
   "55": {
     "eventAutoScalingLordEffectID": "55",
@@ -678,8 +678,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "50",
-    "maxValue": "63"
+    "minValue": "150",
+    "maxValue": "189"
   },
   "63": {
     "eventAutoScalingLordEffectID": "63",
@@ -766,8 +766,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "57",
-    "maxValue": "69"
+    "minValue": "171",
+    "maxValue": "207"
   },
   "71": {
     "eventAutoScalingLordEffectID": "71",
@@ -854,8 +854,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "63",
-    "maxValue": "75"
+    "minValue": "189",
+    "maxValue": "225"
   },
   "79": {
     "eventAutoScalingLordEffectID": "79",
@@ -942,8 +942,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "78",
-    "maxValue": "111"
+    "minValue": "234",
+    "maxValue": "333"
   },
   "87": {
     "eventAutoScalingLordEffectID": "487",
@@ -1030,8 +1030,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "3",
-    "maxValue": "5"
+    "minValue": "9",
+    "maxValue": "15"
   },
   "95": {
     "eventAutoScalingLordEffectID": "87",
@@ -1118,8 +1118,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "5",
-    "maxValue": "10"
+    "minValue": "15",
+    "maxValue": "30"
   },
   "103": {
     "eventAutoScalingLordEffectID": "95",
@@ -1206,8 +1206,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "8",
-    "maxValue": "15"
+    "minValue": "24",
+    "maxValue": "45"
   },
   "111": {
     "eventAutoScalingLordEffectID": "103",
@@ -1294,8 +1294,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "10",
-    "maxValue": "20"
+    "minValue": "30",
+    "maxValue": "60"
   },
   "119": {
     "eventAutoScalingLordEffectID": "111",
@@ -1382,8 +1382,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "20",
-    "maxValue": "30"
+    "minValue": "60",
+    "maxValue": "90"
   },
   "127": {
     "eventAutoScalingLordEffectID": "119",
@@ -1470,8 +1470,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "30",
-    "maxValue": "40"
+    "minValue": "90",
+    "maxValue": "120"
   },
   "135": {
     "eventAutoScalingLordEffectID": "127",
@@ -1558,8 +1558,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "40",
-    "maxValue": "52"
+    "minValue": "120",
+    "maxValue": "156"
   },
   "143": {
     "eventAutoScalingLordEffectID": "135",
@@ -1646,8 +1646,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "50",
-    "maxValue": "63"
+    "minValue": "150",
+    "maxValue": "189"
   },
   "151": {
     "eventAutoScalingLordEffectID": "143",
@@ -1734,8 +1734,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "57",
-    "maxValue": "69"
+    "minValue": "171",
+    "maxValue": "207"
   },
   "159": {
     "eventAutoScalingLordEffectID": "151",
@@ -1822,8 +1822,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "63",
-    "maxValue": "75"
+    "minValue": "189",
+    "maxValue": "225"
   },
   "167": {
     "eventAutoScalingLordEffectID": "159",
@@ -1910,8 +1910,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "78",
-    "maxValue": "111"
+    "minValue": "234",
+    "maxValue": "333"
   },
   "175": {
     "eventAutoScalingLordEffectID": "503",
@@ -2174,8 +2174,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "1",
-    "maxValue": "1"
+    "minValue": "3",
+    "maxValue": "3"
   },
   "199": {
     "eventAutoScalingLordEffectID": "183",
@@ -2262,8 +2262,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "2",
-    "maxValue": "2"
+    "minValue": "6",
+    "maxValue": "6"
   },
   "207": {
     "eventAutoScalingLordEffectID": "191",
@@ -2350,8 +2350,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "3",
-    "maxValue": "3"
+    "minValue": "9",
+    "maxValue": "9"
   },
   "215": {
     "eventAutoScalingLordEffectID": "199",
@@ -2438,8 +2438,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "4",
-    "maxValue": "4"
+    "minValue": "12",
+    "maxValue": "12"
   },
   "223": {
     "eventAutoScalingLordEffectID": "207",
@@ -2526,8 +2526,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "5",
-    "maxValue": "6"
+    "minValue": "15",
+    "maxValue": "18"
   },
   "231": {
     "eventAutoScalingLordEffectID": "215",
@@ -2614,8 +2614,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "7",
-    "maxValue": "8"
+    "minValue": "21",
+    "maxValue": "24"
   },
   "239": {
     "eventAutoScalingLordEffectID": "223",
@@ -2702,8 +2702,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "9",
-    "maxValue": "11"
+    "minValue": "27",
+    "maxValue": "33"
   },
   "247": {
     "eventAutoScalingLordEffectID": "231",
@@ -2790,8 +2790,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "12",
-    "maxValue": "15"
+    "minValue": "36",
+    "maxValue": "45"
   },
   "255": {
     "eventAutoScalingLordEffectID": "239",
@@ -2878,8 +2878,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "29",
-    "maxValue": "39"
+    "minValue": "87",
+    "maxValue": "117"
   },
   "263": {
     "eventAutoScalingLordEffectID": "519",
@@ -2966,8 +2966,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "3",
-    "maxValue": "7"
+    "minValue": "9",
+    "maxValue": "21"
   },
   "271": {
     "eventAutoScalingLordEffectID": "247",
@@ -3054,8 +3054,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "7",
-    "maxValue": "13"
+    "minValue": "21",
+    "maxValue": "39"
   },
   "279": {
     "eventAutoScalingLordEffectID": "255",
@@ -3142,8 +3142,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "10",
-    "maxValue": "20"
+    "minValue": "30",
+    "maxValue": "60"
   },
   "287": {
     "eventAutoScalingLordEffectID": "263",
@@ -3230,8 +3230,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "13",
-    "maxValue": "27"
+    "minValue": "39",
+    "maxValue": "81"
   },
   "295": {
     "eventAutoScalingLordEffectID": "271",
@@ -3318,8 +3318,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "27",
-    "maxValue": "40"
+    "minValue": "81",
+    "maxValue": "120"
   },
   "303": {
     "eventAutoScalingLordEffectID": "279",
@@ -3406,8 +3406,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "40",
-    "maxValue": "53"
+    "minValue": "120",
+    "maxValue": "159"
   },
   "311": {
     "eventAutoScalingLordEffectID": "287",
@@ -3494,8 +3494,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "53",
-    "maxValue": "68"
+    "minValue": "159",
+    "maxValue": "204"
   },
   "319": {
     "eventAutoScalingLordEffectID": "295",
@@ -3582,8 +3582,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "67",
-    "maxValue": "83"
+    "minValue": "201",
+    "maxValue": "249"
   },
   "327": {
     "eventAutoScalingLordEffectID": "303",
@@ -3670,8 +3670,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "75",
-    "maxValue": "92"
+    "minValue": "225",
+    "maxValue": "276"
   },
   "335": {
     "eventAutoScalingLordEffectID": "311",
@@ -3758,8 +3758,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "83",
-    "maxValue": "100"
+    "minValue": "249",
+    "maxValue": "300"
   },
   "343": {
     "eventAutoScalingLordEffectID": "319",
@@ -3846,8 +3846,8 @@
     "effectGroup": "attackBoostYardGroup",
     "wearerID": "2",
     "effectID": "10013",
-    "minValue": "143",
-    "maxValue": "209"
+    "minValue": "429",
+    "maxValue": "627"
   },
   "351": {
     "eventAutoScalingLordEffectID": "535",
@@ -4110,8 +4110,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "1",
-    "maxValue": "1"
+    "minValue": "3",
+    "maxValue": "3"
   },
   "375": {
     "eventAutoScalingLordEffectID": "343",
@@ -4198,8 +4198,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "2",
-    "maxValue": "2"
+    "minValue": "6",
+    "maxValue": "6"
   },
   "383": {
     "eventAutoScalingLordEffectID": "351",
@@ -4286,8 +4286,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "3",
-    "maxValue": "3"
+    "minValue": "9",
+    "maxValue": "9"
   },
   "391": {
     "eventAutoScalingLordEffectID": "359",
@@ -4374,8 +4374,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "4",
-    "maxValue": "4"
+    "minValue": "12",
+    "maxValue": "12"
   },
   "399": {
     "eventAutoScalingLordEffectID": "367",
@@ -4462,8 +4462,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "5",
-    "maxValue": "6"
+    "minValue": "15",
+    "maxValue": "18"
   },
   "407": {
     "eventAutoScalingLordEffectID": "375",
@@ -4550,8 +4550,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "7",
-    "maxValue": "8"
+    "minValue": "21",
+    "maxValue": "24"
   },
   "415": {
     "eventAutoScalingLordEffectID": "383",
@@ -4638,8 +4638,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "9",
-    "maxValue": "11"
+    "minValue": "27",
+    "maxValue": "33"
   },
   "423": {
     "eventAutoScalingLordEffectID": "391",
@@ -4726,8 +4726,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "12",
-    "maxValue": "15"
+    "minValue": "36",
+    "maxValue": "45"
   },
   "431": {
     "eventAutoScalingLordEffectID": "399",
@@ -4814,8 +4814,8 @@
     "effectGroup": "unitAmounWallGroup",
     "wearerID": "1",
     "effectID": "10005",
-    "minValue": "29",
-    "maxValue": "39"
+    "minValue": "87",
+    "maxValue": "117"
   },
   "439": {
     "eventAutoScalingLordEffectID": "551",

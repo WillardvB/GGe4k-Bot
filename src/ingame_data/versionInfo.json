@@ -1,11 +1,11 @@
 {
   "1": {
-    "value": "133.RC.02"
+    "value": "138.RC.14"
   },
   "2": {
-    "value": "01/07/2022 09:06:42"
+    "value": "04/10/2022 18:26:55"
   },
   "3": {
-    "features": "Live,Fixes,LootBoxes,Autoscaling-Unbeatable,Autoscaling-LeagueTypeRemoval,SalesDaysContentJune2022,LTPEContentJuly2022,UnitSortOrder"
+    "features": "Live,Fixes,Autoscaling-LeagueTypeRemoval,Generals,Generals1,Generals2,October-MysteryBox,LTPEandSalesDays,RCGenerals"
   }
 }

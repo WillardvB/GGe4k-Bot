@@ -1900,5 +1900,29 @@
     "effectID": "48",
     "wearerID": "2",
     "name": "attackBonus"
+  },
+  "199": {
+    "equipmentEffectID": "700",
+    "effectID": "700",
+    "wearerID": "2",
+    "name": "attackUnitAmountReinforcementBonus"
+  },
+  "200": {
+    "equipmentEffectID": "701",
+    "effectID": "701",
+    "wearerID": "2",
+    "name": "attackUnitAmountReinforcementBoost"
+  },
+  "201": {
+    "equipmentEffectID": "702",
+    "effectID": "702",
+    "wearerID": "1",
+    "name": "defenseUnitAmountYardBonus"
+  },
+  "202": {
+    "equipmentEffectID": "703",
+    "effectID": "703",
+    "wearerID": "1",
+    "name": "defenseUnitAmountYardBoost"
   }
 }

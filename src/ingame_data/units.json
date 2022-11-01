@@ -18251,6 +18251,7 @@
     "costComponent5": "180",
     "costComponent2": "120",
     "cleavageOfCellsCost": "138",
+    "amountPerWave": "1",
     "upgradeWodID": "371",
     "typ": "Attack",
     "slotTypes": "9,10",

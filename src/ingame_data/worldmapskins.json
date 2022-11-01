@@ -362,5 +362,21 @@
   "90": {
     "skinID": "93",
     "name": "GeneralCupcake"
+  },
+  "91": {
+    "skinID": "94",
+    "name": "GeneralOctoberfest"
+  },
+  "92": {
+    "skinID": "95",
+    "name": "GeneralGenericAnniversary"
+  },
+  "93": {
+    "skinID": "96",
+    "name": "CyberBaron"
+  },
+  "94": {
+    "skinID": "97",
+    "name": "HalloweenGeneral"
   }
 }

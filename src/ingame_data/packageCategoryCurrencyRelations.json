@@ -33,5 +33,20 @@
     "id": "7",
     "categoryID": "107",
     "currencyID": "53"
+  },
+  "8": {
+    "id": "8",
+    "categoryID": "108",
+    "currencyID": "54"
+  },
+  "9": {
+    "id": "9",
+    "categoryID": "109",
+    "currencyID": "55"
+  },
+  "10": {
+    "id": "10",
+    "categoryID": "110",
+    "currencyID": "56"
   }
 }

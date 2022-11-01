@@ -1,7 +1,17 @@
 module.exports = {
+    /**
+     *
+     * @param {any} num
+     * @returns {boolean}
+     */
     isNum: function (num) {
         return isNumeric(num);
     },
+    /**
+     *
+     * @param {number} num
+     * @returns {string}
+     */
     formatNum: function (num) {
         return formatNumber(num);
     }
@@ -13,7 +23,7 @@ function isNumeric(num) {
 }
 
 function formatNumber(num) {
-    var output = "";
+    let output = "";
     num *= 1;
     if (num >= 1000000000000) {
         let triljWaarde = Math.floor(num / 1000000000000);
@@ -47,7 +57,7 @@ function formatNumber(num) {
         }
         output = triljWaarde + "." + miljWaarde + "." + mWaarde + "." + dWaarde + "." + uWaarde;
         let kWaarde = num - Math.floor(num);
-        if (kWaarde != 0) {
+        if (kWaarde !== 0) {
             output = output + "," + kWaarde.split(".")[1];
         }
     }
@@ -76,7 +86,7 @@ function formatNumber(num) {
         }
         output = miljWaarde + "." + mWaarde + "." + dWaarde + "." + uWaarde;
         let kWaarde = num - Math.floor(num);
-        if (kWaarde != 0) {
+        if (kWaarde !== 0) {
             output = output + "," + kWaarde.split(".")[1];
         }
     }
@@ -98,7 +108,7 @@ function formatNumber(num) {
         }
         output = mWaarde + "." + dWaarde + "." + uWaarde;
         let kWaarde = num - Math.floor(num);
-        if (kWaarde != 0) {
+        if (kWaarde !== 0) {
             output = output + "," + kWaarde.split(".")[1];
         }
     }
@@ -113,7 +123,7 @@ function formatNumber(num) {
         }
         output = dWaarde + "." + uWaarde;
         let kWaarde = num - Math.floor(num);
-        if (kWaarde != 0) {
+        if (kWaarde !== 0) {
             output = output + "," + kWaarde.split(".")[1];
         }
     }

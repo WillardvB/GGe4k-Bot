@@ -49,6 +49,7 @@
   },
   "13": {
     "effectTypeID": "12",
+    "combatType": "2",
     "name": "defenseUnitAmountWall"
   },
   "14": {
@@ -117,6 +118,7 @@
   },
   "30": {
     "effectTypeID": "28",
+    "combatType": "1",
     "name": "attackUnitAmountFlank"
   },
   "31": {
@@ -141,10 +143,12 @@
   },
   "36": {
     "effectTypeID": "32",
+    "combatType": "2",
     "name": "defenseBoostYard"
   },
   "37": {
     "effectTypeID": "33",
+    "combatType": "1",
     "name": "attackBoostYard"
   },
   "38": {
@@ -157,6 +161,7 @@
   },
   "40": {
     "effectTypeID": "34",
+    "combatType": "1",
     "name": "attackUnitAmountFront"
   },
   "41": {
@@ -632,27 +637,136 @@
     "name": "enableCraftingRecipes"
   },
   "159": {
+    "effectTypeID": "178",
+    "name": "unlockAbility"
+  },
+  "160": {
     "effectTypeID": "172",
     "name": "killAttackingMeleeTroopsYard"
   },
-  "160": {
+  "161": {
     "effectTypeID": "173",
     "name": "killAttackingRangedTroopsYard"
   },
-  "161": {
+  "162": {
     "effectTypeID": "174",
     "name": "killAttackingAnyTroopsYard"
   },
-  "162": {
+  "163": {
     "effectTypeID": "175",
     "name": "killDefendingMeleeTroopsYard"
   },
-  "163": {
+  "164": {
     "effectTypeID": "176",
     "name": "killDefendingRangedTroopsYard"
   },
-  "164": {
+  "165": {
     "effectTypeID": "177",
     "name": "killDefendingAnyTroopsYard"
+  },
+  "166": {
+    "effectTypeID": "179",
+    "combatType": "1",
+    "name": "attackUnitAmountReinforcementBonus"
+  },
+  "167": {
+    "effectTypeID": "180",
+    "combatType": "1",
+    "name": "attackUnitAmountReinforcementBoost"
+  },
+  "168": {
+    "effectTypeID": "181",
+    "combatType": "2",
+    "name": "defenseUnitAmountYardBonus"
+  },
+  "169": {
+    "effectTypeID": "182",
+    "combatType": "2",
+    "name": "defenseUnitAmountYardBoost"
+  },
+  "170": {
+    "effectTypeID": "1001",
+    "combatType": "3",
+    "name": "PowerSurge"
+  },
+  "171": {
+    "effectTypeID": "1002",
+    "combatType": "3",
+    "name": "RisetotheTask"
+  },
+  "172": {
+    "effectTypeID": "1005",
+    "combatType": "3",
+    "name": "Intimidate"
+  },
+  "173": {
+    "effectTypeID": "1006",
+    "combatType": "3",
+    "name": "StrenghtinNumbers"
+  },
+  "174": {
+    "effectTypeID": "1007",
+    "combatType": "3",
+    "name": "Hordebreaker"
+  },
+  "175": {
+    "effectTypeID": "1008",
+    "combatType": "3",
+    "name": "OutnumberednotOutmatched"
+  },
+  "176": {
+    "effectTypeID": "1012",
+    "combatType": "2",
+    "name": "Reinforcements"
+  },
+  "177": {
+    "effectTypeID": "1013",
+    "combatType": "3",
+    "name": "Sabotage"
+  },
+  "178": {
+    "effectTypeID": "1015",
+    "combatType": "3",
+    "name": "ToweringShield"
+  },
+  "179": {
+    "effectTypeID": "1018",
+    "combatType": "2",
+    "name": "HeroicDefense"
+  },
+  "180": {
+    "effectTypeID": "1020",
+    "combatType": "3",
+    "name": "AspectoftheDragon"
+  },
+  "181": {
+    "effectTypeID": "1023",
+    "combatType": "3",
+    "name": "Longbows"
+  },
+  "182": {
+    "effectTypeID": "1025",
+    "combatType": "3",
+    "name": "ReinforcedArrows"
+  },
+  "183": {
+    "effectTypeID": "1027",
+    "combatType": "3",
+    "name": "YourCut"
+  },
+  "184": {
+    "effectTypeID": "1030",
+    "combatType": "3",
+    "name": "Vengence"
+  },
+  "185": {
+    "effectTypeID": "1034",
+    "combatType": "3",
+    "name": "Tailwhip"
+  },
+  "186": {
+    "effectTypeID": "1035",
+    "combatType": "3",
+    "name": "DragonscaleArmor"
   }
 }
