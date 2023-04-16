@@ -1,6 +1,6 @@
-const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, SelectMenuBuilder} = require("discord.js");
+const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, StringSelectMenuBuilder} = require("discord.js");
 const empire = require("../../../empireClient");
-const translationData = require('./../../../ingame_translations/nl.json');
+const translationData = require('e4k-data').languages.nl;
 
 const _name = 'bondgenootschap leden';
 module.exports = {
@@ -104,7 +104,7 @@ module.exports = {
                 })
             }
             messRow.addComponents(
-                new SelectMenuBuilder()
+                new StringSelectMenuBuilder()
                     .setOptions(_options)
                     .setMaxValues(1)
                     .setPlaceholder('Filter leden')
@@ -122,7 +122,7 @@ module.exports = {
                     .setCustomId(`worldmap alliance ${alliance.allianceId} 0 1 1 0 0`)
             )
             if (interaction.options) {
-                if (interaction.isSelectMenu())
+                if (interaction.isStringSelectMenu())
                     await interaction.update({embeds: [embed], components: [messRow, messRow2]});
                 else
                     await interaction.followUp({embeds: [embed], components: [messRow, messRow2]});

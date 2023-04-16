@@ -1,7 +1,7 @@
 const {nlserver} = require('./../data/kanalen.json');
 const {ActivityType, Client} = require('discord.js');
 const empire = require('./../empireClient');
-const translationData = require('./../ingame_translations/nl.json');
+const translationData = require('e4k-data').languages.nl;
 
 module.exports = {
     name: 'ready',

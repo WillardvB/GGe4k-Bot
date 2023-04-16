@@ -40,13 +40,14 @@ module.exports = {
                 .setDescription('Geeft mogelijke titelnamen')
                 .addStringOption(option =>
                     option
-                        .setName('soort')
-                        .setDescription('De titelsoort')
+                        .setName('type')
+                        .setDescription('Het titel type')
                         .setRequired(false)
                         .addChoices(
-                            {name: 'Roem', value: 'roem'},
-                            {name: 'Berimond', value: 'beri'},
-                            {name: 'Storm', value: 'storm'},
+                            {name: 'Roem', value: 'FAME'},
+                            {name: 'Berimond', value: 'FACTION'},
+                            {name: 'Storm', value: 'ISLE'},
+                            {name: 'Alle', value: '*'},
                         )
                 )
         )

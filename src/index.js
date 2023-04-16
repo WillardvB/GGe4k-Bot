@@ -1,24 +1,10 @@
 const {Client, Collection, IntentsBitField} = require('discord.js');
 const fs = require('fs');
-let _intents = new IntentsBitField([
-    IntentsBitField.Flags.DirectMessageReactions,
-    IntentsBitField.Flags.DirectMessageTyping,
-    IntentsBitField.Flags.DirectMessages,
-    IntentsBitField.Flags.GuildBans,
-    IntentsBitField.Flags.GuildEmojisAndStickers,
-    IntentsBitField.Flags.GuildIntegrations,
-    IntentsBitField.Flags.GuildInvites,
-    IntentsBitField.Flags.GuildMembers,
-    IntentsBitField.Flags.GuildMessageReactions,
-    IntentsBitField.Flags.GuildMessageTyping,
-    IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.GuildPresences,
-    IntentsBitField.Flags.GuildScheduledEvents,
-    IntentsBitField.Flags.GuildVoiceStates,
-    IntentsBitField.Flags.GuildWebhooks,
-    IntentsBitField.Flags.Guilds,
-    IntentsBitField.Flags.MessageContent,
-]);
+const intentsBitFields = [];
+for (let i in IntentsBitField.Flags) {
+    intentsBitFields.push(IntentsBitField.Flags[i]);
+}
+let _intents = new IntentsBitField(intentsBitFields);
 const client = new Client({intents: _intents});
 
 client.once('ready', () => {
@@ -27,11 +13,10 @@ client.once('ready', () => {
 });
 
 client.on('interactionCreate', interaction => {
-    console.log(interaction.commandType);
     client.events.get('interactionCreate').execute(client, interaction);
 });
 
-client.login(process.env.dcToken).then(r => console.log(r));
+client.login(process.env.dcToken).then();
 
 client.events = new Collection();
 client.slashCommands = new Collection();

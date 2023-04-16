@@ -1,6 +1,7 @@
-const imagesData = require("../../../ingame_images/x768.json");
-const translationData = require("../../../ingame_translations/nl.json");
-const buildingData = require("../../../ingame_data/buildings.json");
+const e4kData = require('e4k-data');
+const imagesData = e4kData.imageData;
+const translationData = e4kData.languages.nl;
+const buildingData = e4kData.data.buildings;
 const stringSimilarity = require("string-similarity");
 const {ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder} = require("discord.js");
 const buildingTranslations = translationData.buildings_and_decorations;
@@ -23,13 +24,14 @@ function getBuildingRawData(buildingNameParts, level) {
     let data = null;
     let minLevel = 1000;
     let maxLevel = -1;
+    /** @type {Building[]} */
     let correctBuildingData = [];
     for (let _building in buildingData) {
         let _data = buildingData[_building];
         let _dataName = _data.name.toLowerCase();
-        let _dataType = _data.type.toLowerCase();
+        let _dataType = typeof _data.type === "number" ? _data.type.toString() : _data.type.toLowerCase();
         let _dataGroup = _data.group.toLowerCase();
-        let _dataLevel = parseInt(_data.level);
+        let _dataLevel = _data.level;
         if (buildingNameParts.length === 1) {
             if (_dataName === buildingNameParts[0]) {
                 correctBuildingData.push(_data);
@@ -62,7 +64,7 @@ function getBuildingRawData(buildingNameParts, level) {
             data["level"] = 0;
         } else {
             level = Math.max(Math.min(level, maxLevel), minLevel);
-            data = correctBuildingData.find(x => parseInt(x.level) === level);
+            data = correctBuildingData.find(x => x.level === level);
         }
     }
     return {data, minLevel, maxLevel};
@@ -70,13 +72,13 @@ function getBuildingRawData(buildingNameParts, level) {
 
 /**
  *
- * @param {object} data
+ * @param {Building} data
  * @returns {string}
  */
 function getBuildingName(data) {
     let dataName = data.name.toLowerCase();
-    let dataType = data.type?.toLowerCase();
-    let dataGroup = data.group?.toLowerCase();
+    let dataType = data.type.toLowerCase();
+    let dataGroup = data.group.toLowerCase();
     let _keys = Object.keys(buildingTranslations);
     let _key = _keys.find(_item => {
         return buildingNameFinder(_item, dataName, dataType, dataGroup);
@@ -115,13 +117,13 @@ function buildingNameFinder(item, name, type, group) {
 
 /**
  *
- * @param {object} data
+ * @param {Building} data
  * @returns {string}
  */
 function getBuildingDescription(data) {
     let dataName = data.name.toLowerCase();
-    let dataType = data.type?.toLowerCase();
-    let dataGroup = data.group?.toLowerCase();
+    let dataType = data.type.toLowerCase();
+    let dataGroup = data.group.toLowerCase();
     let _keys = Object.keys(buildingTranslations);
     let _key = _keys.find(_item => {
         return buildingDescriptionFinder(_item, dataName, dataType, dataGroup);
@@ -167,13 +169,13 @@ function buildingDescriptionFinder(item, name, type, group) {
 
 /**
  *
- * @param {object} data
+ * @param {Building} data
  * @returns {string}
  */
 function getBuildingImage(data) {
     let dataName = data.name.toLowerCase();
-    let dataType = data.type?.toLowerCase();
-    let dataGroup = data.group?.toLowerCase();
+    let dataType = data.type.toLowerCase();
+    let dataGroup = data.group.toLowerCase();
 
     let _keys = Object.keys(imagesData);
     let _key = _keys.find(_item => {
@@ -182,7 +184,7 @@ function getBuildingImage(data) {
     })
     if (_key !== undefined) {
         let imgData = imagesData[_key];
-        return "https://github.com/WillardvB/GGe4k-Bot/raw/master/ingame_images/" + imgData.url;
+        return e4kData.imageBaseUrl + imgData.url;
     }
     return "";
 }

@@ -1,5 +1,6 @@
-const translationData = require('./../../../ingame_translations/nl.json');
-const formatNumber = require('./../../../tools/number.js');
+const translationData = require('e4k-data').languages.nl;
+const {Constants} = require('ggejs');
+const {formatNum} = require('./../../../tools/number.js');
 const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
 const buildingCommandHelper = require('./../commandHelpers/gebouw');
 const footerTekst = '© E4K NL server';
@@ -43,13 +44,15 @@ module.exports = {
 /**
  *
  * @param {CommandInteraction | ButtonInteraction} interaction
- * @param {object} data
+ * @param {Building} data
  * @param {number} minLevel
  * @param {number} maxLevel
+ * @return {Promise<void>}
  */
 async function naarOutput(interaction, data, minLevel, maxLevel) {
     try {
-        let level = parseInt(data.level);
+        let level = data.level;
+        if(level === 0) data = data[0];
         let gebouwNaam = buildingCommandHelper.getName(data);
         let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : ` (${translationData.generic.level} ${level})`}`;
         let embed = new EmbedBuilder()
@@ -72,8 +75,7 @@ async function naarOutput(interaction, data, minLevel, maxLevel) {
         let destructionValues = "";
         let sellValues = "";
         const _keys = Object.keys(data);
-        for (let _i = 0; _i < _keys.length; _i++) {
-            let _key = _keys[_i];
+        for (let _key of _keys) {
             let _keyLowCase = _key.toLowerCase();
             if (_keyLowCase === "name" || _keyLowCase === "level" || _keyLowCase === "type" || _keyLowCase === "group" ||
                 _keyLowCase === "height" || (_keyLowCase.includes("cost") && _keyLowCase !== "buildingcostreduction") ||
@@ -85,7 +87,7 @@ async function naarOutput(interaction, data, minLevel, maxLevel) {
                 _keyLowCase === "requiredprivateoffer" || _keyLowCase === "canbeprimesaleoffer" ||
                 _keyLowCase === "isdistrict" || _keyLowCase === "movable") continue;
             if (_keyLowCase.startsWith("tempserver")) _keyLowCase = _keyLowCase.replace("tempserver", `${translationData.dialogs.temp_server_name} `);
-            /** @type string */
+            /** @type {string | number} */
             let _value = data[_key];
             if (_keyLowCase === "width") {
                 _value = `${data["width"]}x${data["height"]}`;
@@ -117,28 +119,29 @@ async function naarOutput(interaction, data, minLevel, maxLevel) {
                 _value = "";
                 for (let i = 0; i < _valueArray.length; i++) {
                     if (i > 0) _value += ", ";
-                    switch (_valueArray[i].trim()) {
-                        case "0":
+                    switch (parseInt(_valueArray[i].trim())) {
+                        case Constants.Kingdom.Classic:
                             _value += translationData.generic.kingdomName_Classic;
                             break;
-                        case "1":
+                        case Constants.Kingdom.Desert:
                             _value += translationData.generic.kingdomName_Dessert;
                             break;
-                        case "2":
+                        case Constants.Kingdom.Icecream:
                             _value += translationData.generic.kingdomName_Icecream;
                             break;
-                        case "3":
+                        case Constants.Kingdom.Volcano:
                             _value += translationData.generic.kingdomName_Volcano;
                             break;
-                        case "4":
+                        case Constants.Kingdom.Island:
                             _value += translationData.generic.kingdomName_Island;
                             break;
-                        case "10":
+                        case Constants.Kingdom.Faction:
                             _value += translationData.generic.kingdomName_Faction;
                             break;
-                        //case "ehm": _value += translationData.generic.kingdomName_Classic_Maya; break;
+                        ///case "..": _value += translationData.generic.kingdomName_Classic_Maya; break;
                         default:
                             _value += "-";
+                            break;
                     }
                 }
                 constructionValues += `**Toegestane koninkrijken**: ${_value}\n`;
@@ -149,30 +152,31 @@ async function naarOutput(interaction, data, minLevel, maxLevel) {
                 _value = "";
                 for (let i = 0; i < _valueArray.length; i++) {
                     if (i > 0) _value += ", ";
-                    switch (_valueArray[i].trim()) {
-                        case "1":
+                    switch (parseInt(_valueArray[i].trim())) {
+                        case Constants.WorldmapArea.MainCastle:
                             _value += "Hoofdkasteel";
                             break;
-                        case "3":
+                        case Constants.WorldmapArea.Capital:
                             _value += translationData.generic.capital;
                             break;
-                        case "4":
+                        case Constants.WorldmapArea.Outpost:
                             _value += translationData.generic.outpost;
                             break;
-                        case "12":
+                        case Constants.WorldmapArea.KingdomCastle:
                             _value += translationData.generic.kingdomCastle_name;
                             break;
-                        case "22":
+                        case Constants.WorldmapArea.Metropol:
                             _value += translationData.generic.metropol;
                             break;
-                        case "23":
+                        case Constants.WorldmapArea.Kingstower:
                             _value += translationData.generic.kingstower;
                             break;
-                        case "26":
+                        case Constants.WorldmapArea.Monument:
                             _value += translationData.generic.monument;
                             break;
                         default:
                             _value += _valueArray[i].trim();
+                            break;
                     }
                 }
                 constructionValues += `**Toegestane kastelen**: ${_value}\n`;
@@ -180,17 +184,17 @@ async function naarOutput(interaction, data, minLevel, maxLevel) {
             }
             if (_keyLowCase === "mightvalue") {
                 _keyLowCase = translationData.dialogs.mightPoints;
-                rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
+                rewardValues += `**${_keyLowCase}**: ${formatNum(_value)}\n`;
                 continue;
             }
             if (_keyLowCase === "xp") {
                 _keyLowCase = translationData.generic.xp;
-                rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
+                rewardValues += `**${_keyLowCase}**: ${formatNum(_value)}\n`;
                 continue;
             }
             if (_keyLowCase === "moral") {
                 _keyLowCase = translationData.generic.morality;
-                rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
+                rewardValues += `**${_keyLowCase}**: ${formatNum(_value)}\n`;
                 continue;
             }
             if (_keyLowCase === "buildspeedboost") {
@@ -207,7 +211,7 @@ async function naarOutput(interaction, data, minLevel, maxLevel) {
             }
             if (_keyLowCase === "decopoints") {
                 _keyLowCase = translationData.generic.publicOrder;
-                rewardValues += `**${_keyLowCase}**: ${formatNumber.formatNum(_value)}\n`;
+                rewardValues += `**${_keyLowCase}**: ${formatNum(_value)}\n`;
                 continue;
             }
             if (_keyLowCase === "hunterratio") {
@@ -234,27 +238,27 @@ async function naarOutput(interaction, data, minLevel, maxLevel) {
                 continue;
             }
             if (_keyLowCase.endsWith("storage")) {
-                storageValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 7)]}**: ${formatNumber.formatNum(data[_key])}\n`;
+                storageValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 7)]}**: ${formatNum(data[_key])}\n`;
                 continue;
             }
             if (_keyLowCase.endsWith("boost")) {
-                productionValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 5)]} boost**: ${formatNumber.formatNum(data[_key])}%\n`;
+                productionValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 5)]} boost**: ${formatNum(data[_key])}%\n`;
                 continue;
             }
             if (_keyLowCase === "hideout") {
-                storageValues += `**Beveiligde opslag**: ${formatNumber.formatNum(data[_key])}\n`;
+                storageValues += `**Beveiligde opslag**: ${formatNum(data[_key])}\n`;
                 continue;
             }
             if (_keyLowCase.endsWith("production")) {
-                productionValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 10)]}**: ${formatNumber.formatNum(data[_key])}\n`;
+                productionValues += `**${translationData.generic[_keyLowCase.substring(0, _keyLowCase.length - 10)]}**: ${formatNum(data[_key])}\n`;
                 continue;
             }
             if (_keyLowCase === "allifoodproductionbonus") {
-                productionValues += `**${translationData.generic.food}**: ${formatNumber.formatNum(data[_key])}\n`;
+                productionValues += `**${translationData.generic.food}**: ${formatNum(data[_key])}\n`;
                 continue;
             }
             if (_keyLowCase.startsWith("wall") || _keyLowCase.startsWith("gate") || _keyLowCase.startsWith("moat")) {
-                protectionValues += `**${translationData.generic[_keyLowCase.substring(0, 4)]}**: +${formatNumber.formatNum(data[_key])}%\n`;
+                protectionValues += `**${translationData.generic[_keyLowCase.substring(0, 4)]}**: +${formatNum(data[_key])}%\n`;
                 continue;
             }
             if (_keyLowCase.endsWith("burnable") || _keyLowCase.endsWith("destructable") || _keyLowCase.endsWith("smashable")) {
@@ -272,12 +276,15 @@ async function naarOutput(interaction, data, minLevel, maxLevel) {
             if (_keyLowCase === "districttypeid") {
                 _keyLowCase = "Kan in district";
                 switch (_value) {
+                    case 1:
                     case "1":
                         _value = translationData.generic.MilitaryDistrict_name;
                         break;
+                    case 3:
                     case "3":
                         _value = translationData.buildings_and_decorations.InnerDistrict_name;
                         break;
+                    case 4:
                     case "4":
                         _value = translationData.dialogs.TradeDistrict_name;
                         break;
@@ -367,6 +374,7 @@ async function naarOutput(interaction, data, minLevel, maxLevel) {
             await interaction.editReply({embeds: [embed], components: components});
         }
     } catch (e) {
+        console.log(e);
         await interaction.followUp({content: e.toString()});
     }
 }

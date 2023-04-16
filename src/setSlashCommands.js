@@ -29,7 +29,7 @@ function setSlashCommands(client) {
         }
     }
 
-    const rest = new REST({ version: '9' }).setToken(process.env.dcToken);
+    const rest = new REST().setToken(process.env.dcToken);
 
     (async () => {
         try {

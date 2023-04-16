@@ -17,13 +17,13 @@ module.exports = {
 
 function isRolModeratorOfHoger(member) {
     const hoogsteRol = "" + member.roles.highest.id;
-    if (hoogsteRol == rollen.server.moderator) {
+    if (hoogsteRol === rollen.server.moderator) {
         return true;
     }
-    else if (hoogsteRol == rollen.server.srModerator) {
+    else if (hoogsteRol === rollen.server.srModerator) {
         return true;
     }
-    else if (hoogsteRol == rollen.server.admin) {
+    else if (hoogsteRol === rollen.server.admin) {
         return true;
     }
     else {
@@ -33,7 +33,7 @@ function isRolModeratorOfHoger(member) {
 
 function isRolAdmin(member) {
     const hoogsteRol = "" + member.roles.highest.id;
-    if (hoogsteRol == rollen.server.admin) {
+    if (hoogsteRol === rollen.server.admin) {
         return true;
     }
     else {

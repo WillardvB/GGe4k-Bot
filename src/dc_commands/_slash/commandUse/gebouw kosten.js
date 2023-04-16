@@ -1,5 +1,5 @@
-const translationData = require('./../../../ingame_translations/nl.json');
-const formatNumber = require('./../../../tools/number.js');
+const translationData = require('e4k-data').languages.nl;
+const {formatNum} = require('./../../../tools/number.js');
 const formatDuration = require('./../../../tools/time.js');
 const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
 const buildingCommandHelper = require('./../commandHelpers/gebouw');
@@ -42,9 +42,17 @@ module.exports = {
     },
 };
 
+/**
+ *
+ * @param {CommandInteraction | ButtonInteraction} interaction
+ * @param {Building} data
+ * @param {number} minLevel
+ * @param {number} maxLevel
+ * @return {Promise<void>}
+ */
 async function naarOutput(interaction, data, minLevel, maxLevel) {
     try {
-        let level = parseInt(data.level);
+        let level = data.level;
         let gebouwNaam = buildingCommandHelper.getName(level === 0 ? data[0] : data);
         let description = buildingCommandHelper.getDescription(level === 0 ? data[0] : data);
         let title = `**${gebouwNaam}**${minLevel === maxLevel ? "" : level === 0 ? " (totaal alle levels)" : ` (${translationData.generic.level} ${level})`}`;
@@ -185,7 +193,7 @@ function formatCostString(key, keyLowCase, value) {
             _tmpKey = translationData.generic[`currency_name_${key.substring(4)}`];
         }
     }
-    return `**${_tmpKey}**: ${formatNumber.formatNum(value)}\n`;
+    return `**${_tmpKey}**: ${formatNum(value)}\n`;
 }
 
 /**

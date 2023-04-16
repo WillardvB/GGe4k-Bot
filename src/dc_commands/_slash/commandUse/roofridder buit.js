@@ -1,6 +1,6 @@
-const formatNumber = require('./../../../tools/number.js');
+const {isNum, formatNum} = require('./../../../tools/number.js');
 const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
-const translationData = require('./../../../ingame_translations/nl.json');
+const translationData = require('e4k-data').languages.nl;
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 
@@ -63,23 +63,11 @@ async function naarOutput(interaction, level) {
  * @returns {string}
  */
 function getLoot(lvl) {
-    if (!formatNumber.isNum(lvl)) {
-        return "~";
-    }
+    if (!isNum(lvl)) return "~";
     const bs = Math.floor(Math.pow(lvl, 2.2) * 1.2 + 90);
-    let munt;
-    if (lvl >= 61) {
-        munt = Math.floor(Math.pow(lvl, 1.1) * 210);
-    } else {
-        munt = Math.floor(Math.pow(lvl, 2.1) * 3.5 + 25);
-    }
+    let munt = lvl >= 61 ? Math.floor(Math.pow(lvl, 1.1) * 210) : Math.floor(Math.pow(lvl, 2.1) * 3.5 + 25);
     const robsMin = lvl >= 3 ? Math.floor(Math.max(0, (-5 + lvl * 0.5 + 0.7) * 0.5)) : 0;
     const robsMax = lvl >= 3 ? Math.floor(Math.max(0, (11 - 5 + lvl * 0.5 + 0.7) * 0.5)) : 0;
-    let robs;
-    if (robsMin === robsMax) {
-        robs = robsMax;
-    } else {
-        robs = robsMin + '-' + robsMax;
-    }
-    return `${translationData.generic.goods}: ${formatNumber.formatNum(bs)}\n${translationData.generic.cash}: ${formatNumber.formatNum(munt)}\n${translationData.generic.gold}: ${robs}`;
+    let robs = robsMin === robsMax ? robsMax : robsMin + '-' + robsMax;
+    return `${translationData.generic.goods}: ${formatNum(bs)}\n${translationData.generic.cash}: ${formatNum(munt)}\n${translationData.generic.gold}: ${robs}`;
 }

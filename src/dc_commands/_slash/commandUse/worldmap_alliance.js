@@ -1,7 +1,7 @@
 const empire = require('./../../../empireClient');
 const worldmapHelper = require('./../commandHelpers/worldmap');
 const {AttachmentBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require("discord.js");
-const translationData = require("../../../ingame_translations/nl.json");
+const translationData = require('e4k-data').languages.nl;
 
 const _name = 'worldmap alliance';
 module.exports = {
@@ -122,6 +122,7 @@ module.exports = {
             }
         } catch (e) {
             console.log(e);
+            await interaction.followUp({content: e.toString()});
         }
     }
 }

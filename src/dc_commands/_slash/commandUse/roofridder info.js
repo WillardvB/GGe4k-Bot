@@ -1,28 +1,32 @@
-const dungeons = require('./../../../ingame_data/dungeons.json');
-const klingThumb = "https://media.discordapp.net/attachments/884049583313928202/886594500972126298/icon_events_seaqueen_enter.png";
-const klingImg = "https://media.discordapp.net/attachments/884049583313928202/886598611713015828/teaser_seaqueen_splash.png";
+const e4kData = require('e4k-data');
+const dungeons = e4kData.data.dungeons;
+const imgBaseUrl = e4kData.imageBaseUrl;
+const imgData = e4kData.imageData
+const {Constants} = require('ggejs');
+const klingThumb = imgBaseUrl + imgData.icon_events_seaqueen_enter.url;
+const klingImg = imgBaseUrl + imgData.teaser_seaqueen_splash.url;
 const klingKleur = "#00008B";
-const groenThumb = "https://media.discordapp.net/attachments/884049583313928202/886594501274132510/icon_kingdom_empire_enter.png";
-const groenImg = "https://media.discordapp.net/attachments/884049583313928202/886597206537289728/teaser_questbook_kingdom_green.png";
+const groenThumb = imgBaseUrl + imgData.icon_kingdom_empire_enter.url;
+const groenImg = imgBaseUrl + imgData.teaser_questbook_kingdom_green.url;
 const groenKleur = "#64bb00";
-const ijsThumb = "https://media.discordapp.net/attachments/884049583313928202/886590766510645258/icon_kingdom_snow_enter.png";
-const ijsImg = "https://media.discordapp.net/attachments/884049583313928202/886590766791667742/teaser_questbook_kingdom_winter.png";
+const ijsThumb = imgBaseUrl + imgData.icon_kingdom_snow_enter.url;
+const ijsImg = imgBaseUrl + imgData.teaser_questbook_kingdom_winter.url;
 const ijsKleur = "#00b3ff";
-const zandThumb = "https://media.discordapp.net/attachments/882701028078801002/886553341230989312/icon_kingdom_desert_enter.png";
-const zandImg = "https://media.discordapp.net/attachments/882701028078801002/886553341478436894/teaser_questbook_kingdom_desert.png";
+const zandThumb = imgBaseUrl + imgData.icon_kingdom_desert_enter.url;
+const zandImg = imgBaseUrl + imgData.teaser_questbook_kingdom_desert.url;
 const zandKleur = "#ffff00";
-const vuurThumb = "https://media.discordapp.net/attachments/884049583313928202/886594501550952488/icon_kingdom_volcano_enter.png";
-const vuurImg = "https://media.discordapp.net/attachments/884049583313928202/886597206277238784/teaser_questbook_kingdom_fire.png";
+const vuurThumb = imgBaseUrl + imgData.icon_kingdom_volcano_enter.url;
+const vuurImg = imgBaseUrl + imgData.teaser_questbook_kingdom_fire.url;
 const vuurKleur = "#FD3A2D";
-const stormThumb = "https://media.discordapp.net/attachments/884049583313928202/886596077170610236/icon_island_xl_ds.png";
-const stormImg = "https://media.discordapp.net/attachments/884049583313928202/886596077405474857/teaser_island_introduction.png";
+const stormThumb = imgBaseUrl + imgData.icon_island_xl_ds.url;
+const stormImg = imgBaseUrl + imgData.teaser_island_introduction.url;
 const stormKleur = "#82d2e5";
-const beriThumb = "https://media.discordapp.net/attachments/884049583313928202/886594500762423329/icon_events_berimond_enter.png";
-const beriImg = "https://media.discordapp.net/attachments/884049583313928202/886598084958752808/teaser_berimond_splash.png";
+const beriThumb = imgBaseUrl + imgData.icon_events_berimond_enter.url;
+const beriImg = imgBaseUrl + imgData.teaser_berimond_splash.url;
 const beriKleur = "#FF00FF";
 const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
-const translationData = require('./../../../ingame_translations/nl.json');
 const Unit = require("../../../../node_modules/ggejs/src/structures/Unit");
+const translationData = require('e4k-data').languages.nl;
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 
@@ -64,8 +68,8 @@ module.exports = {
         const victories = krijgVictories(kID, level, winsTotUp);
         for (let item in dungeons) {
             let dungeon = dungeons[item];
-            if (parseInt(dungeon.countVictories) === victories) {
-                if (parseInt(dungeon.kID) === kID) {
+            if (dungeon.countVictories === victories) {
+                if (dungeon.kID === kID) {
                     await naarOutput(interaction, dungeon, kID, level, winsTotUp, victories);
                 }
             }
@@ -77,38 +81,38 @@ async function naarOutput(interaction, dungeon, kID, level, winsTotUp, victories
     let afbeelding = "";
     let thumbnail = "";
     let kleur = "#000000";
-    switch (kID + "") {
-        case "-1":
+    switch (kID) {
+        case -1:
             afbeelding = klingImg;
             thumbnail = klingThumb;
             kleur = klingKleur;
             break;
-        case "0":
+        case Constants.Kingdom.Classic:
             afbeelding = groenImg;
             thumbnail = groenThumb;
             kleur = groenKleur;
             break;
-        case "1":
+        case Constants.Kingdom.Desert:
             afbeelding = zandImg;
             thumbnail = zandThumb;
             kleur = zandKleur;
             break;
-        case "2":
+        case Constants.Kingdom.Icecream:
             afbeelding = ijsImg;
             thumbnail = ijsThumb;
             kleur = ijsKleur;
             break;
-        case "3":
+        case Constants.Kingdom.Volcano:
             afbeelding = vuurImg;
             thumbnail = vuurThumb;
             kleur = vuurKleur;
             break;
-        case "4":
+        case Constants.Kingdom.Island:
             afbeelding = stormImg;
             thumbnail = stormThumb;
             kleur = stormKleur;
             break;
-        case "10":
+        case Constants.Kingdom.Faction:
             afbeelding = beriImg;
             thumbnail = beriThumb;
             kleur = beriKleur;
@@ -121,43 +125,36 @@ async function naarOutput(interaction, dungeon, kID, level, winsTotUp, victories
 
     let soldiersLeft = "";
     for (let i in dungeonDef.troops.left) {
-        /** @type {{unit:Unit, count:number}}*/
         let troop_count = dungeonDef.troops.left[i];
         soldiersLeft += `${troop_count.unit.type}: ${troop_count.count}\n`
     }
     let soldiersMiddle = "";
     for (let i in dungeonDef.troops.middle) {
-        /** @type {{unit:Unit, count:number}}*/
         let troop_count = dungeonDef.troops.middle[i];
         soldiersMiddle += `${troop_count.unit.type}: ${troop_count.count}\n`
     }
     let soldiersRight = "";
     for (let i in dungeonDef.troops.right) {
-        /** @type {{unit:Unit, count:number}}*/
         let troop_count = dungeonDef.troops.right[i];
         soldiersRight += `${troop_count.unit.type}: ${troop_count.count}\n`
     }
     let soldiersKeep = "";
     for (let i in dungeonDef.troops.center) {
-        /** @type {{unit:Unit, count:number}}*/
         let troop_count = dungeonDef.troops.center[i];
         soldiersKeep += `${troop_count.unit.type}: ${troop_count.count}\n`
     }
     let toolsLeft = "";
     for (let i in dungeonDef.tools.left) {
-        /** @type {{unit:Unit, count:number}}*/
         let troop_count = dungeonDef.tools.left[i];
         toolsLeft += `${troop_count.unit.type}: ${troop_count.count}\n`
     }
     let toolsMiddle = "";
     for (let i in dungeonDef.tools.middle) {
-        /** @type {{unit:Unit, count:number}}*/
         let troop_count = dungeonDef.tools.middle[i];
         toolsMiddle += `${troop_count.unit.type}: ${troop_count.count}\n`
     }
     let toolsRight = "";
     for (let i in dungeonDef.tools.right) {
-        /** @type {{unit:Unit, count:number}}*/
         let troop_count = dungeonDef.tools.right[i];
         toolsRight += `${troop_count.unit.type}: ${troop_count.count}\n`
     }
@@ -286,16 +283,16 @@ function victToLvlArray(victories, kID) {
 function krijgMinimumVanRijk(kID) {
     let minLvlRRvanRijk = 0;
     switch (kID) {
-        case 0:
+        case Constants.Kingdom.Classic:
             minLvlRRvanRijk = 1;
             break;
-        case 2:
+        case Constants.Kingdom.Icecream:
             minLvlRRvanRijk = 20;
             break;
-        case 1:
+        case Constants.Kingdom.Desert:
             minLvlRRvanRijk = 35;
             break;
-        case 3:
+        case Constants.Kingdom.Volcano:
             minLvlRRvanRijk = 45;
             break;
         default:
@@ -312,16 +309,16 @@ function krijgMinimumVanRijk(kID) {
 function krijgMaximumVanRijk(kID) {
     let maxLvlRRvanRijk = 100;
     switch (kID) {
-        case 0:
+        case Constants.Kingdom.Classic:
             maxLvlRRvanRijk = 81;
             break;
-        case 2:
+        case Constants.Kingdom.Icecream:
             maxLvlRRvanRijk = 51;
             break;
-        case 1:
+        case Constants.Kingdom.Desert:
             maxLvlRRvanRijk = 61;
             break;
-        case 3:
+        case Constants.Kingdom.Volcano:
             maxLvlRRvanRijk = 71;
             break;
         default:
@@ -348,7 +345,6 @@ function parseDefence(dungeonData) {
             left: parseUnits(null, dungeonData.toolL),
             middle: parseUnits(null, dungeonData.toolM),
             right: parseUnits(null, dungeonData.toolR),
-            center: parseUnits(null, dungeonData.toolK),
         }
     }
     return this._defence;

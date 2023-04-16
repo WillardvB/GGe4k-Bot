@@ -1,6 +1,6 @@
 const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require("discord.js");
 const num = require("../../../tools/number");
-const translationData = require('./../../../ingame_translations/nl.json');
+const translationData = require('e4k-data').languages.nl;
 const empire = require('./../../../empireClient');
 
 const _name = 'bondgenootschap info';
