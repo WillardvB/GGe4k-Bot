@@ -6,7 +6,7 @@ module.exports = {
             const command = interaction.commandName;
             const subCommand = interaction.options.getSubcommand();
             client.slashCommands.get(command + " " + subCommand).execute(interaction);
-        } else if (interaction.isButton() || interaction.isSelectMenu() || interaction.isModalSubmit()) {
+        } else if (interaction.isButton() || interaction.isAnySelectMenu() || interaction.isModalSubmit()) {
             if (!interaction.customId.trim().toLowerCase().endsWith('to-modal') && !interaction.isModalSubmit())
                 await interaction.deferUpdate();
             const bCommand = interaction.customId.split(' ');

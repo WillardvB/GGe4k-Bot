@@ -1,6 +1,6 @@
 const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require("discord.js");
 const num = require("../../../tools/number");
-const translationData = require('./../../../ingame_translations/nl.json');
+const translationData = require('e4k-data').languages.nl;
 const empire = require('./../../../empireClient');
 
 const _name = 'bondgenootschap info';
@@ -18,11 +18,10 @@ module.exports = {
                 allianceName = interaction.options.getString('naam').toLowerCase().trim();
             } else if (interaction.customId) {
                 allianceName = interaction.customId.toLowerCase().trim().split(' ').slice(2).join(" ");
-                console.log(allianceName);
             }
             const alliance = await empire.client.alliances.find(allianceName);
             let info =
-                `${translationData.dialogs.dialog_fame_fame}: ${alliance.memberList.length}\n` +
+                `${translationData.dialogs.dialog_alliance_member}: ${alliance.memberList.length}\n` +
                 `${translationData.dialogs.dialog_fame_fame}: ${num.formatNum(alliance.allianceFamePoints)}\n` +
                 `${translationData.generic.level}: ${alliance.memberLevel}\n` +
                 `${translationData.dialogs.mightPoints}: ${num.formatNum(alliance.might)}\n` +
@@ -42,7 +41,11 @@ module.exports = {
                 new ButtonBuilder()
                     .setLabel(translationData.dialogs.dialog_alliance_memberlist)
                     .setStyle(ButtonStyle.Primary)
-                    .setCustomId(`bondgenootschap leden ${allianceName}`)
+                    .setCustomId(`bondgenootschap leden ${allianceName}`),
+                new ButtonBuilder()
+                    .setLabel(translationData.generic.worldMap)
+                    .setStyle(ButtonStyle.Primary)
+                    .setCustomId(`worldmap alliance ${alliance.allianceId} 0 1 1 0 0`)
             )
             if (interaction.options) {
                 await interaction.followUp({embeds: [embed], components: [messRow]});

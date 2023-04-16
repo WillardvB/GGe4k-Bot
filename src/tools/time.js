@@ -15,19 +15,19 @@ module.exports = {
 
 function secToTime(sec) {
     let uren = Math.floor(sec / 3600);
-    var minuten = Math.floor((sec % 3600) / 60);
+    let minuten = Math.floor((sec % 3600) / 60);
     if (minuten < 10) {
         minuten = "0" + minuten;
     }
-    var secondes = sec % 60;
+    let secondes = sec % 60;
     if (secondes < 10) {
         secondes = "0" + secondes;
     }
-    output = uren + ":" + minuten + ":" + secondes;
-    let milisec = sec - Math.floor(sec);
-    if (milisec != 0 && milisec != null) {
-        milisec = milisec.toString().split(".")[1];
-        output = output + "." + milisec;
+    let output = uren + ":" + minuten + ":" + secondes;
+    let millisecond = sec - Math.floor(sec);
+    if (millisecond !== 0 && millisecond != null) {
+        millisecond = millisecond.toString().split(".")[1];
+        output = output + "." + millisecond;
     }
     return output;
 }
@@ -60,10 +60,10 @@ function timeStampToDate(timestamp, dateOrTime) {
         seconde = "0" + seconde;
     }
     const tijd = uur + ":" + minuut + ":" + seconde;
-    if (dateOrTime.trim().toLowerCase() == "d") {
+    if (dateOrTime.trim().toLowerCase() === "d") {
         return datumTekst;
     }
-    else if (dateOrTime.trim().toLowerCase() == "t") {
+    else if (dateOrTime.trim().toLowerCase() === "t") {
         return tijd;
     }
     else {
@@ -76,7 +76,7 @@ function dateToTimeStamp(datum, tijd) {
     if (tijdDelen.length < 2) {
         return NaN;
     }
-    else if (tijdDelen.length == 2) {
+    else if (tijdDelen.length === 2) {
         tijdDelen.push("0");
     }
     const datumDelen = datum.trim().split("-");
@@ -84,7 +84,7 @@ function dateToTimeStamp(datum, tijd) {
         return NaN;
     }
     let d = new Date();
-    if (datumDelen[0].length == 4) {
+    if (datumDelen[0].length === 4) {
         d = new Date(datum);
     }
     else {

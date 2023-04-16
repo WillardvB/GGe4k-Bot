@@ -1,108 +1,131 @@
-const formatNumber = require('./../../../tools/number.js');
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, Interaction } = require('discord.js');
+const {
+    getName: getTitleName, getRawData: getTitleRawData, handleNotFound: handleTitleNotFound
+} = require('../commandHelpers/titel');
+const e4kData = require('e4k-data');
+const titleData = e4kData.data.titles;
+const translationData = e4kData.languages.nl;
+const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
+const {formatNum} = require("../../../tools/number");
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
 const afbeelding = "https://i.pinimg.com/originals/a4/99/32/a49932ed0a33b50f3f2c25f38ba10572.jpg";
-let fameTresholds = [];
-let beriTresholds = [];
 
+const commandName = 'titel info';
 module.exports = {
-    name: 'titel info',
-    /**
-     * 
-     * @param {Interaction} interaction
+    name: commandName, /**
+     *
+     * @param {CommandInteraction | ButtonInteraction} interaction
      */
     async execute(interaction) {
-        await interaction.followUp({ content: "Sorry, dit command werkt nog niet!" });
-        return;
-        let titel;
-        if (interaction.options) {
-            titel = interaction.options.getString('titel');
-        }
-        else if (interaction.customId) {
-            var string = interaction.customId.split(' ');
-            titel = string[2];
-            for (i = 3; i < string.length; i++) {
-                titel += " " + string[i];
-            }
-        }
-        titel = titel.trim().toLowerCase();
-        const data = await googleSheetsData.titelData();
-        const rows = [...data];
-        if (rows.length) {
-            var titelGevonden = false;
-            var soort;
-            rows.map(row => {
-                if (row[0].toLowerCase() == titel || row[1] == titel && formatNumber.isNum(titel)) {
-                    titelGevonden = true;
-                    naarOutput(interaction, row);
+        try {
+            /** @type {string} */
+            let titel;
+            if (interaction.options) {
+                titel = interaction.options.getString('titel');
+            } else if (interaction.customId) {
+                const string = interaction.customId.split(' ');
+                titel = string[2];
+                for (let i = 3; i < string.length; i++) {
+                    titel += " " + string[i];
                 }
-            });
-            if (!titelGevonden) {
-                return interaction.followUp({
-                    content:
-                        'ik heb de gevraagde titel niet kunnen vinden. Zie `gge titel namen` voor de mogelijkheden'
-                });
             }
+            titel = titel.trim().toLowerCase();
+
+            let thisTitleData = getTitleRawData(titel);
+            if (thisTitleData == null) {
+                await handleTitleNotFound(interaction, titel, commandName)
+                return;
+            }
+            await naarOutput(interaction, thisTitleData);
+        } catch (e) {
+            console.log(e);
+            await interaction.followUp({content: e.toString()});
         }
-    },
-    output(interaction, row) {
-        naarOutput(interaction, row);
+    }, /**
+     *
+     * @param {CommandInteraction | ButtonInteraction} interaction
+     * @param {Title} data
+     * @return {Promise<void>}
+     */
+    async output(interaction, data) {
+        await naarOutput(interaction, data);
     }
 };
 
-function naarOutput(interaction, row) {
-    let vereisten = welkeVereisten(row);
-    let macht = formatNumber.formatNum(row[6]);
-    let displayType = 'voorvoegsel';
-    if (row[5] == 'suffix') {
-        displayType = 'achtervoegsel';
-    }
-    let afname = 0;
-    if (row[4]) {
-        afname = row[4];
-    }
-    let data = `- **Macht:** ${macht}\n${vereisten}\n- **Afname per dag:** ${afname}%\n- **Weergave-info:** ${displayType}`;
-    let embed = new EmbedBuilder()
-        .setColor('#FFD700')
-        .setTimestamp()
-        .setFooter({ text: footerTekst, iconURL: footerAfbeelding })
-        .setTitle("**" + row[0] + "**")
-        .setDescription("*Informatie*")
-        .setThumbnail(afbeelding)
-        .addFields({ name: "**Data**", value: data });
-    if (row[28] != 'komt nog') {
-        embed.addFields({ name: '**Beloning**', value: '*' + row[28] + '*' });
-    }
-    if (interaction.options) {
-        interaction.followUp({ embeds: [embed], components: [] });
-    } else {
-        interaction.editReply({ embeds: [embed], components: [] });
+/**
+ *
+ * @param {CommandInteraction | ButtonInteraction} interaction
+ * @param {Title} data
+ */
+async function naarOutput(interaction, data) {
+    try {
+        let requirements = getRequirements(data);
+        let mightPoints = formatNum(data.mightValue);
+        let displayType = translationData.dialogs[`dialog_titles_${data.displayType}`];
+        let decay = data.decay ?? 0;
+        let embedData = `- **${translationData.dialogs.mightPoints}:** ${mightPoints}\n${requirements}\n- **Afname per dag:** ${decay}%\n- **Weergave-info:** ${displayType}`;
+        let embed = new EmbedBuilder()
+            .setColor('#FFD700')
+            .setTimestamp()
+            .setFooter({text: footerTekst, iconURL: footerAfbeelding})
+            .setTitle(`**${getTitleName(data)}**`)
+            .setDescription(`*${translationData.generic.ringmenu_info}*`)
+            .setThumbnail(afbeelding)
+            .addFields({name: "**Data**", value: embedData});
+        if (data.rewardID) embed.addFields({
+            name: `**${translationData.generic.reward}**`, value: '*rewardId: ' + data.rewardID + '*'
+        });
+        if (data.effects) embed.addFields({
+            name: `**${translationData.generic.reward}**`, value: '*effects: ' + data.effects + '*'
+        });
+        if (interaction.options) {
+            await interaction.followUp({embeds: [embed], components: getComponents(data)});
+        } else {
+            await interaction.editReply({embeds: [embed], components: getComponents(data)});
+        }
+    } catch (e) {
+        console.log(e);
+        await interaction.followUp({content: e.toString()});
     }
 }
 
-function welkeVereisten(row) {
-    let soort = row[2];
-    let benodigdheden = "";
-    if (soort == 'FAME') {
-        soort = 'roempunten';
-    } else if (soort == 'FACTION') {
-        soort = 'berimondpunten';
-    };
-    if (row[10] > 0) {
-        if (soort == 'ISLE') {
-            soort = 'rank in het storm top1 BG';
-        } else {
-            if (soort == 'berimondpunten') {
-                soort = 'rank in berimondklassement';
-            }
-            if (soort == 'roempunten') {
-                soort = 'rank in roemklassement';
-            }
-        }
-        benodigdheden = 'top' + row[10];
-    } else if (row[3]) {
-        benodigdheden = row[3];
+/**
+ *
+ * @param {Title} data
+ * @return {string}
+ */
+function getRequirements(data) {
+    let type = data.type;
+    let val = "";
+    if (data.topX) {
+        type = type === 'ISLE' ? 'rank in het storm top1 BG' : type === 'FACTION' ? 'rank in berimondklassement' : type === 'FAME' ? 'rank in roemklassement' : type;
+        val = translationData.generic.ranking_topX.replace('{0}', data.topX.toString());
+    } else {
+        type = type === 'FACTION' ? translationData.generic.factionHighscore_points : type === 'FAME' ? translationData.dialogs.dialog_fame_fame : type;
+        val = data.threshold ? formatNum(data.threshold) : 0;
     }
-    return `- **Benodigde ${soort}:** ${benodigdheden}`;
+    return `- **Benodigde ${type}:** ${val}`;
+}
+
+/**
+ *
+ * @param {Title} data
+ * @return {ActionRowBuilder<AnyComponentBuilder>[]}
+ */
+function getComponents(data) {
+    const messRow = new ActionRowBuilder();
+    if (data.previousTitleID) {
+        messRow.addComponents(new ButtonBuilder()
+            .setLabel(getTitleName(getTitleRawData(data.previousTitleID)))
+            .setStyle(ButtonStyle.Primary)
+            .setCustomId(`${commandName} ${data.previousTitleID}`))
+    }
+    const nextTitle = titleData.find(t => t.previousTitleID === data.titleID);
+    if (nextTitle) {
+        messRow.addComponents(new ButtonBuilder()
+            .setLabel(getTitleName(nextTitle))
+            .setStyle(ButtonStyle.Primary)
+            .setCustomId(`${commandName} ${nextTitle.titleID}`))
+    }
+    return [messRow];
 }
