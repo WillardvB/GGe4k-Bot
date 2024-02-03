@@ -1,81 +1,70 @@
 const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require("discord.js");
-const empire = require("../../../empireClient");
+const empire = require("../../../e4kClient");
 const num = require("../../../tools/number");
 const {Constants} = require("ggejs");
+const {logError, log} = require("../../../tools/Logger");
 const translationData = require('e4k-data').languages.nl;
 const kingdoms = [0, 2, 1, 3, 4, 10];
 
 module.exports = {
     name: 'speler info',
-    description: 'Toont informatie over het bondgenootschap!',
-    /**
-     *
-     * @param {CommandInteraction | ButtonInteraction} interaction
-     */
-    async execute(interaction) {
-        await _execute(interaction);
-    }
+    description: 'Toont informatie over de speler!',
+    execute: _execute,
+    button: _execute
 }
 
 /**
  *
- * @param {CommandInteraction | ButtonInteraction} interaction
+ * @param {ChatInputCommandInteraction | ButtonInteraction} interaction
  */
 async function _execute(interaction) {
+    const locale = interaction.locale
     try {
         let playerName = interaction.options.getString('naam').trim();
         const player = await empire.client.players.find(playerName);
         let bgInfo = player.allianceName === "" ? "" : `${player.allianceName} (${translationData.dialogs["dialog_alliance_rank" + player.allianceRank]})`;
 
-        let description = `Level: ${player.playerLevel}${player.playerLevel === 70 ? `-${player.paragonLevel}` : ''}\n` +
-            `BG: ${bgInfo}\n` +
-            (!player.peaceEndTime ? "" : `Duif tot: <t:${Math.round(player.peaceEndTime.getTime() / 1000)}:F>\n`) +
-            `*id: ${player.playerId}*`;
-        let punten = `${translationData.dialogs.dialog_fame_fame}: ${num.formatNum(player.famePoints)}\n` +
-            `${translationData.generic.honorPoints}: ${num.formatNum(player.honor)}\n` +
-            `${translationData.dialogs.mightPoints}: ${num.formatNum(player.might)}\n`
+        let description = `Level: ${player.playerLevel}${player.playerLevel === 70 ? `-${player.paragonLevel}` : ''}\n` + `BG: ${bgInfo}\n` + (!player.peaceEndTime ? "" : `Duif tot: <t:${Math.round(player.peaceEndTime.getTime() / 1000)}:F>\n`) + `*id: ${player.playerId}*`;
+        let punten = `${translationData.dialogs.dialog_fame_fame}: ${num.formatNum(player.famePoints, locale)}\n` + `${translationData.generic.honorPoints}: ${num.formatNum(player.honor, locale)}\n` + `${translationData.dialogs.mightPoints}: ${num.formatNum(player.might, locale)}\n`
         let embed = new EmbedBuilder()
             .setTimestamp()
             .setColor("#000000")
             .setTitle(`**${player.playerName}**`)
             .setDescription(description)
-            .addFields(
-                {name: "**Punten**", value: punten},
-                {name: `**${translationData.generic.panel_action_castleList}**`, value: listCastles(player)}
-            );
+            .addFields({
+                name: "**Punten**",
+                value: punten
+            }, {name: `**${translationData.generic.panel_action_castleList}**`, value: listCastles(player)});
         if (player.villages?.private.length !== 0 || player.villages?.public.length !== 0) {
-            console.log("[Speler info:149] Missing dorp en eiland command!");
-            //embed.addFields({ name: "Dorpen en eilanden", value: "Zie /speler dorpen voor dorp en eiland informatie"});
+            await log("[Speler info:39] Missing dorp en eiland command!");
+            //embed.addFields({name: "Dorpen en eilanden", value: "Zie /speler dorpen voor dorp en eiland informatie"});
         }
         let _components = [];
         if (player.allianceName !== "") {
             const _messRow = new ActionRowBuilder();
-            _messRow.addComponents(
-                new ButtonBuilder()
-                    .setLabel(translationData.generic.alliance)
-                    .setStyle(ButtonStyle.Primary)
-                    .setCustomId(`bondgenootschap info ${player.allianceName}`)
-            )
+            _messRow.addComponents(new ButtonBuilder()
+                .setLabel(translationData.generic.alliance)
+                .setStyle(ButtonStyle.Primary)
+                .setCustomId(`bondgenootschap info ${player.allianceName}`))
             _components.push(_messRow);
         }
         const accountLinks = require('./../../../data/accountlinks.json');
         if (player.playerId !== 1194639 && !accountLinks.linkAccounts[interaction.user.id]) {
-            const _messRow = new ActionRowBuilder();
-            _messRow.addComponents(
-                new ButtonBuilder()
-                    .setLabel('Link account')
-                    .setStyle(ButtonStyle.Primary)
-                    .setCustomId(`speler link ${player.playerId}`)
-            )
-            _components.push(_messRow);
+            //const _messRow = new ActionRowBuilder();
+            //_messRow.addComponents(new ButtonBuilder()
+            //    .setLabel('Link account')
+            //    .setStyle(ButtonStyle.Primary)
+            //    .setCustomId(`speler link ${player.playerId}`))
+            //_components.push(_messRow);
         }
         if (interaction.options) {
-            await interaction.followUp({embeds: [embed], components: _components});
+            await interaction.followUp({embeds: [embed], components: _components, ephemeral: true});
         } else if (interaction.customId) {
-            await interaction.editReply({embeds: [embed], components: _components});
+            await interaction.editReply({embeds: [embed], components: _components, ephemeral: true});
         }
     } catch (e) {
-        await interaction.followUp({content: e.toString()});
+        await logError(e);
+        await interaction.followUp({content: e.toString(), ephemeral: true});
     }
 }
 
@@ -94,8 +83,8 @@ function listCastles(player) {
             }
         }
         if (kingdoms[i] === 0) {
-            for (let j in player.kingsTowers) {
-                _castlesInKId.push(player.kingsTowers[j].kingstower);
+            for (let j in player.kingstowers) {
+                _castlesInKId.push(player.kingstowers[j].kingstower);
             }
             for (let j in player.monuments) {
                 _castlesInKId.push(player.monuments[j].monument);
@@ -108,23 +97,19 @@ function listCastles(player) {
             if (x.areaType === y.areaType) return 0;
             if (x.areaType === 1 || x.areaType === 12) return -1;
             if (x.areaType === 3) {
-                if (y.areaType === 1 || y.areaType === 12 || y.areaType === 4)
-                    return 1;
+                if (y.areaType === 1 || y.areaType === 12 || y.areaType === 4) return 1;
                 return -1;
             }
             if (x.areaType === 4) {
-                if (y.areaType === 1)
-                    return 1;
+                if (y.areaType === 1) return 1;
                 return -1;
             }
             if (x.areaType === 22) {
-                if (y.areaType === 1 || y.areaType === 3 || y.areaType === 4)
-                    return 1;
+                if (y.areaType === 1 || y.areaType === 3 || y.areaType === 4) return 1;
                 return -1;
             }
             if (x.areaType === 23) {
-                if (y.areaType === 1 || y.areaType === 3 || y.areaType === 4 || y.areaType === 22)
-                    return 1;
+                if (y.areaType === 1 || y.areaType === 3 || y.areaType === 4 || y.areaType === 22) return 1;
                 return -1;
             }
             return 1;
@@ -185,8 +170,7 @@ function listCastles(player) {
         }
 
         if (i !== 0) castleListString += "\n";
-        if (castles.trim() !== "")
-            castleListString += `**${kingdom}:**${castles}`;
+        if (castles.trim() !== "") castleListString += `**${kingdom}:**${castles}`;
     }
     return castleListString;
 }

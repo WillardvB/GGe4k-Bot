@@ -1,34 +1,34 @@
-const {nlserver} = require('./../data/kanalen.json');
 const {ActivityType, Client} = require('discord.js');
-const empire = require('./../empireClient');
-const translationData = require('e4k-data').languages.nl;
+const ownerData = require('../owner/data');
 
-module.exports = {
-    name: 'ready',
-    description: 'Regelt ready event',
-    /**
-     *
-     * @param {Client} client
-     * @returns {Promise<Client>}
-     */
-    async execute(client) {
-        await require('./../tools/Logger').execute(client);
-        await empire.connect();
-        empire.client.on('serverShutdown', async () => {
-            /** @type {Guild}*/
-            let guild = client.guilds.cache.find(guild => guild.id === nlserver.id);
-            let channel = await guild.channels.fetch('882702761756598312');
-            await channel.send({content: translationData.generic_flash.alert.generic_alert_connection_lost_description});
-        })
-        empire.client.on('serverShutdownEnd', async () => {
-            /** @type {Guild}*/
-            let guild = client.guilds.cache.find(guild => guild.id === nlserver.id);
-            let channel = await guild.channels.fetch('882702761756598312');
-            await channel.send({content: "Onderhoud is voorbij. De server is weer bereikbaar."})
-        })
-        await require('./../dc_commands/_slash/commandHelpers/worldmap').loadImages();
-        await weerOnline(client);
-    }
+const schedule = require('node-schedule')
+const {deleteOldPrimeTimes} = require("../other/primetime");
+
+module.exports.name = 'ready';
+module.exports.description = 'Regelt ready event';
+/**
+ *
+ * @param {Client} client
+ * @returns {Promise<Client>}
+ */
+module.exports.execute = async function (client) {
+    await ownerData.__init();
+    await (require('./../dc_commands/_slash/commandHelpers/worldmap').loadImages)();
+    await weerOnline(client);
+    require("./../communityhub/index");
+    await (require("../game_guide/sendButtonMessages").sendGameGuideButtonMessages)();
+
+    // Every Day
+    //schedule.scheduleJob('0 0 * * *', async () => {
+    //})
+
+    // Every Hour
+    schedule.scheduleJob('0 * * * *', async () => {
+        try {
+            await deleteOldPrimeTimes()
+        } catch (e) {
+        }
+    })
 }
 
 /**
@@ -36,17 +36,9 @@ module.exports = {
  * @param {Client} client
  */
 async function weerOnline(client) {
-    const _server = client.guilds.cache.find(guild => guild.id === nlserver.id);
-    const server = await _server.fetch();
-    let ik = await server.members.fetch('346015807496781825');
-    ik.send({content: 'Hey, ik ben weer online! 🙂'}).catch(e => console.log(e));
+    await ownerData.owner.send({content: 'Hey, ik ben weer online! 🙂'}).catch(e => console.log(e));
     client.user.setActivity({
-        name: `GoodGame Empire (Four Kingdoms)`,
-        url: 'https://empire.goodgamestudios.com/',
-        type: ActivityType.Playing,
+        name: `GoodGame Empire (Four Kingdoms)`, url: 'https://empire.goodgamestudios.com/', type: ActivityType.Playing
     });
     console.log('Ready!');
-
-    //require('./../tools/embedEditor.js').stuurRegelsBericht(client);
-    //require('./../tools/embedEditor.js').stuurReactieRollenBericht(client);
 }

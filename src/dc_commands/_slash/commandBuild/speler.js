@@ -2,11 +2,11 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
     name: 'speler',
-    description: 'Toont al je gewenste spelerdata!',
+    description: 'Toont al jouw gewenste spelerdata!',
     data:
         new SlashCommandBuilder()
             .setName('speler')
-            .setDescription('Toont al je gewenste spelerdata!')
+            .setDescription('Toont al jouw gewenste spelerdata!')
             .addSubcommand(subcommand =>
                 subcommand
                     .setName('info')

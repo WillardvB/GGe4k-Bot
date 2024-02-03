@@ -2,7 +2,7 @@ const e4kData = require('e4k-data');
 const dungeons = e4kData.data.dungeons;
 const imgBaseUrl = e4kData.imageBaseUrl;
 const imgData = e4kData.imageData
-const {Constants} = require('ggejs');
+const {Constants, Unit} = require('ggejs');
 const klingThumb = imgBaseUrl + imgData.icon_events_seaqueen_enter.url;
 const klingImg = imgBaseUrl + imgData.teaser_seaqueen_splash.url;
 const klingKleur = "#00008B";
@@ -25,7 +25,6 @@ const beriThumb = imgBaseUrl + imgData.icon_events_berimond_enter.url;
 const beriImg = imgBaseUrl + imgData.teaser_berimond_splash.url;
 const beriKleur = "#FF00FF";
 const {EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
-const Unit = require("../../../../node_modules/ggejs/src/structures/Unit");
 const translationData = require('e4k-data').languages.nl;
 const footerTekst = '© E4K NL server';
 const footerAfbeelding = 'https://i.gyazo.com/1723d277b770cd77fa2680ce6cf32216.jpg';
@@ -35,7 +34,7 @@ module.exports = {
     name: _name,
     /**
      *
-     * @param {CommandInteraction | ButtonInteraction} interaction
+     * @param {ChatInputCommandInteraction | ButtonInteraction} interaction
      */
     async execute(interaction) {
         let kID;
@@ -76,6 +75,8 @@ module.exports = {
         }
     },
 };
+
+module.exports.button = module.exports.execute;
 
 async function naarOutput(interaction, dungeon, kID, level, winsTotUp, victories) {
     let afbeelding = "";

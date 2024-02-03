@@ -2,9 +2,8 @@ const x768 = require('e4k-data').imageData;
 const {loadImage, createCanvas} = require("canvas");
 const path = require('path');
 const pathToImages = require('e4k-data').imageBaseUrl;
-const empire = require('./../../../empireClient');
+const empire = require('../../../e4kClient');
 const {Constants} = require("ggejs");
-const axios = require('axios');
 
 const images = {
     background: null,
@@ -45,8 +44,9 @@ module.exports = {
  */
 async function bufferFromUrl(relativeUrl){
     const url = path.join(pathToImages, relativeUrl)
-    const response = await axios.get(url,  { responseType: 'arraybuffer' })
-    return Buffer.from(response.data, "utf-8");
+    const response = await fetch(url);
+    const arrayBuffer = await response.arrayBuffer();
+    return Buffer.from(arrayBuffer);
 }
 
 async function loadImages() {
@@ -114,10 +114,11 @@ async function getAllianceMap(alliance, kingdomId = 0, userCastleZoom = 1, userA
             let maxX = -1000;
             let minY = 10000;
             let maxY = -1000;
-            /** @type {CastleMapobject[] | CapitalMapobject[]}*/
+            /** @type {(CastleMapobject | CapitalMapobject | KingstowerMapobject | MonumentMapobject)[]}*/
             const allianceCastles = [];
             for (const member of alliance.memberList) {
                 const player = await empire.client.players.getById(member.playerId);
+
                 for (const castle of player.castles) {
                     if (castle.kingdomId !== kingdomId) continue;
                     allianceCastles.push(castle);
@@ -126,8 +127,8 @@ async function getAllianceMap(alliance, kingdomId = 0, userCastleZoom = 1, userA
                     minY = Math.min(minY, castle.position.Y);
                     maxY = Math.max(maxY, castle.position.Y);
                 }
-                if (player.kingsTowers) {
-                    for (const tower of player.kingsTowers) {
+                if (player.kingstowers) {
+                    for (const tower of player.kingstowers) {
                         const castle = tower.kingstower;
                         if (castle.kingdomId !== kingdomId) continue;
                         allianceCastles.push(castle);
