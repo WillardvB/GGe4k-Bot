@@ -1,4 +1,5 @@
-const empire = require('./../../../empireClient');
+const empire = require('../../../e4kClient');
+const {logError} = require("../../../tools/Logger");
 
 module.exports = {
     name: 'speler rename',
@@ -17,7 +18,8 @@ module.exports = {
                 await interaction.member.setNickname((_player.playerName + " - " + _player.allianceName).substring(0, 64));
             }
         } catch (e) {
-            console.log(e);
+            await logError(e);
+            await interaction.followUp({content: e.toString(), ephemeral: true});
         }
     }
 }

@@ -18,6 +18,8 @@ module.exports = {
     },
 };
 
+module.exports.button = module.exports.execute;
+
 /**
  *
  * @param {CommandInteraction | ButtonInteraction} interaction

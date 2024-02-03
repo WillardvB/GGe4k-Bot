@@ -10,9 +10,10 @@ module.exports = {
     }, /**
      *
      * @param {number} num
+     * @param {Locale} locale
      * @returns {string}
      */
-    formatNum: function (num) {
-        return num.toLocaleString('nl-nl');
+    formatNum: function (num, locale) {
+        return num.toLocaleString(locale);
     }
 }
