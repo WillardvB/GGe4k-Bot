@@ -19,6 +19,11 @@
     "discord.js": "^14.14.1",
     "ggejs": "^1.0.27",
     "node-schedule": "^2.1.1",
-    "string-similarity": "^4.0.4"
+    "string-similarity": "^4.0.4",
+    "undici": "^6.6.2"
+  },
+  "devDependencies": {
+    "discord-api-types": "^0.37.70",
+    "e4k-data": "^4.67.17"
   }
 }

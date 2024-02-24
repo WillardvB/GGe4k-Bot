@@ -13,7 +13,7 @@ module.exports.description = 'Regelt ready event';
  */
 module.exports.execute = async function (client) {
     await ownerData.__init();
-    await (require('./../dc_commands/_slash/commandHelpers/worldmap').loadImages)();
+    //await (require('./../dc_commands/_slash/commandHelpers/worldmap').loadImages)();
     await weerOnline(client);
     require("./../communityhub/index");
     await (require("../game_guide/sendButtonMessages").sendGameGuideButtonMessages)();

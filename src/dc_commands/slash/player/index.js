@@ -1,6 +1,5 @@
 const {SlashCommandBuilder} = require("@discordjs/builders");
 const info = require('./info/index');
-const members = require('./members/index');
 const {getLocalizations} = require("../../../tools/localization");
 const {
     StringSelectMenuInteraction,
@@ -8,7 +7,7 @@ const {
     ButtonInteraction
 } = require("discord.js");
 
-module.exports.name = "alliance"
+module.exports.name = "player"
 
 /** @param {ChatInputCommandInteraction} interaction */
 module.exports.execute = async function (interaction){
@@ -31,13 +30,12 @@ module.exports.selectMenu = async function (interaction){
     await file.selectMenu(interaction);
 }
 
-const nameLocalizations = getLocalizations(["generic", "alliance"], true, true)
+const nameLocalizations = getLocalizations(["generic", "player"], true, true)
 module.exports.data = new SlashCommandBuilder()
     .setName(nameLocalizations["en-US"])
     .setNameLocalizations(nameLocalizations)
-    .setDescription('Displays all your desired alliance data!')
+    .setDescription('Displays all your desired player data!')
     .setDescriptionLocalizations({
-        nl: 'Toont al je gewenste bondgenootschap-gegevens!',
+        nl: 'Toont al jouw gewenste spelerdata!',
     })
-    .addSubcommand(members.data)
     .addSubcommand(info.data)

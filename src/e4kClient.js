@@ -5,7 +5,7 @@ const {handlePrimeTime} = require("./other/primetime");
 const networkInstances = require('e4k-data').network.instances.instance;
 const dutchNetworkInstance = networkInstances.find(i => i.instanceLocaId === "generic_country_NL");
 const translationData = require('e4k-data').languages.nl;
-let _empireClient = new Client(process.env.empireName, process.env.empirePassword, dutchNetworkInstance, true);
+let _empireClient = new Client(process.env.empireName, process.env.empirePassword, dutchNetworkInstance, process.env.mode === 'debug');
 let e4kAnnouncementChannel;
 
 module.exports.client = _empireClient;
@@ -17,7 +17,7 @@ module.exports.connect = function () {
             _empireClient.equipments.autoDeleteAtOrBelowRarity = Constants.EquipmentRarity.Epic;
             _empireClient.reconnectTimeout = 5;
             _empireClient.language = 'nl';
-            _empireClient._socket.ultraDebug = true;
+            _empireClient._socket.ultraDebug = process.env.ultraDebug === 'true';
             await setListeners();
             await _empireClient.connect();
             await _empireClient.equipments.sellAllEquipmentsAtOrBelowRarity(Constants.EquipmentRarity.Epic)

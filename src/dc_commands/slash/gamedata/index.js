@@ -131,7 +131,7 @@ module.exports.button = async function (interaction) {
 
 /**
  *
- * @param {AnySelectMenuInteraction} interaction
+ * @param {StringSelectMenuInteraction} interaction
  * @return {Promise<void>}
  */
 module.exports.selectMenu = async function (interaction) {

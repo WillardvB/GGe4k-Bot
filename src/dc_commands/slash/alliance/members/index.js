@@ -2,8 +2,17 @@ const {SlashCommandSubcommandBuilder} = require("@discordjs/builders");
 const {getLocalizations} = require("../../../../tools/localization");
 const empire = require("../../../../e4kClient");
 const {
-    EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, ButtonBuilder, ButtonStyle, ButtonInteraction
+    EmbedBuilder,
+    ActionRowBuilder,
+    StringSelectMenuBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    ButtonInteraction,
+    StringSelectMenuInteraction,
+    ChatInputCommandInteraction,
+    InteractionReplyOptions
 } = require("discord.js");
+const {Alliance} = require('ggejs');
 const {logError, log} = require("../../../../tools/Logger");
 
 //#region Data
@@ -192,7 +201,7 @@ function buildEmbed(alliance, rank, locale) {
         .setLabel(translations[locale].generic.worldMap)
         .setStyle(ButtonStyle.Primary)
         .setCustomId(`worldmap alliance ${alliance.allianceId} 0 1 1 0 0`)*/)
-    return {embeds: [embed], components: [messRow, messRow2], ephemeral: true}
+    return /**@type {any} */{embeds: [embed], components: [messRow, messRow2], ephemeral: true}
 }
 
 /**

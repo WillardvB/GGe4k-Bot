@@ -19,6 +19,10 @@ const roleIds = {
 /** @typedef {{imageUrl: string | null, videoUrl: string | null, author: string | null, text: string | null, time: Date | null, title: string, fields: {name: string, value: string}[] | null, url: string}} AnnouncementData */
 
 (async () => {
+    await startMonitorCommunityHub()
+})()
+
+async function startMonitorCommunityHub(){
     try {
         /** @type {Guild} */
         const _server = dcClient.guilds.cache.find(guild => guild.id === require('../data/kanalen.json').nlserver.id);
@@ -39,8 +43,9 @@ const roleIds = {
         }, 60000);
     } catch (e) {
         console.log(e);
+        await startMonitorCommunityHub()
     }
-})()
+}
 
 /** @return {Promise<void>} */
 async function checkCommunityHub() {

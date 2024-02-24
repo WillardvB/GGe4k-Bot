@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 const path = require("path");
 const prime_data = require('../data/other/prime_data.json')
-const {EmbedBuilder} = require("discord.js");
+const {EmbedBuilder, Message, Collection, Snowflake} = require("discord.js");
 const {imageBaseUrl, imageData} = require("e4k-data");
 const prime_data_filePath = path.join(__dirname, '../data/other/prime_data.json')
 
@@ -44,14 +44,14 @@ module.exports.deleteOldPrimeTimes = async function () {
     let beforeId = 0;
     while (!finished) {
         const settings = beforeId === 0 ? {limit: 100} : {limit: 100, beforeId: beforeId};
-        const messages = await primeChannel.messages.fetch(settings);
-        /** @type {Message[]} */
-        const filtered = messages.filter((v, _, __) => v.content.startsWith('@Prime Time')).map((v, _, __) => v)
+        /** @type {Collection<Snowflake, Message<true>>}*/
+        const messageCollection = (await primeChannel.messages.fetch(settings));
+        /** @type {Message<true>[]} */
+        const messages = messageCollection.map((v, _, __) => v);
+        const filtered = messages.filter(m => m.content.startsWith('@Prime Time'))
         const oldPrimeMessages = filtered.filter(m => m.createdTimestamp < Date.now() - (24 * 60 * 60 * 1000))
         finished = oldPrimeMessages.length === 0
-        for (let m of oldPrimeMessages) {
-            await m.delete()
-        }
-        beforeId = messages.findLast((v, _, __) => !v.content.startsWith('@Prime Time')).id
+        for (let m of oldPrimeMessages) await m.delete()
+        beforeId = messages.findLast(m => !m.content.startsWith('@Prime Time')).id
     }
 }
